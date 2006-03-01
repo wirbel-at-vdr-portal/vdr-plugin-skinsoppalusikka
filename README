@@ -32,8 +32,9 @@ make plugins
 
 Configuration:
 
-Channel logos must be located under "skinsoppalusikka" subdirectory
-in VDR's configuration directory for plugins.
+Channel logo directory can be given via a command line option (-l) and
+it defaults to "skinsoppalusikka" subdirectory in VDR's configuration
+directory for plugins.
 
 Notes:
 

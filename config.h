@@ -11,8 +11,13 @@
 
 struct cSoppalusikkaConfig
 {
+private:
+  char *logodir;
 public:
   cSoppalusikkaConfig();
+  ~cSoppalusikkaConfig();
+  void SetLogoDir(const char *logodirP);
+  char *GetLogoDir(void) { return logodir; }
   int showlogo;
   int cachesize;
   int usechannelid;

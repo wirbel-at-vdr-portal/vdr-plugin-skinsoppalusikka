@@ -6,18 +6,19 @@
  * $Id$
  */
 
-#include <vdr/plugin.h>
 #include "common.h"
 #include "config.h"
 #include "i18n.h"
 #include "logo.h"
 #include "soppalusikka.h"
+#include <getopt.h>
+#include <vdr/plugin.h>
 
 #if defined(VDRVERSNUM) && VDRVERSNUM < 10344
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char *VERSION        = "0.0.1";
+static const char *VERSION        = "0.0.2";
 static const char *DESCRIPTION    = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -70,12 +71,25 @@ cPluginSkinSoppalusikka::~cPluginSkinSoppalusikka()
 const char *cPluginSkinSoppalusikka::CommandLineHelp(void)
 {
   // return a string that describes all known command line options.
-  return NULL;
+  return "  -l <LOGODIR>, --logodir=<LOGODIR>  Define a directory for channel logos.\n";
 }
 
 bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
 {
   // implement command line argument processing here if applicable.
+  static struct option long_options[] = {
+       { "logodir", required_argument, NULL, 'l' },
+       { NULL }
+     };
+
+  int c;
+  while ((c = getopt_long(argc, argv, "l:", long_options, NULL)) != -1) {
+        switch (c) {
+          case 'l': SoppalusikkaConfig.SetLogoDir(optarg);
+                    break;
+          default:  return false;
+          }
+        }
   return true;
 }
 
@@ -91,6 +105,9 @@ bool cPluginSkinSoppalusikka::Start(void)
   // start any background activities the plugin shall perform.
   debug("cPluginSkinSoppalusikka::Start()");
   RegisterI18n(Phrases);
+  // set logo directory
+  if (!SoppalusikkaConfig.GetLogoDir())
+     SoppalusikkaConfig.SetLogoDir(cPlugin::ConfigDirectory(PLUGIN_NAME_I18N));
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
   // create skin

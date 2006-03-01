@@ -6,11 +6,26 @@
  * $Id$
  */
 
+#include "common.h"
 #include "config.h"
 
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: showlogo(0), cachesize(50), usechannelid(0)
+: logodir(NULL), showlogo(0), cachesize(50), usechannelid(0)
 {
+}
+
+cSoppalusikkaConfig::~cSoppalusikkaConfig()
+{
+  if (logodir)
+     DELETENULL(logodir);
+}
+
+void cSoppalusikkaConfig::SetLogoDir(const char *logodirP)
+{
+  debug("cSoppalusikkaConfig::SetLogoDir(%s)", logodirP);
+  if (logodir)
+     DELETENULL(logodir);
+  logodir = strdup(logodirP);
 }

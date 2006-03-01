@@ -6,11 +6,11 @@
  * $Id$
  */
 
-#include <vdr/tools.h>
-#include <vdr/plugin.h>
 #include "common.h"
 #include "config.h"
 #include "logo.h"
+#include <vdr/tools.h>
+#include <vdr/plugin.h>
 
 cSoppalusikkaLogoCache SoppalusikkaLogoCache(0);
 
@@ -97,9 +97,9 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
   char *filename;
   cBitmap *bmp = new cBitmap(1, 1, 1);
 
-  debug("cPluginSkinSoppalusikka::LoadXpm(%s)", fileNameP);
+  debug("cPluginSkinSoppalusikka::LoadXpm(%s) from '%s'", fileNameP, SoppalusikkaConfig.GetLogoDir());
   // create absolute filename
-  asprintf(&filename, "%s/%s.xpm", cPlugin::ConfigDirectory(PLUGIN_NAME_I18N), fileNameP);
+  asprintf(&filename, "%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
   if ((stat(filename, &stbuf) == 0) && bmp->LoadXpm(filename) && (bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
      debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
      // assign bitmap

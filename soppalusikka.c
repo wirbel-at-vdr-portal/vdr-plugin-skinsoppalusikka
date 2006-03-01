@@ -4,6 +4,11 @@
  * $Id: $
  */
 
+#include "common.h"
+#include "config.h"
+#include "logo.h"
+#include "i18n.h"
+#include "soppalusikka.h"
 #include <math.h>
 #include <vdr/device.h>
 #include <vdr/menu.h>
@@ -11,11 +16,6 @@
 #include <vdr/osd.h>
 #include <vdr/themes.h>
 #include <vdr/plugin.h>
-#include "common.h"
-#include "config.h"
-#include "logo.h"
-#include "i18n.h"
-#include "soppalusikka.h"
 
 #include "symbols/arrowdown.xpm"
 #include "symbols/arrowup.xpm"
