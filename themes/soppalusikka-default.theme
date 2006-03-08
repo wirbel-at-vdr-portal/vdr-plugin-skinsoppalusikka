@@ -38,7 +38,6 @@ clrChannelSymbolInactive = FF7F7F7F
 clrChannelSymbolRecord = FFFF0000
 clrMenuTitleFg = FF000000
 clrMenuTitleBg = C833AAEE
-clrMenuDate = FF000000
 clrMenuItemCurrentFg = FF000000
 clrMenuItemCurrentBg = C833AAEE
 clrMenuItemSelectable = FFFFFFFF

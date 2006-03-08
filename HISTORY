@@ -10,3 +10,17 @@ VDR Skin 'Soppalusikka' Revision History
 - Added command line option (-l) to specify channel logo directory.
 - Renamed default theme to Blueberry.
 - Modified to compile with thread poisoning patch (Thanks to Ville Skyttä).
+
+2006-03-08: Version 0.0.3
+
+- Fixed overlapping between textscroller and scrollbar.
+- Functionized strcatrealloc() and strncatrealloc().
+- Added audio language descriptions if available.
+- Added active [REC] symbol into menu title bar.
+- Added color coding to [REC] symbol in channel info window:
+  clrChannelSymbolRecord,   recording on current channel,
+  clrChannelSymbolActive,   recording on another channel,
+  clrChannelSymbolInactive, no recording.
+- Skin themes updated.
+- Added tags stripping of the aux field (for epgsearch plugin).
+- Added date string into replay display.

@@ -19,22 +19,4 @@
 #define error(x...) esyslog("Soppalusikka: " x);
 #endif
 
-#define strcatrealloc(dest, src) \
-  if (src) { \
-     dest = (char *)realloc(dest, strlen(dest) + strlen(src) + 1); \
-     if (dest) \
-        strcat(dest, src); \
-     else \
-        error("ERROR: strcatrealloc out of memory!"); \
-  }
-
-#define strncatrealloc(dest, src, len) \
-  if (src) { \
-     dest = (char *)realloc(dest, strlen(dest) + min(strlen(src), len) + 1); \
-     if (dest) \
-        strncat(dest, src, min(strlen(src), len)); \
-     else \
-        error("ERROR: strncatrealloc out of memory!"); \
-  }
-
 #endif // __SKINSOPPALUSIKKA_COMMON_H

@@ -5,12 +5,14 @@
  */
 
 #include "common.h"
+#include "tools.h"
 #include "config.h"
 #include "logo.h"
 #include "i18n.h"
 #include "soppalusikka.h"
 #include <math.h>
 #include <vdr/device.h>
+#include <vdr/timers.h>
 #include <vdr/menu.h>
 #include <vdr/font.h>
 #include <vdr/osd.h>
@@ -119,7 +121,6 @@ THEME_CLR(Theme, clrChannelSymbolInactive,  0xFF7F7F7F);
 THEME_CLR(Theme, clrChannelSymbolRecord,    0xFFFF0000);
 THEME_CLR(Theme, clrMenuTitleFg,            0xFF000000);
 THEME_CLR(Theme, clrMenuTitleBg,            0xC833AAEE);
-THEME_CLR(Theme, clrMenuDate,               0xFF000000);
 THEME_CLR(Theme, clrMenuItemCurrentFg,      0xFF000000);
 THEME_CLR(Theme, clrMenuItemCurrentBg,      0xC833AAEE);
 THEME_CLR(Theme, clrMenuItemSelectable,     0xFFFFFFFF);
@@ -165,6 +166,7 @@ private:
   int y0, y1;
   int yt0, yt1, yt2, yt3, yt4;
   int yb0, yb1, yb2, yb3, yb4, yb5;
+  bool HasChannelTimerRecording(const cChannel *Channel);
   void ResetTopAreaCoordinates(bool islogo = false);
   void DrawTopArea(const cChannel *Channel = NULL);
   void DrawBottomArea(void);
@@ -247,6 +249,16 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
 cSkinSoppalusikkaDisplayChannel::~cSkinSoppalusikkaDisplayChannel()
 {
   delete osd;
+}
+
+bool cSkinSoppalusikkaDisplayChannel::HasChannelTimerRecording(const cChannel *Channel)
+{
+  // try to find current channel from timers
+  for (cTimer *t = Timers.First(); t; t = Timers.Next(t)) {
+      if ((t->Channel() == Channel) && t->Recording())
+         return true;
+      }
+  return false;
 }
 
 void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool islogo)
@@ -390,7 +402,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
      osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmEncrypted.Height()) / 2, bmEncrypted, Theme.Color(Channel->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
      // draw recording symbol
      xs -= (bmRecording.Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(cRecordControls::Active() ? clrChannelSymbolRecord : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
      }
 }
 
@@ -733,9 +745,8 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   cTextScroller ts;
   char t[64];
   int y = y3;
-  int xl = x1;
-  int xs = xl;
-  int wsb = 2 * bmArrowUp.Width();
+  int xs = x1;
+  int wsb = bmArrowUp.Width() + 2 * Gap;
   // check if event has timer
   if (Event->HasTimer()) {
      // draw timer symbol
@@ -757,7 +768,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   y = y4;
   // draw event date / duration string
   snprintf(t, sizeof(t), "%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
-  ts.Set(osd, x1, y, x2 - xl, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   // check if event has VPS
   if (Event->Vps() && Event->Vps() != Event->StartTime()) {
      char *buffer;
@@ -770,22 +781,35 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   // draw recording languages
   const cComponents *Components = Event->Components();
   if (Components) {
-     char *Langs;
-     asprintf(&Langs, "%s: ", tr("Languages"));
+     char *info;
+     asprintf(&info, "%s: ", tr("Languages"));
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
          if ((p->stream == 2) && p->language) {
-            strcatrealloc(Langs, p->language);
-            strcatrealloc(Langs, " ");
+            if (p->description) {
+               info = strcatrealloc(info, p->description);
+               info = strcatrealloc(info, " (");
+               info = strcatrealloc(info, p->language);
+               info = strcatrealloc(info, "), ");
+               }
+            else {
+               info = strcatrealloc(info, p->language);
+               info = strcatrealloc(info, ", ");
+               }
             }
          }
-     ts.Set(osd, xl, y, x2 - xl, y5 - y, Langs, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     // strip out the last delimiter
+     if (endswith(info, ", ")) {
+        char *s = info + strlen(info) - 2;                                                                                                                                        
+        *s = 0;
+        }
+     ts.Set(osd, x1, y, x2 - x1, y5 - y, info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
      y += ts.Height();
-     free(Langs);
+     free(info);
      }
   y += smlfont->Height();
   // draw event title
-  ts.Set(osd, xl, y, x2 - xl, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
   // draw recording short text and description
   if (isempty(Event->Description())) {
@@ -793,7 +817,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      // check if short text
      if (!isempty(Event->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, xl, y, x3 - xl - wsb, y5 - y, Event->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Event->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
         SetScrollbar();
         }
      }
@@ -801,12 +825,12 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      // check if short text
      if (!isempty(Event->ShortText())) {
         // draw short text
-        ts.Set(osd, xl, y, x2 - xl, y5 - y, Event->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osd, x1, y, x2 - x1, y5 - y, Event->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, xl, y, x3 - xl - wsb, y5 - y, Event->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Event->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
      SetScrollbar();
      }
 }
@@ -820,45 +844,59 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
   int y = y3;
-  int xl = x1;
-  int wsb = 2 * bmArrowUp.Width();
+  int wsb = bmArrowUp.Width() + 2 * Gap;
   cTextScroller ts;
   char t[32];
   // draw recording date string
   snprintf(t, sizeof(t), "%s  %s", *DateString(Recording->start), *TimeString(Recording->start));
-  ts.Set(osd, xl, y, x2 - xl, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
-  // draw recording languages
-  char *Langs;
-  asprintf(&Langs, "%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
+  // draw additional information
+  char *info;
+  asprintf(&info, "%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
   if (Info->Aux()) {
-     strcatrealloc(Langs, "\n");
-     strcatrealloc(Langs, tr("Auxiliary information"));
-     strcatrealloc(Langs, ": ");
-     strcatrealloc(Langs, Info->Aux());
+     char *aux = strdup(Info->Aux());
+     info = strcatrealloc(info, "\n");
+     info = strcatrealloc(info, tr("Auxiliary information"));
+     info = strcatrealloc(info, ": ");
+     info = strcatrealloc(info, striphtml(aux));
+     free(aux);
      }
   const cComponents *Components = Info->Components();
   if (Components) {
-     strcatrealloc(Langs, "\n");
-     strcatrealloc(Langs, tr("Languages"));
-     strcatrealloc(Langs, ": ");
+     info = strcatrealloc(info, "\n");
+     info = strcatrealloc(info, tr("Languages"));
+     info = strcatrealloc(info, ": ");
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
          if ((p->stream == 2) && p->language) {
-            strcatrealloc(Langs, p->language);
-            strcatrealloc(Langs, " ");
+            if (p->description) {
+               info = strcatrealloc(info, p->description);
+               info = strcatrealloc(info, " (");
+               info = strcatrealloc(info, p->language);
+               info = strcatrealloc(info, "), ");
+               }
+            else {
+               info = strcatrealloc(info, p->language);
+               info = strcatrealloc(info, ", ");
+               }
             }
          }
+     // strip out the last delimiter
+     if (endswith(info, ", ")) {
+        char *s = info + strlen(info) - 2;
+        *s = 0;
+        }
      }
-  ts.Set(osd, xl, y, x2 - xl, y5 - y, Langs, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
-  free(Langs);
+  free(info);
   y += smlfont->Height();
   // draw recording title
   const char *Title = Info->Title();
   if (isempty(Title))
      Title = Recording->Name();
-  ts.Set(osd, xl, y, x2 - xl, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
   // draw recording short text and description
   if (isempty(Info->Description())) {
@@ -866,7 +904,7 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, xl, y, x3 - xl - wsb, y5 - y, Info->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Info->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
         SetScrollbar();
         }
      }
@@ -874,20 +912,21 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text
-        ts.Set(osd, xl, y, x2 - xl, y5 - y, Info->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osd, x1, y, x2 - x1, y5 - y, Info->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, xl, y, x3 - xl - wsb, y5 - y, Info->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Info->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
      SetScrollbar();
      }
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetText(const char *Text, bool FixedFont)
 {
+  int wsb = bmArrowUp.Width() + 2 * Gap;
   // draw text
-  textScroller.Set(osd, x1, y3, GetTextAreaWidth(), y5 - y3, Text, GetTextAreaFont(FixedFont), Theme.Color(clrMenuText), Theme.Color(clrBackground));
+  textScroller.Set(osd, x1, y3, x3 - x1 - wsb, y5 - y3, Text, GetTextAreaFont(FixedFont), Theme.Color(clrMenuText), Theme.Color(clrBackground));
   SetScrollbar();
 }
 
@@ -907,8 +946,13 @@ void cSkinSoppalusikkaDisplayMenu::Flush(void)
 {
   cString date = DayDateTime();
   const cFont *font = cFont::GetFont(fontSml);
+  int w = font->Width("Mon 07.07 07:07");
+  int xl = x2 - w;
   // update date string on titlebar
-  osd->DrawText(x2 - font->Width(date), y0, date, Theme.Color(clrMenuDate), Theme.Color(clrMenuTitleBg), font, font->Width(date), y2 - y0, taRight);
+  osd->DrawText(x2 - w, y0, date, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, w, y2 - y0, taRight);
+  // draw recording symbol
+  xl -= (bmRecording.Width() + BigGap);
+  osd->DrawBitmap(xl, y0 + (y2 - y0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(clrMenuTitleBg), Theme.Color(cRecordControls::Active() ? clrMenuTitleFg : clrMenuTitleBg));
   osd->Flush();
 }
 
@@ -920,6 +964,8 @@ private:
   int x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
   int y0, y1, y2, y3, y4, y5;
   int lineHeight;
+  bool drawdate;
+  bool modeonly;
 public:
   cSkinSoppalusikkaDisplayReplay(bool ModeOnly);
   virtual ~cSkinSoppalusikkaDisplayReplay();
@@ -937,6 +983,8 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
 {
   int sw = bmFastReverse.Width() + bmSlowReverse.Width() + bmPlay.Width() + bmPause.Width() + bmSlowForward.Width() + bmFastForward.Width();
   lineHeight = cFont::GetFont(fontOsd)->Height();
+  drawdate = true;
+  modeonly = ModeOnly;
   x0 = 0;
   x1 = x0 + BigGap;
   x2 = x1 + Roundness;
@@ -962,7 +1010,7 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
   // select mode
-  if (ModeOnly) {
+  if (modeonly) {
      // draw statusbar
      osd->DrawRectangle(x6, y3, x8 - 1, y5 - 1, Theme.Color(clrBackground));
      // draw rounded left corner
@@ -1168,6 +1216,15 @@ void cSkinSoppalusikkaDisplayReplay::SetTotal(const char *Total)
 
 void cSkinSoppalusikkaDisplayReplay::SetJump(const char *Jump)
 {
+  // check if prompt
+  if (Jump) {
+     // disallow date updating
+     drawdate = false;
+     }
+  else {
+     // allow date updating
+     drawdate = true;
+     }
   // draw jump prompt
   osd->DrawText(x2, y3, Jump, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontOsd), x3 - x2, y5 - y3, taCenter);
 }
@@ -1176,6 +1233,8 @@ void cSkinSoppalusikkaDisplayReplay::SetMessage(eMessageType Type, const char *T
 {
   // check if new message
   if (Text) {
+     // disallow date updating
+     drawdate = false;
      // save current osd
      osd->SaveRegion(x0, y3, x10 - 1, y5 - 1);
      // draw statusbar
@@ -1192,11 +1251,18 @@ void cSkinSoppalusikkaDisplayReplay::SetMessage(eMessageType Type, const char *T
   else {
      // restore saved osd
      osd->RestoreRegion();
+     // allow date updating
+     drawdate = true;
      }
 }
 
 void cSkinSoppalusikkaDisplayReplay::Flush(void)
 {
+  // update date
+  if (drawdate && !modeonly) {
+     cString date = DayDateTime();
+     osd->DrawText(x2, y3, date, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontSml), x3 - x2, y5 - y3, taCenter);
+     }
   osd->Flush();
 }
 

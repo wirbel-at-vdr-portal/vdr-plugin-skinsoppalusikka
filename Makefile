@@ -53,7 +53,7 @@ endif
 
 ### The object files (add further files here):
 
-OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o i18n.o
+OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o i18n.o tools.o
 
 ### Implicit rules:
 
