@@ -18,7 +18,7 @@
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char *VERSION        = "0.0.3";
+static const char *VERSION        = "0.0.4";
 static const char *DESCRIPTION    = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -77,7 +77,7 @@ const char *cPluginSkinSoppalusikka::CommandLineHelp(void)
 bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
 {
   // implement command line argument processing here if applicable.
-  static struct option long_options[] = {
+  static const struct option long_options[] = {
        { "logodir", required_argument, NULL, 'l' },
        { NULL }
      };

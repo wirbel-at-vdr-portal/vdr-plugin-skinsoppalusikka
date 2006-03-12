@@ -24,3 +24,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Skin themes updated.
 - Added tags stripping of the aux field (for epgsearch plugin).
 - Added date string into replay display.
+
+2006-03-12: Version 0.0.4
+
+- Added estonian translations (Thanks to Arthur Konovalov).
+- Some minor changes and updated README.

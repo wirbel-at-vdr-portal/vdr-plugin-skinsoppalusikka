@@ -27,7 +27,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Soppalusikka kest", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -49,7 +49,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Soppalusikka", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -71,7 +71,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "min", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -93,7 +93,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Stereo", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -115,7 +115,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Vasak", // Eesti
     "", // Danske
     "", // Èesky (Czech)
   },
@@ -137,7 +137,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Parem", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -159,7 +159,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Hääletu", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -181,7 +181,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Helitugevus", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -203,7 +203,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Kanalilogo näitamine", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -222,11 +222,11 @@ const tI18nPhrase Phrases[] = {
     "", // Svenska
     "", // Românã
     "", // Magyar
-    "", // Català  
+    "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
-    "", // Dansk  
+    "Kanali tuvastamise meetod", // Eesti
+    "", // Dansk
     "", // Èesky (Czech)
   },
   { "name", // English
@@ -247,7 +247,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "nimi", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -263,13 +263,13 @@ const tI18nPhrase Phrases[] = {
     "", // Polski
     "", // Español
     "", // ÅëëçíéêÜ (Greek)
-    "", // Svenska 
+    "", // Svenska
     "", // Românã
     "", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "andmed", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -291,7 +291,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Kanalilogo vahemälu suurus", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -313,7 +313,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Tühjenda kanalilogo vahemälu", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -335,13 +335,13 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Kanalilogo vahemälu tühjendamine...", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
   { "Languages", // English
     "Sprachen", // Deutsch
-    "", // Slovenski 
+    "", // Slovenski
     "", // Italiano
     "", // Nederlands
     "", // Português
@@ -357,7 +357,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Keeled", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -379,7 +379,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Lisainfo", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },

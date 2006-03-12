@@ -45,3 +45,4 @@ Notes:
 - The channel logos can be named according to channel name (YLETV2.xpm)
   or channel id (T-8438-4097-33.xpm). There's a setup option to select
   the naming scheme.
+- There're known problems with DXR3 cards.
