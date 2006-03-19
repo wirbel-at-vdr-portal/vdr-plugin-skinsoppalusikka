@@ -18,6 +18,7 @@ public:
   ~cSoppalusikkaConfig();
   void SetLogoDir(const char *logodirP);
   char *GetLogoDir(void) { return logodir; }
+  int showauxinfo;
   int showlogo;
   int cachesize;
   int usechannelid;

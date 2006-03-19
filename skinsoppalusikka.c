@@ -18,7 +18,7 @@
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char *VERSION        = "0.0.4";
+static const char *VERSION        = "0.0.5";
 static const char *DESCRIPTION    = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -143,7 +143,8 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(Name, "ShowLogo"))     SoppalusikkaConfig.showlogo     = atoi(Value);
+  if      (!strcasecmp(Name, "ShowAuxInfo"))  SoppalusikkaConfig.showauxinfo  = atoi(Value);
+  else if (!strcasecmp(Name, "ShowLogo"))     SoppalusikkaConfig.showlogo     = atoi(Value);
   else if (!strcasecmp(Name, "CacheSize"))    SoppalusikkaConfig.cachesize    = atoi(Value);
   else if (!strcasecmp(Name, "UseChannelId")) SoppalusikkaConfig.usechannelid = atoi(Value);
   else return false;
@@ -184,11 +185,12 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
 
   Clear();
 
-  Add(new cMenuEditBoolItem(   tr("Show channel logos"),       &data.showlogo, tr("no"), tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo, tr("no"), tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo, tr("no"), tr("yes")));
   if (data.showlogo)
-     Add(new cMenuEditBoolItem(tr("Identify channel by"),      &data.usechannelid, tr("name"), tr("data")));
-  Add(new cMenuEditIntItem(    tr("Channel logo cache size"),  &data.cachesize, 0, 1000));
-  Add(new cOsdItem(            tr("Flush channel logo cache"), osUser1));
+     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid, tr("name"), tr("data")));
+  Add(new cMenuEditIntItem(    tr("Channel logo cache size"),    &data.cachesize, 0, 1000));
+  Add(new cOsdItem(            tr("Flush channel logo cache"),   osUser1));
 
   SetCurrent(Get(current));
   Display();
@@ -199,6 +201,7 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   // store setup data
   debug("cPluginSkinSoppalusikkaSetup::Store()");
   SoppalusikkaConfig = data;
+  SetupStore("ShowAuxInfo",  SoppalusikkaConfig.showauxinfo);
   SetupStore("ShowLogo",     SoppalusikkaConfig.showlogo);
   SetupStore("CacheSize",    SoppalusikkaConfig.cachesize);
   SetupStore("UseChannelId", SoppalusikkaConfig.usechannelid);
@@ -212,7 +215,7 @@ eOSState cPluginSkinSoppalusikkaSetup::ProcessKey(eKeys Key)
   int oldshowlogo = data.showlogo;
 
   eOSState state = cMenuSetupPage::ProcessKey(Key);
-  if (Key != kNone && (data.showlogo != oldshowlogo)) {                                                                                                                           
+  if (Key != kNone && (data.showlogo != oldshowlogo)) {
      Setup();
      }
   else if (state == osUser1) {

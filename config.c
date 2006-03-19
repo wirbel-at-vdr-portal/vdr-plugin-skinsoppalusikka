@@ -12,7 +12,7 @@
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: logodir(NULL), showlogo(0), cachesize(50), usechannelid(0)
+: logodir(NULL), showauxinfo(1), showlogo(0), cachesize(50), usechannelid(0)
 {
 }
 

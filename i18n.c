@@ -186,7 +186,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Show channel logos", // English
-    "", // Deutsch
+    "Kanal-Logos anzeigen", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -208,7 +208,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Identify channel by", // English
-    "", // Deutsch
+    "Kanal-Identifikation durch", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -230,7 +230,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "name", // English
-    "", // Deutsch
+    "Name", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -252,7 +252,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "data", // English
-    "", // Deutsch
+    "ID", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -274,7 +274,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Channel logo cache size", // English
-    "", // Deutsch
+    "Grˆﬂe des Logo-Caches", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -296,7 +296,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Flush channel logo cache", // English
-    "Bildspeicher leeren", // Deutsch
+    "Logo-Cache leeren", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -318,7 +318,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Flushing channel logo cache...", // English
-    "Bildspeicher wird geleert...", // Deutsch
+    "Logo-Cache wird geleert...", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -362,7 +362,7 @@ const tI18nPhrase Phrases[] = {
     "", // »esky (Czech)
   },
   { "Auxiliary information", // English
-    "", // Deutsch
+    "Zusatzinfo", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -380,6 +380,28 @@ const tI18nPhrase Phrases[] = {
     "", // ¿„··⁄ÿŸ (Russian)
     "", // Hrvatski
     "Lisainfo", // Eesti
+    "", // Dansk
+    "", // »esky (Czech)
+  },
+  { "Show auxiliary information", // English
+    "Zusatzinfo anzeigen", // Deutsch
+    "", // Slovenski
+    "", // Italiano
+    "", // Nederlands
+    "", // PortuguÍs
+    "", // FranÁais
+    "", // Norsk
+    "N‰yt‰ lis‰tiedot", // suomi (Finnish)
+    "", // Polski
+    "", // EspaÒol
+    "", // ≈ÎÎÁÌÈÍ‹ (Greek)
+    "", // Svenska
+    "", // Rom‚n„
+    "", // Magyar
+    "", // Catal‡
+    "", // ¿„··⁄ÿŸ (Russian)
+    "", // Hrvatski
+    "N‰ita lisainfo", // Eesti
     "", // Dansk
     "", // »esky (Czech)
   },

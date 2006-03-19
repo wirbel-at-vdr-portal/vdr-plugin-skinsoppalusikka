@@ -13,6 +13,6 @@
 
 char *strcatrealloc(char *dest, const char *src);
 char *strncatrealloc(char *dest, const char *src, unsigned int len);
-char *striphtml(char *str);
+char *striptags(char *str);
 
 #endif // __SKINSOPPALUSIKKA_TOOLS_H

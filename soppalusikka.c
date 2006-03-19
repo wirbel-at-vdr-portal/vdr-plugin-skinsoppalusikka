@@ -854,12 +854,12 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   // draw additional information
   char *info;
   asprintf(&info, "%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
-  if (Info->Aux()) {
+  if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
      char *aux = strdup(Info->Aux());
      info = strcatrealloc(info, "\n");
      info = strcatrealloc(info, tr("Auxiliary information"));
      info = strcatrealloc(info, ": ");
-     info = strcatrealloc(info, striphtml(aux));
+     info = strcatrealloc(info, striptags(aux));
      free(aux);
      }
   const cComponents *Components = Info->Components();

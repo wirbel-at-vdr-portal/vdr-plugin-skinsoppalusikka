@@ -29,3 +29,8 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added estonian translations (Thanks to Arthur Konovalov).
 - Some minor changes and updated README.
+
+2006-03-19: Version 0.0.5
+
+- Updated german translations (Thanks to Thomas Günther).
+- Added option to show/hide auxiliary information of recordings.

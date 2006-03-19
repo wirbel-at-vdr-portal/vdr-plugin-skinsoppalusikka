@@ -36,20 +36,20 @@ char *strncatrealloc(char *dest, const char *src, unsigned int len)
   return dest;
 }
 
-char *striphtml(char *str)
+char *striptags(char *str)
 {
   char *c, t = 0, *r;
   c = str;
   r = str;
   while (*str != '\0') {
-     if (*str == '<')
-        t++;
-     else if (*str == '>')
-        t--;
-     else if (t < 1)
-        *(c++) = *str;
-     str++;
-     }
+    if (*str == '<')
+       t++;
+    else if (*str == '>') 
+       t--;
+    else if (t < 1)
+       *(c++) = *str;
+    str++;
+    }
   *c = '\0';
   return r;
 }
