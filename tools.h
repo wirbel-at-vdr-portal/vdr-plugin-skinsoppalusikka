@@ -12,7 +12,7 @@
 #include <vdr/tools.h>
 
 char *strcatrealloc(char *dest, const char *src);
-char *strncatrealloc(char *dest, const char *src, unsigned int len);
+char *strncatrealloc(char *dest, const char *src, size_t len);
 char *striptags(char *str);
 
 #endif // __SKINSOPPALUSIKKA_TOOLS_H

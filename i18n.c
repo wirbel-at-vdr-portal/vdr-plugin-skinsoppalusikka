@@ -19,7 +19,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Soppalusikka-ulkoasu", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Piel Soppalusikka", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -41,7 +41,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Soppalusikka", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Soppalusikka", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -63,7 +63,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "min", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "min", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -85,7 +85,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Stereo", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Estereo", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -107,7 +107,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Vasen", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Izquierda", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -129,7 +129,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Oikea", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Derecha", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -151,7 +151,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Mykistetty", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Silenciar", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -173,7 +173,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Äänenvoimakkuus", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Volumen", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -195,7 +195,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Näytä kanavalogot", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Mostrar los logos de los canales", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -217,7 +217,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Tunnista kanava", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Identificar el canal por...", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -239,7 +239,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "nimestä", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Nombre", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -261,7 +261,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "tiedoista", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Datos", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -283,7 +283,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Välimuistin koko kanavalogoille", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Tamaño de la cache de los logos", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -305,7 +305,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Tyhjennä kanavalogot välimuistista", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Limpiar la cache de los logos", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -327,7 +327,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Tyhjennetään välimuistia...", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Limpiando la cache...", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -349,7 +349,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Kielet", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Lenguajes", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -371,7 +371,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Lisätiedot", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Información auxiliar", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -393,7 +393,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Näytä lisätiedot", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Mostrar información auxiliar", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã

@@ -428,6 +428,10 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      osd->DrawText(xb4, yb0, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb6 - xb4, yb1 - yb0);
      // draw duration
      osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
+     // draw vps time
+     if (e->Vps() && (e->Vps() != e->StartTime())) {
+        osd->DrawText(xb1, yb1, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+        }
      // draw shorttext
      osd->DrawText(xb4, yb1, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb6 - xb4 - Gap, yb2 - yb1);
      // draw timebar
@@ -446,6 +450,10 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb6 - xb4 - Gap, yb3 - yb2);
      // draw duration
      osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
+     // draw vps time
+     if (e->Vps() && (e->Vps() != e->StartTime())) {
+        osd->DrawText(xb1, yb3, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+        }
      // draw shorttext
      osd->DrawText(xb4, yb3, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4, yb5 - yb3);
      free(s);
@@ -946,12 +954,12 @@ void cSkinSoppalusikkaDisplayMenu::Flush(void)
 {
   cString date = DayDateTime();
   const cFont *font = cFont::GetFont(fontSml);
-  int w = font->Width("Mon 07.07 07:07");
+  int w = font->Width("Wmm 07.07 07:07");
   int xl = x2 - w;
   // update date string on titlebar
   osd->DrawText(x2 - w, y0, date, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, w, y2 - y0, taRight);
   // draw recording symbol
-  xl -= (bmRecording.Width() + BigGap);
+  xl -= bmRecording.Width();
   osd->DrawBitmap(xl, y0 + (y2 - y0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(clrMenuTitleBg), Theme.Color(cRecordControls::Active() ? clrMenuTitleFg : clrMenuTitleBg));
   osd->Flush();
 }
@@ -1375,7 +1383,7 @@ cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title
       ItemsWidth = max(ItemsWidth, font->Width(Tracks[i]));
   ItemsWidth = max(ItemsWidth, font->Width(tr("Stereo")));
   ItemsWidth = max(ItemsWidth, font->Width(tr("Left")));
-  ItemsWidth = max(ItemsWidth, font->Width(tr("Rigth")));
+  ItemsWidth = max(ItemsWidth, font->Width(tr("Right")));
   ItemsWidth += 2 * BigGap + 2 * bmAudio.Width();
   x0 = 0;
   x1 = x0 + Roundness;
@@ -1462,7 +1470,7 @@ void cSkinSoppalusikkaDisplayTracks::SetAudioChannel(int AudioChannel)
          osd->DrawText(x1, y5, tr("Left"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
          break;
     case 2:
-         /* mono rigth */
+         /* mono right */
          osd->DrawBitmap(x3, y0 + (y2 - bmAudio.Height()) / 2, bmAudioRight, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg));
          osd->DrawText(x1, y5, tr("Right"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
          break;

@@ -38,11 +38,19 @@ directory for plugins.
 
 Notes:
 
-- Only XPM format (64x48, 16 colors or less) is supported for channel
-  logos.
+- Only XPM format is supported for channel logos: 64x48 pixels and
+  13 colors (6 colors on DXR3) or less recommended.
+
 - If you'll add new channels logos on the fly, remember to flush the
   channel logo cache.
+
 - The channel logos can be named according to channel name (YLETV2.xpm)
   or channel id (T-8438-4097-33.xpm). There's a setup option to select
   the naming scheme.
-- There're known problems with DXR3 cards.
+
+- There have been bug reports from some DXR3 users about vanishing
+  colors and flickering. However, the skin is also reported to work
+  without any problems on many DXR3 setups. 
+
+- The fontSml is bigger than fontOsd in ISO-8859-5 and it messes up
+  graphics if the "Use small fonts" option is set to "skin dependent".

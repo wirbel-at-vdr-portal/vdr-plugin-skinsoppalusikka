@@ -6,9 +6,9 @@
  * $Id$
  */
 
+#include <stdlib.h>
 #include "common.h"
 #include "tools.h"
-#include <stdlib.h>
 
 char *strcatrealloc(char *dest, const char *src)
 {
@@ -23,10 +23,10 @@ char *strcatrealloc(char *dest, const char *src)
   return dest;
 }
 
-char *strncatrealloc(char *dest, const char *src, unsigned int len)
+char *strncatrealloc(char *dest, const char *src, size_t len)
 {
   if (src) {
-     int l = strlen(dest) + min(strlen(src), len) + 1;
+     size_t l = strlen(dest) + min(strlen(src), len) + 1;
      dest = (char *)realloc(dest, l);
      if (dest)
         strncat(dest, src, min(strlen(src), len));
@@ -38,18 +38,40 @@ char *strncatrealloc(char *dest, const char *src, unsigned int len)
 
 char *striptags(char *str)
 {
-  char *c, t = 0, *r;
-  c = str;
+  char *r, *c;
+  int t = 0, d = 0;
+  bool s = false;
   r = str;
+  c = str;
   while (*str != '\0') {
-    if (*str == '<')
+    if (*str == '<') {
        t++;
-    else if (*str == '>') 
+       s = true;
+       }
+    else if (*str == '>') {
        t--;
-    else if (t < 1)
+       }
+    else if (t < 1) {
        *(c++) = *str;
+       }
+    else if (s) {
+       if (*str == '/') {
+          d--;
+          }
+       else {
+          d++;
+          }
+       if (d < 1) {
+          *(c++) = '\n';
+          }
+       else if (d > 1) {
+          *(c++) = ' ';
+          }
+       s = false;
+       }
     str++;
     }
   *c = '\0';
   return r;
 }
+

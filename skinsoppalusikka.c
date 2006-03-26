@@ -14,11 +14,11 @@
 #include <getopt.h>
 #include <vdr/plugin.h>
 
-#if defined(VDRVERSNUM) && VDRVERSNUM < 10344
+#if defined(VDRVERSNUM) && VDRVERSNUM < 10345
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char *VERSION        = "0.0.5";
+static const char *VERSION        = "0.0.6";
 static const char *DESCRIPTION    = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
