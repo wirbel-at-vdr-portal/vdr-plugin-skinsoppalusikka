@@ -97,9 +97,10 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
   char *filename;
   cBitmap *bmp = new cBitmap(1, 1, 1);
 
-  debug("cPluginSkinSoppalusikka::LoadXpm(%s) from '%s'", fileNameP, SoppalusikkaConfig.GetLogoDir());
   // create absolute filename
   asprintf(&filename, "%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
+  debug("cPluginSkinSoppalusikka::LoadXpm(%s)", filename);
+  // check validity
   if ((stat(filename, &stbuf) == 0) && bmp->LoadXpm(filename) && (bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
      debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
      // assign bitmap
@@ -121,13 +122,15 @@ bool cSoppalusikkaLogoCache::Flush(void)
   // check if map is empty
   if (!cacheMapM.empty()) {
      debug("cPluginSkinSoppalusikka::Flush() NON-EMPTY");
-     // delete bitmaps
+     // delete bitmaps and clear map
      for (std::map<std::string, cBitmap*>::iterator i = cacheMapM.begin(); i != cacheMapM.end(); ++i) {
-         bitmapM = i->second;
-         DELETENULL(bitmapM);
+         cBitmap *bmp = i->second;
+         if (bmp)
+            DELETENULL(bmp);
+         cacheMapM.erase(i);
          }
-     // clear map
-     cacheMapM.clear();
+     // nullify bitmap pointer
+     bitmapM = NULL;
      }
   return true;
 }

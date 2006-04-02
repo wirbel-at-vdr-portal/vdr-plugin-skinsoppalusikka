@@ -75,3 +75,19 @@ char *striptags(char *str)
   return r;
 }
 
+bool ischaracter(const char *str, const char *mask)
+{
+  bool match = true;
+  const char *p = str;
+  for (; *p; ++p) {
+      const char *m = mask;
+      bool tmp = false;
+      for (; *m; ++m) {
+          if (*p == *m)
+             tmp = true;
+          }
+      match = match && tmp;
+      }
+  return match;
+}
+

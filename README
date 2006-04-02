@@ -50,7 +50,7 @@ Notes:
 
 - There have been bug reports from some DXR3 users about vanishing
   colors and flickering. However, the skin is also reported to work
-  without any problems on many DXR3 setups. 
+  without any problems on many DXR3 setups.
 
 - The fontSml is bigger than fontOsd in ISO-8859-5 and it messes up
   graphics if the "Use small fonts" option is set to "skin dependent".

@@ -38,7 +38,7 @@ VDR Skin 'Soppalusikka' Revision History
 2006-03-26: Version 0.0.6
 
 - Updated for vdr-1.3.45.
-- Fixed typos in audio tracks code (Thanks to Sebastian).
+- Fixed typos in audio tracks code (Thanks to Sebastian Kemper).
 - Added Spanish translation (Thanks to Luis Palacios).
 - Fixed compiling on AMD64 platform (Thanks to Mirco Günther and Jörg Bornkessel).
 - Fixed date string in title bar (Thanks to Frank Krömmelbein for reporting this one).
@@ -46,3 +46,12 @@ VDR Skin 'Soppalusikka' Revision History
 - Modified tags stripping of the auxiliary information field.
 - Added VPS info for current event in channel info window.
 
+2006-04-02: Version 0.0.7
+
+- Fixed VPS time string in event info menu (Thanks to Sebastian Kemper for reporting this one).
+- Updated theme files.
+- Added new setup options to de/activate plugin features.
+- Added event symbols into schedule menu and new indicator symbol into recordings menu.
+  Running event symbol is based on Wareagle icon patch and thanks to Mikko Salo for providing other new symbols.
+- Fixed crash bug while flushing logo cache.
+- Fixed logo directory location after flushing logo cache.

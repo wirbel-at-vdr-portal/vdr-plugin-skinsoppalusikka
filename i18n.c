@@ -295,17 +295,17 @@ const tI18nPhrase Phrases[] = {
     "", // Dansk
     "", // Èesky (Czech)
   },
-  { "Flush channel logo cache", // English
-    "Logo-Cache leeren", // Deutsch
+  { "Button$Flush cache", // English
+    "Cache leeren", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
     "", // Português
     "", // Français
     "", // Norsk
-    "Tyhjennä kanavalogot välimuistista", // suomi (Finnish)
+    "Tyhjennä", // suomi (Finnish)
     "", // Polski
-    "Limpiar la cache de los logos", // Español
+    "Limpiar la cache", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -313,7 +313,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "Tühjenda kanalilogo vahemälu", // Eesti
+    "Tühjenda", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
@@ -402,6 +402,50 @@ const tI18nPhrase Phrases[] = {
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
     "Näita lisainfo", // Eesti
+    "", // Dansk
+    "", // Èesky (Czech)
+  },
+  { "Show progressbar", // English
+    "", // Deutsch
+    "", // Slovenski
+    "", // Italiano
+    "", // Nederlands
+    "", // Português
+    "", // Français
+    "", // Norsk
+    "Näytä aikajana", // suomi (Finnish)
+    "", // Polski
+    "", // Español
+    "", // ÅëëçíéêÜ (Greek)
+    "", // Svenska
+    "", // Românã
+    "", // Magyar
+    "", // Català
+    "", // ÀãááÚØÙ (Russian)
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+    "", // Èesky (Czech)
+  },
+  { "Show symbols", // English
+    "", // Deutsch
+    "", // Slovenski
+    "", // Italiano
+    "", // Nederlands
+    "", // Português
+    "", // Français
+    "", // Norsk
+    "Näytä symbolit", // suomi (Finnish)
+    "", // Polski
+    "", // Español
+    "", // ÅëëçíéêÜ (Greek)
+    "", // Svenska
+    "", // Românã
+    "", // Magyar
+    "", // Català
+    "", // ÀãááÚØÙ (Russian)
+    "", // Hrvatski
+    "", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },

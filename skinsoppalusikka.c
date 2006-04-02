@@ -18,12 +18,12 @@
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char *VERSION        = "0.0.6";
-static const char *DESCRIPTION    = "Soppalusikka skin";
+static const char VERSION[]     = "0.0.7";
+static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
 private:
-  // add any member variables or functions you may need here.
+  bool islogodirset;
 public:
   cPluginSkinSoppalusikka(void);
   virtual ~cPluginSkinSoppalusikka();
@@ -56,6 +56,7 @@ public:
 };
 
 cPluginSkinSoppalusikka::cPluginSkinSoppalusikka(void)
+: islogodirset(false)
 {
   // initialize any member variables here.
   // DON'T DO ANYTHING ELSE THAT MAY HAVE SIDE EFFECTS, REQUIRE GLOBAL
@@ -85,9 +86,12 @@ bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
   int c;
   while ((c = getopt_long(argc, argv, "l:", long_options, NULL)) != -1) {
         switch (c) {
-          case 'l': SoppalusikkaConfig.SetLogoDir(optarg);
-                    break;
-          default:  return false;
+          case 'l':
+               SoppalusikkaConfig.SetLogoDir(optarg);
+               islogodirset = true;
+               break;
+          default:
+               return false;
           }
         }
   return true;
@@ -106,8 +110,10 @@ bool cPluginSkinSoppalusikka::Start(void)
   debug("cPluginSkinSoppalusikka::Start()");
   RegisterI18n(Phrases);
   // set logo directory
-  if (!SoppalusikkaConfig.GetLogoDir())
+  if (!islogodirset) {
      SoppalusikkaConfig.SetLogoDir(cPlugin::ConfigDirectory(PLUGIN_NAME_I18N));
+     islogodirset = true;
+     }
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
   // create skin
@@ -143,10 +149,12 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(Name, "ShowAuxInfo"))  SoppalusikkaConfig.showauxinfo  = atoi(Value);
-  else if (!strcasecmp(Name, "ShowLogo"))     SoppalusikkaConfig.showlogo     = atoi(Value);
-  else if (!strcasecmp(Name, "CacheSize"))    SoppalusikkaConfig.cachesize    = atoi(Value);
-  else if (!strcasecmp(Name, "UseChannelId")) SoppalusikkaConfig.usechannelid = atoi(Value);
+  if      (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
+  else if (!strcasecmp(Name, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(Value);
+  else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
+  else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
+  else if (!strcasecmp(Name, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(Value);
+  else if (!strcasecmp(Name, "UseChannelId"))    SoppalusikkaConfig.usechannelid    = atoi(Value);
   else return false;
 
   return true;
@@ -176,6 +184,7 @@ cPluginSkinSoppalusikkaSetup::cPluginSkinSoppalusikkaSetup(void)
   debug("cPluginSkinSoppalusikkaSetup()");
   data = SoppalusikkaConfig;
   Setup();
+  SetHelp(tr("Button$Flush cache"), NULL, NULL, NULL);
 }
 
 void cPluginSkinSoppalusikkaSetup::Setup(void)
@@ -185,12 +194,13 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
 
   Clear();
 
-  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo, tr("no"), tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo, tr("no"), tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"),   &data.showauxinfo,     tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show progressbar"),             &data.showprogressbar, tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show symbols"),                 &data.showsymbols,     tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show channel logos"),           &data.showlogo,        tr("no"),   tr("yes")));
   if (data.showlogo)
-     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid, tr("name"), tr("data")));
-  Add(new cMenuEditIntItem(    tr("Channel logo cache size"),    &data.cachesize, 0, 1000));
-  Add(new cOsdItem(            tr("Flush channel logo cache"),   osUser1));
+     Add(new cMenuEditBoolItem(tr("Identify channel by"),          &data.usechannelid,    tr("name"), tr("data")));
+  Add(new cMenuEditIntItem(    tr("Channel logo cache size"),      &data.cachesize,       0,          1000));
 
   SetCurrent(Get(current));
   Display();
@@ -201,10 +211,12 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   // store setup data
   debug("cPluginSkinSoppalusikkaSetup::Store()");
   SoppalusikkaConfig = data;
-  SetupStore("ShowAuxInfo",  SoppalusikkaConfig.showauxinfo);
-  SetupStore("ShowLogo",     SoppalusikkaConfig.showlogo);
-  SetupStore("CacheSize",    SoppalusikkaConfig.cachesize);
-  SetupStore("UseChannelId", SoppalusikkaConfig.usechannelid);
+  SetupStore("ShowAuxInfo",     SoppalusikkaConfig.showauxinfo);
+  SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
+  SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
+  SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
+  SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
+  SetupStore("UseChannelId",    SoppalusikkaConfig.usechannelid);
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
 }
@@ -215,15 +227,16 @@ eOSState cPluginSkinSoppalusikkaSetup::ProcessKey(eKeys Key)
   int oldshowlogo = data.showlogo;
 
   eOSState state = cMenuSetupPage::ProcessKey(Key);
-  if (Key != kNone && (data.showlogo != oldshowlogo)) {
-     Setup();
-     }
-  else if (state == osUser1) {
+  if ((state == osUnknown) && (Key == kRed)) {
      Skins.Message(mtInfo, tr("Flushing channel logo cache..."));
      SoppalusikkaLogoCache.Flush();
      Skins.Message(mtInfo, NULL);
-     return osContinue;
+     state = osContinue;
      }
+  if (Key != kNone && (data.showlogo != oldshowlogo)) {
+     Setup();
+     }
+
   return state;
 }
 

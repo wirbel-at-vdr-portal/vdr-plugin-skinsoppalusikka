@@ -1,3 +1,4 @@
+
 /*
  * config.c: 'Soppalusikka' skin for the Video Disk Recorder
  *
@@ -6,26 +7,25 @@
  * $Id$
  */
 
+#include <stdlib.h>
 #include "common.h"
 #include "config.h"
 
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: logodir(NULL), showauxinfo(1), showlogo(0), cachesize(50), usechannelid(0)
+: showauxinfo(1), showlogo(0), showsymbols(0),
+  showprogressbar(1), cachesize(50), usechannelid(0)
 {
+  memset(logodir, 0, sizeof(logodir));
 }
 
 cSoppalusikkaConfig::~cSoppalusikkaConfig()
 {
-  if (logodir)
-     DELETENULL(logodir);
 }
 
 void cSoppalusikkaConfig::SetLogoDir(const char *logodirP)
 {
   debug("cSoppalusikkaConfig::SetLogoDir(%s)", logodirP);
-  if (logodir)
-     DELETENULL(logodir);
-  logodir = strdup(logodirP);
+  strncpy(logodir, logodirP, sizeof(logodir));
 }

@@ -14,5 +14,6 @@
 char *strcatrealloc(char *dest, const char *src);
 char *strncatrealloc(char *dest, const char *src, size_t len);
 char *striptags(char *str);
+bool ischaracter(const char *str, const char *mask);
 
 #endif // __SKINSOPPALUSIKKA_TOOLS_H

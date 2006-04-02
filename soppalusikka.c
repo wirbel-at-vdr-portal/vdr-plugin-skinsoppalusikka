@@ -49,6 +49,12 @@
 #include "symbols/srew3.xpm"
 #include "symbols/teletext.xpm"
 #include "symbols/vps.xpm"
+#include "symbols/eventparttimer.xpm"
+#include "symbols/eventtimer.xpm"
+#include "symbols/eventvps.xpm"
+#include "symbols/eventrunning.xpm"
+#include "symbols/eventrecording.xpm"
+#include "symbols/recordingnew.xpm"
 
 static cBitmap bmArrowDown(arrowdown_xpm);
 static cBitmap bmArrowUp(arrowup_xpm);
@@ -80,6 +86,12 @@ static cBitmap bmSlowReverse2(srew2_xpm);
 static cBitmap bmSlowReverse3(srew3_xpm);
 static cBitmap bmTeletext(teletext_xpm);
 static cBitmap bmVPS(vps_xpm);
+static cBitmap bmEventPartTimer(eventparttimer_xpm);
+static cBitmap bmEventTimer(eventtimer_xpm);
+static cBitmap bmEventVPS(eventvps_xpm);
+static cBitmap bmEventRunning(eventrunning_xpm);
+static cBitmap bmEventRecording(eventrecording_xpm);
+static cBitmap bmRecordingNew(recordingnew_xpm);
 
 static cTheme Theme;
 
@@ -125,8 +137,6 @@ THEME_CLR(Theme, clrMenuItemCurrentFg,      0xFF000000);
 THEME_CLR(Theme, clrMenuItemCurrentBg,      0xC833AAEE);
 THEME_CLR(Theme, clrMenuItemSelectable,     0xFFFFFFFF);
 THEME_CLR(Theme, clrMenuEventTime,          0xFFFFFFFF);
-THEME_CLR(Theme, clrMenuEventVpsFg,         0xFFCCBB22);
-THEME_CLR(Theme, clrMenuEventVpsBg,         0xC8000066);
 THEME_CLR(Theme, clrMenuEventTitle,         0xFFCCBB22);
 THEME_CLR(Theme, clrMenuEventShortText,     0xFFCCBB22);
 THEME_CLR(Theme, clrMenuEventDescription,   0xFF00FFFF);
@@ -680,12 +690,37 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
   for (int i = 0; i < MaxTabs; i++) {
       const char *s = GetTabbedText(Text, i);
       if (s) {
+         char buffer[9];
          int xt = x1 + Tab(i);
+         bool iseventinfo = false;
+         bool isnewrecording = false;
          bool isprogressbar = false;
          int now = 0, total = 0;
+         // check if event info symbol: "tV*"
+         if (SoppalusikkaConfig.showsymbols && strlen(s) == 3) {
+            const char *p = s;
+            // check if event info characters
+            if (ischaracter(p, " tTV*R")) {
+               // update status
+               iseventinfo = true;
+               }
+            }
+         // check if new recording: "01.01.06*", "10:10*"
+         if (!iseventinfo && SoppalusikkaConfig.showsymbols &&
+            (strlen(s) == 6 && s[5] == '*' && s[2] == ':' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4))) ||
+            (strlen(s) == 9 && s[8] == '*' && s[5] == '.' && s[2] == '.' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4)) && isdigit(*(s + 6)) && isdigit(*(s + 7)))) {
+            // update status
+            isnewrecording = true;
+            // make a copy
+            strncpy(buffer, s, strlen(s));
+            // remove the '*' character
+            buffer[strlen(s) - 1] = '\0';
+            }
          // check if progress bar: "[|||||||   ]"
-         if (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']') {
+         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar &&
+            (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
             const char *p = s + 1;
+            // update status
             isprogressbar = true;
             for (; *p != ']'; ++p) {
                 // check if progressbar characters
@@ -702,7 +737,50 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
                    }
                 }
             }
-         if (isprogressbar) {
+         if (iseventinfo) {
+            int evx = xt;
+            const char *p = s;
+            for (; *p; ++p) {
+                switch (*p) {
+                  case 't':
+                       // partial timer event
+                       osd->DrawBitmap(evx, y + (lineHeight - bmEventPartTimer.Height()) / 2, bmEventPartTimer, ColorFg, ColorBg);
+                       evx += bmEventPartTimer.Width();
+                       break;
+                  case 'T':
+                       // timer event
+                       osd->DrawBitmap(evx, y + (lineHeight - bmEventTimer.Height()) / 2, bmEventTimer, ColorFg, ColorBg);
+                       evx += bmEventTimer.Width();
+                       break;
+                  case 'R':
+                       // recording event (epgsearch)
+                       osd->DrawBitmap(evx, y + (lineHeight - bmEventRecording.Height()) / 2, bmEventRecording, ColorFg, ColorBg);
+                       evx += bmEventRecording.Width();
+                       break;
+                  case 'V':
+                       // vps event
+                       osd->DrawBitmap(evx, y + (lineHeight - bmEventVPS.Height()) / 2, bmEventVPS, ColorFg, ColorBg);
+                       evx += bmEventVPS.Width();
+                       break;
+                  case '*':
+                       // running event
+                       osd->DrawBitmap(evx, y + (lineHeight - bmEventRunning.Height()) / 2, bmEventRunning, ColorFg, ColorBg);
+                       evx += bmEventRunning.Width();
+                       break;
+                  case ' ':
+                  default:
+                       // let's ignore space character
+                       break;
+                  }
+                }
+            }
+         else if (isnewrecording) {
+            // draw text
+            osd->DrawText(xt, y, buffer, ColorFg, ColorBg, font, x2 - xt);
+            // draw symbol
+            osd->DrawBitmap(xt + font->Width(buffer), y + (lineHeight - bmRecordingNew.Height()) / 2, bmRecordingNew, ColorFg, ColorBg);
+            }
+         else if (isprogressbar) {
             int px0 = xt;
             int px1 = px0 + SmallGap;
             int px2 = px1 + SmallGap;
@@ -777,15 +855,15 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   // draw event date / duration string
   snprintf(t, sizeof(t), "%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
   ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  y += ts.Height();
   // check if event has VPS
   if (Event->Vps() && Event->Vps() != Event->StartTime()) {
      char *buffer;
-     asprintf(&buffer, " VPS: %s", *Event->GetVpsString());
-     // draw VPS string
-     osd->DrawText(x2 - font->Width(buffer), y, buffer, Theme.Color(clrMenuEventVpsFg), Theme.Color(clrMenuEventVpsBg), smlfont);
+     asprintf(&buffer, "%s: %s", tr("VPS"), *Event->GetVpsString());
+     ts.Set(osd, x1, y, x2 - x1, y5 - y, buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     y += ts.Height();
      free(buffer);
      }
-  y += ts.Height();
   // draw recording languages
   const cComponents *Components = Event->Components();
   if (Components) {
