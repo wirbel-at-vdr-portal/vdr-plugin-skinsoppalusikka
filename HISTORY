@@ -40,18 +40,32 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated for vdr-1.3.45.
 - Fixed typos in audio tracks code (Thanks to Sebastian Kemper).
 - Added Spanish translation (Thanks to Luis Palacios).
-- Fixed compiling on AMD64 platform (Thanks to Mirco Günther and Jörg Bornkessel).
-- Fixed date string in title bar (Thanks to Frank Krömmelbein for reporting this one).
+- Fixed compiling on AMD64 platform (Thanks to Mirco Günther and
+  Jörg Bornkessel).
+- Fixed date string in title bar (Thanks to Frank Krömmelbein for reporting
+  this one).
 - Added DXR3 logos from the enElchi-0.7.1 skin.
 - Modified tags stripping of the auxiliary information field.
 - Added VPS info for current event in channel info window.
 
 2006-04-02: Version 0.0.7
 
-- Fixed VPS time string in event info menu (Thanks to Sebastian Kemper for reporting this one).
+- Fixed VPS time string in event info menu (Thanks to Sebastian Kemper for
+  reporting this one).
 - Updated theme files.
 - Added new setup options to de/activate plugin features.
-- Added event symbols into schedule menu and new indicator symbol into recordings menu.
-  Running event symbol is based on Wareagle icon patch and thanks to Mikko Salo for providing other new symbols.
+- Added event symbols into schedule menu and new indicator symbol into
+  recordings menu. Running event symbol is based on Wareagle icon patch
+  and thanks to Mikko Salo for providing other new symbols.
 - Fixed crash bug while flushing logo cache.
 - Fixed logo directory location after flushing logo cache.
+
+2006-04-09: Version 0.1.0
+
+- Updated German translation (Thanks to Jörg Bornkessel).
+- Updated Estonian translation (Thanks to Arthur Konovalov).
+- Updated Spanish translation (Thanks to Luis Palacios).
+- Added missing include for isdigit().
+- Modified the channel info to show the VPS time of following event only if
+  'Use small fonts' is set to 'skin dependent'.
+- Fixed background of color buttons, if menu doesn't use any labels.

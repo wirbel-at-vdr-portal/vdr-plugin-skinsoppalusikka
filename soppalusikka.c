@@ -11,6 +11,7 @@
 #include "i18n.h"
 #include "soppalusikka.h"
 #include <math.h>
+#include <ctype.h>
 #include <vdr/device.h>
 #include <vdr/timers.h>
 #include <vdr/menu.h>
@@ -440,7 +441,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
      // draw vps time
      if (e->Vps() && (e->Vps() != e->StartTime())) {
-        osd->DrawText(xb1, yb1, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+        osd->DrawText(xb0, yb1, e->GetTimeString(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb0 - Gap, yb2 - yb1, taRight);
         }
      // draw shorttext
      osd->DrawText(xb4, yb1, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb6 - xb4 - Gap, yb2 - yb1);
@@ -460,8 +461,8 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb6 - xb4 - Gap, yb3 - yb2);
      // draw duration
      osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
-     // draw vps time
-     if (e->Vps() && (e->Vps() != e->StartTime())) {
+     // draw vps time - only if skin dependent small fonts
+     if ((Setup.UseSmallFont == 1) && e->Vps() && (e->Vps() != e->StartTime())) {
         osd->DrawText(xb1, yb3, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
         }
      // draw shorttext
@@ -580,6 +581,7 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
   osd->DrawRectangle(x0, y6, x3 - 1, y8 - 1, Theme.Color(clrBackground));
   osd->DrawRectangle(x0, y6, x1 - 1, y8 - 1, Theme.Color(clrButtonRedBg));
   osd->DrawRectangle(x2, y6, x3 - 1, y8 - 1, Theme.Color(clrButtonBlueBg));
+  SetButtons(NULL);
   // draw rounded left corner of colorbar
   osd->DrawEllipse(x0, y7, x1 - 1, y8 - 1, clrTransparent, -3);
   // draw rounded right corner of colorbar

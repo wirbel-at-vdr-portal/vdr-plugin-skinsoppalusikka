@@ -54,3 +54,5 @@ Notes:
 
 - The fontSml is bigger than fontOsd in ISO-8859-5 and it messes up
   graphics if the "Use small fonts" option is set to "skin dependent".
+  Otherwise the "skin dependent" option is preferred as the skin is
+  designed to separate certain areas with different sized fonts.

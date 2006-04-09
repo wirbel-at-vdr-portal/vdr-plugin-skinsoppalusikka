@@ -18,7 +18,7 @@
 #error "You don't exist! Go away! Upgrade yourself!"
 #endif
 
-static const char VERSION[]     = "0.0.7";
+static const char VERSION[]     = "0.1.0";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {

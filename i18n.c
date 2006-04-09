@@ -120,7 +120,7 @@ const tI18nPhrase Phrases[] = {
     "", // Èesky (Czech)
   },
   { "Right", // English
-    "Recht", // Deutsch
+    "Rechts", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -401,12 +401,12 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "Näita lisainfo", // Eesti
+    "Lisainfo näitamine", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
   { "Show progressbar", // English
-    "", // Deutsch
+    "Fortschrittbalken anzeigen", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -415,7 +415,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Näytä aikajana", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Mostrar barra de progreso", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -423,12 +423,12 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Edenemisriba näitamine", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
   { "Show symbols", // English
-    "", // Deutsch
+    "Symbole anzeigen", // Deutsch
     "", // Slovenski
     "", // Italiano
     "", // Nederlands
@@ -437,7 +437,7 @@ const tI18nPhrase Phrases[] = {
     "", // Norsk
     "Näytä symbolit", // suomi (Finnish)
     "", // Polski
-    "", // Español
+    "Mostrar símbolos", // Español
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
@@ -445,7 +445,7 @@ const tI18nPhrase Phrases[] = {
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
-    "", // Eesti
+    "Sümbolite näitamine", // Eesti
     "", // Dansk
     "", // Èesky (Czech)
   },
