@@ -69,3 +69,14 @@ VDR Skin 'Soppalusikka' Revision History
 - Modified the channel info to show the VPS time of following event only if
   'Use small fonts' is set to 'skin dependent'.
 - Fixed background of color buttons, if menu doesn't use any labels.
+
+2006-04-16: Version 0.2.0
+
+- Updated for vdr-1.3.46.
+- Fixed missing background in progressbar and event symbols if they're in
+  the first column (Thanks to Christian Wieninger for reporting this one).
+- Modified detection of event symbols.
+- Modified the parsing of the auxiliary information field to filter out
+  all irrelevant data added by EPGSearch or VDRAdmin.
+- Added Polish translation (Thanks to Jaroslaw Swierczynski).
+- Added Swedish translation (Thanks to Jan Ekholm).

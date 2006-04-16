@@ -698,11 +698,10 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
          bool isnewrecording = false;
          bool isprogressbar = false;
          int now = 0, total = 0;
-         // check if event info symbol: "tV*"
-         if (SoppalusikkaConfig.showsymbols && strlen(s) == 3) {
-            const char *p = s;
+         // check if event info symbol: "tTV*" "R"
+         if (SoppalusikkaConfig.showsymbols) {
             // check if event info characters
-            if (ischaracter(p, " tTV*R")) {
+            if (strlen(s) == 3 && ischaracter(s[0], " tTR") && ischaracter(s[1], " V") && ischaracter(s[2], " *")) {
                // update status
                iseventinfo = true;
                }
@@ -742,6 +741,9 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
          if (iseventinfo) {
             int evx = xt;
             const char *p = s;
+            // draw background
+            osd->DrawRectangle(xt, y, x2, y + lineHeight, ColorBg); 
+            // draw symbols
             for (; *p; ++p) {
                 switch (*p) {
                   case 't':
@@ -783,6 +785,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             osd->DrawBitmap(xt + font->Width(buffer), y + (lineHeight - bmRecordingNew.Height()) / 2, bmRecordingNew, ColorFg, ColorBg);
             }
          else if (isprogressbar) {
+            // define x coordinates of progressbar
             int px0 = xt;
             int px1 = px0 + SmallGap;
             int px2 = px1 + SmallGap;
@@ -794,14 +797,15 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             int px4 = px5 - SmallGap;
             int px3 = px4 - SmallGap;
             int px = px2 + (int)((float)now * (float)(px3 - px2) / (float)total);
-
+            // define y coordinates of progressbar
             int py0 = y + Gap;
             int py1 = py0 + SmallGap;
             int py2 = py1 + Gap;
             int py5 = y + lineHeight - Gap;
             int py4 = py5 - SmallGap;
             int py3 = py4 - Gap;
-
+            // draw background
+            osd->DrawRectangle(xt, y, x2, y + lineHeight, ColorBg);                                          
             // draw progressbar
             osd->DrawRectangle(px0, py0, px1, py5, ColorFg);
             osd->DrawRectangle(px4, py0, px5, py5, ColorFg);
@@ -947,7 +951,7 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      info = strcatrealloc(info, "\n");
      info = strcatrealloc(info, tr("Auxiliary information"));
      info = strcatrealloc(info, ": ");
-     info = strcatrealloc(info, striptags(aux));
+     info = strcatrealloc(info, parseaux(aux));
      free(aux);
      }
   const cComponents *Components = Info->Components();

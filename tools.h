@@ -13,7 +13,8 @@
 
 char *strcatrealloc(char *dest, const char *src);
 char *strncatrealloc(char *dest, const char *src, size_t len);
-char *striptags(char *str);
-bool ischaracter(const char *str, const char *mask);
+char *parseaux(char *str);
+bool ischaracters(const char *str, const char *mask);
+bool ischaracter(const char ch, const char *mask);
 
 #endif // __SKINSOPPALUSIKKA_TOOLS_H
