@@ -14,11 +14,11 @@
 #include <getopt.h>
 #include <vdr/plugin.h>
 
-#if defined(VDRVERSNUM) && VDRVERSNUM < 10346
-#error "You don't exist! Go away! Upgrade yourself!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10347
+#error "VDR API version 10347 or greater is required!"
 #endif
 
-static const char VERSION[]     = "0.2.0";
+static const char VERSION[]     = "0.3.0";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -35,6 +35,8 @@ public:
   virtual bool Start(void);
   virtual void Stop(void);
   virtual void Housekeeping(void);
+  virtual void MainThreadHook(void) {}
+  virtual cString Active(void) { return NULL; }
   virtual const char *MainMenuEntry(void) { return NULL; }
   virtual cOsdObject *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);

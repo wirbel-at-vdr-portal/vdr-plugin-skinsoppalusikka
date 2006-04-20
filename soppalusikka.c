@@ -739,10 +739,10 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
                 }
             }
          if (iseventinfo) {
-            int evx = xt;
+            int evx = xt + Gap;
             const char *p = s;
             // draw background
-            osd->DrawRectangle(xt, y, x2, y + lineHeight, ColorBg); 
+            osd->DrawRectangle(xt, y, x2, y + lineHeight - 1, ColorBg);
             // draw symbols
             for (; *p; ++p) {
                 switch (*p) {
@@ -805,7 +805,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             int py4 = py5 - SmallGap;
             int py3 = py4 - Gap;
             // draw background
-            osd->DrawRectangle(xt, y, x2, y + lineHeight, ColorBg);                                          
+            osd->DrawRectangle(xt, y, x2, y + lineHeight - 1, ColorBg);
             // draw progressbar
             osd->DrawRectangle(px0, py0, px1, py5, ColorFg);
             osd->DrawRectangle(px4, py0, px5, py5, ColorFg);
