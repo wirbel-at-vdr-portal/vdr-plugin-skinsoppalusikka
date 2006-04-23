@@ -205,9 +205,12 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   xt0 = x0 + BigGap;
   xt1 = xt0;
   xt2 = xt1 + Roundness;
-  xt3 = xt2 + font->Width("0000- ");
+  xt3 = xt2 + font->Width("0000-");
   xt8 = xt9 - Roundness;
   xt7 = xt8 - bmTeletext.Width() - bmAudio.Width() - bmDolbyDigital.Width() - bmEncrypted.Width() - bmRecording.Width() - 7 * BigGap;
+  if (SoppalusikkaConfig.showvps) {
+     xt7 -= bmVPS.Width();
+     }
   xt6 = xt7 - Roundness;
   xt5 = xt6 - 5 * BigGap;
   xt4 = xt5 - Roundness;
@@ -215,9 +218,9 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   xb6 = x1 - BigGap;
   xb0 = x0 + BigGap;
   xb1 = xb0 + Roundness;
-  xb2 = xb0 + font->Width("00:00") + 2 * Gap;
-  xb3 = xb2 + + BigGap + Gap;
-  xb4 = xb3 + Gap;
+  xb2 = xb1 + font->Width("00:00") + BigGap;
+  xb3 = xb2 + 3 * Gap;
+  xb4 = xb3 + BigGap;
   xb5 = xb6 - Roundness;
   // top area y-coordinates
   y0 = 0;
@@ -278,7 +281,7 @@ void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool islogo)
   // x-coordinates
   xt1 = (islogo ? x0 + ChannelLogoWidth + TinyGap : xt0);
   xt2 = xt1 + Roundness;
-  xt3 = xt2 + font->Width("0000- ");
+  xt3 = xt2 + font->Width("0000-");
 }
 
 void cSkinSoppalusikkaDisplayChannel::DrawTopArea(const cChannel *Channel)
@@ -380,6 +383,24 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
   // draw symbols
   if (Channel && !Channel->GroupSep()) {
      int xs = xt8;
+     bool isvps = false;
+     // check if vps
+     if (SoppalusikkaConfig.showvps) {
+        // get schedule
+        cSchedulesLock SchedulesLock;
+        const cSchedules *Schedules = cSchedules::Schedules(SchedulesLock);
+        if (Schedules) {
+           const cSchedule *Schedule = Schedules->GetSchedule(Channel);
+           if (Schedule) {
+              // get present event
+              const cEvent *Event = Schedule->GetPresentEvent();
+              // check if present event has vps
+              if (Event && Event->Vps()) {
+                 isvps = true;
+                 }
+              }
+           }
+        }
      // draw radio symbol if no video PID; otherwise draw teletext symbol
      if (Channel->Vpid()) {
         xs -= bmTeletext.Width();
@@ -411,6 +432,11 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
      // draw encryption symbol
      xs -= (bmEncrypted.Width() + BigGap);
      osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmEncrypted.Height()) / 2, bmEncrypted, Theme.Color(Channel->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     // draw vps symbol
+     if (SoppalusikkaConfig.showvps) {
+        xs -= (bmVPS.Width() + BigGap);
+        osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmVPS.Height()) / 2, bmVPS, Theme.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        }
      // draw recording symbol
      xs -= (bmRecording.Width() + BigGap);
      osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
@@ -427,24 +453,37 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      char *s;
      int total = e->Duration();
      int now = (time(NULL) - e->StartTime());
-     if (now < total) {
-        asprintf(&s, "  %d / %d %s ", now / 60, total / 60, tr("min"));
+     if ((now < total) && ((now / 60) > 0)) {
+        asprintf(&s, "  %d / %d %s", now / 60, total / 60, tr("min"));
         }
      else {
-        asprintf(&s, "  %d %s ", total / 60, tr("min"));
+        asprintf(&s, "  %d %s", total / 60, tr("min"));
         }
      // draw start time
-     osd->DrawText(xb0, yb0, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb0, yb1 - yb0, taCenter);
+     osd->DrawText(xb1, yb0, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb1 - yb0);
      // draw title
-     osd->DrawText(xb4, yb0, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb6 - xb4, yb1 - yb0);
+     osd->DrawText(xb4, yb0, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb1 - yb0);
      // draw duration
-     osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
+     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
      // draw vps time
-     if (e->Vps() && (e->Vps() != e->StartTime())) {
-        osd->DrawText(xb0, yb1, e->GetTimeString(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb0 - Gap, yb2 - yb1, taRight);
+     if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
+        /* difference between start time and vps time in minutes */
+        int delta = (e->StartTime() - e->Vps()) / 60;
+        /* check if difference is less than 10 hours */
+        if (abs(delta) < 600) {
+           char *vps;
+           /* relative vps time formats: "+0:30" "-1:30" */
+           asprintf(&vps, "%c%01d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
+           osd->DrawText(xb1, yb1, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+           free(vps);
+           }
+        else {
+           /* absolute vps time format: "18:45" */
+           osd->DrawText(xb1, yb1, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+           }
         }
      // draw shorttext
-     osd->DrawText(xb4, yb1, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb6 - xb4 - Gap, yb2 - yb1);
+     osd->DrawText(xb4, yb1, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4 - Gap, yb2 - yb1);
      // draw timebar
      int yc = yb0 + (int)(roundf((float)(now) / (float)(total) * (float)(yb5 - yb0)));
      yc = min(yc, yb5);
@@ -454,16 +493,29 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
   e = Following;
   if (e) {
      char *s;
-     asprintf(&s, "  %d %s ", e->Duration() / 60, tr("min"));
+     asprintf(&s, "  %d %s", e->Duration() / 60, tr("min"));
      // draw start time
-     osd->DrawText(xb0, yb2, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb0, yb3 - yb2, taCenter);
+     osd->DrawText(xb1, yb2, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb3 - yb2);
      // draw title
-     osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb6 - xb4 - Gap, yb3 - yb2);
+     osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb3 - yb2);
      // draw duration
-     osd->DrawText(xb6 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
+     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
      // draw vps time - only if skin dependent small fonts
-     if ((Setup.UseSmallFont == 1) && e->Vps() && (e->Vps() != e->StartTime())) {
-        osd->DrawText(xb1, yb3, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+     if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
+        /* difference between start time and vps time in minutes */
+        int delta = (e->StartTime() - e->Vps()) / 60;
+        /* check if difference is less than 10 hours */
+        if (abs(delta) < 600) {
+           char *vps;
+           /* relative vps time formats: "+0:30" "-1:30" */
+           asprintf(&vps, "%c%d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
+           osd->DrawText(xb1, yb3, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+           free(vps);
+           }
+        else {
+           /* absolute vps time format: "18:45" */
+           osd->DrawText(xb1, yb3, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+           }
         }
      // draw shorttext
      osd->DrawText(xb4, yb3, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4, yb5 - yb3);

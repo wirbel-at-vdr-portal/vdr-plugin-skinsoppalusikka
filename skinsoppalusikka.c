@@ -18,7 +18,7 @@
 #error "VDR API version 10347 or greater is required!"
 #endif
 
-static const char VERSION[]     = "0.3.0";
+static const char VERSION[]     = "0.4.0";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -155,6 +155,7 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
   else if (!strcasecmp(Name, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(Value);
   else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
   else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
+  else if (!strcasecmp(Name, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(Value);
   else if (!strcasecmp(Name, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(Value);
   else if (!strcasecmp(Name, "UseChannelId"))    SoppalusikkaConfig.usechannelid    = atoi(Value);
   else return false;
@@ -196,13 +197,15 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
 
   Clear();
 
-  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"),   &data.showauxinfo,     tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show progressbar"),             &data.showprogressbar, tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show symbols"),                 &data.showsymbols,     tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show channel logos"),           &data.showlogo,        tr("no"),   tr("yes")));
-  if (data.showlogo)
-     Add(new cMenuEditBoolItem(tr("Identify channel by"),          &data.usechannelid,    tr("name"), tr("data")));
-  Add(new cMenuEditIntItem(    tr("Channel logo cache size"),      &data.cachesize,       0,          1000));
+  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo,     tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show progressbar"),           &data.showprogressbar, tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show symbols"),               &data.showsymbols,     tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show VPS in channel info"),   &data.showvps,         tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo,        tr("no"),   tr("yes")));
+  if (data.showlogo) {
+     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid,    tr("name"), tr("data")));
+     Add(new cMenuEditIntItem( tr("Channel logo cache size"),    &data.cachesize,       0,          1000));
+    }
 
   SetCurrent(Get(current));
   Display();
@@ -217,6 +220,7 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
   SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
   SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
+  SetupStore("ShowVPS",         SoppalusikkaConfig.showvps);
   SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
   SetupStore("UseChannelId",    SoppalusikkaConfig.usechannelid);
   // resize logo cache

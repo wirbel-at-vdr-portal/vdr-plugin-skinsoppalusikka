@@ -20,6 +20,7 @@ public:
   char *GetLogoDir(void) { return logodir; }
   int showauxinfo;
   int showlogo;
+  int showvps;
   int showsymbols;
   int showprogressbar;
   int cachesize;

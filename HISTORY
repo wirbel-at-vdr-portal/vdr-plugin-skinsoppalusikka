@@ -88,3 +88,12 @@ VDR Skin 'Soppalusikka' Revision History
   Christian Wieninger for reporting this one).
 - Added a small gap in front of the event symbols.
 - Modified event symbols.
+
+2006-04-23: Version 0.4.0
+
+- Fixed VPS event times in channel info (Thanks to Frank Krömmelbein
+  for reporting this one).
+- Added new setup option to show/hide VPS time in channel info.
+- Modified coordinates in channel info window.
+- Added STRIP option for Makefile (Thanks to Ville Skyttä).
+- Modified APIVERSION code in Makefile.

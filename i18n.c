@@ -449,5 +449,27 @@ const tI18nPhrase Phrases[] = {
     "", // Dansk
     "", // Èesky (Czech)
   },
+  { "Show VPS in channel info", // English
+    "VPS anzeigen", // Deutsch
+    "", // Slovenski
+    "", // Italiano
+    "", // Nederlands
+    "", // Português
+    "", // Français
+    "", // Norsk
+    "Näytä VPS kanavatiedossa", // suomi (Finnish)
+    "", // Polski
+    "", // Español
+    "", // ÅëëçíéêÜ (Greek)
+    "", // Svenska
+    "", // Românã
+    "", // Magyar
+    "", // Català
+    "", // ÀãááÚØÙ (Russian)
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+    "", // Èesky (Czech)
+  },
   { NULL }
 };
