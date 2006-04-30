@@ -14,11 +14,11 @@
 #include <getopt.h>
 #include <vdr/plugin.h>
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10347
-#error "VDR API version 10347 or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10400
+#error "VDR-1.4.0 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "0.4.0";
+static const char VERSION[]     = "1.0.0";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {

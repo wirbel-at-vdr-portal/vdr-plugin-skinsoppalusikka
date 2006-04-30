@@ -97,3 +97,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Modified coordinates in channel info window.
 - Added STRIP option for Makefile (Thanks to Ville Skyttä).
 - Modified APIVERSION code in Makefile.
+
+2006-04-30: Version 1.0.0
+
+- Updated for vdr-1.4.0.
+- Modified APIVERSION code in Makefile.
