@@ -83,11 +83,18 @@ static char *striptags(char *str)
 #define AUX_TAGS_EPGSEARCH_ITEM2_START "<Search timer>"
 #define AUX_TAGS_EPGSEARCH_ITEM2_END   "</Search timer>"
 #define AUX_TAGS_EPGSEARCH_END         "</epgsearch>"
+
 #define AUX_HEADER_VDRADMIN            "VDRAdmin: "
 #define AUX_TAGS_VDRADMIN_START        "<vdradmin-am>"
 #define AUX_TAGS_VDRADMIN_ITEM1_START  "<pattern>"
 #define AUX_TAGS_VDRADMIN_ITEM1_END    "</pattern>"
 #define AUX_TAGS_VDRADMIN_END          "</vdradmin-am>"
+
+#define AUX_HEADER_PIN			"Protected: "
+#define AUX_TAGS_PIN_START		"<pin-plugin>"
+#define AUX_TAGS_PIN_ITEM1_START	"<protected>"
+#define AUX_TAGS_PIN_ITEM1_END		"</protected>"
+#define AUX_TAGS_PIN_END		"</pin-plugin>"
 
 char *parseaux(char *aux)
 {
@@ -184,6 +191,38 @@ char *parseaux(char *aux)
      *r = 0;
      strn0cpy(aux, s, strlen(aux));
      // free duplicated string
+     free(s);
+     // .. and return
+     return aux;
+     }
+  // check if pin
+  start = strcasestr(aux, AUX_TAGS_PIN_START);
+  end = strcasestr(aux, AUX_TAGS_PIN_END);
+  if (start && end) {
+     char *tmp;
+     // duplicate string
+     char *s = strdup(aux);
+     char *r = s;
+     size_t len = strlen(AUX_HEADER_PIN);
+     // add header
+     strncpy(r, AUX_HEADER_PIN, len);
+     r += len;
+     // parse first item
+     len = strlen(AUX_TAGS_PIN_ITEM1_START);
+     if ((tmp = strcasestr(start, AUX_TAGS_PIN_ITEM1_START)) != NULL) {
+        if (tmp < end) {
+            char *tmp2;
+            if ((tmp2 = strcasestr(tmp, AUX_TAGS_PIN_ITEM1_END)) != NULL) {
+               // add search item
+               strncpy(r, tmp + len, tmp2 - (tmp + len));
+               r += (tmp2 - (tmp + len));
+               }
+            }
+        }
+     // copy duplicate string to aux
+     *r = 0;
+     strn0cpy(aux, s, strlen(aux));
+     // free duplicated string 
      free(s);
      // .. and return
      return aux;

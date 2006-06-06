@@ -15,7 +15,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Skin Soppalusikka", // Français
     "", // Norsk
     "Soppalusikka-ulkoasu", // suomi (Finnish)
     "Skin Soppalusikka", // Polski
@@ -37,7 +37,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Soppalusikka", // Français
     "", // Norsk
     "Soppalusikka", // suomi (Finnish)
     "Soppalusikka", // Polski
@@ -59,7 +59,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "min", // Français
     "", // Norsk
     "min", // suomi (Finnish)
     "min", // Polski
@@ -81,7 +81,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Stéréo", // Français
     "", // Norsk
     "Stereo", // suomi (Finnish)
     "Stereo", // Polski
@@ -103,7 +103,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Gauche", // Français
     "", // Norsk
     "Vasen", // suomi (Finnish)
     "W lewo", // Polski
@@ -125,7 +125,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Droite", // Français
     "", // Norsk
     "Oikea", // suomi (Finnish)
     "W prawo", // Polski
@@ -147,7 +147,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Muet", // Français
     "", // Norsk
     "Mykistetty", // suomi (Finnish)
     "Wycisz", // Polski
@@ -169,7 +169,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Volume", // Français
     "", // Norsk
     "Äänenvoimakkuus", // suomi (Finnish)
     "G³o¶no¶æ", // Polski
@@ -191,7 +191,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Afficher logo des chaînes", // Français
     "", // Norsk
     "Näytä kanavalogot", // suomi (Finnish)
     "Pokazuj logo kana³u", // Polski
@@ -213,7 +213,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Identifier chaîne par", // Français
     "", // Norsk
     "Tunnista kanava", // suomi (Finnish)
     "Rozpoznaj kana³ po", // Polski
@@ -235,7 +235,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Nom", // Français
     "", // Norsk
     "nimestä", // suomi (Finnish)
     "nazwa", // Polski
@@ -257,7 +257,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Donnée", // Français
     "", // Norsk
     "tiedoista", // suomi (Finnish)
     "parametry", // Polski
@@ -279,7 +279,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Taille du cache des logo", // Français
     "", // Norsk
     "Välimuistin koko kanavalogoille", // suomi (Finnish)
     "Rozmiar cache dla logo kana³u", // Polski
@@ -301,7 +301,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Supprimer cache", // Français
     "", // Norsk
     "Tyhjennä", // suomi (Finnish)
     "Opró¿nij cache", // Polski
@@ -323,7 +323,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Suppression du cache...", // Français
     "", // Norsk
     "Tyhjennetään välimuistia...", // suomi (Finnish)
     "Opró¿niam cache logo kana³u...", // Polski
@@ -345,7 +345,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Langues", // Français
     "", // Norsk
     "Kielet", // suomi (Finnish)
     "Jêzyki", // Polski
@@ -367,7 +367,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Information auxiliare", // Français
     "", // Norsk
     "Lisätiedot", // suomi (Finnish)
     "Informacje pomocnicze", // Polski
@@ -389,7 +389,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Afficher information auxiliaire", // Français
     "", // Norsk
     "Näytä lisätiedot", // suomi (Finnish)
     "Pokazuj informacje pomocnicze", // Polski
@@ -411,7 +411,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Afficher barre de progression", // Français
     "", // Norsk
     "Näytä aikajana", // suomi (Finnish)
     "Pokazuj pasek postêpu", // Polski
@@ -433,7 +433,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Afficher symbole", // Français
     "", // Norsk
     "Näytä symbolit", // suomi (Finnish)
     "Pokazuj symbole", // Polski
@@ -455,7 +455,7 @@ const tI18nPhrase Phrases[] = {
     "", // Italiano
     "", // Nederlands
     "", // Português
-    "", // Français
+    "Afficher VPS dans l'info. de la chaîne", // Français
     "", // Norsk
     "Näytä VPS kanavatiedossa", // suomi (Finnish)
     "", // Polski

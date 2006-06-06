@@ -18,7 +18,7 @@
 #error "VDR-1.4.0 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.0.0";
+static const char VERSION[]     = "1.0.1";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {

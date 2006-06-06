@@ -102,3 +102,8 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-1.4.0.
 - Modified APIVERSION code in Makefile.
+
+2006-06-06: Version 1.0.1
+
+- Added French translation (Thanks to Michaël Nival).
+- Added support for the pin plugin.
