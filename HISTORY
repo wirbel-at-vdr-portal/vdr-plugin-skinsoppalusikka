@@ -107,3 +107,8 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added French translation (Thanks to Michaël Nival).
 - Added support for the pin plugin.
+
+2006-09-17: Version 1.0.2
+
+- Added two new themes (Thanks to Eclipse and Dieter Fauth).
+- Added "--remove-destination" to the 'cp' command in Makefile.
