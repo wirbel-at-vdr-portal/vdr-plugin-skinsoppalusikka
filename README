@@ -22,7 +22,7 @@ Installation:
 cd /put/your/path/here/VDR/PLUGINS/src
 tar -xzf /put/your/path/here/vdr-skinsoppalusikka-X.Y.Z.tgz
 ln -s skinsoppalusikka-X.Y.Z skinsoppalusikka
-mkdir /path/to/vdrconf/plugins/skinsoppalusikka
+mkdir -p /path/to/vdrconf/plugins/skinsoppalusikka
 cp -d skinsoppalusikka/logos/*.xpm /path/to/vdrconf/plugins/skinsoppalusikka/
 cp -d skinsoppalusikka/themes/*.theme /path/to/vdrconf/themes/
 cd /put/your/path/here/VDR
@@ -37,6 +37,8 @@ it defaults to "skinsoppalusikka" subdirectory in VDR's configuration
 directory for plugins.
 
 Notes:
+
+- Included logos are available only for non-commercial usage.
 
 - Only XPM format is supported for channel logos: 64x48 pixels and
   13 colors (6 colors on DXR3) or less recommended.

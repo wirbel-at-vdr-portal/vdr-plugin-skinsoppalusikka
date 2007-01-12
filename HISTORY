@@ -112,3 +112,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added two new themes (Thanks to Eclipse and Dieter Fauth).
 - Added "--remove-destination" to the 'cp' command in Makefile.
+
+2007-01-12: Version 1.0.3
+
+- Minor logo update.
