@@ -18,7 +18,7 @@
 #error "VDR-1.4.0 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.0.3";
+static const char VERSION[]     = "1.0.4";
 static const char DESCRIPTION[] = "Soppalusikka skin";
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -151,7 +151,8 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
+  if      (!strcasecmp(Name, "UseSingleArea"))   SoppalusikkaConfig.usesinglearea   = atoi(Value);
+  else if (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
   else if (!strcasecmp(Name, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(Value);
   else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
   else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
@@ -197,6 +198,7 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
 
   Clear();
 
+  Add(new cMenuEditBoolItem(   tr("Use single area (8bpp)"),     &data.usesinglearea,   tr("no"),   tr("yes")));
   Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo,     tr("no"),   tr("yes")));
   Add(new cMenuEditBoolItem(   tr("Show progressbar"),           &data.showprogressbar, tr("no"),   tr("yes")));
   Add(new cMenuEditBoolItem(   tr("Show symbols"),               &data.showsymbols,     tr("no"),   tr("yes")));
@@ -216,6 +218,7 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   // store setup data
   debug("cPluginSkinSoppalusikkaSetup::Store()");
   SoppalusikkaConfig = data;
+  SetupStore("UseSingleArea",   SoppalusikkaConfig.usesinglearea);
   SetupStore("ShowAuxInfo",     SoppalusikkaConfig.showauxinfo);
   SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
   SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);

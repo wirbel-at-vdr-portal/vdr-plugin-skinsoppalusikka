@@ -239,18 +239,24 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   y1 = yb5;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + (Setup.ChannelInfoPos ? 0 : Setup.OSDHeight - y1));
-  if (SoppalusikkaConfig.showlogo) {
-     tArea Areas[] = { { x0,  y0,  x0 + ChannelLogoWidth - 1, y0 + ChannelLogoHeight - 1, 4 },
-                       { x0 + ChannelLogoWidth, y0,  x1 - 1,  y0 + ChannelLogoHeight - 1, 4 },
-                       { x0,  y0 + ChannelLogoHeight, x1 - 1,  y1 - 1, 4 }
-                     };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
-     }
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 4 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     if (SoppalusikkaConfig.showlogo) {
+        tArea Areas[] = { { x0, y0, x0 + ChannelLogoWidth - 1, y0 + ChannelLogoHeight - 1, 4 },
+                          { x0 + ChannelLogoWidth, y0, x1 - 1, y0 + ChannelLogoHeight - 1, 4 },
+                          { x0, y0 + ChannelLogoHeight, x1 - 1, y1 - 1, 4 }
+                        };
+        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        }
+     else {
+        tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 4 } };
+        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        }
      }
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
@@ -598,28 +604,37 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
   y5 = y6 - lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop);
-  tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 4 } };
-  if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      // clear all
      osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
      }
   else {
-     tArea Areas[] = { { x0, y0, x3 - 1, y2 - 1, 2 },
-                       { x0, y2, x3 - 1, y5 - 1, 2 },
-                       { x0, y5, x3 - 1, y6 - 1, 2 },
-                       { x0, y6, x3 - 1, y8 - 1, 4 }
-                     };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 4 } };
+     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
         osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
-     // clear all
-     osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
-     // fill up items area palette to prevent palette overflow
-     osd->GetBitmap(1)->Reset();
-     osd->GetBitmap(1)->SetColor(0, Theme.Color(clrBackground));
-     osd->GetBitmap(1)->SetColor(1, Theme.Color(clrMenuItemSelectable));
-     osd->GetBitmap(1)->SetColor(2, Theme.Color(clrMenuItemCurrentBg));
-     osd->GetBitmap(1)->SetColor(3, Theme.Color(clrMenuItemCurrentFg));
+        // clear all
+        osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+        }
+     else {
+        tArea Areas[] = { { x0, y0, x3 - 1, y2 - 1, 2 },
+                          { x0, y2, x3 - 1, y5 - 1, 2 },
+                           { x0, y5, x3 - 1, y6 - 1, 2 },
+                           { x0, y6, x3 - 1, y8 - 1, 4 }
+                        };
+        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        // clear all
+        osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+        // fill up items area palette to prevent palette overflow
+        osd->GetBitmap(1)->Reset();
+        osd->GetBitmap(1)->SetColor(0, Theme.Color(clrBackground));
+        osd->GetBitmap(1)->SetColor(1, Theme.Color(clrMenuItemSelectable));
+        osd->GetBitmap(1)->SetColor(2, Theme.Color(clrMenuItemCurrentBg));
+        osd->GetBitmap(1)->SetColor(3, Theme.Color(clrMenuItemCurrentFg));
+        }
      }
   // draw titlebar
   osd->DrawRectangle(x0, y0, x3 - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
@@ -1148,9 +1163,15 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
   y4 = y5 - Roundness;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y5);
-  tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 4 } };
-  if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  else {
+     tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 4 } };
+     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     }
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
   // select mode
@@ -1440,9 +1461,15 @@ cSkinSoppalusikkaDisplayVolume::cSkinSoppalusikkaDisplayVolume()
   y3 = y2 + lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y3);
-  tArea Areas[] = { { 0, 0, x5 - 1, y3 - 1, 4 } };
-  if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x5 - 1, y3 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  else {
+     tArea Areas[] = { { x0, x0, x5 - 1, y3 - 1, 4 } };
+     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     }
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
 }
@@ -1538,9 +1565,15 @@ cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title
   y6 = y7 - Roundness;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y7);
-  tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 4 } };
-  if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  else {
+     tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 4 } };
+     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     }
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
   // draw titlebar
@@ -1651,9 +1684,15 @@ cSkinSoppalusikkaDisplayMessage::cSkinSoppalusikkaDisplayMessage()
   y1 = y0 + lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y1);
-  tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 2 } };
-  if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  // try to use single 8bpp area
+  tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 8 } };
+  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  else {
+     tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 2 } };
+     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     }
   // clear all
   osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
 }

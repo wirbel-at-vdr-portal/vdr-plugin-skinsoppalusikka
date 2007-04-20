@@ -78,10 +78,12 @@ static char *striptags(char *str)
 
 #define AUX_HEADER_EPGSEARCH           "EPGSearch: "
 #define AUX_TAGS_EPGSEARCH_START       "<epgsearch>"
-#define AUX_TAGS_EPGSEARCH_ITEM1_START "<Channel>"
-#define AUX_TAGS_EPGSEARCH_ITEM1_END   "</Channel>"
-#define AUX_TAGS_EPGSEARCH_ITEM2_START "<Search timer>"
-#define AUX_TAGS_EPGSEARCH_ITEM2_END   "</Search timer>"
+#define AUX_TAGS_EPGSEARCH_ITEM1_START "<channel>"
+#define AUX_TAGS_EPGSEARCH_ITEM1_END   "</channel>"
+#define AUX_TAGS_EPGSEARCH_ITEM2_START "<searchtimer>"
+#define AUX_TAGS_EPGSEARCH_ITEM2_END   "</searchtimer>"
+#define AUX_TAGS_EPGSEARCH_ITEM3_START "<search timer>"
+#define AUX_TAGS_EPGSEARCH_ITEM3_END   "</search timer>"
 #define AUX_TAGS_EPGSEARCH_END         "</epgsearch>"
 
 #define AUX_HEADER_VDRADMIN            "VDRAdmin: "
@@ -130,7 +132,7 @@ char *parseaux(char *aux)
         }  
      // parse second item
      len = strlen(AUX_TAGS_EPGSEARCH_ITEM2_START);
-     if ((tmp = strcasestr(start, "<Search timer>")) != NULL) {
+     if ((tmp = strcasestr(start, AUX_TAGS_EPGSEARCH_ITEM2_START)) != NULL) {
         if (tmp < end) {
             char *tmp2;
             if ((tmp2 = strcasestr(tmp, AUX_TAGS_EPGSEARCH_ITEM2_END)) != NULL) {
@@ -148,6 +150,29 @@ char *parseaux(char *aux)
                founditem = false;
                }
             } 
+        }
+     else {
+        // parse third item
+        len = strlen(AUX_TAGS_EPGSEARCH_ITEM3_START);
+        if ((tmp = strcasestr(start, AUX_TAGS_EPGSEARCH_ITEM3_START)) != NULL) {
+           if (tmp < end) {
+               char *tmp2;
+               if ((tmp2 = strcasestr(tmp, AUX_TAGS_EPGSEARCH_ITEM3_END)) != NULL) {
+                  // add separator
+                  if (founditem) {
+                     *(r++) = ',';
+                     *(r++) = ' ';
+                     }
+                  // add search item
+                  strncpy(r, tmp + len, tmp2 - (tmp + len));
+                  r += (tmp2 - (tmp + len));
+                  founditem = true;
+                  }
+               else {
+                  founditem = false;
+                  }
+               }
+           }
         }
      // use old syntax
      if (!founditem) {

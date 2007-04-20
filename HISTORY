@@ -116,3 +116,10 @@ VDR Skin 'Soppalusikka' Revision History
 2007-01-12: Version 1.0.3
 
 - Minor logo update.
+
+2007-04-20: Version 1.0.4
+
+- Logo update (Thanks to Mikko Salo).
+- Added setup option to use a single 8 bpp OSD area.
+- Updated EPGSearch auxiliary information parsing.
+- Added Hungarian translation (Thanks to Füley István).

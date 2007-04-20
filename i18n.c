@@ -23,7 +23,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Soppalusikka-temat", // Svenska
     "", // Românã
-    "", // Magyar
+    "Soppalussika-skin", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -45,7 +45,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Soppalusikka", // Svenska
     "", // Românã
-    "", // Magyar
+    "Soppalusikka", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -67,7 +67,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "min", // Svenska
     "", // Românã
-    "", // Magyar
+    "perc", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -89,7 +89,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Stereo", // Svenska
     "", // Românã
-    "", // Magyar
+    "Sztereó", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -111,7 +111,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Vänster", // Svenska
     "", // Românã
-    "", // Magyar
+    "Bal", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -133,7 +133,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Höger", // Svenska
     "", // Românã
-    "", // Magyar
+    "Jobb", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -155,7 +155,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Dämpa", // Svenska
     "", // Românã
-    "", // Magyar
+    "Némít", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -177,7 +177,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Volym", // Svenska
     "", // Românã
-    "", // Magyar
+    "Hangerõ", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -199,7 +199,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Visa kanallogotyper", // Svenska
     "", // Românã
-    "", // Magyar
+    "Csatornalogók megjelenítése", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -221,7 +221,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Identifiera kanal med", // Svenska
     "", // Românã
-    "", // Magyar
+    "Csatornák azonosítása", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -243,7 +243,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "namn", // Svenska
     "", // Românã
-    "", // Magyar
+    "név szerint", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -265,7 +265,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "data", // Svenska
     "", // Românã
-    "", // Magyar
+    "paraméterek szerint", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -287,7 +287,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Cachestorlek för logotyper", // Svenska
     "", // Românã
-    "", // Magyar
+    "Csatorna logó cache méret", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -309,7 +309,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Töm cachen", // Svenska
     "", // Românã
-    "", // Magyar
+    "Cache ürítés", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -331,7 +331,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Tömmer cachen...", // Svenska
     "", // Românã
-    "", // Magyar
+    "Csatornalogó cache ürítése...", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -353,7 +353,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Språk", // Svenska
     "", // Românã
-    "", // Magyar
+    "Nyelvek", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -375,7 +375,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Extrainformation", // Svenska
     "", // Românã
-    "", // Magyar
+    "További információk", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -397,7 +397,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Visa extrainformation", // Svenska
     "", // Românã
-    "", // Magyar
+    "További információk megjelenítése", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -419,7 +419,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Visa framsteg", // Svenska
     "", // Românã
-    "", // Magyar
+    "Lejátszósáv megjelenítése", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -441,7 +441,7 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "Visa symboler", // Svenska
     "", // Românã
-    "", // Magyar
+    "Ikonok megjelenítése", // Magyar
     "", // Català
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
@@ -463,8 +463,30 @@ const tI18nPhrase Phrases[] = {
     "", // ÅëëçíéêÜ (Greek)
     "", // Svenska
     "", // Românã
-    "", // Magyar
+    "VPS információk megjelenítése", // Magyar
     "", // Català
+    "", // ÀãááÚØÙ (Russian)
+    "", // Hrvatski
+    "", // Eesti
+    "", // Dansk
+    "", // Èesky (Czech)
+  },
+  { "Use single area (8bpp)", // English
+    "Ein Bildbereich benutzen (8bpp)", // Deutsch
+    "", // Slovenski
+    "", // Italiano
+    "", // Nederlands
+    "", // Português
+    "", // Français
+    "", // Norsk
+    "Käytä yksittäistä kuva-aluetta (8bpp)", // suomi (Finnish)
+    "", // Polski
+    "", // Español
+    "", // ÅëëçíéêÜ (Greek)
+    "", // Svenska
+    "", // Românã
+    "Egyetlen terület használata (8bpp)", // Magyar
+    "", // Catalàe
     "", // ÀãááÚØÙ (Russian)
     "", // Hrvatski
     "", // Eesti
