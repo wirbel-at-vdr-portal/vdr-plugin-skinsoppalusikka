@@ -8,18 +8,17 @@
 
 #include "common.h"
 #include "config.h"
-#include "i18n.h"
 #include "logo.h"
 #include "soppalusikka.h"
 #include <getopt.h>
 #include <vdr/plugin.h>
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10400
-#error "VDR-1.4.0 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10507
+#error "VDR-1.5.7 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.0.4";
-static const char DESCRIPTION[] = "Soppalusikka skin";
+static const char VERSION[]     = "1.1.0";
+static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
 private:
@@ -110,7 +109,6 @@ bool cPluginSkinSoppalusikka::Start(void)
 {
   // start any background activities the plugin shall perform.
   debug("cPluginSkinSoppalusikka::Start()");
-  RegisterI18n(Phrases);
   // set logo directory
   if (!islogodirset) {
      SoppalusikkaConfig.SetLogoDir(cPlugin::ConfigDirectory(PLUGIN_NAME_I18N));

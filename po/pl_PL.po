@@ -1,0 +1,130 @@
+# VDR plugin language source file.
+# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Jaroslaw Swierczynski
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VDR 1.5.7\n"
+"Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
+"POT-Creation-Date: 2007-08-14 19:34+0300\n"
+"PO-Revision-Date: 2007-08-12 22:47+0300\n"
+"Last-Translator: Jaroslaw Swierczynski\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: skinsoppalusikka.c:21
+msgid "Soppalusikka skin"
+msgstr "Skin Soppalusikka"
+
+#: skinsoppalusikka.c:189
+msgid "Button$Flush cache"
+msgstr "Opró¿nij cache"
+
+#: skinsoppalusikka.c:199
+msgid "Use single area (8bpp)"
+msgstr ""
+
+#: skinsoppalusikka.c:199 skinsoppalusikka.c:200 skinsoppalusikka.c:201
+#: skinsoppalusikka.c:202 skinsoppalusikka.c:203 skinsoppalusikka.c:204
+msgid "no"
+msgstr "nie"
+
+#: skinsoppalusikka.c:199 skinsoppalusikka.c:200 skinsoppalusikka.c:201
+#: skinsoppalusikka.c:202 skinsoppalusikka.c:203 skinsoppalusikka.c:204
+msgid "yes"
+msgstr "tak"
+
+#: skinsoppalusikka.c:200
+msgid "Show auxiliary information"
+msgstr "Pokazuj informacje pomocnicze"
+
+#: skinsoppalusikka.c:201
+msgid "Show progressbar"
+msgstr "Pokazuj pasek postêpu"
+
+#: skinsoppalusikka.c:202
+msgid "Show symbols"
+msgstr "Pokazuj symbole"
+
+#: skinsoppalusikka.c:203
+msgid "Show VPS in channel info"
+msgstr ""
+
+#: skinsoppalusikka.c:204
+msgid "Show channel logos"
+msgstr "Pokazuj logo kana³u"
+
+#: skinsoppalusikka.c:206
+msgid "Identify channel by"
+msgstr "Rozpoznaj kana³ po"
+
+#: skinsoppalusikka.c:206
+msgid "data"
+msgstr "parametry"
+
+#: skinsoppalusikka.c:206
+msgid "name"
+msgstr "nazwa"
+
+#: skinsoppalusikka.c:207
+msgid "Channel logo cache size"
+msgstr "Rozmiar cache dla logo kana³u"
+
+#: skinsoppalusikka.c:238
+msgid "Flushing channel logo cache..."
+msgstr "Opró¿niam cache logo kana³u..."
+
+#: soppalusikka.c:357
+msgid "*** Invalid Channel ***"
+msgstr "*** Niepoprawny kana³ ***"
+
+#: soppalusikka.c:462 soppalusikka.c:465 soppalusikka.c:501 soppalusikka.c:928
+msgid "min"
+msgstr "min"
+
+#: soppalusikka.c:934
+msgid "VPS"
+msgstr "VPS"
+
+#: soppalusikka.c:943 soppalusikka.c:1026
+msgid "Languages"
+msgstr "Jêzyki"
+
+#: soppalusikka.c:1014
+msgid "Lifetime"
+msgstr "Czas ¿ycia"
+
+#: soppalusikka.c:1014
+msgid "Priority"
+msgstr "Priorytet"
+
+#: soppalusikka.c:1018
+msgid "Auxiliary information"
+msgstr "Informacje pomocnicze"
+
+#: soppalusikka.c:1490
+msgid "Mute"
+msgstr "Wycisz"
+
+#: soppalusikka.c:1494
+msgid "Volume"
+msgstr "G³o¶no¶æ"
+
+#: soppalusikka.c:1546 soppalusikka.c:1633
+msgid "Stereo"
+msgstr "Stereo"
+
+#: soppalusikka.c:1547 soppalusikka.c:1638
+msgid "Left"
+msgstr "W lewo"
+
+#: soppalusikka.c:1548 soppalusikka.c:1643
+msgid "Right"
+msgstr "W prawo"
+
+#: soppalusikka.c:1728
+msgid "Soppalusikka"
+msgstr "Soppalusikka"

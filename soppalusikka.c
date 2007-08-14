@@ -8,7 +8,6 @@
 #include "tools.h"
 #include "config.h"
 #include "logo.h"
-#include "i18n.h"
 #include "soppalusikka.h"
 #include <math.h>
 #include <ctype.h>
