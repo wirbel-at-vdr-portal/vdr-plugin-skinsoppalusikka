@@ -57,6 +57,10 @@ endif
 
 OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o tools.o
 
+### The main target:
+
+all: libvdr-$(PLUGIN).so i18n
+
 ### Implicit rules:
 
 %.o: %.c
@@ -93,12 +97,10 @@ i18n: $(I18Nmo)
 	@mkdir -p $(LOCALEDIR)
 	for i in $(I18Ndirs); do\
 	    mkdir -p $(LOCALEDIR)/$$i/LC_MESSAGES;\
-	    cp $(PODIR)/$$i.mo $(LOCALEDIR)/$$i/LC_MESSAGES/$(PLUGIN).mo;\
+	    cp $(PODIR)/$$i.mo $(LOCALEDIR)/$$i/LC_MESSAGES/vdr-$(PLUGIN).mo;\
 	    done
 
 ### Targets:
-
-all: libvdr-$(PLUGIN).so i18n
 
 libvdr-$(PLUGIN).so: $(OBJS)
 	$(CXX) $(CXXFLAGS) -shared $(OBJS) -o $@
