@@ -17,7 +17,7 @@
 #error "VDR-1.5.8 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.1.1";
+static const char VERSION[]     = "1.1.2";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -196,15 +196,15 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
 
   Clear();
 
-  Add(new cMenuEditBoolItem(   tr("Use single area (8bpp)"),     &data.usesinglearea,   tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo,     tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show progressbar"),           &data.showprogressbar, tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show symbols"),               &data.showsymbols,     tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show VPS in channel info"),   &data.showvps,         tr("no"),   tr("yes")));
-  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo,        tr("no"),   tr("yes")));
+  Add(new cMenuEditBoolItem(   tr("Use single area (8bpp)"),     &data.usesinglearea));
+  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo));
+  Add(new cMenuEditBoolItem(   tr("Show progressbar"),           &data.showprogressbar));
+  Add(new cMenuEditBoolItem(   tr("Show symbols"),               &data.showsymbols));
+  Add(new cMenuEditBoolItem(   tr("Show VPS in channel info"),   &data.showvps));
+  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo));
   if (data.showlogo) {
-     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid,    tr("name"), tr("data")));
-     Add(new cMenuEditIntItem( tr("Channel logo cache size"),    &data.cachesize,       0,          1000));
+     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid, tr("name"), tr("data")));
+     Add(new cMenuEditIntItem( tr("Channel logo cache size"),    &data.cachesize,    0,          1000));
     }
 
   SetCurrent(Get(current));

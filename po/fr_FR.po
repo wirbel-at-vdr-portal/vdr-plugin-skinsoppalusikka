@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VDR 1.5.7\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2007-08-14 19:34+0300\n"
+"POT-Creation-Date: 2007-10-14 18:41+0300\n"
 "PO-Revision-Date: 2007-08-12 22:47+0300\n"
 "Last-Translator: neptunvasja@VDRPortal\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -16,116 +16,80 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: skinsoppalusikka.c:21
 msgid "Soppalusikka skin"
 msgstr "Skin Soppalusikka"
 
-#: skinsoppalusikka.c:189
 msgid "Button$Flush cache"
 msgstr "Supprimer cache"
 
-#: skinsoppalusikka.c:199
 msgid "Use single area (8bpp)"
 msgstr ""
 
-#: skinsoppalusikka.c:199 skinsoppalusikka.c:200 skinsoppalusikka.c:201
-#: skinsoppalusikka.c:202 skinsoppalusikka.c:203 skinsoppalusikka.c:204
-msgid "no"
-msgstr "non"
-
-#: skinsoppalusikka.c:199 skinsoppalusikka.c:200 skinsoppalusikka.c:201
-#: skinsoppalusikka.c:202 skinsoppalusikka.c:203 skinsoppalusikka.c:204
-msgid "yes"
-msgstr "oui"
-
-#: skinsoppalusikka.c:200
 msgid "Show auxiliary information"
 msgstr "Afficher information auxiliaire"
 
-#: skinsoppalusikka.c:201
 msgid "Show progressbar"
 msgstr "Afficher barre de progression"
 
-#: skinsoppalusikka.c:202
 msgid "Show symbols"
 msgstr "Afficher symbole"
 
-#: skinsoppalusikka.c:203
 msgid "Show VPS in channel info"
 msgstr "Afficher VPS dans l'info. de la chaîne"
 
-#: skinsoppalusikka.c:204
 msgid "Show channel logos"
 msgstr "Afficher logo des chaînes"
 
-#: skinsoppalusikka.c:206
 msgid "Identify channel by"
 msgstr "Identifier chaîne par"
 
-#: skinsoppalusikka.c:206
-msgid "data"
-msgstr "Donnée"
-
-#: skinsoppalusikka.c:206
 msgid "name"
 msgstr "Nom"
 
-#: skinsoppalusikka.c:207
+msgid "data"
+msgstr "Donnée"
+
 msgid "Channel logo cache size"
 msgstr "Taille du cache des logo"
 
-#: skinsoppalusikka.c:238
 msgid "Flushing channel logo cache..."
 msgstr "Suppression du cache..."
 
-#: soppalusikka.c:357
 msgid "*** Invalid Channel ***"
 msgstr "*** Chaîne invalide! ***"
 
-#: soppalusikka.c:462 soppalusikka.c:465 soppalusikka.c:501 soppalusikka.c:928
 msgid "min"
 msgstr "min"
 
-#: soppalusikka.c:934
 msgid "VPS"
 msgstr "VPS"
 
-#: soppalusikka.c:943 soppalusikka.c:1026
 msgid "Languages"
 msgstr "Langues"
 
-#: soppalusikka.c:1014
-msgid "Lifetime"
-msgstr "Durée de vie"
-
-#: soppalusikka.c:1014
 msgid "Priority"
 msgstr "Priorité"
 
-#: soppalusikka.c:1018
+msgid "Lifetime"
+msgstr "Durée de vie"
+
 msgid "Auxiliary information"
 msgstr "Information auxiliare"
 
-#: soppalusikka.c:1490
 msgid "Mute"
 msgstr "Muet"
 
-#: soppalusikka.c:1494
 msgid "Volume"
 msgstr "Volume"
 
-#: soppalusikka.c:1546 soppalusikka.c:1633
 msgid "Stereo"
 msgstr "Stéréo"
 
-#: soppalusikka.c:1547 soppalusikka.c:1638
 msgid "Left"
 msgstr "Gauche"
 
-#: soppalusikka.c:1548 soppalusikka.c:1643
 msgid "Right"
 msgstr "Droite"
 
-#: soppalusikka.c:1728
 msgid "Soppalusikka"
 msgstr "Soppalusikka"
