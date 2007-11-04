@@ -198,7 +198,7 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   islogo = false;
   // general coordinates
   x0 = 0;
-  x1 = Setup.OSDWidth;
+  x1 = cOsd::OsdWidth();
   // top area x-coordinates
   xt9 = x1 - BigGap;
   xt0 = x0 + BigGap;
@@ -237,7 +237,7 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   yb4 = yb5 - Roundness;
   y1 = yb5;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + (Setup.ChannelInfoPos ? 0 : Setup.OSDHeight - y1));
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + (Setup.ChannelInfoPos ? 0 : cOsd::OsdHeight() - y1));
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
@@ -590,19 +590,19 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
   lineHeight = font->Height();
   x0 = 0;
   x1 = x0 + Roundness;
-  x3 = Setup.OSDWidth;
+  x3 = cOsd::OsdWidth();
   x2 = x3 - Roundness;
   y0 = 0;
   y1 = y0 + Roundness;
   y2 = y0 + lineHeight;
   y3 = y2 + SmallGap;
   y4 = y3 + lineHeight;
-  y8 = Setup.OSDHeight;
+  y8 = cOsd::OsdHeight();
   y7 = y8 - Roundness;
   y6 = y8 - lineHeight;
   y5 = y6 - lineHeight;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop);
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop());
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
@@ -901,7 +901,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
   cTextScroller ts;
-  char t[64];
+  cString date;
   int y = y3;
   int xs = x1;
   int wsb = bmArrowUp.Width() + 2 * Gap;
@@ -925,45 +925,53 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      }
   y = y4;
   // draw event date / duration string
-  snprintf(t, sizeof(t), "%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  date = cString::sprintf("%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, *date, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // check if event has VPS
   if (Event->Vps() && Event->Vps() != Event->StartTime()) {
-     char *buffer;
-     asprintf(&buffer, "%s: %s", tr("VPS"), *Event->GetVpsString());
-     ts.Set(osd, x1, y, x2 - x1, y5 - y, buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     cString buffer = cString::sprintf("%s: %s", tr("VPS"), *Event->GetVpsString());
+     ts.Set(osd, x1, y, x2 - x1, y5 - y, *buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
      y += ts.Height();
-     free(buffer);
      }
-  // draw recording languages
+  // draw event languages
   const cComponents *Components = Event->Components();
   if (Components) {
-     char *info;
-     asprintf(&info, "%s: ", tr("Languages"));
+     cString info, audio, subtitle;
+     unsigned int numaudio = 0, numsubtitle = 0;
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
-         if ((p->stream == 2) && p->language) {
-            if (p->description) {
-               info = strcatrealloc(info, p->description);
-               info = strcatrealloc(info, " (");
-               info = strcatrealloc(info, p->language);
-               info = strcatrealloc(info, "), ");
+         if (p->language) {
+            if (p->stream == 2) {
+               audio = cString::sprintf("%s%s%s%s%s%s",
+                                       (numaudio > 0) ? *audio : "",
+                                       (numaudio > 0) ? ", " : "",
+                                       p->description ? p->description : p->language,
+                                       p->description ? " (" : "",
+                                       p->description ? p->language : "",
+                                       p->description ? ")" : "");
+               numaudio++;
                }
-            else {
-               info = strcatrealloc(info, p->language);
-               info = strcatrealloc(info, ", ");
+            else if (p->stream == 3) {
+               subtitle = cString::sprintf("%s%s%s (%s%s%s)",
+                                        (numsubtitle > 0) ? *subtitle : "",
+                                        (numsubtitle > 0) ? ", " : "",
+                                        p->description ? p->description : p->language,
+                                        p->description ? p->language : "",
+                                        p->description ? "; " : "",
+                                        (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
+               numsubtitle++;
                }
             }
          }
-     // strip out the last delimiter
-     if (endswith(info, ", ")) {
-        char *s = info + strlen(info) - 2;                                                                                                                                        
-        *s = 0;
+     if (numaudio > 0)
+        info = cString::sprintf("%s: %s", trVDR("Setup.DVB$Audio languages"), *audio);
+     if (numsubtitle > 0)
+        info = cString::sprintf("%s%s%s: %s", *info ? *info : "", *info ? "\n" : "", trVDR("Setup.DVB$Subtitle languages"), *subtitle);
+     if (*info) {
+        ts.Set(osd, x1, y, x2 - x1, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+        y += ts.Height();
         }
-     ts.Set(osd, x1, y, x2 - x1, y5 - y, info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
-     y += ts.Height();
-     free(info);
      }
   y += smlfont->Height();
   // draw event title
@@ -1010,45 +1018,48 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // draw additional information
-  char *info;
-  asprintf(&info, "%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
+  cString info = cString::sprintf("%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
   if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
      char *aux = strdup(Info->Aux());
-     info = strcatrealloc(info, "\n");
-     info = strcatrealloc(info, tr("Auxiliary information"));
-     info = strcatrealloc(info, ": ");
-     info = strcatrealloc(info, parseaux(aux));
+     info = cString::sprintf("%s\n%s: %s", *info, tr("Auxiliary information"), parseaux(aux));
      free(aux);
      }
   const cComponents *Components = Info->Components();
   if (Components) {
-     info = strcatrealloc(info, "\n");
-     info = strcatrealloc(info, tr("Languages"));
-     info = strcatrealloc(info, ": ");
+     cString audio, subtitle;
+     unsigned int numaudio = 0, numsubtitle = 0;
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
-         if ((p->stream == 2) && p->language) {
-            if (p->description) {
-               info = strcatrealloc(info, p->description);
-               info = strcatrealloc(info, " (");
-               info = strcatrealloc(info, p->language);
-               info = strcatrealloc(info, "), ");
+         if (p->language) {
+            if (p->stream == 2) {
+               audio = cString::sprintf("%s%s%s%s%s%s",
+                                       (numaudio > 0) ? *audio : "",
+                                       (numaudio > 0) ? ", " : "",
+                                       p->description ? p->description : p->language,
+                                       p->description ? " (" : "",
+                                       p->description ? p->language : "",
+                                       p->description ? ")" : "");
+               numaudio++;
                }
-            else {
-               info = strcatrealloc(info, p->language);
-               info = strcatrealloc(info, ", ");
+            else if (p->stream == 3) {
+               subtitle = cString::sprintf("%s%s%s (%s%s%s)",
+                                        (numsubtitle > 0) ? *subtitle : "",
+                                        (numsubtitle > 0) ? ", " : "",
+                                        p->description ? p->description : p->language,
+                                        p->description ? p->language : "",
+                                        p->description ? "; " : "",
+                                        (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
+               numsubtitle++;
                }
             }
          }
-     // strip out the last delimiter
-     if (endswith(info, ", ")) {
-        char *s = info + strlen(info) - 2;
-        *s = 0;
-        }
+     if (numaudio > 0)
+        info = cString::sprintf("%s\n%s: %s", *info, trVDR("Setup.DVB$Audio languages"), *audio);
+     if (numsubtitle > 0)
+        info = cString::sprintf("%s\n%s: %s", *info, trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      }
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x1, y, x2 - x1, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
-  free(info);
   y += smlfont->Height();
   // draw recording title
   const char *Title = Info->Title();
@@ -1148,7 +1159,7 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
   x2 = x1 + Roundness;
   x3 = x2 + sw + 5 * Gap;
   x4 = x3 + 4 * BigGap;
-  x10 = Setup.OSDWidth;
+  x10 = cOsd::OsdWidth();
   x9 = x10 - BigGap;
   x8 = x9 - Roundness;
   x6 = x8 - sw - 5 * Gap;
@@ -1161,7 +1172,7 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
   y5 = y3 + lineHeight;
   y4 = y5 - Roundness;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y5);
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y5);
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
@@ -1451,7 +1462,7 @@ cSkinSoppalusikkaDisplayVolume::cSkinSoppalusikkaDisplayVolume()
   x0 = 0;
   x1 = x0 + BigGap;
   x2 = x1 + Roundness;
-  x5 = Setup.OSDWidth;
+  x5 = cOsd::OsdWidth();
   x4 = x5 - BigGap;
   x3 = x4 - Roundness;
   y0 = 0;
@@ -1459,7 +1470,7 @@ cSkinSoppalusikkaDisplayVolume::cSkinSoppalusikkaDisplayVolume()
   y2 = y1 + Gap;
   y3 = y2 + lineHeight;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y3);
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y3);
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x5 - 1, y3 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
@@ -1553,7 +1564,7 @@ cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title
   x3 = x2 + BigGap;
   x4 = x3 + bmAudio.Width();
   x5 = x4 + Roundness;
-  x6 = Setup.OSDWidth;
+  x6 = cOsd::OsdWidth();
   y0 = 0;
   y1 = y0 + Roundness;
   y3 = y0 + lineHeight;
@@ -1563,7 +1574,7 @@ cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title
   y7 = y5 + lineHeight;
   y6 = y7 - Roundness;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y7);
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y7);
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
@@ -1677,12 +1688,12 @@ cSkinSoppalusikkaDisplayMessage::cSkinSoppalusikkaDisplayMessage()
   lineHeight = cFont::GetFont(fontOsd)->Height();
   x0 = 0;
   x1 = x0 + Roundness;
-  x3 = Setup.OSDWidth;
+  x3 = cOsd::OsdWidth();
   x2 = x3 - Roundness;
   y0 = 0;
   y1 = y0 + lineHeight;
   // create osd
-  osd = cOsdProvider::NewOsd(Setup.OSDLeft, Setup.OSDTop + Setup.OSDHeight - y1);
+  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y1);
   // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)

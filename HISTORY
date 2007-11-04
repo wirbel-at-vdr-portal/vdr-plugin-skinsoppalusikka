@@ -143,3 +143,11 @@ VDR Skin 'Soppalusikka' Revision History
 - Cleaned up translations.
 - Fixed date string in channel info.
 - Removed logos.
+
+2007-11-04: Version 1.1.3
+
+- Updated for vdr-1.5.10.
+- Updated Makefile 'i18n' targets.
+- Fixed OSD dimension code.
+- Added subtitle tracks information into the event and
+  recording info menus.
