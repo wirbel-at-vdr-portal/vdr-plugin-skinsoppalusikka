@@ -6,18 +6,19 @@
  * $Id$
  */
 
+#include <getopt.h>
+#include <vdr/plugin.h>
+#include <vdr/menu.h>
 #include "common.h"
 #include "config.h"
 #include "logo.h"
 #include "soppalusikka.h"
-#include <getopt.h>
-#include <vdr/plugin.h>
 
 #if defined(APIVERSNUM) && APIVERSNUM < 10510
 #error "VDR-1.5.10 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.1.3";
+static const char VERSION[]     = "1.1.4";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -48,7 +49,8 @@ public:
 class cPluginSkinSoppalusikkaSetup : public cMenuSetupPage {
 private:
   cSoppalusikkaConfig data;
-  virtual void Setup(void);
+  cVector<const char*> help;
+  void Setup(void);
 protected:
   virtual eOSState ProcessKey(eKeys Key);
   virtual void Store(void);
@@ -195,16 +197,32 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
   int current = Current();
 
   Clear();
+  help.Clear();
 
-  Add(new cMenuEditBoolItem(   tr("Use single area (8bpp)"),     &data.usesinglearea));
-  Add(new cMenuEditBoolItem(   tr("Show auxiliary information"), &data.showauxinfo));
-  Add(new cMenuEditBoolItem(   tr("Show progressbar"),           &data.showprogressbar));
-  Add(new cMenuEditBoolItem(   tr("Show symbols"),               &data.showsymbols));
-  Add(new cMenuEditBoolItem(   tr("Show VPS in channel info"),   &data.showvps));
-  Add(new cMenuEditBoolItem(   tr("Show channel logos"),         &data.showlogo));
+  Add(new cMenuEditBoolItem(tr("Use single area (8bpp)"), &data.usesinglearea));
+  help.Append(tr("Define whether a single 8bpp OSD area is preferred.\n\nRequired by Truetype fonts and anti-aliasing."));
+
+  Add(new cMenuEditBoolItem(tr("Show auxiliary information"), &data.showauxinfo));
+  help.Append(tr("Define whether any auxiliary information is shown in info menus."));
+
+  Add(new cMenuEditBoolItem(tr("Show progressbar"), &data.showprogressbar));
+  help.Append(tr("Define whether a progressbar is shown in schedule menu."));
+
+  Add(new cMenuEditBoolItem(tr("Show symbols"), &data.showsymbols));
+  help.Append(tr("Define whether symbols are shown in recordings and schedule menus."));
+
+  Add(new cMenuEditBoolItem(tr("Show VPS in channel info"), &data.showvps));
+  help.Append(tr("Define whether VPS information is shown in channel info menu."));
+
+  Add(new cMenuEditBoolItem(tr("Show channel logos"), &data.showlogo));
+  help.Append(tr("Define whether channels logos are shown in channel info menu.\n\nOnly XPM format is accepted: 64x48 pixel and max. 13 colors."));
+
   if (data.showlogo) {
-     Add(new cMenuEditBoolItem(tr("Identify channel by"),        &data.usechannelid, tr("name"), tr("data")));
-     Add(new cMenuEditIntItem( tr("Channel logo cache size"),    &data.cachesize,    0,          1000));
+     Add(new cMenuEditBoolItem(tr("Identify channel by"), &data.usechannelid, tr("name"), tr("data")));
+     help.Append(tr("Define the channel identification method:\n\nYLE2 or T-8438-4097-33"));
+
+     Add(new cMenuEditIntItem( tr("Channel logo cache size"), &data.cachesize, 0, 1000));
+     help.Append(tr("Define the cache size for channel logos.\n\nThe bigger cache results faster zapping."));
     }
 
   SetCurrent(Get(current));
@@ -234,14 +252,25 @@ eOSState cPluginSkinSoppalusikkaSetup::ProcessKey(eKeys Key)
   int oldshowlogo = data.showlogo;
 
   eOSState state = cMenuSetupPage::ProcessKey(Key);
-  if ((state == osUnknown) && (Key == kRed)) {
-     Skins.Message(mtInfo, tr("Flushing channel logo cache..."));
-     SoppalusikkaLogoCache.Flush();
-     Skins.Message(mtInfo, NULL);
-     state = osContinue;
-     }
-  if (Key != kNone && (data.showlogo != oldshowlogo)) {
+
+  if (Key != kNone && (data.showlogo != oldshowlogo))
      Setup();
+
+  if (state == osUnknown) {
+     switch (Key) {
+       case kRed:
+            Skins.Message(mtInfo, tr("Flushing channel logo cache..."));
+            SoppalusikkaLogoCache.Flush();
+            Skins.Message(mtInfo, NULL);
+            state = osContinue;
+            break;
+       case kInfo:
+            if (Current() < help.Size())
+               return AddSubMenu(new cMenuText(cString::sprintf("%s - %s '%s'", tr("Help"), trVDR("Plugin"), PLUGIN_NAME_I18N), help[Current()]));
+            break;
+       default:
+            break;
+       }
      }
 
   return state;

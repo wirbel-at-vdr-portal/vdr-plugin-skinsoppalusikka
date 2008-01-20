@@ -1,13 +1,13 @@
 # VDR plugin language source file.
-# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
-# This file is distributed under the same license as the VDR package.
+# Copyright (C) 2007 Rolf Ahrenberg
+# This file is distributed under the same license as the skinsoppalusikka package.
 # Füley István
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: VDR 1.5.7\n"
+"Project-Id-Version: skinsoppalusikka 1.1.4\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2007-11-04 20:36+0200\n"
+"POT-Creation-Date: 2008-01-20 01:48+0200\n"
 "PO-Revision-Date: 2007-08-12 22:47+0300\n"
 "Last-Translator: Füley István\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -24,20 +24,44 @@ msgstr "Cache ürítés"
 msgid "Use single area (8bpp)"
 msgstr "Egyetlen terület használata (8bpp)"
 
+msgid ""
+"Define whether a single 8bpp OSD area is preferred.\n"
+"\n"
+"Required by Truetype fonts and anti-aliasing."
+msgstr ""
+
 msgid "Show auxiliary information"
 msgstr "További információk megjelenítése"
+
+msgid "Define whether any auxiliary information is shown in info menus."
+msgstr ""
 
 msgid "Show progressbar"
 msgstr "Lejátszósáv megjelenítése"
 
+msgid "Define whether a progressbar is shown in schedule menu."
+msgstr ""
+
 msgid "Show symbols"
 msgstr "Ikonok megjelenítése"
+
+msgid "Define whether symbols are shown in recordings and schedule menus."
+msgstr ""
 
 msgid "Show VPS in channel info"
 msgstr "VPS információk megjelenítése"
 
+msgid "Define whether VPS information is shown in channel info menu."
+msgstr ""
+
 msgid "Show channel logos"
 msgstr "Csatornalogók megjelenítése"
+
+msgid ""
+"Define whether channels logos are shown in channel info menu.\n"
+"\n"
+"Only XPM format is accepted: 64x48 pixel and max. 13 colors."
+msgstr ""
 
 msgid "Identify channel by"
 msgstr "Csatornák azonosítása"
@@ -48,11 +72,26 @@ msgstr "név szerint"
 msgid "data"
 msgstr "paraméterek szerint"
 
+msgid ""
+"Define the channel identification method:\n"
+"\n"
+"YLE2 or T-8438-4097-33"
+msgstr ""
+
 msgid "Channel logo cache size"
 msgstr "Csatorna logó cache méret"
 
+msgid ""
+"Define the cache size for channel logos.\n"
+"\n"
+"The bigger cache results faster zapping."
+msgstr ""
+
 msgid "Flushing channel logo cache..."
 msgstr "Csatornalogó cache ürítése..."
+
+msgid "Help"
+msgstr ""
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Érvénytelen csatorna ***"

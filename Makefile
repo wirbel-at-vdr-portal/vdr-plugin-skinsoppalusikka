@@ -12,6 +12,8 @@ STRIP = strip
 # The official name of this plugin.
 # This name will be used in the '-P...' option of VDR to load the plugin.
 # By default the main source file also carries this name.
+# IMPORTANT: the presence of this macro is important for the Make.config
+# file. So it must be defined, even if it is not used here!
 #
 PLUGIN = skinsoppalusikka
 
@@ -22,7 +24,7 @@ VERSION = $(shell grep 'static const char VERSION\[\] *=' $(PLUGIN).c | awk '{ p
 ### The C++ compiler and options:
 
 CXX      ?= g++
-CXXFLAGS ?= -fPIC -g -O2 -Wall -Woverloaded-virtual
+CXXFLAGS ?= -fPIC -g -O2 -Wall -Woverloaded-virtual -Wno-parentheses
 
 ### The directory environment:
 
@@ -66,7 +68,7 @@ all: libvdr-$(PLUGIN).so i18n
 %.o: %.c
 	$(CXX) $(CXXFLAGS) -c $(DEFINES) $(INCLUDES) $<
 
-# Dependencies:
+### Dependencies:
 
 MAKEDEP = $(CXX) -MM -MG
 DEPFILE = .dependencies
@@ -98,7 +100,7 @@ $(I18Nmsgs): $(LOCALEDIR)/%/LC_MESSAGES/vdr-$(PLUGIN).mo: $(PODIR)/%.mo
 	cp $< $@
 
 .PHONY: i18n
-i18n: $(I18Nmsgs)
+i18n: $(I18Nmsgs) $(I18Npot)
 
 ### Targets:
 
@@ -118,5 +120,4 @@ dist: clean
 	@echo Distribution package created as $(PACKAGE).tgz
 
 clean:
-	@-rm -f $(PODIR)/*.mo $(PODIR)/*.pot
-	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~
+	@-rm -f $(OBJS) $(DEPFILE) *.so *.tgz core* *~ $(PODIR)/*.mo $(PODIR)/*.pot

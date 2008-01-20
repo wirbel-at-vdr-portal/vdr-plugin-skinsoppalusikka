@@ -128,6 +128,11 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Backported from 1.1.2.
 
+2008-01-20: Version 1.0.6
+
+- Added Italian translation (Thanks to Gringo).
+- Added '-Wno-parentheses' to the compiler options.
+
 2007-08-14: Version 1.1.0
 
 - Updated for vdr-1.5.7.
@@ -151,3 +156,9 @@ VDR Skin 'Soppalusikka' Revision History
 - Fixed OSD dimension code.
 - Added subtitle tracks information into the event and
   recording info menus.
+
+2008-01-20: Version 1.1.4
+
+- Added Italian translation (Thanks to Gringo).
+- Added '-Wno-parentheses' to the compiler options.
+- Mapped 'kInfo' as help key in setup menu.

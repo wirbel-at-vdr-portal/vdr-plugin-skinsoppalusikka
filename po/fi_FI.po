@@ -1,13 +1,13 @@
 # VDR plugin language source file.
-# Copyright (C) 2007 Klaus Schmidinger <kls@cadsoft.de>
-# This file is distributed under the same license as the VDR package.
+# Copyright (C) 2007 Rolf Ahrenberg
+# This file is distributed under the same license as the skinsoppalusikka package.
 # Rolf Ahrenberg
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: VDR 1.5.7\n"
+"Project-Id-Version: skinsoppalusikka 1.1.4\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2007-11-04 20:36+0200\n"
+"POT-Creation-Date: 2008-01-20 01:48+0200\n"
 "PO-Revision-Date: 2007-08-12 18:20+0300\n"
 "Last-Translator: Rolf Ahrenberg\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -24,20 +24,50 @@ msgstr "Tyhjenn‰"
 msgid "Use single area (8bpp)"
 msgstr "K‰yt‰ yksitt‰ist‰ kuva-aluetta (8bpp)"
 
+msgid ""
+"Define whether a single 8bpp OSD area is preferred.\n"
+"\n"
+"Required by Truetype fonts and anti-aliasing."
+msgstr ""
+"M‰‰rittele, yritet‰‰nkˆ k‰ytt‰‰ yksitt‰ist‰ 8bpp kuva-aluetta.\n"
+"\n"
+"Truetype-kirjasimet ja reunan pehmennys vaativat t‰m‰n asetuksen."
+
 msgid "Show auxiliary information"
 msgstr "N‰yt‰ lis‰tiedot"
+
+msgid "Define whether any auxiliary information is shown in info menus."
+msgstr "M‰‰rittele, n‰ytet‰‰nkˆ lis‰tietoja tallenteiden ja tapahtumien tiedoissa."
 
 msgid "Show progressbar"
 msgstr "N‰yt‰ aikajana"
 
+msgid "Define whether a progressbar is shown in schedule menu."
+msgstr "M‰‰rittele, n‰ytet‰‰nkˆ aikajana ohjelmistovalikossa."
+
 msgid "Show symbols"
 msgstr "N‰yt‰ symbolit"
+
+msgid "Define whether symbols are shown in recordings and schedule menus."
+msgstr "M‰‰rittele, n‰ytet‰‰nkˆ symboleita tallenne- ja ohjelmistovalikossa."
 
 msgid "Show VPS in channel info"
 msgstr "N‰yt‰ VPS kanavatiedossa"
 
+msgid "Define whether VPS information is shown in channel info menu."
+msgstr "M‰‰rittele, n‰ytet‰‰nkˆ VPS-tiedot kanavatietovalikossa."
+
 msgid "Show channel logos"
 msgstr "N‰yt‰ kanavalogot"
+
+msgid ""
+"Define whether channels logos are shown in channel info menu.\n"
+"\n"
+"Only XPM format is accepted: 64x48 pixel and max. 13 colors."
+msgstr ""
+"M‰‰rittele, n‰ytet‰‰nkˆ kanavalogot kanavatietovalikossa.\n"
+"\n"
+"Vain XPM-formaatti on tuettu: 64x48 pikseli‰ ja max. 13 v‰ri‰."
 
 msgid "Identify channel by"
 msgstr "Tunnista kanava"
@@ -48,11 +78,32 @@ msgstr "nimest‰"
 msgid "data"
 msgstr "tiedoista"
 
+msgid ""
+"Define the channel identification method:\n"
+"\n"
+"YLE2 or T-8438-4097-33"
+msgstr ""
+"M‰‰rittele kanavan tunnistustapa:\n"
+"\n"
+"YLE2 tai T-8438-4097-33"
+
 msgid "Channel logo cache size"
 msgstr "V‰limuistin koko kanavalogoille"
 
+msgid ""
+"Define the cache size for channel logos.\n"
+"\n"
+"The bigger cache results faster zapping."
+msgstr ""
+"M‰‰rittele kanavalogojen v‰limuistin koko.\n"
+"\n"
+"Isompi v‰limuisti nopeuttaa kanavanvaihtoja."
+
 msgid "Flushing channel logo cache..."
 msgstr "Tyhjennet‰‰n v‰limuistia..."
+
+msgid "Help"
+msgstr "Opaste"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Virheellinen kanavavalinta ***"
