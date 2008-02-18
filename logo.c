@@ -94,25 +94,22 @@ cBitmap& cSoppalusikkaLogoCache::Get(void)
 bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
 {
   struct stat stbuf;
-  char *filename;
   cBitmap *bmp = new cBitmap(1, 1, 1);
 
   // create absolute filename
-  asprintf(&filename, "%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
-  debug("cPluginSkinSoppalusikka::LoadXpm(%s)", filename);
+  cString filename = cString::sprintf("%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
+  debug("cPluginSkinSoppalusikka::LoadXpm(%s)", *filename);
   // check validity
   if ((stat(filename, &stbuf) == 0) && bmp->LoadXpm(filename) && (bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
      debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
      // assign bitmap
      bitmapM = bmp;
-     free(filename);
      return true;
      }
   // no xpm logo found - delete bitmap
   debug("cPluginSkinSoppalusikka::LoadXpm() LOGO NOT FOUND");
   delete bmp;
   bitmapM = NULL;
-  free(filename);
   return false;
 }
 

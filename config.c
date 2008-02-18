@@ -14,10 +14,9 @@
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: usesinglearea(0), showauxinfo(1), showlogo(0), showvps(1),
-  showsymbols(0), showprogressbar(1), cachesize(50), usechannelid(0)
+: logodir(""), usesinglearea(0), showauxinfo(1), showlogo(0), showvps(1),
+  showsymbols(0), showprogressbar(1), cachesize(100)
 {
-  memset(logodir, 0, sizeof(logodir));
 }
 
 cSoppalusikkaConfig::~cSoppalusikkaConfig()
@@ -27,5 +26,5 @@ cSoppalusikkaConfig::~cSoppalusikkaConfig()
 void cSoppalusikkaConfig::SetLogoDir(const char *logodirP)
 {
   debug("cSoppalusikkaConfig::SetLogoDir(%s)", logodirP);
-  strncpy(logodir, logodirP, sizeof(logodir));
+  logodir = cString(logodirP);
 }

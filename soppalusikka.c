@@ -19,8 +19,6 @@
 #include <vdr/themes.h>
 #include <vdr/plugin.h>
 
-#include "symbols/arrowdown.xpm"
-#include "symbols/arrowup.xpm"
 #include "symbols/audio.xpm"
 #include "symbols/audioleft.xpm"
 #include "symbols/audioright.xpm"
@@ -56,8 +54,6 @@
 #include "symbols/eventrecording.xpm"
 #include "symbols/recordingnew.xpm"
 
-static cBitmap bmArrowDown(arrowdown_xpm);
-static cBitmap bmArrowUp(arrowup_xpm);
 static cBitmap bmAudio(audio_xpm);
 static cBitmap bmAudioLeft(audioleft_xpm);
 static cBitmap bmAudioRight(audioright_xpm);
@@ -176,6 +172,7 @@ private:
   int y0, y1;
   int yt0, yt1, yt2, yt3, yt4;
   int yb0, yb1, yb2, yb3, yb4, yb5;
+  cString lastDate;
   bool HasChannelTimerRecording(const cChannel *Channel);
   void ResetTopAreaCoordinates(bool islogo = false);
   void DrawTopArea(const cChannel *Channel = NULL);
@@ -292,7 +289,8 @@ void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool islogo)
 void cSkinSoppalusikkaDisplayChannel::DrawTopArea(const cChannel *Channel)
 {
   // draw logo stuff
-  if (SoppalusikkaConfig.showlogo && Channel && SoppalusikkaLogoCache.Load(SoppalusikkaConfig.usechannelid ? *Channel->GetChannelID().ToString() : Channel->Name())) {
+  if (SoppalusikkaConfig.showlogo && Channel &&
+     (SoppalusikkaLogoCache.Load(*Channel->GetChannelID().ToString()) || SoppalusikkaLogoCache.Load(Channel->Name()))) {
      // load channel logo
      islogo = true;
      // set top area for logo
@@ -446,6 +444,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
      xs -= (bmRecording.Width() + BigGap);
      osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
      }
+  lastDate = NULL;
 }
 
 void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEvent *Following)
@@ -455,15 +454,13 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
   // check epg datas
   const cEvent *e = Present;
   if (e) {
-     char *s;
+     cString s;
      int total = e->Duration();
      int now = (time(NULL) - e->StartTime());
-     if ((now < total) && ((now / 60) > 0)) {
-        asprintf(&s, "  %d / %d %s", now / 60, total / 60, tr("min"));
-        }
-     else {
-        asprintf(&s, "  %d %s", total / 60, tr("min"));
-        }
+     if ((now < total) && ((now / 60) > 0))
+        s = cString::sprintf("  %d / %d %s", now / 60, total / 60, tr("min"));
+     else
+        s = cString::sprintf("  %d %s", total / 60, tr("min"));
      // draw start time
      osd->DrawText(xb1, yb0, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb1 - yb0);
      // draw title
@@ -476,11 +473,9 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
         int delta = (e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
         if (abs(delta) < 600) {
-           char *vps;
            /* relative vps time formats: "+0:30" "-1:30" */
-           asprintf(&vps, "%c%01d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
+           cString vps = cString::sprintf("%c%01d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
            osd->DrawText(xb1, yb1, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
-           free(vps);
            }
         else {
            /* absolute vps time format: "18:45" */
@@ -493,29 +488,25 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      int yc = yb0 + (int)(roundf((float)(now) / (float)(total) * (float)(yb5 - yb0)));
      yc = min(yc, yb5);
      osd->DrawRectangle(xb2 + SmallGap, yb0, xb3 - SmallGap - 1, yc - 1, Theme.Color(clrChannelTimeBarFg));
-     free(s);
      }
   e = Following;
   if (e) {
-     char *s;
-     asprintf(&s, "  %d %s", e->Duration() / 60, tr("min"));
+     cString s = cString::sprintf("  %d %s", e->Duration() / 60, tr("min"));
      // draw start time
      osd->DrawText(xb1, yb2, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb3 - yb2);
      // draw title
      osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb3 - yb2);
      // draw duration
-     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
+     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(*s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
      // draw vps time - only if skin dependent small fonts
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
         int delta = (e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
         if (abs(delta) < 600) {
-           char *vps;
            /* relative vps time formats: "+0:30" "-1:30" */
-           asprintf(&vps, "%c%d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
+           cString vps = cString::sprintf("%c%d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
            osd->DrawText(xb1, yb3, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
-           free(vps);
            }
         else {
            /* absolute vps time format: "18:45" */
@@ -524,7 +515,6 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
         }
      // draw shorttext
      osd->DrawText(xb4, yb3, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4, yb5 - yb3);
-     free(s);
      }
 }
 
@@ -552,8 +542,11 @@ void cSkinSoppalusikkaDisplayChannel::SetMessage(eMessageType Type, const char *
 void cSkinSoppalusikkaDisplayChannel::Flush(void)
 {
   cString date = DayDateTime();
-  // draw updated date string
-  osd->DrawText(xt3, yt0, date, Theme.Color(clrChannelNumberDateFg), Theme.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt4 - xt3, yt2 - yt0, taRight);
+  if (!*lastDate || strcmp(date, lastDate)) {
+     // draw updated date string
+     osd->DrawText(xt3, yt0, date, Theme.Color(clrChannelNumberDateFg), Theme.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt4 - xt3, yt2 - yt0, taRight);
+     lastDate = date;
+     }
   osd->Flush();
 }
 
@@ -562,10 +555,13 @@ void cSkinSoppalusikkaDisplayChannel::Flush(void)
 class cSkinSoppalusikkaDisplayMenu : public cSkinDisplayMenu {
 private:
   cOsd *osd;
-  int x0, x1, x2, x3;
+  int x0, x1, x2, x3, x4, x5;
   int y0, y1, y2, y3, y4, y5, y6, y7, y8;
   int lineHeight;
-  void SetScrollbar(void);
+  bool lastRec;
+  cString lastDate;
+  void DrawScrollbar(int Total, int Offset, int Shown, int Top, int Height, bool CanScrollUp, bool CanScrollDown);
+  void SetTextScrollbar(void);
 public:
   cSkinSoppalusikkaDisplayMenu();
   virtual ~cSkinSoppalusikkaDisplayMenu();
@@ -576,6 +572,7 @@ public:
   virtual void SetButtons(const char *Red, const char *Green = NULL, const char *Yellow = NULL, const char *Blue = NULL);
   virtual void SetMessage(eMessageType Type, const char *Text);
   virtual void SetItem(const char *Text, int Index, bool Current, bool Selectable);
+  virtual void SetScrollbar(int Total, int Offset);
   virtual void SetEvent(const cEvent *Event);
   virtual void SetRecording(const cRecording *Recording);
   virtual void SetText(const char *Text, bool FixedFont);
@@ -588,10 +585,13 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
 {
   const cFont *font = cFont::GetFont(fontOsd);
   lineHeight = font->Height();
+  lastRec = false;
   x0 = 0;
-  x1 = x0 + Roundness;
-  x3 = cOsd::OsdWidth();
-  x2 = x3 - Roundness;
+  x1 = x0 + Gap;
+  x2 = x0 + Roundness;
+  x5 = cOsd::OsdWidth();
+  x4 = x5 - Gap;
+  x3 = x5 - Roundness;
   y0 = 0;
   y1 = y0 + Roundness;
   y2 = y0 + lineHeight;
@@ -604,24 +604,24 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop());
   // try to use single 8bpp area
-  tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 8 } };
+  tArea Areas[] = { { x0, y0, x5 - 1, y8 - 1, 8 } };
   if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      // clear all
      osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
      }
   else {
-     tArea Areas[] = { { x0, y0, x3 - 1, y8 - 1, 4 } };
+     tArea Areas[] = { { x0, y0, x5 - 1, y8 - 1, 4 } };
      if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
         osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         // clear all
         osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
         }
      else {
-        tArea Areas[] = { { x0, y0, x3 - 1, y2 - 1, 2 },
-                          { x0, y2, x3 - 1, y5 - 1, 2 },
-                           { x0, y5, x3 - 1, y6 - 1, 2 },
-                           { x0, y6, x3 - 1, y8 - 1, 4 }
+        tArea Areas[] = { { x0, y0, x5 - 1, y2 - 1, 2 },
+                          { x0, y2, x5 - 1, y5 - 1, 2 },
+                          { x0, y5, x5 - 1, y6 - 1, 2 },
+                          { x0, y6, x5 - 1, y8 - 1, 4 }
                         };
         if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
            osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
@@ -636,22 +636,22 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
         }
      }
   // draw titlebar
-  osd->DrawRectangle(x0, y0, x3 - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
+  osd->DrawRectangle(x0, y0, x5 - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
   // draw rounded left corner of title bar
-  osd->DrawEllipse(x0, y0, x1 - 1, y1 - 1, clrTransparent, -2);
+  osd->DrawEllipse(x0, y0, x2 - 1, y1 - 1, clrTransparent, -2);
   // draw rounded right corner of title bar
-  osd->DrawEllipse(x2, y0, x3 - 1, y1 - 1, clrTransparent, -1);
+  osd->DrawEllipse(x3, y0, x5 - 1, y1 - 1, clrTransparent, -1);
   // draw gap + items + message area
-  osd->DrawRectangle(x0, y2, x3 - 1, y6 - 1, Theme.Color(clrBackground));
+  osd->DrawRectangle(x0, y2, x5 - 1, y6 - 1, Theme.Color(clrBackground));
   // draw colorbar
-  osd->DrawRectangle(x0, y6, x3 - 1, y8 - 1, Theme.Color(clrBackground));
-  osd->DrawRectangle(x0, y6, x1 - 1, y8 - 1, Theme.Color(clrButtonRedBg));
-  osd->DrawRectangle(x2, y6, x3 - 1, y8 - 1, Theme.Color(clrButtonBlueBg));
+  osd->DrawRectangle(x0, y6, x5 - 1, y8 - 1, Theme.Color(clrBackground));
+  osd->DrawRectangle(x0, y6, x2 - 1, y8 - 1, Theme.Color(clrButtonRedBg));
+  osd->DrawRectangle(x3, y6, x5 - 1, y8 - 1, Theme.Color(clrButtonBlueBg));
   SetButtons(NULL);
   // draw rounded left corner of colorbar
-  osd->DrawEllipse(x0, y7, x1 - 1, y8 - 1, clrTransparent, -3);
+  osd->DrawEllipse(x0, y7, x2 - 1, y8 - 1, clrTransparent, -3);
   // draw rounded right corner of colorbar
-  osd->DrawEllipse(x2, y7, x3 - 1, y8 - 1, clrTransparent, -4);
+  osd->DrawEllipse(x3, y7, x5 - 1, y8 - 1, clrTransparent, -4);
 }
 
 cSkinSoppalusikkaDisplayMenu::~cSkinSoppalusikkaDisplayMenu()
@@ -659,34 +659,34 @@ cSkinSoppalusikkaDisplayMenu::~cSkinSoppalusikkaDisplayMenu()
   delete osd;
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetScrollbar(void)
+void cSkinSoppalusikkaDisplayMenu::DrawScrollbar(int Total, int Offset, int Shown, int Top, int Height, bool CanScrollUp, bool CanScrollDown)
 {
   // check if scrollbar is needed
-  if (textScroller.CanScroll()) {
-     int h = bmArrowUp.Height();
-     int w = bmArrowUp.Width();
-     int yt = textScroller.Top();
-     int yb = yt + textScroller.Height();
-     int st = yt + h + Gap;
-     int sb = yb - h - Gap;
-     int tt = st + (sb - st) * textScroller.Offset() / textScroller.Total();
-     int tb = tt + (sb - st) * textScroller.Shown() / textScroller.Total();
-     int xl = x3 - w - Gap;
-      // draw up symbol
-     osd->DrawBitmap(xl, yt, bmArrowUp, Theme.Color(clrMenuScrollbarShown), Theme.Color(clrBackground));
+  if (Total > 0 && Total > Shown) {
+     int yt = Top;
+     int yb = yt + Height - 1;
+     int st = yt;
+     int sb = yb;
+     int tt = st + (sb - st + 1) * Offset / Total;
+     int tb = tt + (sb - st + 1) * Shown / Total;
+     int xl = x5 - Gap;
      // draw background of scrollbar
-     osd->DrawRectangle(xl, st, xl + w, sb, Theme.Color(clrMenuScrollbarTotal));
+     osd->DrawRectangle(xl, st, x5 - 1, sb, Theme.Color(clrMenuScrollbarTotal));
      // draw visible area of scrollbar
-     osd->DrawRectangle(xl, tt, xl + w, tb, Theme.Color(clrMenuScrollbarShown));
-      // draw down symbol
-     osd->DrawBitmap(xl, yb - h, bmArrowDown, Theme.Color(clrMenuScrollbarShown), Theme.Color(clrBackground));
+     osd->DrawRectangle(xl, tt, x5 - 1, tb, Theme.Color(clrMenuScrollbarShown));
      }
+}
+
+void cSkinSoppalusikkaDisplayMenu::SetTextScrollbar(void)
+{
+  if (textScroller.CanScroll())
+     DrawScrollbar(textScroller.Total(), textScroller.Offset(), textScroller.Shown(), textScroller.Top(), textScroller.Height(), textScroller.CanScrollUp(), textScroller.CanScrollDown());
 }
 
 void cSkinSoppalusikkaDisplayMenu::Scroll(bool Up, bool Page)
 {
   cSkinDisplayMenu::Scroll(Up, Page);
-  SetScrollbar();
+  SetTextScrollbar();
 }
 
 int cSkinSoppalusikkaDisplayMenu::MaxItems(void)
@@ -699,20 +699,22 @@ void cSkinSoppalusikkaDisplayMenu::Clear(void)
 {
   textScroller.Reset();
   // clear items area
-  osd->DrawRectangle(x0, y2, x3 - 1, y6 - 1, Theme.Color(clrBackground));
+  osd->DrawRectangle(x0, y2, x5 - 1, y6 - 1, Theme.Color(clrBackground));
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *Title)
 {
+  const cFont *font = cFont::GetFont(fontSml);
+  int w = Gap + font->Width("Wmm 07.07 07:07") + (cRecordControls::Active() ?  bmRecording.Width() : 0);
   // draw title
-  osd->DrawText(x1, y0, Title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x2 - x1, y2 - y0);
+  osd->DrawText(x2, y0, Title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *Red, const char *Green, const char *Yellow, const char *Blue)
 {
   const cFont *font = cFont::GetFont(fontSml);
-  int t0 = x1;
-  int t4 = x2;
+  int t0 = x2;
+  int t4 = x3;
   int t2 = t0 + (t4 - t0) / 2;
   int t1 = t0 + (t2 - t0) / 2;
   int t3 = t2 + (t4 - t2) / 2;
@@ -728,11 +730,11 @@ void cSkinSoppalusikkaDisplayMenu::SetMessage(eMessageType Type, const char *Tex
   // check if message
   if (Text) {
      // draw message
-     osd->DrawText(x1, y5, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), x2 - x1, y6 - y5, taCenter);
+     osd->DrawText(x2, y5, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), x4 - x2, y6 - y5, taCenter);
      }
   else {
      // clear message area
-     osd->DrawRectangle(x1, y5, x2 - 1, y6 - 1, Theme.Color(clrBackground));
+     osd->DrawRectangle(x2, y5, x4 - 1, y6 - 1, Theme.Color(clrBackground));
      }
 }
 
@@ -750,16 +752,14 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
      ColorBg = Theme.Color(clrBackground);
      }
   const cFont *font = cFont::GetFont(fontOsd);
-  // this should prevent menu flickering
-  osd->DrawRectangle(x0, y + lineHeight / 2, x0 + 1, y + lineHeight / 2 + 1, Theme.Color(clrMenuItemSelectable));
   // draw rounded left corner
-  osd->DrawEllipse(x0, y, x1 - 1, y + lineHeight - 1, ColorBg, 7);
+  osd->DrawEllipse(x1, y, x2 - 1, y + lineHeight - 1, ColorBg, 7);
   // draw item
   for (int i = 0; i < MaxTabs; i++) {
       const char *s = GetTabbedText(Text, i);
       if (s) {
          char buffer[9];
-         int xt = x1 + Tab(i);
+         int xt = x2 + Tab(i);
          bool iseventinfo = false;
          bool isnewrecording = false;
          bool isprogressbar = false;
@@ -808,7 +808,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             int evx = xt + Gap;
             const char *p = s;
             // draw background
-            osd->DrawRectangle(xt, y, x2, y + lineHeight - 1, ColorBg);
+            osd->DrawRectangle(xt, y, x3, y + lineHeight - 1, ColorBg);
             // draw symbols
             for (; *p; ++p) {
                 switch (*p) {
@@ -846,7 +846,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             }
          else if (isnewrecording) {
             // draw text
-            osd->DrawText(xt, y, buffer, ColorFg, ColorBg, font, x2 - xt);
+            osd->DrawText(xt, y, buffer, ColorFg, ColorBg, font, x3 - xt);
             // draw symbol
             osd->DrawBitmap(xt + font->Width(buffer), y + (lineHeight - bmRecordingNew.Height()) / 2, bmRecordingNew, ColorFg, ColorBg);
             }
@@ -871,7 +871,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             int py4 = py5 - SmallGap;
             int py3 = py4 - Gap;
             // draw background
-            osd->DrawRectangle(xt, y, x2, y + lineHeight - 1, ColorBg);
+            osd->DrawRectangle(xt, y, x3, y + lineHeight - 1, ColorBg);
             // draw progressbar
             osd->DrawRectangle(px0, py0, px1, py5, ColorFg);
             osd->DrawRectangle(px4, py0, px5, py5, ColorFg);
@@ -881,16 +881,21 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             }
          else {
             // draw text
-            osd->DrawText(xt, y, s, ColorFg, ColorBg, font, x2 - xt);
+            osd->DrawText(xt, y, s, ColorFg, ColorBg, font, x3 - xt);
             }
          }
       if (!Tab(i + 1))
          break;
       }
   // draw rounded right corner
-  osd->DrawEllipse(x2, y, x3 - 1, y + lineHeight - 1, ColorBg, 5);
+  osd->DrawEllipse(x3, y, x4 - 1, y + lineHeight - 1, ColorBg, 5);
   //set editable width
-  SetEditableWidth(x2 - x1 - Tab(1));
+  SetEditableWidth(x3 - x2 - Tab(1));
+}
+
+void cSkinSoppalusikkaDisplayMenu::SetScrollbar(int Total, int Offset)
+{
+  DrawScrollbar(Total, Offset, MaxItems(), y2, MaxItems() * lineHeight, Offset > 0, Offset + MaxItems() < Total);
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
@@ -903,8 +908,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   cTextScroller ts;
   cString date;
   int y = y3;
-  int xs = x1;
-  int wsb = bmArrowUp.Width() + 2 * Gap;
+  int xs = x2;
   // check if event has timer
   if (Event->HasTimer()) {
      // draw timer symbol
@@ -926,12 +930,12 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   y = y4;
   // draw event date / duration string
   date = cString::sprintf("%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, *date, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, *date, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // check if event has VPS
   if (Event->Vps() && Event->Vps() != Event->StartTime()) {
      cString buffer = cString::sprintf("%s: %s", tr("VPS"), *Event->GetVpsString());
-     ts.Set(osd, x1, y, x2 - x1, y5 - y, *buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     ts.Set(osd, x2, y, x3 - x2, y5 - y, *buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
      y += ts.Height();
      }
   // draw event languages
@@ -969,13 +973,13 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      if (numsubtitle > 0)
         info = cString::sprintf("%s%s%s: %s", *info ? *info : "", *info ? "\n" : "", trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      if (*info) {
-        ts.Set(osd, x1, y, x2 - x1, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+        ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
         y += ts.Height();
         }
      }
   y += smlfont->Height();
   // draw event title
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
   // draw recording short text and description
   if (isempty(Event->Description())) {
@@ -983,21 +987,21 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      // check if short text
      if (!isempty(Event->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Event->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
-        SetScrollbar();
+        textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Event->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        SetTextScrollbar();
         }
      }
   else {
      // check if short text
      if (!isempty(Event->ShortText())) {
         // draw short text
-        ts.Set(osd, x1, y, x2 - x1, y5 - y, Event->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osd, x2, y, x3 - x2, y5 - y, Event->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Event->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
-     SetScrollbar();
+     textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Event->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     SetTextScrollbar();
      }
 }
 
@@ -1010,12 +1014,11 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
   int y = y3;
-  int wsb = bmArrowUp.Width() + 2 * Gap;
   cTextScroller ts;
   char t[32];
   // draw recording date string
   snprintf(t, sizeof(t), "%s  %s", *DateString(Recording->start), *TimeString(Recording->start));
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // draw additional information
   cString info = cString::sprintf("%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
@@ -1058,14 +1061,14 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      if (numsubtitle > 0)
         info = cString::sprintf("%s\n%s: %s", *info, trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      }
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   y += smlfont->Height();
   // draw recording title
   const char *Title = Info->Title();
   if (isempty(Title))
      Title = Recording->Name();
-  ts.Set(osd, x1, y, x2 - x1, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
   // draw recording short text and description
   if (isempty(Info->Description())) {
@@ -1073,36 +1076,35 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Info->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
-        SetScrollbar();
+        textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Info->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        SetTextScrollbar();
         }
      }
   else {
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text
-        ts.Set(osd, x1, y, x2 - x1, y5 - y, Info->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osd, x2, y, x3 - x2, y5 - y, Info->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, x1, y, x3 - x1 - wsb, y5 - y, Info->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
-     SetScrollbar();
+     textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Info->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     SetTextScrollbar();
      }
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetText(const char *Text, bool FixedFont)
 {
-  int wsb = bmArrowUp.Width() + 2 * Gap;
   // draw text
-  textScroller.Set(osd, x1, y3, x3 - x1 - wsb, y5 - y3, Text, GetTextAreaFont(FixedFont), Theme.Color(clrMenuText), Theme.Color(clrBackground));
-  SetScrollbar();
+  textScroller.Set(osd, x2, y3, x3 - x2, y5 - y3, Text, GetTextAreaFont(FixedFont), Theme.Color(clrMenuText), Theme.Color(clrBackground));
+  SetTextScrollbar();
 }
 
 int cSkinSoppalusikkaDisplayMenu::GetTextAreaWidth(void) const
 {
   // max text area width
-  return x2 - x1;
+  return x3 - x2;
 }
 
 const cFont *cSkinSoppalusikkaDisplayMenu::GetTextAreaFont(bool FixedFont) const
@@ -1116,12 +1118,20 @@ void cSkinSoppalusikkaDisplayMenu::Flush(void)
   cString date = DayDateTime();
   const cFont *font = cFont::GetFont(fontSml);
   int w = font->Width("Wmm 07.07 07:07");
-  int xl = x2 - w;
-  // update date string on titlebar
-  osd->DrawText(x2 - w, y0, date, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, w, y2 - y0, taRight);
-  // draw recording symbol
-  xl -= bmRecording.Width();
-  osd->DrawBitmap(xl, y0 + (y2 - y0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(clrMenuTitleBg), Theme.Color(cRecordControls::Active() ? clrMenuTitleFg : clrMenuTitleBg));
+  bool rec = cRecordControls::Active();
+  if (lastRec != rec) {
+     int xl = x3 - w - bmRecording.Width();
+     // draw safety margin
+     osd->DrawRectangle(xl - Gap, y0, xl - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
+     // draw recording symbol
+     osd->DrawBitmap(xl, y0 + (y2 - y0 - bmRecording.Height()) / 2, bmRecording, Theme.Color(clrMenuTitleBg), Theme.Color(rec ? clrMenuTitleFg : clrMenuTitleBg));
+     lastRec = rec;
+     }
+  if (!*lastDate || strcmp(date, lastDate)) {
+     // update date string on titlebar
+     osd->DrawText(x3 - w, y0, date, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, w, y2 - y0, taRight);
+     lastDate = date;
+     }
   osd->Flush();
 }
 

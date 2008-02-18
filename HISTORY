@@ -162,3 +162,13 @@ VDR Skin 'Soppalusikka' Revision History
 - Added Italian translation (Thanks to Gringo).
 - Added '-Wno-parentheses' to the compiler options.
 - Mapped 'kInfo' as help key in setup menu.
+
+2008-02-18: Version 1.1.5
+
+- Updated for vdr-1.5.15.
+- Replaced asprinf with cString.
+- Fixed 'eventtimer' symbol (Thanks to Michaël Nival).
+- Updated French translation (Thanks to Michaël Nival).
+- Added 'FLSH' SVDRP command for logo cache flushing.
+- Removed the "Identify channel by: name/data" setup option
+  and increased the default logo cache size to 100.

@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: skinsoppalusikka 1.1.4\n"
+"Project-Id-Version: skinsoppalusikka 1.1.5\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2008-01-20 01:48+0200\n"
+"POT-Creation-Date: 2008-02-18 00:15+0200\n"
 "PO-Revision-Date: 2007-08-12 22:47+0300\n"
 "Last-Translator: Jörg Bornkessel\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -62,21 +62,6 @@ msgid ""
 "Define whether channels logos are shown in channel info menu.\n"
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
-msgstr ""
-
-msgid "Identify channel by"
-msgstr "Kanal-Identifikation durch"
-
-msgid "name"
-msgstr "Name"
-
-msgid "data"
-msgstr "ID"
-
-msgid ""
-"Define the channel identification method:\n"
-"\n"
-"YLE2 or T-8438-4097-33"
 msgstr ""
 
 msgid "Channel logo cache size"

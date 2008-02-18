@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: skinsoppalusikka 1.1.4\n"
+"Project-Id-Version: skinsoppalusikka 1.1.5\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2008-01-20 01:48+0200\n"
+"POT-Creation-Date: 2008-02-18 00:15+0200\n"
 "PO-Revision-Date: 2007-08-12 18:20+0300\n"
 "Last-Translator: Rolf Ahrenberg\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -68,24 +68,6 @@ msgstr ""
 "M‰‰rittele, n‰ytet‰‰nkˆ kanavalogot kanavatietovalikossa.\n"
 "\n"
 "Vain XPM-formaatti on tuettu: 64x48 pikseli‰ ja max. 13 v‰ri‰."
-
-msgid "Identify channel by"
-msgstr "Tunnista kanava"
-
-msgid "name"
-msgstr "nimest‰"
-
-msgid "data"
-msgstr "tiedoista"
-
-msgid ""
-"Define the channel identification method:\n"
-"\n"
-"YLE2 or T-8438-4097-33"
-msgstr ""
-"M‰‰rittele kanavan tunnistustapa:\n"
-"\n"
-"YLE2 tai T-8438-4097-33"
 
 msgid "Channel logo cache size"
 msgstr "V‰limuistin koko kanavalogoille"

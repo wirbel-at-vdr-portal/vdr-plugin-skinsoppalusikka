@@ -14,11 +14,11 @@
 #include "logo.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10510
-#error "VDR-1.5.10 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10515
+#error "VDR-1.5.15 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.1.4";
+static const char VERSION[]     = "1.1.5";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -158,7 +158,6 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
   else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
   else if (!strcasecmp(Name, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(Value);
   else if (!strcasecmp(Name, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(Value);
-  else if (!strcasecmp(Name, "UseChannelId"))    SoppalusikkaConfig.usechannelid    = atoi(Value);
   else return false;
 
   return true;
@@ -172,13 +171,19 @@ bool cPluginSkinSoppalusikka::Service(const char *Id, void *Data)
 
 const char **cPluginSkinSoppalusikka::SVDRPHelpPages(void)
 {
-  // return help text for SVDRP commands this plugin implements
-  return NULL;
+  static const char *HelpPages[] = {
+    "FLSH\n"
+    "    Flush logo cache."
+    };
+  return HelpPages;
 }
 
 cString cPluginSkinSoppalusikka::SVDRPCommand(const char *Command, const char *Option, int &ReplyCode)
 {
-  // process SVDRP commands this plugin implements
+  if (strcasecmp(Command, "FLSH") == 0) {
+     SoppalusikkaLogoCache.Flush();
+     return cString("Logo cache flushed");
+     }
   return NULL;
 }
 
@@ -218,9 +223,6 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
   help.Append(tr("Define whether channels logos are shown in channel info menu.\n\nOnly XPM format is accepted: 64x48 pixel and max. 13 colors."));
 
   if (data.showlogo) {
-     Add(new cMenuEditBoolItem(tr("Identify channel by"), &data.usechannelid, tr("name"), tr("data")));
-     help.Append(tr("Define the channel identification method:\n\nYLE2 or T-8438-4097-33"));
-
      Add(new cMenuEditIntItem( tr("Channel logo cache size"), &data.cachesize, 0, 1000));
      help.Append(tr("Define the cache size for channel logos.\n\nThe bigger cache results faster zapping."));
     }
@@ -241,7 +243,6 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
   SetupStore("ShowVPS",         SoppalusikkaConfig.showvps);
   SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
-  SetupStore("UseChannelId",    SoppalusikkaConfig.usechannelid);
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
 }
