@@ -154,10 +154,10 @@ THEME_CLR(Theme, clrReplayProgressSelected, 0xFFFF0000);
 THEME_CLR(Theme, clrReplayProgressMark,     0xFF000000);
 THEME_CLR(Theme, clrReplayProgressCurrent,  0xFFFF0000);
 
-#define TinyGap 1
-#define SmallGap 2
-#define Gap 4
-#define BigGap 8
+#define TinyGap   1
+#define SmallGap  2
+#define Gap       4
+#define BigGap    8
 #define Roundness 10
 
 // --- cSkinSoppalusikkaDisplayChannel --------------------------------------------
@@ -664,16 +664,17 @@ void cSkinSoppalusikkaDisplayMenu::DrawScrollbar(int Total, int Offset, int Show
   // check if scrollbar is needed
   if (Total > 0 && Total > Shown) {
      int yt = Top;
-     int yb = yt + Height - 1;
+     int yb = yt + Height;
      int st = yt;
      int sb = yb;
-     int tt = st + (sb - st + 1) * Offset / Total;
-     int tb = tt + (sb - st + 1) * Shown / Total;
+     int th = max(int((sb - st) * double(Shown) / Total + 0.5), Gap);
+     int tt = min(int(st + (sb - st) * double(Offset) / Total + 0.5), sb - th);
+     int tb = min(tt + th, sb);
      int xl = x5 - Gap;
      // draw background of scrollbar
-     osd->DrawRectangle(xl, st, x5 - 1, sb, Theme.Color(clrMenuScrollbarTotal));
+     osd->DrawRectangle(xl, st, x5 - 1, sb - 1, Theme.Color(clrMenuScrollbarTotal));
      // draw visible area of scrollbar
-     osd->DrawRectangle(xl, tt, x5 - 1, tb, Theme.Color(clrMenuScrollbarShown));
+     osd->DrawRectangle(xl, tt, x5 - 1, tb - 1, Theme.Color(clrMenuScrollbarShown));
      }
 }
 
@@ -1145,6 +1146,7 @@ private:
   int lineHeight;
   bool drawdate;
   bool modeonly;
+  cString lastDate;
 public:
   cSkinSoppalusikkaDisplayReplay(bool ModeOnly);
   virtual ~cSkinSoppalusikkaDisplayReplay();
@@ -1409,6 +1411,7 @@ void cSkinSoppalusikkaDisplayReplay::SetJump(const char *Jump)
   else {
      // allow date updating
      drawdate = true;
+     lastDate = NULL;
      }
   // draw jump prompt
   osd->DrawText(x2, y3, Jump, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontOsd), x3 - x2, y5 - y3, taCenter);
@@ -1438,15 +1441,19 @@ void cSkinSoppalusikkaDisplayReplay::SetMessage(eMessageType Type, const char *T
      osd->RestoreRegion();
      // allow date updating
      drawdate = true;
+     lastDate = NULL;
      }
 }
 
 void cSkinSoppalusikkaDisplayReplay::Flush(void)
 {
-  // update date
   if (drawdate && !modeonly) {
      cString date = DayDateTime();
-     osd->DrawText(x2, y3, date, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontSml), x3 - x2, y5 - y3, taCenter);
+     if (!*lastDate || strcmp(date, lastDate)) {
+        // update date
+        osd->DrawText(x2, y3, date, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontSml), x3 - x2, y5 - y3, taCenter);
+        lastDate = date;
+        }
      }
   osd->Flush();
 }

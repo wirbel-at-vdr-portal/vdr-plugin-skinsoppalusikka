@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: skinsoppalusikka 1.1.5\n"
+"Project-Id-Version: skinsoppalusikka 1.6.0\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
 "POT-Creation-Date: 2008-02-18 00:15+0200\n"
-"PO-Revision-Date: 2007-12-26 20:39+0100\n"
+"PO-Revision-Date: 2008-02-22 01:31+0100\n"
 "Last-Translator: Gringo <vdr-italian@tiscali.it>\n"
 "Language-Team: <vdr@linuxtv.org>\n"
 "MIME-Version: 1.0\n"
@@ -30,30 +30,33 @@ msgid ""
 "\n"
 "Required by Truetype fonts and anti-aliasing."
 msgstr ""
+"Definisce se è preferita un'area OSD singola a 8bpp.\n"
+"\n"
+"Richiesto dai caratteri Truetype e anti-aliasing."
 
 msgid "Show auxiliary information"
 msgstr "Mostra informazione ausiliare"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr ""
+msgstr "Definisce se qualsiasi informazione ausiliare è mostrata nel menu Informazioni."
 
 msgid "Show progressbar"
 msgstr "Mostra barra avanzamento"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr ""
+msgstr "Definisce se una barra di avanzamento è mostrata nel menu Programmi."
 
 msgid "Show symbols"
 msgstr "Mostra simboli"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr ""
+msgstr "Definisce se i simboli sono mostrati nei menu Registrazioni e Programmi."
 
 msgid "Show VPS in channel info"
 msgstr "Mostra VPS nelle info del canale"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr ""
+msgstr "Definisce se l'informazione VPS è mostrata nel menu informazioni canale."
 
 msgid "Show channel logos"
 msgstr "Mostra loghi canali"
@@ -63,6 +66,9 @@ msgid ""
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
+"Definisce  se i loghi canale sono mostrati nel menu informazioni del canale.\n"
+"\n"
+"E' accettato solo il formato XPM: 64x48 pixel e massimo 13 colori."
 
 msgid "Channel logo cache size"
 msgstr "Dimensione cache logo canale"
@@ -72,6 +78,9 @@ msgid ""
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
+"Definisce la dimensione della cache per i loghi canale.\n"
+"\n"
+"Una cache più grande comporta maggior velocità di zapping."
 
 msgid "Flushing channel logo cache..."
 msgstr "Pulizia cache logo canale..."
@@ -80,7 +89,7 @@ msgid "Help"
 msgstr "Aiuto"
 
 msgid "*** Invalid Channel ***"
-msgstr "*** Canale non valido ***"
+msgstr "*** Canale NON valido ***"
 
 msgid "min"
 msgstr "min"
@@ -107,7 +116,7 @@ msgid "Volume"
 msgstr "Volume"
 
 msgid "Stereo"
-msgstr "Estereo"
+msgstr "Stereo"
 
 msgid "Left"
 msgstr "Sinistra"

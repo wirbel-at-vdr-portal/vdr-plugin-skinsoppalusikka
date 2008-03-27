@@ -172,3 +172,11 @@ VDR Skin 'Soppalusikka' Revision History
 - Added 'FLSH' SVDRP command for logo cache flushing.
 - Removed the "Identify channel by: name/data" setup option
   and increased the default logo cache size to 100.
+- Improved performance.
+
+2008-03-27: Version 1.6.0
+
+- Updated for vdr-1.6.0.
+- Updated Italian translation (Thanks to Gringo).
+- Fixed the scrollbar height calculation.
+- Improved performance.
