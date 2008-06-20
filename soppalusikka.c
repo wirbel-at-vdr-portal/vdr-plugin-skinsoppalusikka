@@ -753,6 +753,8 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
      ColorBg = Theme.Color(clrBackground);
      }
   const cFont *font = cFont::GetFont(fontOsd);
+  // this should prevent menu flickering
+  osd->DrawRectangle(x1, y + lineHeight / 2, x1 + 1, y + lineHeight / 2 + 1, Theme.Color(clrMenuItemSelectable));
   // draw rounded left corner
   osd->DrawEllipse(x1, y, x2 - 1, y + lineHeight - 1, ColorBg, 7);
   // draw item

@@ -130,7 +130,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 2008-01-20: Version 1.0.6
 
-- Added Italian translation (Thanks to Gringo).
+- Added Italian translation (Thanks to Diego Pierotto).
 - Added '-Wno-parentheses' to the compiler options.
 
 2007-08-14: Version 1.1.0
@@ -159,7 +159,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 2008-01-20: Version 1.1.4
 
-- Added Italian translation (Thanks to Gringo).
+- Added Italian translation (Thanks to Diego Pierotto).
 - Added '-Wno-parentheses' to the compiler options.
 - Mapped 'kInfo' as help key in setup menu.
 
@@ -177,6 +177,13 @@ VDR Skin 'Soppalusikka' Revision History
 2008-03-27: Version 1.6.0
 
 - Updated for vdr-1.6.0.
-- Updated Italian translation (Thanks to Gringo).
+- Updated Italian translation (Thanks to Diego Pierotto).
 - Fixed the scrollbar height calculation.
 - Improved performance.
+
+2008-06-20: Version 1.6.1
+
+- Updated Italian translation (Thanks to Diego Pierotto).
+- Added Russian translation (Thanks to Alexander Gross).
+- Readded a hack to prevent menu flickering (Thanks to
+  Harri Kukkonen for reporting this one).

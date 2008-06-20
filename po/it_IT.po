@@ -2,16 +2,16 @@
 # Copyright (C) 2007 Rolf Ahrenberg
 # This file is distributed under the same license as the skinsoppalusikka package.
 # Luis Palacios
-# Gringo <vdr-italian@tiscali.it>
+# Diego Pierotto <vdr-italian@tiscali.it>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: skinsoppalusikka 1.6.0\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
 "POT-Creation-Date: 2008-02-18 00:15+0200\n"
-"PO-Revision-Date: 2008-02-22 01:31+0100\n"
-"Last-Translator: Gringo <vdr-italian@tiscali.it>\n"
-"Language-Team: <vdr@linuxtv.org>\n"
+"PO-Revision-Date: 2008-03-30 17:05+0100\n"
+"Last-Translator: Diego Pierotto <vdr-italian@tiscali.it>\n"
+"Language-Team:  <vdr@linuxtv.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgid "Soppalusikka skin"
 msgstr "Interfaccia Soppalusikka"
 
 msgid "Button$Flush cache"
-msgstr "Pulisci cache"
+msgstr "Svuota cache"
 
 msgid "Use single area (8bpp)"
 msgstr "Utilizza area singola (8bpp)"
@@ -30,33 +30,33 @@ msgid ""
 "\n"
 "Required by Truetype fonts and anti-aliasing."
 msgstr ""
-"Definisce se è preferita un'area OSD singola a 8bpp.\n"
+"Definisci se è preferita un'area OSD singola a 8bpp.\n"
 "\n"
 "Richiesto dai caratteri Truetype e anti-aliasing."
 
 msgid "Show auxiliary information"
-msgstr "Mostra informazione ausiliare"
+msgstr "Mostra info ausiliare"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr "Definisce se qualsiasi informazione ausiliare è mostrata nel menu Informazioni."
+msgstr "Definisci se qualsiasi informazione ausiliare viene mostrata nei menu informazioni."
 
 msgid "Show progressbar"
 msgstr "Mostra barra avanzamento"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr "Definisce se una barra di avanzamento è mostrata nel menu Programmi."
+msgstr "Definisci se una barra di avanzamento viene mostrata nel menu Programmi."
 
 msgid "Show symbols"
 msgstr "Mostra simboli"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr "Definisce se i simboli sono mostrati nei menu Registrazioni e Programmi."
+msgstr "Definisci se i simboli vengono mostrati nei menu Registrazioni e Programmi."
 
 msgid "Show VPS in channel info"
-msgstr "Mostra VPS nelle info del canale"
+msgstr "Mostra VPS nelle info canale"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr "Definisce se l'informazione VPS è mostrata nel menu informazioni canale."
+msgstr "Definisci se l'informazione VPS viene mostrata nel menu informazioni canale."
 
 msgid "Show channel logos"
 msgstr "Mostra loghi canali"
@@ -66,24 +66,24 @@ msgid ""
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
-"Definisce  se i loghi canale sono mostrati nel menu informazioni del canale.\n"
+"Definisci se i loghi canale vengono mostrati nel menu informazioni del canale.\n"
 "\n"
 "E' accettato solo il formato XPM: 64x48 pixel e massimo 13 colori."
 
 msgid "Channel logo cache size"
-msgstr "Dimensione cache logo canale"
+msgstr "Dim. cache loghi canali"
 
 msgid ""
 "Define the cache size for channel logos.\n"
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
-"Definisce la dimensione della cache per i loghi canale.\n"
+"Definisci la dimensione della cache per i loghi canale.\n"
 "\n"
 "Una cache più grande comporta maggior velocità di zapping."
 
 msgid "Flushing channel logo cache..."
-msgstr "Pulizia cache logo canale..."
+msgstr "Pulizia cache loghi canali..."
 
 msgid "Help"
 msgstr "Aiuto"
@@ -107,7 +107,7 @@ msgid "Lifetime"
 msgstr "Durata"
 
 msgid "Auxiliary information"
-msgstr "Informazione ausiliare"
+msgstr "Info ausiliare"
 
 msgid "Mute"
 msgstr "Muto"
@@ -126,3 +126,4 @@ msgstr "Destra"
 
 msgid "Soppalusikka"
 msgstr "Soppalusikka"
+
