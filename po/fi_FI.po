@@ -12,77 +12,77 @@ msgstr ""
 "Last-Translator: Rolf Ahrenberg\n"
 "Language-Team: <vdr@linuxtv.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Soppalusikka skin"
 msgstr "Soppalusikka-ulkoasu"
 
 msgid "Button$Flush cache"
-msgstr "Tyhjenn‰"
+msgstr "Tyhjenn√§"
 
 msgid "Use single area (8bpp)"
-msgstr "K‰yt‰ yksitt‰ist‰ kuva-aluetta (8bpp)"
+msgstr "K√§yt√§ yksitt√§ist√§ kuva-aluetta (8bpp)"
 
 msgid ""
 "Define whether a single 8bpp OSD area is preferred.\n"
 "\n"
 "Required by Truetype fonts and anti-aliasing."
 msgstr ""
-"M‰‰rittele, yritet‰‰nkˆ k‰ytt‰‰ yksitt‰ist‰ 8bpp kuva-aluetta.\n"
+"M√§√§rittele, yritet√§√§nk√∂ k√§ytt√§√§ yksitt√§ist√§ 8bpp kuva-aluetta.\n"
 "\n"
-"Truetype-kirjasimet ja reunan pehmennys vaativat t‰m‰n asetuksen."
+"Truetype-kirjasimet ja reunan pehmennys vaativat t√§m√§n asetuksen."
 
 msgid "Show auxiliary information"
-msgstr "N‰yt‰ lis‰tiedot"
+msgstr "N√§yt√§ lis√§tiedot"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr "M‰‰rittele, n‰ytet‰‰nkˆ lis‰tietoja tallenteiden ja tapahtumien tiedoissa."
+msgstr "M√§√§rittele, n√§ytet√§√§nk√∂ lis√§tietoja tallenteiden ja tapahtumien tiedoissa."
 
 msgid "Show progressbar"
-msgstr "N‰yt‰ aikajana"
+msgstr "N√§yt√§ aikajana"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr "M‰‰rittele, n‰ytet‰‰nkˆ aikajana ohjelmistovalikossa."
+msgstr "M√§√§rittele, n√§ytet√§√§nk√∂ aikajana ohjelmistovalikossa."
 
 msgid "Show symbols"
-msgstr "N‰yt‰ symbolit"
+msgstr "N√§yt√§ symbolit"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr "M‰‰rittele, n‰ytet‰‰nkˆ symboleita tallenne- ja ohjelmistovalikossa."
+msgstr "M√§√§rittele, n√§ytet√§√§nk√∂ symboleita tallenne- ja ohjelmistovalikossa."
 
 msgid "Show VPS in channel info"
-msgstr "N‰yt‰ VPS kanavatiedossa"
+msgstr "N√§yt√§ VPS kanavatiedossa"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr "M‰‰rittele, n‰ytet‰‰nkˆ VPS-tiedot kanavatietovalikossa."
+msgstr "M√§√§rittele, n√§ytet√§√§nk√∂ VPS-tiedot kanavatietovalikossa."
 
 msgid "Show channel logos"
-msgstr "N‰yt‰ kanavalogot"
+msgstr "N√§yt√§ kanavalogot"
 
 msgid ""
 "Define whether channels logos are shown in channel info menu.\n"
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
-"M‰‰rittele, n‰ytet‰‰nkˆ kanavalogot kanavatietovalikossa.\n"
+"M√§√§rittele, n√§ytet√§√§nk√∂ kanavalogot kanavatietovalikossa.\n"
 "\n"
-"Vain XPM-formaatti on tuettu: 64x48 pikseli‰ ja max. 13 v‰ri‰."
+"Vain XPM-formaatti on tuettu: 64x48 pikseli√§ ja max. 13 v√§ri√§."
 
 msgid "Channel logo cache size"
-msgstr "V‰limuistin koko kanavalogoille"
+msgstr "V√§limuistin koko kanavalogoille"
 
 msgid ""
 "Define the cache size for channel logos.\n"
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
-"M‰‰rittele kanavalogojen v‰limuistin koko.\n"
+"M√§√§rittele kanavalogojen v√§limuistin koko.\n"
 "\n"
-"Isompi v‰limuisti nopeuttaa kanavanvaihtoja."
+"Isompi v√§limuisti nopeuttaa kanavanvaihtoja."
 
 msgid "Flushing channel logo cache..."
-msgstr "Tyhjennet‰‰n v‰limuistia..."
+msgstr "Tyhjennet√§√§n v√§limuistia..."
 
 msgid "Help"
 msgstr "Opaste"
@@ -103,16 +103,16 @@ msgid "Priority"
 msgstr "Prioriteetti"
 
 msgid "Lifetime"
-msgstr "Elinik‰"
+msgstr "Elinik√§"
 
 msgid "Auxiliary information"
-msgstr "Lis‰tiedot"
+msgstr "Lis√§tiedot"
 
 msgid "Mute"
 msgstr "Mykistetty"
 
 msgid "Volume"
-msgstr "ƒ‰nenvoimakkuus"
+msgstr "√Ñ√§nenvoimakkuus"
 
 msgid "Stereo"
 msgstr "Stereo"

@@ -9,7 +9,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added command line option (-l) to specify channel logo directory.
 - Renamed default theme to Blueberry.
-- Modified to compile with thread poisoning patch (Thanks to Ville Skyttä).
+- Modified to compile with thread poisoning patch (Thanks to Ville SkyttÃ¤).
 
 2006-03-08: Version 0.0.3
 
@@ -32,7 +32,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 2006-03-19: Version 0.0.5
 
-- Updated German translation (Thanks to Thomas Günther).
+- Updated German translation (Thanks to Thomas GÃ¼nther).
 - Added option to show/hide auxiliary information of recordings.
 
 2006-03-26: Version 0.0.6
@@ -40,9 +40,9 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated for vdr-1.3.45.
 - Fixed typos in audio tracks code (Thanks to Sebastian Kemper).
 - Added Spanish translation (Thanks to Luis Palacios).
-- Fixed compiling on AMD64 platform (Thanks to Mirco Günther and
-  Jörg Bornkessel).
-- Fixed date string in title bar (Thanks to Frank Krömmelbein for reporting
+- Fixed compiling on AMD64 platform (Thanks to Mirco GÃ¼nther and
+  JÃ¶rg Bornkessel).
+- Fixed date string in title bar (Thanks to Frank KrÃ¶mmelbein for reporting
   this one).
 - Added DXR3 logos from the enElchi-0.7.1 skin.
 - Modified tags stripping of the auxiliary information field.
@@ -62,7 +62,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 2006-04-09: Version 0.1.0
 
-- Updated German translation (Thanks to Jörg Bornkessel).
+- Updated German translation (Thanks to JÃ¶rg Bornkessel).
 - Updated Estonian translation (Thanks to Arthur Konovalov).
 - Updated Spanish translation (Thanks to Luis Palacios).
 - Added missing include for isdigit().
@@ -91,11 +91,11 @@ VDR Skin 'Soppalusikka' Revision History
 
 2006-04-23: Version 0.4.0
 
-- Fixed VPS event times in channel info (Thanks to Frank Krömmelbein
+- Fixed VPS event times in channel info (Thanks to Frank KrÃ¶mmelbein
   for reporting this one).
 - Added new setup option to show/hide VPS time in channel info.
 - Modified coordinates in channel info window.
-- Added STRIP option for Makefile (Thanks to Ville Skyttä).
+- Added STRIP option for Makefile (Thanks to Ville SkyttÃ¤).
 - Modified APIVERSION code in Makefile.
 
 2006-04-30: Version 1.0.0
@@ -105,7 +105,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 2006-06-06: Version 1.0.1
 
-- Added French translation (Thanks to Michaël Nival).
+- Added French translation (Thanks to MichaÃ«l Nival).
 - Added support for the pin plugin.
 
 2006-09-17: Version 1.0.2
@@ -122,7 +122,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Logo update (Thanks to Mikko Salo).
 - Added setup option to use a single 8 bpp OSD area.
 - Updated EPGSearch auxiliary information parsing.
-- Added Hungarian translation (Thanks to Füley István).
+- Added Hungarian translation (Thanks to FÃ¼ley IstvÃ¡n).
 
 2007-09-12: Version 1.0.5
 
@@ -167,8 +167,8 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-1.5.15.
 - Replaced asprinf with cString.
-- Fixed 'eventtimer' symbol (Thanks to Michaël Nival).
-- Updated French translation (Thanks to Michaël Nival).
+- Fixed 'eventtimer' symbol (Thanks to MichaÃ«l Nival).
+- Updated French translation (Thanks to MichaÃ«l Nival).
 - Added 'FLSH' SVDRP command for logo cache flushing.
 - Removed the "Identify channel by: name/data" setup option
   and increased the default logo cache size to 100.
@@ -187,3 +187,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Added Russian translation (Thanks to Alexander Gross).
 - Readded a hack to prevent menu flickering (Thanks to
   Harri Kukkonen for reporting this one).
+
+2008-xx-xx: Version 1.6.2
+
+- Converted HISTORY and fi_FI.po to UTF-8.
+- Updated Italian translation (Thanks to Diego Pierotto).
