@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: skinsoppalusikka 1.6.0\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2008-02-18 00:15+0200\n"
+"POT-Creation-Date: 2008-08-24 22:44+0300\n"
 "PO-Revision-Date: 2008-04-06 22:24+0200\n"
 "Last-Translator: Alexander Gross <Bikalexander@gmail.com>\n"
 "Language-Team: Russian <de@li.org>\n"
@@ -57,6 +57,18 @@ msgstr "Показать VPS"
 
 msgid "Define whether VPS information is shown in channel info menu."
 msgstr "Включает или выключает отображение VPS информации в меню информации канала"
+
+msgid "Show event duration in channel info"
+msgstr ""
+
+msgid "remaining"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "Define whether remaining or total event duration is shown in channel info menu."
+msgstr ""
 
 msgid "Show channel logos"
 msgstr "Показать логотипы каналов"
@@ -126,4 +138,3 @@ msgstr "Справа"
 
 msgid "Soppalusikka"
 msgstr "Soppalusikka"
-

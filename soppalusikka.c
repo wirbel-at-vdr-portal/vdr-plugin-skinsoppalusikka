@@ -458,13 +458,19 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      int total = e->Duration();
      int now = (time(NULL) - e->StartTime());
      if ((now < total) && ((now / 60) > 0))
-        s = cString::sprintf("  %d / %d %s", now / 60, total / 60, tr("min"));
+        s = cString::sprintf("  %d / %d %s", now / 60, (SoppalusikkaConfig.showduration ? total : (total - now)) / 60, tr("min"));
      else
         s = cString::sprintf("  %d %s", total / 60, tr("min"));
      // draw start time
      osd->DrawText(xb1, yb0, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb1 - yb0);
      // draw title
      osd->DrawText(xb4, yb0, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb1 - yb0);
+     // draw timer symbol
+     if (e->HasTimer()) {
+        cString space("  ");
+        osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb0, space, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb1 - yb0);
+        osd->DrawBitmap(xb5 - cFont::GetFont(fontSml)->Width(s) - bmEventTimer.Width(), yb0 + (yb1 - yb0 - bmEventTimer.Height()) / 2, bmEventTimer, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground));
+        }
      // draw duration
      osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
      // draw vps time
@@ -496,8 +502,14 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      osd->DrawText(xb1, yb2, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb3 - yb2);
      // draw title
      osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb3 - yb2);
+     // draw timer symbol
+     if (e->HasTimer()) {
+        cString space("  ");
+        osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb2, space, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb3 - yb2);
+        osd->DrawBitmap(xb5 - cFont::GetFont(fontSml)->Width(s) - bmEventTimer.Width(), yb2 + (yb3 - yb2 - bmEventTimer.Height()) / 2, bmEventTimer, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground));
+        }
      // draw duration
-     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(*s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
+     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
      // draw vps time - only if skin dependent small fonts
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */

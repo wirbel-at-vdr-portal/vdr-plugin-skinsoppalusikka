@@ -192,3 +192,6 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Converted HISTORY and fi_FI.po to UTF-8.
 - Updated Italian translation (Thanks to Diego Pierotto).
+- Added setup option to show either total or remaining
+  event duration in channel info.
+- Added timer symbols for events into channel info.

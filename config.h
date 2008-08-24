@@ -22,6 +22,7 @@ public:
   int showauxinfo;
   int showlogo;
   int showvps;
+  int showduration; // 0 = remaining; 1 = total
   int showsymbols;
   int showprogressbar;
   int cachesize;

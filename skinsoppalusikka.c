@@ -157,6 +157,7 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
   else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
   else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
   else if (!strcasecmp(Name, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(Value);
+  else if (!strcasecmp(Name, "ShowDuration"))    SoppalusikkaConfig.showduration    = atoi(Value);
   else if (!strcasecmp(Name, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(Value);
   else return false;
 
@@ -219,6 +220,9 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
   Add(new cMenuEditBoolItem(tr("Show VPS in channel info"), &data.showvps));
   help.Append(tr("Define whether VPS information is shown in channel info menu."));
 
+  Add(new cMenuEditBoolItem(tr("Show event duration in channel info"), &data.showduration, tr("remaining"), tr("total")));
+  help.Append(tr("Define whether remaining or total event duration is shown in channel info menu."));
+
   Add(new cMenuEditBoolItem(tr("Show channel logos"), &data.showlogo));
   help.Append(tr("Define whether channels logos are shown in channel info menu.\n\nOnly XPM format is accepted: 64x48 pixel and max. 13 colors."));
 
@@ -242,6 +246,7 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
   SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
   SetupStore("ShowVPS",         SoppalusikkaConfig.showvps);
+  SetupStore("ShowDuration",    SoppalusikkaConfig.showduration);
   SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);

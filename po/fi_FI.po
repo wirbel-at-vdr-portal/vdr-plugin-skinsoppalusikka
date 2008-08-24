@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: skinsoppalusikka 1.6.0\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2008-02-18 00:15+0200\n"
+"POT-Creation-Date: 2008-08-24 22:44+0300\n"
 "PO-Revision-Date: 2007-08-12 18:20+0300\n"
 "Last-Translator: Rolf Ahrenberg\n"
 "Language-Team: <vdr@linuxtv.org>\n"
@@ -56,6 +56,18 @@ msgstr "Näytä VPS kanavatiedossa"
 
 msgid "Define whether VPS information is shown in channel info menu."
 msgstr "Määrittele, näytetäänkö VPS-tiedot kanavatietovalikossa."
+
+msgid "Show event duration in channel info"
+msgstr "Näytä ohjelman kesto kanavatiedossa"
+
+msgid "remaining"
+msgstr "jäljellä"
+
+msgid "total"
+msgstr "koko"
+
+msgid "Define whether remaining or total event duration is shown in channel info menu."
+msgstr "Määrittele, näytetäänkö ohjelman jäljellä oleva vai koko kestoaika kanavatietovalikossa."
 
 msgid "Show channel logos"
 msgstr "Näytä kanavalogot"
