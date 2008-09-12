@@ -100,14 +100,18 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
   cString filename = cString::sprintf("%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
   debug("cPluginSkinSoppalusikka::LoadXpm(%s)", *filename);
   // check validity
-  if ((stat(filename, &stbuf) == 0) && bmp->LoadXpm(filename) && (bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
-     debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
-     // assign bitmap
-     bitmapM = bmp;
-     return true;
+  if ((stat(*filename, &stbuf) == 0) && bmp->LoadXpm(*filename)) {
+     if ((bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
+        debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
+        // assign bitmap
+        bitmapM = bmp;
+        return true;
+        }
+     else
+        error("Invalid logo resolution in '%s'", *filename);
      }
-  // no xpm logo found - delete bitmap
-  debug("cPluginSkinSoppalusikka::LoadXpm() LOGO NOT FOUND");
+  // no valid xpm logo found - delete bitmap
+  debug("cPluginSkinSoppalusikka::LoadXpm() LOGO NOT FOUND OR INVALID RESOLUTION");
   delete bmp;
   bitmapM = NULL;
   return false;

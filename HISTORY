@@ -195,3 +195,6 @@ VDR Skin 'Soppalusikka' Revision History
 - Added setup option to show either total or remaining
   event duration in channel info.
 - Added timer symbols for events into channel info.
+- Added ImageMagick example for channel logo generation and
+  error message about invalid logo resolution (Thanks to
+  Teemu Peltonen).

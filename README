@@ -43,15 +43,22 @@ directory for plugins.
 Notes:
 
 - Only XPM format is supported for channel logos: 64x48 pixels and
-  13 colors (6 colors on DXR3) or less recommended.
+  13 colors (6 colors on DXR3) or less recommended. Colors must be
+  defined in hex numbers only.
 
 - If you'll add new channels logos on the fly, remember to flush the
   channel logo cache.
 
 - The channel logos can be named according to channel name (YLETV2.xpm)
-  or channel id (T-8438-4097-33.xpm). The plugin prefers channel ids
-  as a naming scheme.
+  or channel id (T-8438-4097-33.xpm). The naming is case-sensitive and
+  the plugin prefers channel ids as a naming scheme.
 
 - There have been bug reports from some DXR3 users about vanishing
   colors and flickering. However, the skin is also reported to work
   without any problems on many DXR3 setups.
+
+- An example of ImageMagick syntax for generating Soppalusikka compatible
+  logos:
+  shell> convert ChannelLogo.jpg -resize 64x48 -background "#FEFEFE" \
+         -gravity center -extent 64x48 -colors 6 -depth 8 \
+         "Channel Name.xpm"
