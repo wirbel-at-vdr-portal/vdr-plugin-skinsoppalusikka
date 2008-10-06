@@ -874,7 +874,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             if (Tab(i+1))
                 px5 = px0 + Tab(i+1) - Tab(i);
             else
-                px5 = px0 + x2 - x1 - Tab(i);
+                px5 = px0 + x3 - x2 - Tab(i);
             int px4 = px5 - SmallGap;
             int px3 = px4 - SmallGap;
             int px = px2 + (int)((float)now * (float)(px3 - px2) / (float)total);

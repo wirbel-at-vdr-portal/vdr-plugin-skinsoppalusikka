@@ -42,21 +42,21 @@ VDR Skin 'Soppalusikka' Revision History
 - Added Spanish translation (Thanks to Luis Palacios).
 - Fixed compiling on AMD64 platform (Thanks to Mirco Günther and
   Jörg Bornkessel).
-- Fixed date string in title bar (Thanks to Frank Krömmelbein for reporting
-  this one).
+- Fixed date string in title bar (Thanks to Frank Krömmelbein for
+  reporting this one).
 - Added DXR3 logos from the enElchi-0.7.1 skin.
 - Modified tags stripping of the auxiliary information field.
 - Added VPS info for current event in channel info window.
 
 2006-04-02: Version 0.0.7
 
-- Fixed VPS time string in event info menu (Thanks to Sebastian Kemper for
-  reporting this one).
+- Fixed VPS time string in event info menu (Thanks to Sebastian
+  Kemper for reporting this one).
 - Updated theme files.
 - Added new setup options to de/activate plugin features.
-- Added event symbols into schedule menu and new indicator symbol into
-  recordings menu. Running event symbol is based on Wareagle icon patch
-  and thanks to Mikko Salo for providing other new symbols.
+- Added event symbols into schedule menu and new indicator symbol
+  into recordings menu. Running event symbol is based on Wareagle
+  icon patch and thanks to Mikko Salo for providing other new symbols.
 - Fixed crash bug while flushing logo cache.
 - Fixed logo directory location after flushing logo cache.
 
@@ -66,15 +66,16 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated Estonian translation (Thanks to Arthur Konovalov).
 - Updated Spanish translation (Thanks to Luis Palacios).
 - Added missing include for isdigit().
-- Modified the channel info to show the VPS time of following event only if
-  'Use small fonts' is set to 'skin dependent'.
+- Modified the channel info to show the VPS time of following event
+  only if 'Use small fonts' is set to 'skin dependent'.
 - Fixed background of color buttons, if menu doesn't use any labels.
 
 2006-04-16: Version 0.2.0
 
 - Updated for vdr-1.3.46.
-- Fixed missing background of progressbar and event symbols if they're in
-  the first column (Thanks to Christian Wieninger for reporting this one).
+- Fixed missing background of progressbar and event symbols if they're
+  in the first column (Thanks to Christian Wieninger for reporting
+  this one).
 - Modified detection of event symbols.
 - Modified the parsing of the auxiliary information field to filter out
   all irrelevant data added by EPGSearch or VDRAdmin.
@@ -154,8 +155,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated for vdr-1.5.10.
 - Updated Makefile 'i18n' targets.
 - Fixed OSD dimension code.
-- Added subtitle tracks information into the event and
-  recording info menus.
+- Added subtitle tracks information into the event and recording
+  info menus.
 
 2008-01-20: Version 1.1.4
 
@@ -170,8 +171,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Fixed 'eventtimer' symbol (Thanks to Michaël Nival).
 - Updated French translation (Thanks to Michaël Nival).
 - Added 'FLSH' SVDRP command for logo cache flushing.
-- Removed the "Identify channel by: name/data" setup option
-  and increased the default logo cache size to 100.
+- Removed the "Identify channel by: name/data" setup option and
+  increased the default logo cache size to 100.
 - Improved performance.
 
 2008-03-27: Version 1.6.0
@@ -185,16 +186,16 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated Italian translation (Thanks to Diego Pierotto).
 - Added Russian translation (Thanks to Alexander Gross).
-- Readded a hack to prevent menu flickering (Thanks to
-  Harri Kukkonen for reporting this one).
+- Readded a hack to prevent menu flickering (Thanks to Harri
+  Kukkonen for reporting this one).
 
 2008-xx-xx: Version 1.6.2
 
 - Converted HISTORY and fi_FI.po to UTF-8.
 - Updated Italian translation (Thanks to Diego Pierotto).
-- Added setup option to show either total or remaining
-  event duration in channel info.
+- Added setup option to show either total or remaining event
+  duration in channel info.
 - Added timer symbols for events into channel info.
-- Added ImageMagick example for channel logo generation and
-  error message about invalid logo resolution (Thanks to
-  Teemu Peltonen).
+- Added ImageMagick example for channel logo generation and error
+  message about invalid logo resolution (Thanks to Teemu Peltonen).
+- Fixed progressbar in a last tab (Thanks to e9hack @ VDRPortal).
