@@ -1,7 +1,6 @@
 #
-# Makefile for a Video Disk Recorder plugin
+# Makefile for Soppalusikka skin plugin
 #
-# $Id$
 
 # Debugging on/off 
 #SKINSOPPALUSIKKA_DEBUG = 1
