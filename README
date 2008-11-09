@@ -51,7 +51,9 @@ Notes:
 
 - The channel logos can be named according to channel name (YLETV2.xpm)
   or channel id (T-8438-4097-33.xpm). The naming is case-sensitive and
-  the plugin prefers channel ids as a naming scheme.
+  the plugin prefers channel ids as a naming scheme. All '/' characters
+  in channel names shall be automatically converted to '~' characters
+  in filenames.
 
 - There have been bug reports from some DXR3 users about vanishing
   colors and flickering. However, the skin is also reported to work

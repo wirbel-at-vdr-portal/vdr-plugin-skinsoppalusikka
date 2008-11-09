@@ -199,3 +199,8 @@ VDR Skin 'Soppalusikka' Revision History
 - Added ImageMagick example for channel logo generation and error
   message about invalid logo resolution (Thanks to Teemu Peltonen).
 - Fixed progressbar in a last tab (Thanks to e9hack @ VDRPortal).
+
+2008-xx-xx: Version 1.6.3
+
+- Added automatic conversion of '/' characters in channel names
+  to '~' characters in filenames for logos.
