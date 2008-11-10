@@ -38,11 +38,14 @@ bool cSoppalusikkaLogoCache::Resize(unsigned int cacheSizeP)
 
 bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
 {
+  char *fileName = strdup(fileNameP);
+  if (!fileName)
+     return false;
   // replace '/' characters with '~'
-  cString fileName = strreplace(strdup(fileNameP), '/', '~');
-  debug("cPluginSkinSoppalusikka::Load(%s)", *fileName);
+  strreplace(fileName, '/', '~');
+  debug("cPluginSkinSoppalusikka::Load(%s)", fileName);
   // does the logo exist already in map
-  std::map<std::string, cBitmap*>::iterator i = cacheMapM.find(*fileName);
+  std::map<std::string, cBitmap*>::iterator i = cacheMapM.find(fileName);
   if (i != cacheMapM.end()) {
      // yes - cache hit!
      debug("cPluginSkinSoppalusikka::Load() CACHE HIT!");
@@ -50,6 +53,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      if (i->second == NULL) {
         debug("cPluginSkinSoppalusikka::Load() EMPTY");
         // empty logo in cache
+        free(fileName);
         return false;
         }
      bitmapM = i->second;
@@ -58,7 +62,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      // no - cache miss!
      debug("cPluginSkinSoppalusikka::Load() CACHE MISS!");
      // try to load xpm logo
-     LoadXpm(*fileName);
+     LoadXpm(fileName);
      // check if cache is active
      if (cacheSizeM) {
         // update map
@@ -74,16 +78,18 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
            cacheMapM.erase(cacheMapM.begin());
            }
         // insert logo into map
-        debug("cPluginSkinSoppalusikka::Load() INSERT(%s)", *fileName);
-        cacheMapM.insert(std::make_pair(*fileName, bitmapM));
+        debug("cPluginSkinSoppalusikka::Load() INSERT(%s)", fileName);
+        cacheMapM.insert(std::make_pair(fileName, bitmapM));
         }
      // check if logo really exist
      if (bitmapM == NULL) {
         debug("cPluginSkinSoppalusikka::Load() EMPTY");
         // empty logo in cache
+        free(fileName);
         return false;
         }
      }
+  free(fileName);
   return true;
 }
 
