@@ -235,9 +235,8 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   y1 = yb5;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + (Setup.ChannelInfoPos ? 0 : cOsd::OsdHeight() - y1));
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      if (SoppalusikkaConfig.showlogo) {
@@ -615,9 +614,8 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
   y5 = y6 - lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop());
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x5 - 1, y8 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      // clear all
      osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
@@ -1199,9 +1197,8 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
   y4 = y5 - Roundness;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y5);
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 4 } };
@@ -1502,9 +1499,8 @@ cSkinSoppalusikkaDisplayVolume::cSkinSoppalusikkaDisplayVolume()
   y3 = y2 + lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y3);
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x5 - 1, y3 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      tArea Areas[] = { { x0, x0, x5 - 1, y3 - 1, 4 } };
@@ -1606,9 +1602,8 @@ cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title
   y6 = y7 - Roundness;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y7);
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 4 } };
@@ -1725,9 +1720,8 @@ cSkinSoppalusikkaDisplayMessage::cSkinSoppalusikkaDisplayMessage()
   y1 = y0 + lineHeight;
   // create osd
   osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y1);
-  // try to use single 8bpp area
   tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 8 } };
-  if (SoppalusikkaConfig.usesinglearea && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 2 } };

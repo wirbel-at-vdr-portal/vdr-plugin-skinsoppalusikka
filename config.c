@@ -13,8 +13,9 @@
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: logodir(""), usesinglearea(0), showauxinfo(1), showlogo(0), showvps(1),
-  showduration(1), showsymbols(0), showprogressbar(1), cachesize(100)
+: logodir(""), showauxinfo(1), showlogo(0), showvps(1),
+  showduration(1), showsymbols(0), showprogressbar(1),
+  cachesize(100)
 {
 }
 

@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: skinsoppalusikka 1.6.0\n"
+"Project-Id-Version: skinsoppalusikka 1.6.3\n"
 "Report-Msgid-Bugs-To: Rolf Ahrenberg\n"
-"POT-Creation-Date: 2008-08-24 22:44+0300\n"
+"POT-Creation-Date: 2008-11-30 14:19+0200\n"
 "PO-Revision-Date: 2008-01-26 11:22+0100\n"
 "Last-Translator: NIVAL Michaël <mnival@club-internet.fr>\n"
 "Language-Team:  <vdr@linuxtv.org>\n"
@@ -21,18 +21,6 @@ msgstr "Skin Soppalusikka"
 
 msgid "Button$Flush cache"
 msgstr "Supprimer cache"
-
-msgid "Use single area (8bpp)"
-msgstr "Utiliser zone unique (8bpp)"
-
-msgid ""
-"Define whether a single 8bpp OSD area is preferred.\n"
-"\n"
-"Required by Truetype fonts and anti-aliasing."
-msgstr ""
-"Définit si une seule zone OSD de 8bpp est préférée.\n"
-"\n"
-"Requis par les polices Truetype et l'anti-aliasing."
 
 msgid "Show auxiliary information"
 msgstr "Afficher information auxiliaire"

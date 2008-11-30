@@ -150,8 +150,7 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(Name, "UseSingleArea"))   SoppalusikkaConfig.usesinglearea   = atoi(Value);
-  else if (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
+  if      (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
   else if (!strcasecmp(Name, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(Value);
   else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
   else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
@@ -204,9 +203,6 @@ void cPluginSkinSoppalusikkaSetup::Setup(void)
   Clear();
   help.Clear();
 
-  Add(new cMenuEditBoolItem(tr("Use single area (8bpp)"), &data.usesinglearea));
-  help.Append(tr("Define whether a single 8bpp OSD area is preferred.\n\nRequired by Truetype fonts and anti-aliasing."));
-
   Add(new cMenuEditBoolItem(tr("Show auxiliary information"), &data.showauxinfo));
   help.Append(tr("Define whether any auxiliary information is shown in info menus."));
 
@@ -239,7 +235,6 @@ void cPluginSkinSoppalusikkaSetup::Store(void)
   // store setup data
   debug("cPluginSkinSoppalusikkaSetup::Store()");
   SoppalusikkaConfig = data;
-  SetupStore("UseSingleArea",   SoppalusikkaConfig.usesinglearea);
   SetupStore("ShowAuxInfo",     SoppalusikkaConfig.showauxinfo);
   SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
   SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
