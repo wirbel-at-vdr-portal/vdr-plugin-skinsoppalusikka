@@ -205,3 +205,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Added automatic conversion of '/' characters in channel names
   to '~' characters in filenames for logos.
 - Replaced "Use single area (8bpp)" option with VDR's "Setup/OSD/Anti-alias".
+
+2009-xx-xx: Version 1.6.4
+
+- Updated Italian translation (Thanks to Diego Pierotto).
