@@ -209,3 +209,4 @@ VDR Skin 'Soppalusikka' Revision History
 2009-xx-xx: Version 1.6.4
 
 - Updated Italian translation (Thanks to Diego Pierotto).
+- Cleaned up compilation warnings.

@@ -82,7 +82,7 @@ bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
   // implement command line argument processing here if applicable.
   static const struct option long_options[] = {
        { "logodir", required_argument, NULL, 'l' },
-       { NULL }
+       { NULL, 0, NULL, 0 }
      };
 
   int c;

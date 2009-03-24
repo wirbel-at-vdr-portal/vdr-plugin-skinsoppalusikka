@@ -1679,6 +1679,8 @@ void cSkinSoppalusikkaDisplayTracks::SetAudioChannel(int AudioChannel)
          osd->DrawBitmap(x3, y0 + (y2 - bmAudio.Height()) / 2, bmAudioRight, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg));
          osd->DrawText(x1, y5, tr("Right"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
          break;
+    default:
+         break;
     }
 }
 
