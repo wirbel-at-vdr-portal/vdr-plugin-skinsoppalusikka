@@ -172,7 +172,8 @@ const char **cPluginSkinSoppalusikka::SVDRPHelpPages(void)
 {
   static const char *HelpPages[] = {
     "FLSH\n"
-    "    Flush logo cache."
+    "    Flush logo cache.",
+    NULL
     };
   return HelpPages;
 }

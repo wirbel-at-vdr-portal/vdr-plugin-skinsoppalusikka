@@ -206,7 +206,8 @@ VDR Skin 'Soppalusikka' Revision History
   to '~' characters in filenames for logos.
 - Replaced "Use single area (8bpp)" option with VDR's "Setup/OSD/Anti-alias".
 
-2009-xx-xx: Version 1.6.4
+2009-04-14: Version 1.6.4
 
 - Updated Italian translation (Thanks to Diego Pierotto).
 - Cleaned up compilation warnings.
+- Fixed a crash bug in the SVDRP help.
