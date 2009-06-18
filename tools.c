@@ -13,7 +13,7 @@
 char *strcatrealloc(char *dest, const char *src)
 {
   if (src) {
-     int l = strlen(dest) + strlen(src) + 1;
+     size_t l = strlen(dest) + strlen(src) + 1;
      dest = (char *)realloc(dest, l);
      if (dest)
         strcat(dest, src);

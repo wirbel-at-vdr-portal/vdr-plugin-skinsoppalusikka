@@ -455,7 +455,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
   if (e) {
      cString s;
      int total = e->Duration();
-     int now = (time(NULL) - e->StartTime());
+     int now = int(time(NULL) - e->StartTime());
      if ((now < total) && ((now / 60) > 0))
         s = cString::sprintf("  %d / %d %s", now / 60, (SoppalusikkaConfig.showduration ? total : (total - now)) / 60, tr("min"));
      else
@@ -475,7 +475,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      // draw vps time
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
-        int delta = (e->StartTime() - e->Vps()) / 60;
+        int delta = int(e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
         if (abs(delta) < 600) {
            /* relative vps time formats: "+0:30" "-1:30" */
@@ -512,7 +512,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      // draw vps time - only if skin dependent small fonts
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
-        int delta = (e->StartTime() - e->Vps()) / 60;
+        int delta = int(e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
         if (abs(delta) < 600) {
            /* relative vps time formats: "+0:30" "-1:30" */
