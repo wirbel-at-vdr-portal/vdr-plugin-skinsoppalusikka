@@ -22,49 +22,52 @@ msgid "Button$Flush cache"
 msgstr "Tühjenda"
 
 msgid "Show auxiliary information"
-msgstr "Lisainfo näitamine"
+msgstr "Lisainfo kuvamine"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr ""
+msgstr "Menüüs lisainfo kuvamise määritlemine."
 
 msgid "Show progressbar"
-msgstr "Edenemisriba näitamine"
+msgstr "Edenemisriba kuvamine"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr ""
+msgstr "Kavas edenemisriba kuvamise määritlemine."
 
 msgid "Show symbols"
-msgstr "Sümbolite näitamine"
+msgstr "Sümbolite kuvamine"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr ""
+msgstr "Kavas sümbolite kuvamise määritlemine."
 
 msgid "Show VPS in channel info"
-msgstr ""
+msgstr "VPS kanaliinfos"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr ""
+msgstr "Kanaliinfos VPS kuvamise määritlemine."
 
 msgid "Show event duration in channel info"
-msgstr ""
+msgstr "Saate kestus kanaliinfos"
 
 msgid "remaining"
-msgstr ""
+msgstr "aeg lõpuni"
 
 msgid "total"
-msgstr ""
+msgstr "täiskestus"
 
 msgid "Define whether remaining or total event duration is shown in channel info menu."
-msgstr ""
+msgstr "Kanaliinfos saate kestuse kuvamise määritlemine."
 
 msgid "Show channel logos"
-msgstr "Kanalilogo näitamine"
+msgstr "Kanalilogo kuvamine"
 
 msgid ""
 "Define whether channels logos are shown in channel info menu.\n"
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
+"Kanalilogo kuvamise määritlemine.\n"
+"\n"
+"Ainult 64x48px ja max 13 värvi XPM formaat toetatud."
 
 msgid "Channel logo cache size"
 msgstr "Kanalilogo vahemälu suurus"
@@ -74,12 +77,15 @@ msgid ""
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
+"Kanalilogo vahemälu suuruse määritlemine.\n"
+"\n"
+"Mida suurem seda kiirem kanalivahetus."
 
 msgid "Flushing channel logo cache..."
 msgstr "Kanalilogo vahemälu tühjendamine..."
 
 msgid "Help"
-msgstr ""
+msgstr "Abi"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Vigane kanal ***"
