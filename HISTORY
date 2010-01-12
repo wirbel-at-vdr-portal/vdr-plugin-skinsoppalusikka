@@ -1,5 +1,6 @@
+========================================
 VDR Skin 'Soppalusikka' Revision History
-------------------------------------------
+========================================
 
 2006-02-26: Version 0.0.1
 
@@ -212,6 +213,6 @@ VDR Skin 'Soppalusikka' Revision History
 - Cleaned up compilation warnings.
 - Fixed a crash bug in the SVDRP help.
 
-2009-xx-xx: Version 1.6.5
+2010-01-12: Version 1.6.5
 
 - Updated Estonian translation (Thanks to Arthur Konovalov).
