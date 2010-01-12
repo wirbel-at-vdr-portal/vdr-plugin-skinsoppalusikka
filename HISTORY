@@ -216,3 +216,15 @@ VDR Skin 'Soppalusikka' Revision History
 2010-01-12: Version 1.6.5
 
 - Updated Estonian translation (Thanks to Arthur Konovalov).
+
+
+========================================
+VDR Skin 'Soppalusikka' Revision History
+========================================
+
+2010-01-12: Version 1.7.0
+
+- Updated for vdr-1.7.11.
+- Added support parental rating and EPG category information.
+- Fixed replay display in HD mode (Thanks to Jiri Dobry for
+  reporting this one).

@@ -919,7 +919,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
   cTextScroller ts;
-  cString date;
+  cString info;
   int y = y3;
   int xs = x2;
   // check if event has timer
@@ -942,8 +942,8 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      }
   y = y4;
   // draw event date / duration string
-  date = cString::sprintf("%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, *date, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  info = cString::sprintf("%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
+  ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // check if event has VPS
   if (Event->Vps() && Event->Vps() != Event->StartTime()) {
@@ -994,6 +994,23 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   // draw event title
   ts.Set(osd, x2, y, x3 - x2, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
+  // draw content description
+  info = "";
+  for (int i = 0; Event->Contents(i); i++) {
+      const char *s = Event->ContentToString(Event->Contents(i));
+      if (!isempty(s)) {
+         info = cString::sprintf("%s%s%s", *info, isempty(*info) ? "" : ", ", s);
+         }
+      }
+   if (!isempty(*info)) {
+        ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+        y += ts.Height();
+      }
+  // draw parental rating
+  if (Event->ParentalRating()) {
+     ts.Set(osd, x2, y, x3 - x2, y5 - y, *Event->GetParentalRatingString(), smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     y += ts.Height();
+     }
   // draw recording short text and description
   if (isempty(Event->Description())) {
      y += smlfont->Height();
@@ -1074,8 +1091,10 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      if (numsubtitle > 0)
         info = cString::sprintf("%s\n%s: %s", *info, trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      }
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
-  y += ts.Height();
+  if (!isempty(*info)) {
+     ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     y += ts.Height();
+     }
   y += smlfont->Height();
   // draw recording title
   const char *Title = Info->Title();
@@ -1083,6 +1102,23 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      Title = Recording->Name();
   ts.Set(osd, x2, y, x3 - x2, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
   y += ts.Height();
+  // draw parental rating
+  if (Info->GetEvent()->ParentalRating()) {
+     ts.Set(osd, x2, y, x3 - x2, y5 - y, *Info->GetEvent()->GetParentalRatingString(), smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     y += ts.Height();
+     }
+  // draw content description
+  info = "";
+  for (int i = 0; Info->GetEvent()->Contents(i); i++) {
+      const char *s = Info->GetEvent()->ContentToString(Info->GetEvent()->Contents(i));
+      if (!isempty(s)) {
+         info = cString::sprintf("%s%s%s", *info, isempty(*info) ? "" : ", ", s);
+         }
+      }
+  if (!isempty(*info)) {
+     ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     y += ts.Height();
+     }
   // draw recording short text and description
   if (isempty(Info->Description())) {
      y += smlfont->Height();
@@ -1174,19 +1210,25 @@ public:
 
 cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
 {
-  int sw = bmFastReverse.Width() + bmSlowReverse.Width() + bmPlay.Width() + bmPause.Width() + bmSlowForward.Width() + bmFastForward.Width();
+  int symbolWidth = bmFastReverse.Width() + bmSlowReverse.Width() + bmPlay.Width() + bmPause.Width() + bmSlowForward.Width() + bmFastForward.Width() + 5 * Gap;
+  int textWidth = cFont::GetFont(fontOsd)->Width("00:00:00/00:00:00");
   lineHeight = cFont::GetFont(fontOsd)->Height();
+  // clamp symbol/text width and line height
+  if (textWidth > symbolWidth)
+     symbolWidth = textWidth;
+  if (lineHeight < bmPlay.Height())
+     lineHeight = bmPlay.Height();
   drawdate = true;
   modeonly = ModeOnly;
   x0 = 0;
   x1 = x0 + BigGap;
   x2 = x1 + Roundness;
-  x3 = x2 + sw + 5 * Gap;
+  x3 = x2 + symbolWidth;
   x4 = x3 + 4 * BigGap;
   x10 = cOsd::OsdWidth();
   x9 = x10 - BigGap;
   x8 = x9 - Roundness;
-  x6 = x8 - sw - 5 * Gap;
+  x6 = x8 - symbolWidth;
   x7 = x6 + (x8 - x6) / 2;
   x5 = x6 - 4 * BigGap;
   y0 = 0;

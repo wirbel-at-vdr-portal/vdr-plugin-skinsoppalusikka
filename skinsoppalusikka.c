@@ -13,11 +13,11 @@
 #include "logo.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10600
-#error "VDR-1.6.0 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10711
+#error "VDR-1.7.11 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.6.5";
+static const char VERSION[]     = "1.7.0";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -82,7 +82,7 @@ bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
   // implement command line argument processing here if applicable.
   static const struct option long_options[] = {
        { "logodir", required_argument, NULL, 'l' },
-       { NULL, 0, NULL, 0 }
+       { NULL,      no_argument,       NULL, 0   }
      };
 
   int c;
