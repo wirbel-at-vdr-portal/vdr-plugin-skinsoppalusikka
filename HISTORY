@@ -228,3 +228,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Added support parental rating and EPG category information.
 - Fixed replay display in HD mode (Thanks to Jiri Dobry for
   reporting this one).
+
+2010-xx-xx: Version 1.7.1
+
+- Updated for vdr-1.7.13.

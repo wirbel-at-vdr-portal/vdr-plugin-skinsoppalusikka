@@ -13,11 +13,11 @@
 #include "logo.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10711
-#error "VDR-1.7.11 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10713
+#error "VDR-1.7.13 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.7.0";
+static const char VERSION[]     = "1.7.1";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
