@@ -233,7 +233,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-1.7.13.
 
-2010-xx-xx: Version 1.7.2
+2010-12-27: Version 1.7.2
 
 - Added Makefile depencency for objects.
 - Added support for LDFLAGS.
