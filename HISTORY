@@ -237,3 +237,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added Makefile depencency for objects.
 - Added support for LDFLAGS.
+
+2011-03-13: Version 1.7.3
+
+- Updated Makefile.
