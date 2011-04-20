@@ -26,7 +26,7 @@ cSoppalusikkaLogoCache::~cSoppalusikkaLogoCache()
 
 bool cSoppalusikkaLogoCache::Resize(unsigned int cacheSizeP)
 {
-  debug("cSoppalusikkaLogoCache::Resize(%d)", cacheSizeP);
+  debug("%s(%d)", __PRETTY_FUNCTION__, cacheSizeP);
   // flush cache only if it's smaller than before
   if (cacheSizeP < cacheSizeM) {
      Flush();
@@ -43,15 +43,15 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      return false;
   // replace '/' characters with '~'
   strreplace(fileName, '/', '~');
-  debug("cSoppalusikkaLogoCache::Load(%s)", fileName);
+  debug("%s(%s)", __PRETTY_FUNCTION__, fileName);
   // does the logo exist already in map
   std::map<std::string, cBitmap*>::iterator i = cacheMapM.find(fileName);
   if (i != cacheMapM.end()) {
      // yes - cache hit!
-     debug("cSoppalusikkaLogoCache::Load() CACHE HIT!");
+     debug("%s() CACHE HIT!", __PRETTY_FUNCTION__);
      // check if logo really exist
      if (i->second == NULL) {
-        debug("cSoppalusikkaLogoCache::Load() EMPTY");
+        debug("%s() EMPTY", __PRETTY_FUNCTION__);
         // empty logo in cache
         free(fileName);
         return false;
@@ -60,7 +60,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      }
   else {
      // no - cache miss!
-     debug("cSoppalusikkaLogoCache::Load() CACHE MISS!");
+     debug("%s() CACHE MISS!", __PRETTY_FUNCTION__);
      // try to load xpm logo
      LoadXpm(fileName);
      // check if cache is active
@@ -68,7 +68,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
         // update map
         if (cacheMapM.size() >= cacheSizeM) {
            // cache full - remove first
-           debug("cSoppalusikkaLogoCache::Load() DELETE");
+           debug("%s() DELETE", __PRETTY_FUNCTION__);
            if (cacheMapM.begin()->second != NULL) {
               // logo exists - delete it
               cBitmap *bmp = cacheMapM.begin()->second;
@@ -78,12 +78,12 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
            cacheMapM.erase(cacheMapM.begin());
            }
         // insert logo into map
-        debug("cSoppalusikkaLogoCache::Load() INSERT(%s)", fileName);
+        debug("%s() INSERT(%s)", fileName, __PRETTY_FUNCTION__);
         cacheMapM.insert(std::make_pair(fileName, bitmapM));
         }
      // check if logo really exist
      if (bitmapM == NULL) {
-        debug("cSoppalusikkaLogoCache::Load() EMPTY");
+        debug("%s() EMPTY", __PRETTY_FUNCTION__);
         // empty logo in cache
         free(fileName);
         return false;
@@ -105,20 +105,20 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
 
   // create absolute filename
   cString filename = cString::sprintf("%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
-  debug("cSoppalusikkaLogoCache::LoadXpm(%s)", *filename);
+  debug("%s(%s)", __PRETTY_FUNCTION__, *filename);
   // check validity
   if ((stat(*filename, &stbuf) == 0) && bmp->LoadXpm(*filename)) {
      if ((bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
-        debug("cSoppalusikkaLogoCache::LoadXpm() LOGO FOUND");
+        debug("%s() LOGO FOUND", __PRETTY_FUNCTION__);
         // assign bitmap
         bitmapM = bmp;
         return true;
         }
      else
-        error("Invalid logo resolution in '%s'", *filename);
+        error("%s(): Invalid logo resolution in '%s'", __PRETTY_FUNCTION__, *filename);
      }
   // no valid xpm logo found - delete bitmap
-  debug("cSoppalusikkaLogoCache::LoadXpm() LOGO NOT FOUND OR INVALID RESOLUTION");
+  debug("%s() LOGO NOT FOUND OR INVALID RESOLUTION", __PRETTY_FUNCTION__);
   delete bmp;
   bitmapM = NULL;
   return false;
@@ -126,10 +126,10 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
 
 bool cSoppalusikkaLogoCache::Flush(void)
 {
-  debug("cSoppalusikkaLogoCache::Flush()");
+  debug("%s()", __PRETTY_FUNCTION__);
   // check if map is empty
   if (!cacheMapM.empty()) {
-     debug("cSoppalusikkaLogoCache::Flush() NON-EMPTY");
+     debug("%s() NON-EMPTY", __PRETTY_FUNCTION__);
      // delete bitmaps and clear map
      for (std::map<std::string, cBitmap*>::iterator i = cacheMapM.begin(); i != cacheMapM.end(); ++i) {
          cBitmap *bmp = i->second;

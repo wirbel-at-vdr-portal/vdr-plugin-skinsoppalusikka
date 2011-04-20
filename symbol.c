@@ -100,7 +100,7 @@ void cSoppalusikkaSymbolCache::Refresh()
   int width, height;
   double aspect, xfactor, yfactor;
   cDevice::PrimaryDevice()->GetOsdSize(width, height, aspect);
-  debug("cSoppalusikkaSymbolCache::Refresh(): %dx%d", width, height);
+  debug("%s(): %dx%d", __PRETTY_FUNCTION__, width, height);
   xfactor = (double)width / DEFAULT_WIDTH;
   yfactor = (double)height / DEFAULT_HEIGHT;
   if (!DoubleEqual(xfactor, xFactorM) || !DoubleEqual(yfactor, yFactorM)) {
@@ -112,44 +112,44 @@ void cSoppalusikkaSymbolCache::Refresh()
 
 bool cSoppalusikkaSymbolCache::Populate(void)
 {
-  debug("cSoppalusikkaSymbolCache::Populate(): %.02fx%.02f ", xFactorM, yFactorM);
+  debug("%s(): %.02fx%.02f ", __PRETTY_FUNCTION__, xFactorM, yFactorM);
   if (!DoubleEqual(0.0, xFactorM) || !DoubleEqual(0.0, yFactorM)) {
      Flush();
      // pushing order must follow the enumeration
-     cacheM.push_back(bmAudio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_AUDIO
-     cacheM.push_back(bmAudioLeft.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_AUDIO_LEFT
-     cacheM.push_back(bmAudioRight.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_AUDIO_RIGHT
-     cacheM.push_back(bmDolbyDigital.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_DOLBY_DIGITAL
-     cacheM.push_back(bmEncrypted.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_ENCRYPTED
-     cacheM.push_back(bmFastForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FFWD
-     cacheM.push_back(bmFastForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD1
-     cacheM.push_back(bmFastForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD2
-     cacheM.push_back(bmFastForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD3
-     cacheM.push_back(bmFastReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FREW
-     cacheM.push_back(bmFastReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW1
-     cacheM.push_back(bmFastReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW2
-     cacheM.push_back(bmFastReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW3
-     cacheM.push_back(bmPause.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_PAUSE
-     cacheM.push_back(bmPlay.Scaled(xFactorM, yFactorM, antiAliasM));           // SYMBOL_PLAY
-     cacheM.push_back(bmRadio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_RADIO
-     cacheM.push_back(bmRecording.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_RECORDING
-     cacheM.push_back(bmRunning.Scaled(xFactorM, yFactorM, antiAliasM));        // SYMBOL_RUNNING
-     cacheM.push_back(bmSlowForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SFWD
-     cacheM.push_back(bmSlowForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD1
-     cacheM.push_back(bmSlowForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD2
-     cacheM.push_back(bmSlowForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD3
-     cacheM.push_back(bmSlowReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SREW
-     cacheM.push_back(bmSlowReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW1
-     cacheM.push_back(bmSlowReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW2
-     cacheM.push_back(bmSlowReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW3
-     cacheM.push_back(bmTeletext.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_TELETEXT
-     cacheM.push_back(bmVPS.Scaled(xFactorM, yFactorM, antiAliasM));            // SYMBOL_VPS
-     cacheM.push_back(bmEventPartTimer.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_PARTTIMER
-     cacheM.push_back(bmEventTimer.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_EVENT_TIMER
-     cacheM.push_back(bmEventVPS.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_EVENT_VPS
-     cacheM.push_back(bmEventRunning.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_EVENT_RUNNING
-     cacheM.push_back(bmEventRecording.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_RECORDING
-     cacheM.push_back(bmRecordingNew.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_RECORDING_NEW
+     cacheM.Append(bmAudio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_AUDIO
+     cacheM.Append(bmAudioLeft.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_AUDIO_LEFT
+     cacheM.Append(bmAudioRight.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_AUDIO_RIGHT
+     cacheM.Append(bmDolbyDigital.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_DOLBY_DIGITAL
+     cacheM.Append(bmEncrypted.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_ENCRYPTED
+     cacheM.Append(bmFastForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FFWD
+     cacheM.Append(bmFastForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD1
+     cacheM.Append(bmFastForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD2
+     cacheM.Append(bmFastForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD3
+     cacheM.Append(bmFastReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FREW
+     cacheM.Append(bmFastReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW1
+     cacheM.Append(bmFastReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW2
+     cacheM.Append(bmFastReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW3
+     cacheM.Append(bmPause.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_PAUSE
+     cacheM.Append(bmPlay.Scaled(xFactorM, yFactorM, antiAliasM));           // SYMBOL_PLAY
+     cacheM.Append(bmRadio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_RADIO
+     cacheM.Append(bmRecording.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_RECORDING
+     cacheM.Append(bmRunning.Scaled(xFactorM, yFactorM, antiAliasM));        // SYMBOL_RUNNING
+     cacheM.Append(bmSlowForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SFWD
+     cacheM.Append(bmSlowForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD1
+     cacheM.Append(bmSlowForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD2
+     cacheM.Append(bmSlowForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD3
+     cacheM.Append(bmSlowReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SREW
+     cacheM.Append(bmSlowReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW1
+     cacheM.Append(bmSlowReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW2
+     cacheM.Append(bmSlowReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW3
+     cacheM.Append(bmTeletext.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_TELETEXT
+     cacheM.Append(bmVPS.Scaled(xFactorM, yFactorM, antiAliasM));            // SYMBOL_VPS
+     cacheM.Append(bmEventPartTimer.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_PARTTIMER
+     cacheM.Append(bmEventTimer.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_EVENT_TIMER
+     cacheM.Append(bmEventVPS.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_EVENT_VPS
+     cacheM.Append(bmEventRunning.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_EVENT_RUNNING
+     cacheM.Append(bmEventRecording.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_RECORDING
+     cacheM.Append(bmRecordingNew.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_RECORDING_NEW
 
      return true;
      }
@@ -159,23 +159,25 @@ bool cSoppalusikkaSymbolCache::Populate(void)
 
 bool cSoppalusikkaSymbolCache::Flush(void)
 {
-  debug("cSoppalusikkaSymbolCache::Flush()");
-  if (!cacheM.empty()) {
-     for (unsigned int i = 0; i < cacheM.size(); ++i) {
-         cBitmap *bmp = cacheM[i];
-         DELETENULL(bmp);
-         }
-     cacheM.clear();
-     }
+  debug("%s()", __PRETTY_FUNCTION__);
+
+  for (int i = 0; i < cacheM.Size(); ++i) {
+      cBitmap *bmp = cacheM[i];
+      DELETENULL(bmp);
+      }
+  cacheM.Clear();
+
   return true;
 }
 
-cBitmap& cSoppalusikkaSymbolCache::Get(unsigned int symbolP)
+cBitmap& cSoppalusikkaSymbolCache::Get(eSymbols symbolP)
 {
   cBitmap *bitmapM = NULL;
 
-  if (symbolP < cacheM.size())
+  if (symbolP < cacheM.Size())
      bitmapM = cacheM[symbolP];
+  else
+     error("%s(): Invalid symbol %d", __PRETTY_FUNCTION__, symbolP);
 
   return *bitmapM;
 }

@@ -25,6 +25,6 @@ cSoppalusikkaConfig::~cSoppalusikkaConfig()
 
 void cSoppalusikkaConfig::SetLogoDir(const char *logodirP)
 {
-  debug("cSoppalusikkaConfig::SetLogoDir(%s)", logodirP);
+  debug("%s(%s)", __PRETTY_FUNCTION__, logodirP);
   logodir = cString(logodirP);
 }

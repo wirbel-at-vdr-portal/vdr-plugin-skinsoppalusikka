@@ -8,7 +8,7 @@
 #ifndef __SKINSOPPALUSIKKA_SYMBOL_H
 #define __SKINSOPPALUSIKKA_SYMBOL_H
 
-#include <vector>
+#include <vdr/tools.h>
 #include <vdr/osd.h>
 
 enum eSymbols {
@@ -63,14 +63,14 @@ private:
   double xFactorM;
   double yFactorM;
   bool antiAliasM;
-  std::vector<cBitmap*> cacheM;
+  cVector<cBitmap*> cacheM;
   bool Populate(void);
   bool Flush(void);
 public:
   cSoppalusikkaSymbolCache();
   ~cSoppalusikkaSymbolCache();
   void Refresh();
-  cBitmap& Get(unsigned int symbolP);
+  cBitmap& Get(eSymbols symbolP);
   int GetGapTiny()   { return yFactorM * DEFAULT_GAP_TINY; }
   int GetGapSmall()  { return yFactorM * DEFAULT_GAP_SMALL; }
   int GetGapNormal() { return yFactorM * DEFAULT_GAP_NORMAL; }
