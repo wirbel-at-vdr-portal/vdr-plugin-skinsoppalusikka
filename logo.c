@@ -26,7 +26,7 @@ cSoppalusikkaLogoCache::~cSoppalusikkaLogoCache()
 
 bool cSoppalusikkaLogoCache::Resize(unsigned int cacheSizeP)
 {
-  debug("cPluginSkinSoppalusikka::Resize(%d)", cacheSizeP);
+  debug("cSoppalusikkaLogoCache::Resize(%d)", cacheSizeP);
   // flush cache only if it's smaller than before
   if (cacheSizeP < cacheSizeM) {
      Flush();
@@ -43,15 +43,15 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      return false;
   // replace '/' characters with '~'
   strreplace(fileName, '/', '~');
-  debug("cPluginSkinSoppalusikka::Load(%s)", fileName);
+  debug("cSoppalusikkaLogoCache::Load(%s)", fileName);
   // does the logo exist already in map
   std::map<std::string, cBitmap*>::iterator i = cacheMapM.find(fileName);
   if (i != cacheMapM.end()) {
      // yes - cache hit!
-     debug("cPluginSkinSoppalusikka::Load() CACHE HIT!");
+     debug("cSoppalusikkaLogoCache::Load() CACHE HIT!");
      // check if logo really exist
      if (i->second == NULL) {
-        debug("cPluginSkinSoppalusikka::Load() EMPTY");
+        debug("cSoppalusikkaLogoCache::Load() EMPTY");
         // empty logo in cache
         free(fileName);
         return false;
@@ -60,7 +60,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
      }
   else {
      // no - cache miss!
-     debug("cPluginSkinSoppalusikka::Load() CACHE MISS!");
+     debug("cSoppalusikkaLogoCache::Load() CACHE MISS!");
      // try to load xpm logo
      LoadXpm(fileName);
      // check if cache is active
@@ -68,7 +68,7 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
         // update map
         if (cacheMapM.size() >= cacheSizeM) {
            // cache full - remove first
-           debug("cPluginSkinSoppalusikka::Load() DELETE");
+           debug("cSoppalusikkaLogoCache::Load() DELETE");
            if (cacheMapM.begin()->second != NULL) {
               // logo exists - delete it
               cBitmap *bmp = cacheMapM.begin()->second;
@@ -78,12 +78,12 @@ bool cSoppalusikkaLogoCache::Load(const char *fileNameP)
            cacheMapM.erase(cacheMapM.begin());
            }
         // insert logo into map
-        debug("cPluginSkinSoppalusikka::Load() INSERT(%s)", fileName);
+        debug("cSoppalusikkaLogoCache::Load() INSERT(%s)", fileName);
         cacheMapM.insert(std::make_pair(fileName, bitmapM));
         }
      // check if logo really exist
      if (bitmapM == NULL) {
-        debug("cPluginSkinSoppalusikka::Load() EMPTY");
+        debug("cSoppalusikkaLogoCache::Load() EMPTY");
         // empty logo in cache
         free(fileName);
         return false;
@@ -105,11 +105,11 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
 
   // create absolute filename
   cString filename = cString::sprintf("%s/%s.xpm", SoppalusikkaConfig.GetLogoDir(), fileNameP);
-  debug("cPluginSkinSoppalusikka::LoadXpm(%s)", *filename);
+  debug("cSoppalusikkaLogoCache::LoadXpm(%s)", *filename);
   // check validity
   if ((stat(*filename, &stbuf) == 0) && bmp->LoadXpm(*filename)) {
      if ((bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
-        debug("cPluginSkinSoppalusikka::LoadXpm() LOGO FOUND");
+        debug("cSoppalusikkaLogoCache::LoadXpm() LOGO FOUND");
         // assign bitmap
         bitmapM = bmp;
         return true;
@@ -118,7 +118,7 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
         error("Invalid logo resolution in '%s'", *filename);
      }
   // no valid xpm logo found - delete bitmap
-  debug("cPluginSkinSoppalusikka::LoadXpm() LOGO NOT FOUND OR INVALID RESOLUTION");
+  debug("cSoppalusikkaLogoCache::LoadXpm() LOGO NOT FOUND OR INVALID RESOLUTION");
   delete bmp;
   bitmapM = NULL;
   return false;
@@ -126,10 +126,10 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
 
 bool cSoppalusikkaLogoCache::Flush(void)
 {
-  debug("cPluginSkinSoppalusikka::Flush()");
+  debug("cSoppalusikkaLogoCache::Flush()");
   // check if map is empty
   if (!cacheMapM.empty()) {
-     debug("cPluginSkinSoppalusikka::Flush() NON-EMPTY");
+     debug("cSoppalusikkaLogoCache::Flush() NON-EMPTY");
      // delete bitmaps and clear map
      for (std::map<std::string, cBitmap*>::iterator i = cacheMapM.begin(); i != cacheMapM.end(); ++i) {
          cBitmap *bmp = i->second;

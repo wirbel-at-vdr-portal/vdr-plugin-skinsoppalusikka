@@ -64,7 +64,7 @@ all-redirect: all
 
 ### The object files (add further files here):
 
-OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o tools.o
+OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o symbol.o tools.o
 
 ### The main target:
 

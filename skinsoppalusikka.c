@@ -13,8 +13,8 @@
 #include "logo.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 10713
-#error "VDR-1.7.13 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 10718
+#error "VDR-1.7.18 API version or greater is required!"
 #endif
 
 static const char VERSION[]     = "1.7.3";
