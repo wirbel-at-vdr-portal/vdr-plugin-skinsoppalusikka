@@ -11,7 +11,7 @@
 #include <vector>
 #include <vdr/osd.h>
 
-enum {
+enum eSymbols {
   SYMBOL_AUDIO = 0,
   SYMBOL_AUDIO_LEFT,
   SYMBOL_AUDIO_RIGHT,
@@ -46,8 +46,8 @@ enum {
   SYMBOL_EVENT_RUNNING,
   SYMBOL_EVENT_RECORDING,
   SYMBOL_RECORDING_NEW,
-  SYMBOL_COUNT
-};
+  SYMBOL_MAX_COUNT
+  };
 
 class cSoppalusikkaSymbolCache {
 private:
