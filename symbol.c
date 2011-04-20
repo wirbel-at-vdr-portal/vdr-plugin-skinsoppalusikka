@@ -106,14 +106,6 @@ void cSoppalusikkaSymbolCache::Refresh()
   if (!DoubleEqual(xfactor, xFactorM) || !DoubleEqual(yfactor, yFactorM)) {
      xFactorM = xfactor;
      yFactorM = yfactor;
-
-#define TinyGap   1
-#define SmallGap  2
-#define Gap       4
-#define BigGap    8
-#define Roundness 10
-
-
      Populate();
      }
 }
