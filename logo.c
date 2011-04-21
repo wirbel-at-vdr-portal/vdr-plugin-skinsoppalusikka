@@ -130,8 +130,9 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
      debug("%s() LOGO FOUND", __PRETTY_FUNCTION__);
      if (!DoubleEqual(1.0, xFactorM) || !DoubleEqual(1.0, yFactorM) || (bmp->Width() != DEFAULT_LOGO_WIDTH) || (bmp->Height() != DEFAULT_LOGO_HEIGHT)) {
         cBitmap *tmp = bmp;
-        // scale bitmap
-        bmp = bmp->Scaled(yFactorM, yFactorM, antiAliasM);
+        // scale bitmap keeping default proportions
+        bmp = bmp->Scaled(yFactorM * DEFAULT_LOGO_WIDTH / bmp->Width(), yFactorM * DEFAULT_LOGO_HEIGHT / bmp->Height(), bmp->Bpp() > 4);
+        debug("%s() LOGO SCALED", __PRETTY_FUNCTION__);
         DELETENULL(tmp);
         }
      bitmapM = bmp;
