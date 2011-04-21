@@ -20,12 +20,15 @@
 #include <vdr/themes.h>
 #include <vdr/plugin.h>
 
-#define GetSymbol(id) SoppalusikkaSymbolCache.Get(id)
-#define TinyGap       SoppalusikkaSymbolCache.GetGapTiny()
-#define SmallGap      SoppalusikkaSymbolCache.GetGapSmall()
-#define Gap           SoppalusikkaSymbolCache.GetGapNormal()
-#define BigGap        SoppalusikkaSymbolCache.GetGapBig()
-#define Roundness     SoppalusikkaSymbolCache.GetRoundness()
+#define GetSymbol(id)     SoppalusikkaSymbolCache.Get(id)
+#define TinyGap           SoppalusikkaSymbolCache.GetGapTiny()
+#define SmallGap          SoppalusikkaSymbolCache.GetGapSmall()
+#define Gap               SoppalusikkaSymbolCache.GetGapNormal()
+#define BigGap            SoppalusikkaSymbolCache.GetGapBig()
+#define Roundness         SoppalusikkaSymbolCache.GetRoundness()
+
+#define ChannelLogoWidth  SoppalusikkaLogoCache.GetLogoWidth()
+#define ChannelLogoHeight SoppalusikkaLogoCache.GetLogoHeight()
 
 static cTheme Theme;
 
@@ -1741,6 +1744,7 @@ const char *cSkinSoppalusikka::Description(void)
 
 cSkinDisplayChannel *cSkinSoppalusikka::DisplayChannel(bool WithInfo)
 {
+  SoppalusikkaLogoCache.Refresh();
   SoppalusikkaSymbolCache.Refresh();
   return new cSkinSoppalusikkaDisplayChannel(WithInfo);
 }
@@ -1759,7 +1763,6 @@ cSkinDisplayReplay *cSkinSoppalusikka::DisplayReplay(bool ModeOnly)
 
 cSkinDisplayVolume *cSkinSoppalusikka::DisplayVolume(void)
 {
-  SoppalusikkaSymbolCache.Refresh();
   return new cSkinSoppalusikkaDisplayVolume;
 }
 
@@ -1771,6 +1774,5 @@ cSkinDisplayTracks *cSkinSoppalusikka::DisplayTracks(const char *Title, int NumT
 
 cSkinDisplayMessage *cSkinSoppalusikka::DisplayMessage(void)
 {
-  SoppalusikkaSymbolCache.Refresh();
   return new cSkinSoppalusikkaDisplayMessage;
 }

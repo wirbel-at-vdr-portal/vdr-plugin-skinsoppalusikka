@@ -14,14 +14,32 @@
 cSoppalusikkaLogoCache SoppalusikkaLogoCache(0);
 
 cSoppalusikkaLogoCache::cSoppalusikkaLogoCache(unsigned int cacheSizeP)
-: cacheSizeM(cacheSizeP), bitmapM(NULL)
+: xFactorM(1.0),
+  yFactorM(1.0),
+  antiAliasM(false),
+  cacheSizeM(cacheSizeP),
+  bitmapM(NULL)
 {
 }
 
 cSoppalusikkaLogoCache::~cSoppalusikkaLogoCache()
 {
-  // let's flush the cache
   Flush();
+}
+
+void cSoppalusikkaLogoCache::Refresh()
+{
+  int width, height;
+  double aspect, xfactor, yfactor;
+  cDevice::PrimaryDevice()->GetOsdSize(width, height, aspect);
+  debug("%s(): %dx%d", __PRETTY_FUNCTION__, width, height);
+  xfactor = (double)width / DEFAULT_OSD_WIDTH;
+  yfactor = (double)height / DEFAULT_OSD_HEIGHT;
+  if (!DoubleEqual(xfactor, xFactorM) || !DoubleEqual(yfactor, yFactorM)) {
+     xFactorM = xfactor;
+     yFactorM = yfactor;
+     Flush();
+     }
 }
 
 bool cSoppalusikkaLogoCache::Resize(unsigned int cacheSizeP)
@@ -108,18 +126,20 @@ bool cSoppalusikkaLogoCache::LoadXpm(const char *fileNameP)
   debug("%s(%s)", __PRETTY_FUNCTION__, *filename);
   // check validity
   if ((stat(*filename, &stbuf) == 0) && bmp->LoadXpm(*filename)) {
-     if ((bmp->Width() == ChannelLogoWidth) && (bmp->Height() == ChannelLogoHeight)) {
-        debug("%s() LOGO FOUND", __PRETTY_FUNCTION__);
-        // assign bitmap
-        bitmapM = bmp;
-        return true;
+     // assign bitmap
+     debug("%s() LOGO FOUND", __PRETTY_FUNCTION__);
+     if (!DoubleEqual(1.0, xFactorM) || !DoubleEqual(1.0, yFactorM) || (bmp->Width() != DEFAULT_LOGO_WIDTH) || (bmp->Height() != DEFAULT_LOGO_HEIGHT)) {
+        cBitmap *tmp = bmp;
+        // scale bitmap
+        bmp = bmp->Scaled(yFactorM, yFactorM, antiAliasM);
+        DELETENULL(tmp);
         }
-     else
-        error("%s(): Invalid logo resolution in '%s'", __PRETTY_FUNCTION__, *filename);
+     bitmapM = bmp;
+     return true;
      }
   // no valid xpm logo found - delete bitmap
   debug("%s() LOGO NOT FOUND OR INVALID RESOLUTION", __PRETTY_FUNCTION__);
-  delete bmp;
+  DELETENULL(bmp);
   bitmapM = NULL;
   return false;
 }

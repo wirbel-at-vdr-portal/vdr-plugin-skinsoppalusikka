@@ -115,41 +115,42 @@ bool cSoppalusikkaSymbolCache::Populate(void)
   debug("%s(): %.02fx%.02f ", __PRETTY_FUNCTION__, xFactorM, yFactorM);
   if (!DoubleEqual(0.0, xFactorM) || !DoubleEqual(0.0, yFactorM)) {
      Flush();
-     // pushing order must follow the enumeration
-     cacheM.Append(bmAudio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_AUDIO
-     cacheM.Append(bmAudioLeft.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_AUDIO_LEFT
-     cacheM.Append(bmAudioRight.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_AUDIO_RIGHT
-     cacheM.Append(bmDolbyDigital.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_DOLBY_DIGITAL
-     cacheM.Append(bmEncrypted.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_ENCRYPTED
-     cacheM.Append(bmFastForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FFWD
-     cacheM.Append(bmFastForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD1
-     cacheM.Append(bmFastForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD2
-     cacheM.Append(bmFastForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD3
-     cacheM.Append(bmFastReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_FREW
-     cacheM.Append(bmFastReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW1
-     cacheM.Append(bmFastReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW2
-     cacheM.Append(bmFastReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW3
-     cacheM.Append(bmPause.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_PAUSE
-     cacheM.Append(bmPlay.Scaled(xFactorM, yFactorM, antiAliasM));           // SYMBOL_PLAY
-     cacheM.Append(bmRadio.Scaled(xFactorM, yFactorM, antiAliasM));          // SYMBOL_RADIO
-     cacheM.Append(bmRecording.Scaled(xFactorM, yFactorM, antiAliasM));      // SYMBOL_RECORDING
-     cacheM.Append(bmRunning.Scaled(xFactorM, yFactorM, antiAliasM));        // SYMBOL_RUNNING
-     cacheM.Append(bmSlowForward.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SFWD
-     cacheM.Append(bmSlowForward1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD1
-     cacheM.Append(bmSlowForward2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD2
-     cacheM.Append(bmSlowForward3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD3
-     cacheM.Append(bmSlowReverse.Scaled(xFactorM, yFactorM, antiAliasM));    // SYMBOL_SREW
-     cacheM.Append(bmSlowReverse1.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW1
-     cacheM.Append(bmSlowReverse2.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW2
-     cacheM.Append(bmSlowReverse3.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW3
-     cacheM.Append(bmTeletext.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_TELETEXT
-     cacheM.Append(bmVPS.Scaled(xFactorM, yFactorM, antiAliasM));            // SYMBOL_VPS
-     cacheM.Append(bmEventPartTimer.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_PARTTIMER
-     cacheM.Append(bmEventTimer.Scaled(xFactorM, yFactorM, antiAliasM));     // SYMBOL_EVENT_TIMER
-     cacheM.Append(bmEventVPS.Scaled(xFactorM, yFactorM, antiAliasM));       // SYMBOL_EVENT_VPS
-     cacheM.Append(bmEventRunning.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_EVENT_RUNNING
-     cacheM.Append(bmEventRecording.Scaled(xFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_RECORDING
-     cacheM.Append(bmRecordingNew.Scaled(xFactorM, yFactorM, antiAliasM));   // SYMBOL_RECORDING_NEW
+
+     // pushing order must follow the enumeration - keep original proportions
+     cacheM.Append(bmAudio.Scaled(yFactorM, yFactorM, antiAliasM));          // SYMBOL_AUDIO
+     cacheM.Append(bmAudioLeft.Scaled(yFactorM, yFactorM, antiAliasM));      // SYMBOL_AUDIO_LEFT
+     cacheM.Append(bmAudioRight.Scaled(yFactorM, yFactorM, antiAliasM));     // SYMBOL_AUDIO_RIGHT
+     cacheM.Append(bmDolbyDigital.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_DOLBY_DIGITAL
+     cacheM.Append(bmEncrypted.Scaled(yFactorM, yFactorM, antiAliasM));      // SYMBOL_ENCRYPTED
+     cacheM.Append(bmFastForward.Scaled(yFactorM, yFactorM, antiAliasM));    // SYMBOL_FFWD
+     cacheM.Append(bmFastForward1.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD1
+     cacheM.Append(bmFastForward2.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD2
+     cacheM.Append(bmFastForward3.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FFWD3
+     cacheM.Append(bmFastReverse.Scaled(yFactorM, yFactorM, antiAliasM));    // SYMBOL_FREW
+     cacheM.Append(bmFastReverse1.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW1
+     cacheM.Append(bmFastReverse2.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW2
+     cacheM.Append(bmFastReverse3.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_FREW3
+     cacheM.Append(bmPause.Scaled(yFactorM, yFactorM, antiAliasM));          // SYMBOL_PAUSE
+     cacheM.Append(bmPlay.Scaled(yFactorM, yFactorM, antiAliasM));           // SYMBOL_PLAY
+     cacheM.Append(bmRadio.Scaled(yFactorM, yFactorM, antiAliasM));          // SYMBOL_RADIO
+     cacheM.Append(bmRecording.Scaled(yFactorM, yFactorM, antiAliasM));      // SYMBOL_RECORDING
+     cacheM.Append(bmRunning.Scaled(yFactorM, yFactorM, antiAliasM));        // SYMBOL_RUNNING
+     cacheM.Append(bmSlowForward.Scaled(yFactorM, yFactorM, antiAliasM));    // SYMBOL_SFWD
+     cacheM.Append(bmSlowForward1.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD1
+     cacheM.Append(bmSlowForward2.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD2
+     cacheM.Append(bmSlowForward3.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SFWD3
+     cacheM.Append(bmSlowReverse.Scaled(yFactorM, yFactorM, antiAliasM));    // SYMBOL_SREW
+     cacheM.Append(bmSlowReverse1.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW1
+     cacheM.Append(bmSlowReverse2.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW2
+     cacheM.Append(bmSlowReverse3.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_SREW3
+     cacheM.Append(bmTeletext.Scaled(yFactorM, yFactorM, antiAliasM));       // SYMBOL_TELETEXT
+     cacheM.Append(bmVPS.Scaled(yFactorM, yFactorM, antiAliasM));            // SYMBOL_VPS
+     cacheM.Append(bmEventPartTimer.Scaled(yFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_PARTTIMER
+     cacheM.Append(bmEventTimer.Scaled(yFactorM, yFactorM, antiAliasM));     // SYMBOL_EVENT_TIMER
+     cacheM.Append(bmEventVPS.Scaled(yFactorM, yFactorM, antiAliasM));       // SYMBOL_EVENT_VPS
+     cacheM.Append(bmEventRunning.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_EVENT_RUNNING
+     cacheM.Append(bmEventRecording.Scaled(yFactorM, yFactorM, antiAliasM)); // SYMBOL_EVENT_RECORDING
+     cacheM.Append(bmRecordingNew.Scaled(yFactorM, yFactorM, antiAliasM));   // SYMBOL_RECORDING_NEW
 
      return true;
      }
