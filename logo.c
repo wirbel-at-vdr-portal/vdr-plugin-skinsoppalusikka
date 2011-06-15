@@ -154,9 +154,8 @@ bool cSoppalusikkaLogoCache::Flush(void)
      // delete bitmaps and clear map
      for (std::map<std::string, cBitmap*>::iterator i = cacheMapM.begin(); i != cacheMapM.end(); ++i) {
          cBitmap *bmp = i->second;
-         if (bmp)
-            DELETENULL(bmp);
          cacheMapM.erase(i);
+         DELETENULL(bmp);
          }
      // nullify bitmap pointer
      bitmapM = NULL;

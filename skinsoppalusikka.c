@@ -17,7 +17,7 @@
 #error "VDR-1.7.18 API version or greater is required!"
 #endif
 
-static const char VERSION[]     = "1.7.3";
+static const char VERSION[]     = "1.7.4";
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {

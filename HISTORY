@@ -243,3 +243,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated for vdr-1.7.18.
 - Updated Makefile.
 - Added scaling for symbols and logos.
+
+2011-xx-xx: Version 1.7.4
+
+- Added cppcheck target into Makefile.
