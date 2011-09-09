@@ -99,19 +99,26 @@ THEME_CLR(Theme, clrReplayProgressCurrent,  0xFFFF0000);
 
 class cSkinSoppalusikkaDisplayChannel : public cSkinDisplayChannel {
 private:
+  enum {
+    SIGNALUPDATETIMEOUT_MS = 500
+  };
   cOsd *osd;
   bool islogo;
   int x0, x1;
   int xt0, xt1, xt2, xt3, xt4, xt5, xt6, xt7, xt8, xt9;
   int xb0, xb1, xb2, xb3, xb4, xb5, xb6;
+  int xs0, xs1;
   int y0, y1;
   int yt0, yt1, yt2, yt3, yt4;
   int yb0, yb1, yb2, yb3, yb4, yb5;
+  int ys0, ys1;
   cString lastDate;
+  cTimeMs lastSignalUpdate;
   bool HasChannelTimerRecording(const cChannel *Channel);
   void ResetTopAreaCoordinates(bool islogo = false);
   void DrawTopArea(const cChannel *Channel = NULL);
   void DrawBottomArea(void);
+  void DrawSignalArea(void);
   cString GetChannelName(const cChannel *Channel);
   cString GetChannelNumber(const cChannel *Channel, int Number);
 public:
@@ -128,6 +135,7 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   const cFont *font = cFont::GetFont(fontOsd);
   int lineHeight = font->Height();
   islogo = false;
+  lastSignalUpdate.Set(0);
   // general coordinates
   x0 = 0;
   x1 = cOsd::OsdWidth();
@@ -144,6 +152,9 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   xt6 = xt7 - Roundness;
   xt5 = xt6 - 5 * BigGap;
   xt4 = xt5 - Roundness;
+  // signal area x-coordinates
+  xs0 = xt8;
+  xs1 = xt8;
   // bottom area x-coordinates
   xb6 = x1 - BigGap;
   xb0 = x0 + BigGap;
@@ -159,6 +170,9 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
   yt2 = yt0 + lineHeight;
   yt3 = yt2 + SmallGap;
   yt4 = yt3 + lineHeight;
+  // signal area y-coordinates
+  ys1 = yt4 - 4 * Gap;
+  ys0 = ys1 - 4 * Gap;
   // bottom area y-coordinates
   yb0 = yt4;
   yb1 = yb0 + lineHeight;
@@ -277,6 +291,23 @@ void cSkinSoppalusikkaDisplayChannel::DrawBottomArea(void)
   osd->DrawEllipse(xb5, yb4, xb6 - 1, yb5 - 1, clrTransparent, -4);
 }
 
+void cSkinSoppalusikkaDisplayChannel::DrawSignalArea(void)
+{
+  int x;
+  int s = cDevice::ActualDevice()->SignalStrength();
+  int q = cDevice::ActualDevice()->SignalQuality();
+  // draw signal strength
+  x = (xs1 - xs0 - 1) * (s < 0 ? 0 : s) / 100;
+  osd->DrawRectangle(xs0, ys0, xs1 - 1, ys0 + Gap, Theme.Color(clrChannelSymbolInactive));
+  osd->DrawRectangle(xs0, ys0, xs0 + x, ys0 + Gap, Theme.Color(clrChannelSymbolActive));
+  // draw signal quality
+  x = (xs1 - xs0 - 1) * (q < 0 ? 0 : q) / 100;
+  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs1 - 1, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolInactive));
+  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs0 + x, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolActive));
+  // update timer
+  lastSignalUpdate.Set(SIGNALUPDATETIMEOUT_MS);
+}
+
 cString cSkinSoppalusikkaDisplayChannel::GetChannelName(const cChannel *Channel)
 {
   char buffer[256];
@@ -340,42 +371,46 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
      // draw radio symbol if no video PID; otherwise draw teletext symbol
      if (Channel->Vpid()) {
         xs -= GetSymbol(SYMBOL_TELETEXT).Width();
-        osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_TELETEXT).Height()) / 2, GetSymbol(SYMBOL_TELETEXT), Theme.Color(Channel->Tpid() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_TELETEXT).Height()) / 2, GetSymbol(SYMBOL_TELETEXT), Theme.Color(Channel->Tpid() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
         }
      else {
         xs -= GetSymbol(SYMBOL_RADIO).Width();
-        osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_RADIO).Height()) / 2, GetSymbol(SYMBOL_RADIO), Theme.Color(Channel->Apid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_RADIO).Height()) / 2, GetSymbol(SYMBOL_RADIO), Theme.Color(Channel->Apid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
         }
      // draw audio symbol according to current audio channel
      switch (cDevice::PrimaryDevice()->GetAudioChannel()) {
        default:
        case 0: /* stereo */
             xs -= (GetSymbol(SYMBOL_AUDIO).Width() + BigGap);
-            osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
             break;
        case 1: /* mono left */
             xs -= (GetSymbol(SYMBOL_AUDIO_LEFT).Width() + BigGap);
-            osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
             break;
        case 2: /* mono right */
             xs -= (GetSymbol(SYMBOL_AUDIO_RIGHT).Width() + 2 * BigGap);
-            osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
             break;
         }
      // draw dolby digital symbol
      xs -= (GetSymbol(SYMBOL_DOLBY_DIGITAL).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_DOLBY_DIGITAL).Height()) / 2, GetSymbol(SYMBOL_DOLBY_DIGITAL), Theme.Color(Channel->Dpid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_DOLBY_DIGITAL).Height()) / 2, GetSymbol(SYMBOL_DOLBY_DIGITAL), Theme.Color(Channel->Dpid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
      // draw encryption symbol
      xs -= (GetSymbol(SYMBOL_ENCRYPTED).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_ENCRYPTED).Height()) / 2, GetSymbol(SYMBOL_ENCRYPTED), Theme.Color(Channel->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_ENCRYPTED).Height()) / 2, GetSymbol(SYMBOL_ENCRYPTED), Theme.Color(Channel->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
      // draw vps symbol
      if (SoppalusikkaConfig.showvps) {
         xs -= (GetSymbol(SYMBOL_VPS).Width() + BigGap);
-        osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), Theme.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), Theme.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
         }
      // draw recording symbol
      xs -= (GetSymbol(SYMBOL_RECORDING).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (yt4 - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     // draw signal area
+     xs0 = xs;
+     ys0 = (yt0 + ys1 + GetSymbol(SYMBOL_RECORDING).Height()) / 2 + Gap;
+     DrawSignalArea();
      }
   lastDate = NULL;
 }
@@ -492,6 +527,8 @@ void cSkinSoppalusikkaDisplayChannel::Flush(void)
      osd->DrawText(xt3, yt0, date, Theme.Color(clrChannelNumberDateFg), Theme.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt4 - xt3, yt2 - yt0, taRight);
      lastDate = date;
      }
+  if (lastSignalUpdate.TimedOut())
+     DrawSignalArea();
   osd->Flush();
 }
 

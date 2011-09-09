@@ -244,6 +244,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Updated Makefile.
 - Added scaling for symbols and logos.
 
-2011-xx-xx: Version 1.7.4
+2011-09-11: Version 1.7.4
 
 - Added cppcheck target into Makefile.
+- Added signal strength and quality into channel info window.
