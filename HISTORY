@@ -248,3 +248,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Added cppcheck target into Makefile.
 - Added signal strength and quality into channel info window.
+
+2011-xx-xx: Version 1.7.5
+
+- Updated for vdr-1.7.21.

@@ -1018,11 +1018,11 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   cTextScroller ts;
   char t[32];
   // draw recording date string
-  snprintf(t, sizeof(t), "%s  %s", *DateString(Recording->start), *TimeString(Recording->start));
+  snprintf(t, sizeof(t), "%s  %s", *DateString(Recording->Start()), *TimeString(Recording->Start()));
   ts.Set(osd, x2, y, x3 - x2, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // draw additional information
-  cString info = cString::sprintf("%s: %d %s: %d", tr("Priority"), Recording->priority, tr("Lifetime"), Recording->lifetime);
+  cString info = cString::sprintf("%s: %d %s: %d", tr("Priority"), Recording->Priority(), tr("Lifetime"), Recording->Lifetime());
   if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
      char *aux = strdup(Info->Aux());
      info = cString::sprintf("%s\n%s: %s", *info, tr("Auxiliary information"), parseaux(aux));
