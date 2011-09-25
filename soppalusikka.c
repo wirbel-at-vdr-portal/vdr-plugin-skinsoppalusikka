@@ -1401,7 +1401,7 @@ void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
   else {
      // draw inactive symbol
      xs -= GetSymbol(SYMBOL_FREW).Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_FREW).Height()) / 2, GetSymbol(SYMBOL_TELETEXT), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_FREW).Height()) / 2, GetSymbol(SYMBOL_FREW), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
      }
 }
 

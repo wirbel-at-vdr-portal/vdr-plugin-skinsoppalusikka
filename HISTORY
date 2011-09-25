@@ -252,3 +252,4 @@ VDR Skin 'Soppalusikka' Revision History
 2011-xx-xx: Version 1.7.5
 
 - Updated for vdr-1.7.21.
+- Fixed drawing the inactive fast rewind icon.
