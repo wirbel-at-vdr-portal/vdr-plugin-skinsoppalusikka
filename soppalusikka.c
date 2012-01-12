@@ -299,11 +299,11 @@ void cSkinSoppalusikkaDisplayChannel::DrawSignalArea(void)
   // draw signal strength
   x = (xs1 - xs0 - 1) * (s < 0 ? 0 : s) / 100;
   osd->DrawRectangle(xs0, ys0, xs1 - 1, ys0 + Gap, Theme.Color(clrChannelSymbolInactive));
-  osd->DrawRectangle(xs0, ys0, xs0 + x, ys0 + Gap, Theme.Color(clrChannelSymbolActive));
+  osd->DrawRectangle(xs0, ys0, xs0 + x - 1, ys0 + Gap, Theme.Color(clrChannelSymbolActive));
   // draw signal quality
   x = (xs1 - xs0 - 1) * (q < 0 ? 0 : q) / 100;
   osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs1 - 1, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolInactive));
-  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs0 + x, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolActive));
+  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs0 + x - 1, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolActive));
   // update timer
   lastSignalUpdate.Set(SIGNALUPDATETIMEOUT_MS);
 }
