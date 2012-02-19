@@ -71,11 +71,11 @@ public:
   ~cSoppalusikkaSymbolCache();
   void Refresh();
   cBitmap& Get(eSymbols symbolP);
-  int GetGapTiny()   { return yFactorM * DEFAULT_GAP_TINY; }
-  int GetGapSmall()  { return yFactorM * DEFAULT_GAP_SMALL; }
-  int GetGapNormal() { return yFactorM * DEFAULT_GAP_NORMAL; }
-  int GetGapBig()    { return yFactorM * DEFAULT_GAP_BIG; }
-  int GetRoundness() { return yFactorM * DEFAULT_ROUNDNESS; }
+  int GetGapTiny()   { return int(yFactorM * DEFAULT_GAP_TINY);   }
+  int GetGapSmall()  { return int(yFactorM * DEFAULT_GAP_SMALL);  }
+  int GetGapNormal() { return int(yFactorM * DEFAULT_GAP_NORMAL); }
+  int GetGapBig()    { return int(yFactorM * DEFAULT_GAP_BIG);    }
+  int GetRoundness() { return int(yFactorM * DEFAULT_ROUNDNESS);  }
 };
 
 extern cSoppalusikkaSymbolCache SoppalusikkaSymbolCache;
