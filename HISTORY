@@ -259,3 +259,7 @@ VDR Skin 'Soppalusikka' Revision History
 - Fixed drawing the signal bars.
 - Silenced compilation warnings.
 - Updated Makefile.
+
+2012-xx-xx: Version 1.7.7
+
+- Fixed cache flushing.
