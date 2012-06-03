@@ -19,6 +19,7 @@
 #include <vdr/osd.h>
 #include <vdr/themes.h>
 #include <vdr/plugin.h>
+#include <vdr/videodir.h>
 
 #define GetSymbol(id)     SoppalusikkaSymbolCache.Get(id)
 #define TinyGap           SoppalusikkaSymbolCache.GetGapTiny()
@@ -540,8 +541,11 @@ private:
   int x0, x1, x2, x3, x4, x5;
   int y0, y1, y2, y3, y4, y5, y6, y7, y8;
   int lineHeight;
+  int lastDiskUsageState;
   bool lastRec;
   cString lastDate;
+  cString title;
+  void DrawTitle();
   void DrawScrollbar(int Total, int Offset, int Shown, int Top, int Height, bool CanScrollUp, bool CanScrollDown);
   void SetTextScrollbar(void);
 public:
@@ -567,6 +571,7 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
 {
   const cFont *font = cFont::GetFont(fontOsd);
   lineHeight = font->Height();
+  lastDiskUsageState = -1;
   lastRec = false;
   x0 = 0;
   x1 = x0 + Gap;
@@ -684,12 +689,21 @@ void cSkinSoppalusikkaDisplayMenu::Clear(void)
   osd->DrawRectangle(x0, y2, x5 - 1, y6 - 1, Theme.Color(clrBackground));
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *Title)
+void cSkinSoppalusikkaDisplayMenu::DrawTitle()
 {
   const cFont *font = cFont::GetFont(fontSml);
   int w = Gap + font->Width("Wmm 07.07 07:07") + (cRecordControls::Active() ?  GetSymbol(SYMBOL_RECORDING).Width() : 0);
   // draw title
-  osd->DrawText(x2, y0, Title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
+  if ((MenuCategory() == mcMain) || (MenuCategory() == mcRecording))
+     osd->DrawText(x2, y0, cString::sprintf("%s  -  %s", *title, *cVideoDiskUsage::String()), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
+  else
+     osd->DrawText(x2, y0, title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
+}
+
+void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *Title)
+{
+  title = Title;
+  DrawTitle();
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *Red, const char *Green, const char *Yellow, const char *Blue)
@@ -1139,6 +1153,8 @@ void cSkinSoppalusikkaDisplayMenu::Flush(void)
   const cFont *font = cFont::GetFont(fontSml);
   int w = font->Width("Wmm 07.07 07:07");
   bool rec = cRecordControls::Active();
+  if (cVideoDiskUsage::HasChanged(lastDiskUsageState))
+     DrawTitle();
   if (lastRec != rec) {
      int xl = x3 - w - GetSymbol(SYMBOL_RECORDING).Width();
      // draw safety margin
