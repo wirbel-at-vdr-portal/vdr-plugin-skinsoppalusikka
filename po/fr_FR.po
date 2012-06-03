@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: vdr-skinsoppalusikka 1.7.6\n"
+"Project-Id-Version: vdr-skinsoppalusikka 1.7.7\n"
 "Report-Msgid-Bugs-To: <see README>\n"
-"POT-Creation-Date: 2011-03-13 19:20+0200\n"
-"PO-Revision-Date: 2010-10-10 10:10+0300\n"
+"POT-Creation-Date: 2012-06-03 06:03+0200\n"
+"PO-Revision-Date: 2012-06-03 06:03+0200\n"
 "Last-Translator: NIVAL Michaël <mnival@club-internet.fr>\n"
 "Language-Team: French <vdr@linuxtv.org>\n"
 "Language: fr\n"
