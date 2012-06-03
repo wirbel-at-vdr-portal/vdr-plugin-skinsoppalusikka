@@ -763,7 +763,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
          bool isprogressbar = false;
          int now = 0, total = 0;
          // check if event info symbol: "tTV*" "R"
-         if (SoppalusikkaConfig.showsymbols) {
+         if (SoppalusikkaConfig.showsymbols /*&& (MenuCategory() == mcSchedule)*/) {
             // check if event info characters
             if (strlen(s) == 3 && ischaracter(s[0], " tTR") && ischaracter(s[1], " V") && ischaracter(s[2], " *")) {
                // update status
@@ -771,7 +771,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
                }
             }
          // check if new recording: "01.01.06*", "10:10*"
-         if (!iseventinfo && SoppalusikkaConfig.showsymbols &&
+         if (!iseventinfo && SoppalusikkaConfig.showsymbols /*&& (MenuCategory() == mcRecording)*/ &&
             (strlen(s) == 6 && s[5] == '*' && s[2] == ':' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4))) ||
             (strlen(s) == 9 && s[8] == '*' && s[5] == '.' && s[2] == '.' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4)) && isdigit(*(s + 6)) && isdigit(*(s + 7)))) {
             // update status
@@ -782,7 +782,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             buffer[strlen(s) - 1] = '\0';
             }
          // check if progress bar: "[|||||||   ]"
-         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar &&
+         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar /*&& (MenuCategory() == mcSchedule)*/ &&
             (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
             const char *p = s + 1;
             // update status
@@ -1185,6 +1185,7 @@ private:
 public:
   cSkinSoppalusikkaDisplayReplay(bool ModeOnly);
   virtual ~cSkinSoppalusikkaDisplayReplay();
+  virtual void SetRecording(const cRecording *Recording);
   virtual void SetTitle(const char *Title);
   virtual void SetMode(bool Play, bool Forward, int Speed);
   virtual void SetProgress(int Current, int Total);
@@ -1273,6 +1274,11 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
 cSkinSoppalusikkaDisplayReplay::~cSkinSoppalusikkaDisplayReplay()
 {
   delete osd;
+}
+
+void cSkinSoppalusikkaDisplayReplay::SetRecording(const cRecording *Recording)
+{
+  SetTitle(Recording->Title());
 }
 
 void cSkinSoppalusikkaDisplayReplay::SetTitle(const char *Title)

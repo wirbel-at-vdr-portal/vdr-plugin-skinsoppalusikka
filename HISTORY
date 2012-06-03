@@ -264,3 +264,7 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-1.7.28.
 - Fixed cache flushing.
+
+2012-xx-xx: Version 1.7.8
+
+- Implemented missing vdr-1.7.28 features.
