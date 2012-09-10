@@ -708,6 +708,9 @@ void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *Title)
 
 void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *Red, const char *Green, const char *Yellow, const char *Blue)
 {
+  const char *lutText[] = { Red, Green, Yellow, Blue };
+  tColor lutFg[] = { clrButtonRedFg, clrButtonGreenFg, clrButtonYellowFg, clrButtonBlueFg };
+  tColor lutBg[] = { clrButtonRedBg, clrButtonGreenBg, clrButtonYellowBg, clrButtonBlueBg };
   const cFont *font = cFont::GetFont(fontSml);
   int t0 = x2;
   int t4 = x3;
@@ -715,10 +718,10 @@ void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *Red, const char *Green
   int t1 = t0 + (t2 - t0) / 2;
   int t3 = t2 + (t4 - t2) / 2;
   // draw color buttons
-  osd->DrawText(t0, y6, Red,    Theme.Color(clrButtonRedFg),    Theme.Color(clrButtonRedBg),    font, t1 - t0, y8 - y6, taCenter);
-  osd->DrawText(t1, y6, Green,  Theme.Color(clrButtonGreenFg),  Theme.Color(clrButtonGreenBg),  font, t2 - t1, y8 - y6, taCenter);
-  osd->DrawText(t2, y6, Yellow, Theme.Color(clrButtonYellowFg), Theme.Color(clrButtonYellowBg), font, t3 - t2, y8 - y6, taCenter);
-  osd->DrawText(t3, y6, Blue,   Theme.Color(clrButtonBlueFg),   Theme.Color(clrButtonBlueBg),   font, t4 - t3, y8 - y6, taCenter);
+  osd->DrawText(t0, y6, lutText[Setup.ColorKey0], Theme.Color(lutFg[Setup.ColorKey0]), Theme.Color(lutBg[Setup.ColorKey0]), font, t1 - t0, y8 - y6, taCenter);
+  osd->DrawText(t1, y6, lutText[Setup.ColorKey1], Theme.Color(lutFg[Setup.ColorKey1]), Theme.Color(lutBg[Setup.ColorKey1]), font, t2 - t1, y8 - y6, taCenter);
+  osd->DrawText(t2, y6, lutText[Setup.ColorKey2], Theme.Color(lutFg[Setup.ColorKey2]), Theme.Color(lutBg[Setup.ColorKey2]), font, t3 - t2, y8 - y6, taCenter);
+  osd->DrawText(t3, y6, lutText[Setup.ColorKey3], Theme.Color(lutFg[Setup.ColorKey3]), Theme.Color(lutBg[Setup.ColorKey3]), font, t4 - t3, y8 - y6, taCenter);
 }
 
 void cSkinSoppalusikkaDisplayMenu::SetMessage(eMessageType Type, const char *Text)
