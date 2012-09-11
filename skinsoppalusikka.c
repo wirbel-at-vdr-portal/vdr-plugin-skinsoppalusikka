@@ -116,7 +116,7 @@ bool cPluginSkinSoppalusikka::Start(void)
   debug("cPluginSkinSoppalusikka::Start()");
   // set logo directory
   if (!islogodirset) {
-     SoppalusikkaConfig.SetLogoDir(cPlugin::ConfigDirectory(PLUGIN_NAME_I18N));
+     SoppalusikkaConfig.SetLogoDir(cPlugin::ResourceDirectory(PLUGIN_NAME_I18N));
      islogodirset = true;
      }
   // resize logo cache

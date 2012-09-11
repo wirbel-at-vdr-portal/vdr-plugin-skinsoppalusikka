@@ -37,8 +37,8 @@ make plugins
 Configuration:
 
 Channel logo directory can be given via a command line option (-l) and
-it defaults to "skinsoppalusikka" subdirectory in VDR's configuration
-directory for plugins.
+it defaults to "skinsoppalusikka" subdirectory in VDR's resorce directory
+for plugins.
 
 Notes:
 

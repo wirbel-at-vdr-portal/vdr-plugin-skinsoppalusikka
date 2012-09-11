@@ -269,3 +269,5 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Implemented missing vdr-1.7.28 features.
 - Updated for vdr-1.7.30.
+- Changed default logo directory from the configuration to
+  the resource.
