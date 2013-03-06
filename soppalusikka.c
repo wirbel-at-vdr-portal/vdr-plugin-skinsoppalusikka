@@ -766,17 +766,18 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
          bool isprogressbar = false;
          int now = 0, total = 0;
          // check if event info symbol: "tTV*" "R"
-         if (SoppalusikkaConfig.showsymbols /*&& (MenuCategory() == mcSchedule)*/) {
-            // check if event info characters
-            if (strlen(s) == 3 && ischaracter(s[0], " tTR") && ischaracter(s[1], " V") && ischaracter(s[2], " *")) {
-               // update status
-               iseventinfo = true;
-               }
+         if (SoppalusikkaConfig.showsymbols &&
+             ((MenuCategory() == mcSchedule) || (MenuCategory() == mcScheduleNow) || (MenuCategory() == mcScheduleNext)) &&
+             strlen(s) == 3 && ischaracter(s[0], " tTR") && ischaracter(s[1], " V") && ischaracter(s[2], " *")) {
+            // update status
+            iseventinfo = true;
             }
-         // check if new recording: "01.01.06*", "10:10*"
-         if (!iseventinfo && SoppalusikkaConfig.showsymbols /*&& (MenuCategory() == mcRecording)*/ &&
-            (strlen(s) == 6 && s[5] == '*' && s[2] == ':' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4))) ||
-            (strlen(s) == 9 && s[8] == '*' && s[5] == '.' && s[2] == '.' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4)) && isdigit(*(s + 6)) && isdigit(*(s + 7)))) {
+         // check if new recording: "0:45*", "10:10*", "01.01.06*"
+         if (!iseventinfo && SoppalusikkaConfig.showsymbols &&
+             (MenuCategory() == mcRecording) &&
+             ((strlen(s) == 5 && s[4] == '*' && s[1] == ':' && isdigit(*s) && isdigit(*(s + 2)) && isdigit(*(s + 3))) ||
+              (strlen(s) == 6 && s[5] == '*' && s[2] == ':' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4))) ||
+              (strlen(s) == 9 && s[8] == '*' && s[5] == '.' && s[2] == '.' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4)) && isdigit(*(s + 6)) && isdigit(*(s + 7))))) {
             // update status
             isnewrecording = true;
             // make a copy
@@ -785,8 +786,9 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             buffer[strlen(s) - 1] = '\0';
             }
          // check if progress bar: "[|||||||   ]"
-         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar /*&& (MenuCategory() == mcSchedule)*/ &&
-            (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
+         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar && 
+             ((MenuCategory() == mcSchedule) || (MenuCategory() == mcScheduleNow) || (MenuCategory() == mcScheduleNext)) &&
+             (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
             const char *p = s + 1;
             // update status
             isprogressbar = true;

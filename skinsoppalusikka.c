@@ -21,7 +21,7 @@
 #define GITVERSION ""
 #endif
 
-static const char VERSION[]     = "1.7.9" GITVERSION;
+static const char VERSION[]     = "1.7.10" GITVERSION;
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
@@ -192,10 +192,10 @@ cString cPluginSkinSoppalusikka::SVDRPCommand(const char *Command, const char *O
 }
 
 cPluginSkinSoppalusikkaSetup::cPluginSkinSoppalusikkaSetup(void)
+: data(SoppalusikkaConfig)
 {
   // create setup menu
   debug("cPluginSkinSoppalusikkaSetup()");
-  data = SoppalusikkaConfig;
   Setup();
   SetHelp(tr("Button$Flush cache"), NULL, NULL, NULL);
 }
