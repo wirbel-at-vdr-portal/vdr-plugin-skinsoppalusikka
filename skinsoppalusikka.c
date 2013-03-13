@@ -196,6 +196,7 @@ cPluginSkinSoppalusikkaSetup::cPluginSkinSoppalusikkaSetup(void)
 {
   // create setup menu
   debug("cPluginSkinSoppalusikkaSetup()");
+  SetMenuCategory(mcSetupPlugins);
   Setup();
   SetHelp(tr("Button$Flush cache"), NULL, NULL, NULL);
 }
