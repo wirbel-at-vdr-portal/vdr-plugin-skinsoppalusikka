@@ -23,16 +23,8 @@ The "Soppalusikka" is a standalone skin providing the good old "ElchiAIO" looks.
 
 Installation:
 
-cd /put/your/path/here/VDR/PLUGINS/src
 tar -xzf /put/your/path/here/vdr-skinsoppalusikka-X.Y.Z.tgz
-ln -s skinsoppalusikka-X.Y.Z skinsoppalusikka
-mkdir -p /path/to/vdrconf/plugins/skinsoppalusikka
-cp -d /path/to/channel/logos/*.xpm /path/to/vdrconf/plugins/skinsoppalusikka/
-cp -d skinsoppalusikka/themes/*.theme /path/to/vdrconf/themes/
-cd /put/your/path/here/VDR
-make
-make plugins
-./vdr -P skinsoppalusikka
+make -C skinsoppalusikka-X.Y.Z install
 
 Configuration:
 
