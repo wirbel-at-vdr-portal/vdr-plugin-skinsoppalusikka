@@ -176,6 +176,11 @@ VDR Skin 'Soppalusikka' Revision History
   increased the default logo cache size to 100.
 - Improved performance.
 
+
+========================================
+VDR Skin 'Soppalusikka' Revision History
+========================================
+
 2008-03-27: Version 1.6.0
 
 - Updated for vdr-1.6.0.
@@ -276,6 +281,12 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-1.7.37.
 
-2013-xx-xx: Version 1.7.10
 
+========================================
+VDR Skin 'Soppalusikka' Revision History
+========================================
+
+2013-04-01: Version 2.0.0
+
+- Updated for vdr-2.0.0.
 - Fixed symbols in schedule and recordings menus.
