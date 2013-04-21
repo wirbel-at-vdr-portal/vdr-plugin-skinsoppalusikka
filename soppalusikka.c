@@ -52,6 +52,7 @@ THEME_CLR(Theme, clrMessageErrorFg,         0xFFFFEE00);
 THEME_CLR(Theme, clrMessageErrorBg,         0xC8000066);
 THEME_CLR(Theme, clrVolumePromptFg,         0xFF000000);
 THEME_CLR(Theme, clrVolumePromptBg,         0xFFFFFFFF);
+THEME_CLR(Theme, clrVolumePromptBorder,     0xFF000000);
 THEME_CLR(Theme, clrVolumeBarUpper,         0xC8000066);
 THEME_CLR(Theme, clrVolumeBarLower,         0xFF33CC33);
 THEME_CLR(Theme, clrVolumeBarMute,          0xFFFF0000);
@@ -85,6 +86,7 @@ THEME_CLR(Theme, clrMenuScrollbarShown,     0xFFCCBB22);
 THEME_CLR(Theme, clrMenuText,               0xFFCCBB22);
 THEME_CLR(Theme, clrReplayTitleFg,          0xFF000000);
 THEME_CLR(Theme, clrReplayTitleBg,          0xFFFFFFFF);
+THEME_CLR(Theme, clrReplayTitleBorder,      0xFF000000);
 THEME_CLR(Theme, clrReplayCurrent,          0xFFFFFFFF);
 THEME_CLR(Theme, clrReplayTotal,            0xFFFFFFFF);
 THEME_CLR(Theme, clrReplayModeJump,         0xFFFFFFFF);
@@ -1253,7 +1255,7 @@ cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
      }
   else {
      // draw titlebar
-     osd->DrawRectangle(x0, y0, x5 - 1, y2 - 1, Theme.Color(clrReplayTitleFg));
+     osd->DrawRectangle(x0, y0, x5 - 1, y2 - 1, Theme.Color(clrReplayTitleBorder));
      // draw rounded left corner of timebar
      osd->DrawSlope(x5, y0, x6 - 1, y2 - 1, Theme.Color(clrBackground), 0);
      // draw timebar
@@ -1577,7 +1579,7 @@ void cSkinSoppalusikkaDisplayVolume::SetVolume(int Current, int Total, bool Mute
   // current volume
   int vol = x2 + (x3 - x2) * Current / Total;
   // draw titlebar
-  osd->DrawRectangle(x0, y0, wbg - 1, y2 - 1, Theme.Color(clrVolumePromptFg));
+  osd->DrawRectangle(x0, y0, wbg - 1, y2 - 1, Theme.Color(clrVolumePromptBorder));
   osd->DrawRectangle(wbg, y0, x4 - 1, y2 - 1, clrTransparent);
   osd->DrawText(x0 + Gap, y0 + Gap, Prompt, Theme.Color(clrVolumePromptFg), Theme.Color(clrVolumePromptBg), font, wfg, lineHeight, taCenter);
   // draw rounded left corner

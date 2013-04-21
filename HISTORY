@@ -290,3 +290,8 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Updated for vdr-2.0.0.
 - Fixed symbols in schedule and recordings menus.
+
+2013-04-21: Version 2.0.1
+
+- Updated all themes with two new color fields.
+- Added a new theme: Potato (Thanks to Andreas Brachold).
