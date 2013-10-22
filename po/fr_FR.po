@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: vdr-skinsoppalusikka 2.0.1\n"
+"Project-Id-Version: vdr-skinsoppalusikka 2.0.2\n"
 "Report-Msgid-Bugs-To: <see README>\n"
-"POT-Creation-Date: 2013-04-01 04:01+0200\n"
+"POT-Creation-Date: 2013-10-23 00:31+0300\n"
 "PO-Revision-Date: 2013-04-01 04:01+0200\n"
 "Last-Translator: NIVAL Michaël <mnival@club-internet.fr>\n"
 "Language-Team: French <vdr@linuxtv.org>\n"
@@ -101,11 +101,20 @@ msgstr "VPS"
 msgid "EBU"
 msgstr "EBU"
 
+msgid "Duration"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
 msgid "Priority"
 msgstr "Priorité"
 
 msgid "Lifetime"
 msgstr "Durée de vie"
+
+msgid "Format"
+msgstr ""
 
 msgid "Auxiliary information"
 msgstr "Information auxiliare"

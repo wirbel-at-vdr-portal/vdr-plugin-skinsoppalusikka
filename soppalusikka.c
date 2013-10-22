@@ -1043,7 +1043,17 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
   ts.Set(osd, x2, y, x3 - x2, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
   y += ts.Height();
   // draw additional information
-  cString info = cString::sprintf("%s: %d %s: %d", tr("Priority"), Recording->Priority(), tr("Lifetime"), Recording->Lifetime());
+  cString info("");
+  cChannel *channel = Channels.GetByChannelID(Info->ChannelID());
+  if (channel)
+     info = cString::sprintf("%s\n%s: %s", *info, trVDR("Channel"), *ChannelString(channel, 0));
+  int length = Recording->LengthInSeconds();
+  int dirsize = DirSizeMB(Recording->FileName());
+  cString duration = (length >= 0) ? cString::sprintf("%s: %d:%02d:%02d  ", tr("Duration"), length / 3600, length / 60 % 60, length % 60) : cString("");
+  cString size = (dirsize > 9999) ? cString::sprintf("%s: %.2f GB  ", tr("Size"), dirsize / 1024.0) : cString::sprintf("%s: %d MB ", tr("Size"), dirsize);
+  cString bitrate = (length > 0) ? cString::sprintf("(%.2f MBit/s)", 8.0 * dirsize / length) : cString("");
+  info = cString::sprintf("%s\n%s%s%s", *info, *duration, *size, *bitrate);
+  info = cString::sprintf("%s\n%s: %d  %s: %d  %s: %s", *info, tr("Priority"), Recording->Priority(), tr("Lifetime"), Recording->Lifetime(), tr("Format"), Recording->IsPesRecording() ? "PES" : "TS");
   if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
      char *aux = strdup(Info->Aux());
      info = cString::sprintf("%s\n%s: %s", *info, tr("Auxiliary information"), parseaux(aux));
