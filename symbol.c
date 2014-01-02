@@ -45,6 +45,7 @@
 #include "symbols/eventrecording.xpm"
 #include "symbols/recordingnew.xpm"
 
+static cBitmap bmOnePixel(1, 1, 1);
 static cBitmap bmAudio(audio_xpm);
 static cBitmap bmAudioLeft(audioleft_xpm);
 static cBitmap bmAudioRight(audioright_xpm);
@@ -117,6 +118,7 @@ bool cSoppalusikkaSymbolCache::Populate(void)
      Flush();
 
      // pushing order must follow the enumeration - keep original proportions
+     cacheM.Append(&bmOnePixel);                                             // SYMBOL_ONEPIXEL
      cacheM.Append(bmAudio.Scaled(yFactorM, yFactorM, antiAliasM));          // SYMBOL_AUDIO
      cacheM.Append(bmAudioLeft.Scaled(yFactorM, yFactorM, antiAliasM));      // SYMBOL_AUDIO_LEFT
      cacheM.Append(bmAudioRight.Scaled(yFactorM, yFactorM, antiAliasM));     // SYMBOL_AUDIO_RIGHT
@@ -173,7 +175,7 @@ bool cSoppalusikkaSymbolCache::Flush(void)
 
 cBitmap& cSoppalusikkaSymbolCache::Get(eSymbols symbolP)
 {
-  cBitmap *bitmapM = NULL;
+  cBitmap *bitmapM = cacheM[SYMBOL_ONEPIXEL];
 
   if (symbolP < cacheM.Size())
      bitmapM = cacheM[symbolP];

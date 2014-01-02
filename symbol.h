@@ -12,7 +12,8 @@
 #include <vdr/osd.h>
 
 enum eSymbols {
-  SYMBOL_AUDIO = 0,
+  SYMBOL_ONEPIXEL = 0,
+  SYMBOL_AUDIO,
   SYMBOL_AUDIO_LEFT,
   SYMBOL_AUDIO_RIGHT,
   SYMBOL_DOLBY_DIGITAL,
@@ -71,11 +72,11 @@ public:
   ~cSoppalusikkaSymbolCache();
   void Refresh();
   cBitmap& Get(eSymbols symbolP);
-  int GetGapTiny()   { return int(yFactorM * DEFAULT_GAP_TINY);   }
-  int GetGapSmall()  { return int(yFactorM * DEFAULT_GAP_SMALL);  }
-  int GetGapNormal() { return int(yFactorM * DEFAULT_GAP_NORMAL); }
-  int GetGapBig()    { return int(yFactorM * DEFAULT_GAP_BIG);    }
-  int GetRoundness() { return int(yFactorM * DEFAULT_ROUNDNESS);  }
+  int GetGapTiny()   { return int(yFactorM * cSoppalusikkaSymbolCache::DEFAULT_GAP_TINY);   }
+  int GetGapSmall()  { return int(yFactorM * cSoppalusikkaSymbolCache::DEFAULT_GAP_SMALL);  }
+  int GetGapNormal() { return int(yFactorM * cSoppalusikkaSymbolCache::DEFAULT_GAP_NORMAL); }
+  int GetGapBig()    { return int(yFactorM * cSoppalusikkaSymbolCache::DEFAULT_GAP_BIG);    }
+  int GetRoundness() { return int(yFactorM * cSoppalusikkaSymbolCache::DEFAULT_ROUNDNESS);  }
 };
 
 extern cSoppalusikkaSymbolCache SoppalusikkaSymbolCache;

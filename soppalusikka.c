@@ -930,7 +930,7 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
   if (Event->Vps()) {
      // draw VPS symbol
      osd->DrawBitmap(xs, y + (y4 - y) / GetSymbol(SYMBOL_VPS).Height(), GetSymbol(SYMBOL_VPS), Theme.Color(clrMenuEventSymbolFg), Theme.Color(clrMenuEventSymbolBg));
-     xs += (GetSymbol(SYMBOL_VPS).Width() + Roundness);
+     //xs += (GetSymbol(SYMBOL_VPS).Width() + Roundness);
      }
   y = y4;
   // draw event date / duration string

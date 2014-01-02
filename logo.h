@@ -35,8 +35,8 @@ public:
   bool Load(const char *fileNameP);
   cBitmap& Get(void);
   bool Flush(void);
-  int GetLogoHeight() { return int(yFactorM * DEFAULT_LOGO_HEIGHT); }
-  int GetLogoWidth()  { return int(yFactorM * DEFAULT_LOGO_WIDTH);  }
+  int GetLogoHeight() { return int(yFactorM * cSoppalusikkaLogoCache::DEFAULT_LOGO_HEIGHT); }
+  int GetLogoWidth()  { return int(yFactorM * cSoppalusikkaLogoCache::DEFAULT_LOGO_WIDTH);  }
 };
 
 extern cSoppalusikkaLogoCache SoppalusikkaLogoCache;
