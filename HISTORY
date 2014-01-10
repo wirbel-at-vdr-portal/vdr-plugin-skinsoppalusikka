@@ -299,3 +299,8 @@ VDR Skin 'Soppalusikka' Revision History
 2013-10-23: Version 2.0.2
 
 - Updated the recording info layout.
+
+2014-01-10: Version 2.0.3
+
+- Fixed a memory leak and issues reported by scan-build
+  and cppcheck tools.
