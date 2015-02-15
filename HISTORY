@@ -304,3 +304,12 @@ VDR Skin 'Soppalusikka' Revision History
 
 - Fixed a memory leak and issues reported by scan-build
   and cppcheck tools.
+
+
+========================================
+VDR Skin 'Soppalusikka' Revision History
+========================================
+
+2015-02-19: Version 2.2.0
+
+- Updated for vdr-2.2.0.

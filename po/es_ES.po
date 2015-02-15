@@ -1,14 +1,14 @@
 # VDR plugin language source file.
-# Copyright (C) 2007-2014 Rolf Ahrenberg
+# Copyright (C) 2007-2015 Rolf Ahrenberg
 # This file is distributed under the same license as the skinsoppalusikka package.
 # Luis Palacios
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: vdr-skinsoppalusikka 2.0.3\n"
+"Project-Id-Version: vdr-skinsoppalusikka 2.2.0\n"
 "Report-Msgid-Bugs-To: <see README>\n"
-"POT-Creation-Date: 2013-10-23 00:31+0300\n"
-"PO-Revision-Date: 2013-04-01 04:01+0200\n"
+"POT-Creation-Date: 2015-02-19 02:19+0300\n"
+"PO-Revision-Date: 2015-02-19 02:19+0200\n"
 "Last-Translator: Luis Palacios\n"
 "Language-Team: Spanish <vdr@linuxtv.org>\n"
 "Language: es\n"
