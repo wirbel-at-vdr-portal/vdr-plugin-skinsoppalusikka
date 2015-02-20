@@ -13,8 +13,8 @@
 #include "logo.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 20000
-#error "VDR-2.0.0 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 20200
+#error "VDR-2.2.0 API version or greater is required!"
 #endif
 
 #ifndef GITVERSION
