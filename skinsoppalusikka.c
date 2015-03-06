@@ -7,10 +7,10 @@
 
 #include <getopt.h>
 #include <vdr/plugin.h>
-#include <vdr/menu.h>
 #include "common.h"
 #include "config.h"
 #include "logo.h"
+#include "setup.h"
 #include "soppalusikka.h"
 
 #if defined(APIVERSNUM) && APIVERSNUM < 20200
@@ -21,12 +21,13 @@
 #define GITVERSION ""
 #endif
 
-static const char VERSION[]     = "2.2.0" GITVERSION;
+static const char VERSION[]     = "2.2.1" GITVERSION;
 static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
 private:
-  bool islogodirset;
+  bool isLogoDirSetM;
+
 public:
   cPluginSkinSoppalusikka(void);
   virtual ~cPluginSkinSoppalusikka();
@@ -43,26 +44,14 @@ public:
   virtual const char *MainMenuEntry(void) { return NULL; }
   virtual cOsdObject *MainMenuAction(void);
   virtual cMenuSetupPage *SetupMenu(void);
-  virtual bool SetupParse(const char *Name, const char *Value);
-  virtual bool Service(const char *Id, void *Data = NULL);
+  virtual bool SetupParse(const char *nameP, const char *valueP);
+  virtual bool Service(const char *idP, void *dataP = NULL);
   virtual const char **SVDRPHelpPages(void);
-  virtual cString SVDRPCommand(const char *Command, const char *Option, int &ReplyCode);
+  virtual cString SVDRPCommand(const char *commandP, const char *optionP, int &replyCodeP);
   };
 
-class cPluginSkinSoppalusikkaSetup : public cMenuSetupPage {
-private:
-  cSoppalusikkaConfig data;
-  cVector<const char*> help;
-  void Setup(void);
-protected:
-  virtual eOSState ProcessKey(eKeys Key);
-  virtual void Store(void);
-public:
-  cPluginSkinSoppalusikkaSetup(void);
-};
-
 cPluginSkinSoppalusikka::cPluginSkinSoppalusikka(void)
-: islogodirset(false)
+: isLogoDirSetM(false)
 {
   // initialize any member variables here.
   // DON'T DO ANYTHING ELSE THAT MAY HAVE SIDE EFFECTS, REQUIRE GLOBAL
@@ -94,7 +83,7 @@ bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
         switch (c) {
           case 'l':
                SoppalusikkaConfig.SetLogoDir(optarg);
-               islogodirset = true;
+               isLogoDirSetM = true;
                break;
           default:
                return false;
@@ -115,9 +104,9 @@ bool cPluginSkinSoppalusikka::Start(void)
   // start any background activities the plugin shall perform.
   debug("cPluginSkinSoppalusikka::Start()");
   // set logo directory
-  if (!islogodirset) {
+  if (!isLogoDirSetM) {
      SoppalusikkaConfig.SetLogoDir(cPlugin::ResourceDirectory(PLUGIN_NAME_I18N));
-     islogodirset = true;
+     isLogoDirSetM = true;
      }
   // resize logo cache
   SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
@@ -147,26 +136,26 @@ cMenuSetupPage *cPluginSkinSoppalusikka::SetupMenu(void)
 {
   // return a setup menu in case the plugin supports one.
   debug("cPluginSkinSoppalusikka::SetupMenu()");
-  return new cPluginSkinSoppalusikkaSetup();
+  return new cSkinSoppalusikkaSetup();
 }
 
-bool cPluginSkinSoppalusikka::SetupParse(const char *Name, const char *Value)
+bool cPluginSkinSoppalusikka::SetupParse(const char *nameP, const char *valueP)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(Name, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(Value);
-  else if (!strcasecmp(Name, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(Value);
-  else if (!strcasecmp(Name, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(Value);
-  else if (!strcasecmp(Name, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(Value);
-  else if (!strcasecmp(Name, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(Value);
-  else if (!strcasecmp(Name, "ShowDuration"))    SoppalusikkaConfig.showduration    = atoi(Value);
-  else if (!strcasecmp(Name, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(Value);
+  if      (!strcasecmp(nameP, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(valueP);
+  else if (!strcasecmp(nameP, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(valueP);
+  else if (!strcasecmp(nameP, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(valueP);
+  else if (!strcasecmp(nameP, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(valueP);
+  else if (!strcasecmp(nameP, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(valueP);
+  else if (!strcasecmp(nameP, "ShowDuration"))    SoppalusikkaConfig.showduration    = atoi(valueP);
+  else if (!strcasecmp(nameP, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(valueP);
   else return false;
 
   return true;
 }
 
-bool cPluginSkinSoppalusikka::Service(const char *Id, void *Data)
+bool cPluginSkinSoppalusikka::Service(const char *idP, void *dataP)
 {
   // handle custom service requests from other plugins
   return false;
@@ -182,104 +171,13 @@ const char **cPluginSkinSoppalusikka::SVDRPHelpPages(void)
   return HelpPages;
 }
 
-cString cPluginSkinSoppalusikka::SVDRPCommand(const char *Command, const char *Option, int &ReplyCode)
+cString cPluginSkinSoppalusikka::SVDRPCommand(const char *commandP, const char *optionP, int &replyCodeP)
 {
-  if (strcasecmp(Command, "FLSH") == 0) {
+  if (strcasecmp(commandP, "FLSH") == 0) {
      SoppalusikkaLogoCache.Flush();
      return cString("Logo cache flushed");
      }
   return NULL;
-}
-
-cPluginSkinSoppalusikkaSetup::cPluginSkinSoppalusikkaSetup(void)
-: data(SoppalusikkaConfig)
-{
-  // create setup menu
-  debug("cPluginSkinSoppalusikkaSetup()");
-  SetMenuCategory(mcSetupPlugins);
-  Setup();
-  SetHelp(tr("Button$Flush cache"), NULL, NULL, NULL);
-}
-
-void cPluginSkinSoppalusikkaSetup::Setup(void)
-{
-  // update setup display
-  int current = Current();
-
-  Clear();
-  help.Clear();
-
-  Add(new cMenuEditBoolItem(tr("Show auxiliary information"), &data.showauxinfo));
-  help.Append(tr("Define whether any auxiliary information is shown in info menus."));
-
-  Add(new cMenuEditBoolItem(tr("Show progressbar"), &data.showprogressbar));
-  help.Append(tr("Define whether a progressbar is shown in schedule menu."));
-
-  Add(new cMenuEditBoolItem(tr("Show symbols"), &data.showsymbols));
-  help.Append(tr("Define whether symbols are shown in recordings and schedule menus."));
-
-  Add(new cMenuEditBoolItem(tr("Show VPS in channel info"), &data.showvps));
-  help.Append(tr("Define whether VPS information is shown in channel info menu."));
-
-  Add(new cMenuEditBoolItem(tr("Show event duration in channel info"), &data.showduration, tr("remaining"), tr("total")));
-  help.Append(tr("Define whether remaining or total event duration is shown in channel info menu."));
-
-  Add(new cMenuEditBoolItem(tr("Show channel logos"), &data.showlogo));
-  help.Append(tr("Define whether channels logos are shown in channel info menu.\n\nOnly XPM format is accepted: 64x48 pixel and max. 13 colors."));
-
-  if (data.showlogo) {
-     Add(new cMenuEditIntItem( tr("Channel logo cache size"), &data.cachesize, 0, 1000));
-     help.Append(tr("Define the cache size for channel logos.\n\nThe bigger cache results faster zapping."));
-    }
-
-  SetCurrent(Get(current));
-  Display();
-}
-
-void cPluginSkinSoppalusikkaSetup::Store(void)
-{
-  // store setup data
-  debug("cPluginSkinSoppalusikkaSetup::Store()");
-  SoppalusikkaConfig = data;
-  SetupStore("ShowAuxInfo",     SoppalusikkaConfig.showauxinfo);
-  SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
-  SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
-  SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
-  SetupStore("ShowVPS",         SoppalusikkaConfig.showvps);
-  SetupStore("ShowDuration",    SoppalusikkaConfig.showduration);
-  SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
-  // resize logo cache
-  SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
-}
-
-eOSState cPluginSkinSoppalusikkaSetup::ProcessKey(eKeys Key)
-{
-  // process key presses
-  int oldshowlogo = data.showlogo;
-
-  eOSState state = cMenuSetupPage::ProcessKey(Key);
-
-  if (Key != kNone && (data.showlogo != oldshowlogo))
-     Setup();
-
-  if (state == osUnknown) {
-     switch (Key) {
-       case kRed:
-            Skins.Message(mtInfo, tr("Flushing channel logo cache..."));
-            SoppalusikkaLogoCache.Flush();
-            Skins.Message(mtInfo, NULL);
-            state = osContinue;
-            break;
-       case kInfo:
-            if (Current() < help.Size())
-               return AddSubMenu(new cMenuText(cString::sprintf("%s - %s '%s'", tr("Help"), trVDR("Plugin"), PLUGIN_NAME_I18N), help[Current()]));
-            break;
-       default:
-            break;
-       }
-     }
-
-  return state;
 }
 
 VDRPLUGINCREATOR(cPluginSkinSoppalusikka); // don't touch this!

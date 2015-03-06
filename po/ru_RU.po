@@ -17,9 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-msgid "Soppalusikka skin"
-msgstr "Скин Soppalusikka"
-
 msgid "Button$Flush cache"
 msgstr "Очистить кэш"
 
@@ -88,6 +85,9 @@ msgstr "Кэш очищается ...."
 
 msgid "Help"
 msgstr "Справка"
+
+msgid "Soppalusikka skin"
+msgstr "Скин Soppalusikka"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Неправильный канал ***"

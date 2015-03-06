@@ -10,10 +10,10 @@
 
 #include <vdr/tools.h>
 
-char *strcatrealloc(char *dest, const char *src);
-char *strncatrealloc(char *dest, const char *src, size_t len);
-char *parseaux(char *str);
-bool ischaracters(const char *str, const char *mask);
-bool ischaracter(const char ch, const char *mask);
+char *strcatrealloc(char *destP, const char *srcP);
+char *strncatrealloc(char *destP, const char *srcP, size_t lenP);
+char *parseaux(char *strP);
+bool ischaracters(const char *strP, const char *maskP);
+bool ischaracter(const char chP, const char *maskP);
 
 #endif // __SKINSOPPALUSIKKA_TOOLS_H

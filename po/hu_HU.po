@@ -16,9 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Soppalusikka skin"
-msgstr "Soppalussika-skin"
-
 msgid "Button$Flush cache"
 msgstr "Cache ürítés"
 
@@ -81,6 +78,9 @@ msgstr "Csatornalogó cache ürítése..."
 
 msgid "Help"
 msgstr ""
+
+msgid "Soppalusikka skin"
+msgstr "Soppalussika-skin"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Érvénytelen csatorna ***"

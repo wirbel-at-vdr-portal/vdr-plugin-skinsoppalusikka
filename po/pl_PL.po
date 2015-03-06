@@ -16,9 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Soppalusikka skin"
-msgstr "Skin Soppalusikka"
-
 msgid "Button$Flush cache"
 msgstr "Opró¿nij cache"
 
@@ -81,6 +78,9 @@ msgstr "Opró¿niam cache logo kana³u..."
 
 msgid "Help"
 msgstr ""
+
+msgid "Soppalusikka skin"
+msgstr "Skin Soppalusikka"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Niepoprawny kana³ ***"

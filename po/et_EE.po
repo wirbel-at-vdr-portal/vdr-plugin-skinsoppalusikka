@@ -16,9 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-13\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Soppalusikka skin"
-msgstr "Soppalusikka kest"
-
 msgid "Button$Flush cache"
 msgstr "Tühjenda"
 
@@ -87,6 +84,9 @@ msgstr "Kanalilogo vahemälu tühjendamine..."
 
 msgid "Help"
 msgstr "Abi"
+
+msgid "Soppalusikka skin"
+msgstr "Soppalusikka kest"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Vigane kanal ***"

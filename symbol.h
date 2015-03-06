@@ -67,6 +67,7 @@ private:
   cVector<cBitmap*> cacheM;
   bool Populate(void);
   bool Flush(void);
+
 public:
   cSoppalusikkaSymbolCache();
   ~cSoppalusikkaSymbolCache();

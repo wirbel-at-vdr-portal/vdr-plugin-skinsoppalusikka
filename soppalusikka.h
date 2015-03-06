@@ -4,8 +4,8 @@
  * $Id: $
  */
 
-#ifndef __SOPPALUSIKKA_H
-#define __SOPPALUSIKKA_H
+#ifndef __SKINSOPPALUSIKKA_SOPPALUSIKKA_H
+#define __SKINSOPPALUSIKKA_SOPPALUSIKKA_H
 
 #include <vdr/skins.h>
 
@@ -13,12 +13,12 @@ class cSkinSoppalusikka : public cSkin {
 public:
   cSkinSoppalusikka();
   virtual const char *Description(void);
-  virtual cSkinDisplayChannel *DisplayChannel(bool WithInfo);
+  virtual cSkinDisplayChannel *DisplayChannel(bool withInfoP);
   virtual cSkinDisplayMenu *DisplayMenu(void);
-  virtual cSkinDisplayReplay *DisplayReplay(bool ModeOnly);
+  virtual cSkinDisplayReplay *DisplayReplay(bool modeOnlyP);
   virtual cSkinDisplayVolume *DisplayVolume(void);
-  virtual cSkinDisplayTracks *DisplayTracks(const char *Title, int NumTracks, const char * const *Tracks);
+  virtual cSkinDisplayTracks *DisplayTracks(const char *titleP, int numTracksP, const char * const *tracksP);
   virtual cSkinDisplayMessage *DisplayMessage(void);
   };
 
-#endif //__SOPPALUSIKKA_H
+#endif //__SKINSOPPALUSIKKA_SOPPALUSIKKA_H

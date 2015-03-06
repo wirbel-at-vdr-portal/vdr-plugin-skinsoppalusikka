@@ -31,72 +31,72 @@
 #define ChannelLogoWidth  SoppalusikkaLogoCache.GetLogoWidth()
 #define ChannelLogoHeight SoppalusikkaLogoCache.GetLogoHeight()
 
-static cTheme Theme;
+static cTheme ThemeS;
 
-THEME_CLR(Theme, clrBackground,             0xC8000066);
-THEME_CLR(Theme, clrButtonRedFg,            0xFFFFFFFF);
-THEME_CLR(Theme, clrButtonRedBg,            0xC8CC1111);
-THEME_CLR(Theme, clrButtonGreenFg,          0xFF000000);
-THEME_CLR(Theme, clrButtonGreenBg,          0xC822BB22);
-THEME_CLR(Theme, clrButtonYellowFg,         0xFF000000);
-THEME_CLR(Theme, clrButtonYellowBg,         0xC8EEEE22);
-THEME_CLR(Theme, clrButtonBlueFg,           0xFFFFFFFF);
-THEME_CLR(Theme, clrButtonBlueBg,           0xC82233CC);
-THEME_CLR(Theme, clrMessageStatusFg,        0xFFFFEE00);
-THEME_CLR(Theme, clrMessageStatusBg,        0xC8000066);
-THEME_CLR(Theme, clrMessageInfoFg,          0xFFFFEE00);
-THEME_CLR(Theme, clrMessageInfoBg,          0xC8000066);
-THEME_CLR(Theme, clrMessageWarningFg,       0xFFFFEE00);
-THEME_CLR(Theme, clrMessageWarningBg,       0xC8000066);
-THEME_CLR(Theme, clrMessageErrorFg,         0xFFFFEE00);
-THEME_CLR(Theme, clrMessageErrorBg,         0xC8000066);
-THEME_CLR(Theme, clrVolumePromptFg,         0xFF000000);
-THEME_CLR(Theme, clrVolumePromptBg,         0xFFFFFFFF);
-THEME_CLR(Theme, clrVolumePromptBorder,     0xFF000000);
-THEME_CLR(Theme, clrVolumeBarUpper,         0xC8000066);
-THEME_CLR(Theme, clrVolumeBarLower,         0xFF33CC33);
-THEME_CLR(Theme, clrVolumeBarMute,          0xFFFF0000);
-THEME_CLR(Theme, clrChannelNameFg,          0xFF000000);
-THEME_CLR(Theme, clrChannelNameBg,          0xFFFFFFFF);
-THEME_CLR(Theme, clrChannelNumberDateFg,    0xFF000000);
-THEME_CLR(Theme, clrChannelNumberDateBg,    0xFFFFFFFF);
-THEME_CLR(Theme, clrChannelEpgTimeFg,       0xFFDDDDDD);
-THEME_CLR(Theme, clrChannelEpgTimeBg,       0xC8CC1111);
-THEME_CLR(Theme, clrChannelEpgTitle,        0xFF00FFFF);
-THEME_CLR(Theme, clrChannelEpgShortText,    0xFFCCBB22);
-THEME_CLR(Theme, clrChannelEpgDuration,     0xFF7F7F7F);
-THEME_CLR(Theme, clrChannelTimeBarFg,       0xFF7F7F7F);
-THEME_CLR(Theme, clrChannelTimeBarBg,       0xFF000000);
-THEME_CLR(Theme, clrChannelSymbolActive,    0xFFCCBB22);
-THEME_CLR(Theme, clrChannelSymbolInactive,  0xFF7F7F7F);
-THEME_CLR(Theme, clrChannelSymbolRecord,    0xFFFF0000);
-THEME_CLR(Theme, clrMenuTitleFg,            0xFF000000);
-THEME_CLR(Theme, clrMenuTitleBg,            0xC833AAEE);
-THEME_CLR(Theme, clrMenuItemCurrentFg,      0xFF000000);
-THEME_CLR(Theme, clrMenuItemCurrentBg,      0xC833AAEE);
-THEME_CLR(Theme, clrMenuItemSelectable,     0xFFFFFFFF);
-THEME_CLR(Theme, clrMenuEventTime,          0xFFFFFFFF);
-THEME_CLR(Theme, clrMenuEventTitle,         0xFFCCBB22);
-THEME_CLR(Theme, clrMenuEventShortText,     0xFFCCBB22);
-THEME_CLR(Theme, clrMenuEventDescription,   0xFF00FFFF);
-THEME_CLR(Theme, clrMenuEventSymbolFg,      0xFFCCBB22);
-THEME_CLR(Theme, clrMenuEventSymbolBg,      0xC8000066);
-THEME_CLR(Theme, clrMenuScrollbarTotal,     0xC8000066);
-THEME_CLR(Theme, clrMenuScrollbarShown,     0xFFCCBB22);
-THEME_CLR(Theme, clrMenuText,               0xFFCCBB22);
-THEME_CLR(Theme, clrReplayTitleFg,          0xFF000000);
-THEME_CLR(Theme, clrReplayTitleBg,          0xFFFFFFFF);
-THEME_CLR(Theme, clrReplayTitleBorder,      0xFF000000);
-THEME_CLR(Theme, clrReplayCurrent,          0xFFFFFFFF);
-THEME_CLR(Theme, clrReplayTotal,            0xFFFFFFFF);
-THEME_CLR(Theme, clrReplayModeJump,         0xFFFFFFFF);
-THEME_CLR(Theme, clrReplaySymbolActive,     0xFFCCBB22);
-THEME_CLR(Theme, clrReplaySymbolInactive,   0xFF7F7F7F);
-THEME_CLR(Theme, clrReplayProgressSeen,     0xFF33CC33);
-THEME_CLR(Theme, clrReplayProgressRest,     0xFFFFFFFF);
-THEME_CLR(Theme, clrReplayProgressSelected, 0xFFFF0000);
-THEME_CLR(Theme, clrReplayProgressMark,     0xFF000000);
-THEME_CLR(Theme, clrReplayProgressCurrent,  0xFFFF0000);
+THEME_CLR(ThemeS, clrBackground,             0xC8000066);
+THEME_CLR(ThemeS, clrButtonRedFg,            0xFFFFFFFF);
+THEME_CLR(ThemeS, clrButtonRedBg,            0xC8CC1111);
+THEME_CLR(ThemeS, clrButtonGreenFg,          0xFF000000);
+THEME_CLR(ThemeS, clrButtonGreenBg,          0xC822BB22);
+THEME_CLR(ThemeS, clrButtonYellowFg,         0xFF000000);
+THEME_CLR(ThemeS, clrButtonYellowBg,         0xC8EEEE22);
+THEME_CLR(ThemeS, clrButtonBlueFg,           0xFFFFFFFF);
+THEME_CLR(ThemeS, clrButtonBlueBg,           0xC82233CC);
+THEME_CLR(ThemeS, clrMessageStatusFg,        0xFFFFEE00);
+THEME_CLR(ThemeS, clrMessageStatusBg,        0xC8000066);
+THEME_CLR(ThemeS, clrMessageInfoFg,          0xFFFFEE00);
+THEME_CLR(ThemeS, clrMessageInfoBg,          0xC8000066);
+THEME_CLR(ThemeS, clrMessageWarningFg,       0xFFFFEE00);
+THEME_CLR(ThemeS, clrMessageWarningBg,       0xC8000066);
+THEME_CLR(ThemeS, clrMessageErrorFg,         0xFFFFEE00);
+THEME_CLR(ThemeS, clrMessageErrorBg,         0xC8000066);
+THEME_CLR(ThemeS, clrVolumePromptFg,         0xFF000000);
+THEME_CLR(ThemeS, clrVolumePromptBg,         0xFFFFFFFF);
+THEME_CLR(ThemeS, clrVolumePromptBorder,     0xFF000000);
+THEME_CLR(ThemeS, clrVolumeBarUpper,         0xC8000066);
+THEME_CLR(ThemeS, clrVolumeBarLower,         0xFF33CC33);
+THEME_CLR(ThemeS, clrVolumeBarMute,          0xFFFF0000);
+THEME_CLR(ThemeS, clrChannelNameFg,          0xFF000000);
+THEME_CLR(ThemeS, clrChannelNameBg,          0xFFFFFFFF);
+THEME_CLR(ThemeS, clrChannelNumberDateFg,    0xFF000000);
+THEME_CLR(ThemeS, clrChannelNumberDateBg,    0xFFFFFFFF);
+THEME_CLR(ThemeS, clrChannelEpgTimeFg,       0xFFDDDDDD);
+THEME_CLR(ThemeS, clrChannelEpgTimeBg,       0xC8CC1111);
+THEME_CLR(ThemeS, clrChannelEpgTitle,        0xFF00FFFF);
+THEME_CLR(ThemeS, clrChannelEpgShortText,    0xFFCCBB22);
+THEME_CLR(ThemeS, clrChannelEpgDuration,     0xFF7F7F7F);
+THEME_CLR(ThemeS, clrChannelTimeBarFg,       0xFF7F7F7F);
+THEME_CLR(ThemeS, clrChannelTimeBarBg,       0xFF000000);
+THEME_CLR(ThemeS, clrChannelSymbolActive,    0xFFCCBB22);
+THEME_CLR(ThemeS, clrChannelSymbolInactive,  0xFF7F7F7F);
+THEME_CLR(ThemeS, clrChannelSymbolRecord,    0xFFFF0000);
+THEME_CLR(ThemeS, clrMenuTitleFg,            0xFF000000);
+THEME_CLR(ThemeS, clrMenuTitleBg,            0xC833AAEE);
+THEME_CLR(ThemeS, clrMenuItemCurrentFg,      0xFF000000);
+THEME_CLR(ThemeS, clrMenuItemCurrentBg,      0xC833AAEE);
+THEME_CLR(ThemeS, clrMenuItemSelectable,     0xFFFFFFFF);
+THEME_CLR(ThemeS, clrMenuEventTime,          0xFFFFFFFF);
+THEME_CLR(ThemeS, clrMenuEventTitle,         0xFFCCBB22);
+THEME_CLR(ThemeS, clrMenuEventShortText,     0xFFCCBB22);
+THEME_CLR(ThemeS, clrMenuEventDescription,   0xFF00FFFF);
+THEME_CLR(ThemeS, clrMenuEventSymbolFg,      0xFFCCBB22);
+THEME_CLR(ThemeS, clrMenuEventSymbolBg,      0xC8000066);
+THEME_CLR(ThemeS, clrMenuScrollbarTotal,     0xC8000066);
+THEME_CLR(ThemeS, clrMenuScrollbarShown,     0xFFCCBB22);
+THEME_CLR(ThemeS, clrMenuText,               0xFFCCBB22);
+THEME_CLR(ThemeS, clrReplayTitleFg,          0xFF000000);
+THEME_CLR(ThemeS, clrReplayTitleBg,          0xFFFFFFFF);
+THEME_CLR(ThemeS, clrReplayTitleBorder,      0xFF000000);
+THEME_CLR(ThemeS, clrReplayCurrent,          0xFFFFFFFF);
+THEME_CLR(ThemeS, clrReplayTotal,            0xFFFFFFFF);
+THEME_CLR(ThemeS, clrReplayModeJump,         0xFFFFFFFF);
+THEME_CLR(ThemeS, clrReplaySymbolActive,     0xFFCCBB22);
+THEME_CLR(ThemeS, clrReplaySymbolInactive,   0xFF7F7F7F);
+THEME_CLR(ThemeS, clrReplayProgressSeen,     0xFF33CC33);
+THEME_CLR(ThemeS, clrReplayProgressRest,     0xFFFFFFFF);
+THEME_CLR(ThemeS, clrReplayProgressSelected, 0xFFFF0000);
+THEME_CLR(ThemeS, clrReplayProgressMark,     0xFF000000);
+THEME_CLR(ThemeS, clrReplayProgressCurrent,  0xFFFF0000);
 
 // --- cSkinSoppalusikkaDisplayChannel --------------------------------------------
 
@@ -105,107 +105,108 @@ private:
   enum {
     SIGNALUPDATETIMEOUT_MS = 500
   };
-  cOsd *osd;
-  bool islogo;
-  int x0, x1;
-  int xt0, xt1, xt2, xt3, xt4, xt5, xt6, xt7, xt8, xt9;
-  int xb0, xb1, xb2, xb3, xb4, xb5, xb6;
-  int xs0, xs1;
-  int y0, y1;
-  int yt0, yt1, yt2, yt3, yt4;
-  int yb0, yb1, yb2, yb3, yb4, yb5;
-  int ys0, ys1;
-  cString lastDate;
-  cTimeMs lastSignalUpdate;
-  bool HasChannelTimerRecording(const cChannel *Channel);
-  void ResetTopAreaCoordinates(bool islogo = false);
-  void DrawTopArea(const cChannel *Channel = NULL);
+  cOsd *osdM;
+  bool isLogoM;
+  int x0M, x1M;
+  int xt0M, xt1M, xt2M, xt3M, xt4M, xt5M, xt6M, xt7M, xt8M, xt9M;
+  int xb0M, xb1M, xb2M, xb3M, xb4M, xb5M, xb6M;
+  int xs0M, xs1M;
+  int y0M, y1M;
+  int yt0, yt1M, yt2M, yt3M, yt4M;
+  int yb0, yb1M, yb2M, yb3M, yb4M, yb5M;
+  int ys0, ys1M;
+  cString lastDateM;
+  cTimeMs lastSignalUpdateM;
+  bool HasChannelTimerRecording(const cChannel *channelP);
+  void ResetTopAreaCoordinates(bool isLogoP = false);
+  void DrawTopArea(const cChannel *channel = NULL);
   void DrawBottomArea(void);
   void DrawSignalArea(void);
-  cString GetChannelName(const cChannel *Channel);
-  cString GetChannelNumber(const cChannel *Channel, int Number);
+  cString GetChannelName(const cChannel *channelP);
+  cString GetChannelNumber(const cChannel *channelP, int numberP);
+
 public:
-  cSkinSoppalusikkaDisplayChannel(bool WithInfo);
+  cSkinSoppalusikkaDisplayChannel(bool withInfoP);
   virtual ~cSkinSoppalusikkaDisplayChannel();
-  virtual void SetChannel(const cChannel *Channel, int Number);
-  virtual void SetEvents(const cEvent *Present, const cEvent *Following);
-  virtual void SetMessage(eMessageType Type, const char *Text);
+  virtual void SetChannel(const cChannel *channelP, int numberP);
+  virtual void SetEvents(const cEvent *presentP, const cEvent *followingP);
+  virtual void SetMessage(eMessageType typeP, const char *textP);
   virtual void Flush(void);
   };
 
-cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
+cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool withInfoP)
 {
   const cFont *font = cFont::GetFont(fontOsd);
-  int lineHeight = font->Height();
-  islogo = false;
-  lastSignalUpdate.Set(0);
+  int lineHeightM = font->Height();
+  isLogoM = false;
+  lastSignalUpdateM.Set(0);
   // general coordinates
-  x0 = 0;
-  x1 = cOsd::OsdWidth();
+  x0M = 0;
+  x1M = cOsd::OsdWidth();
   // top area x-coordinates
-  xt9 = x1 - BigGap;
-  xt0 = x0 + BigGap;
-  xt1 = xt0;
-  xt2 = xt1 + Roundness;
-  xt3 = xt2 + font->Width("0000-");
-  xt8 = xt9 - Roundness;
-  xt7 = xt8 - GetSymbol(SYMBOL_TELETEXT).Width() - GetSymbol(SYMBOL_AUDIO).Width() - GetSymbol(SYMBOL_DOLBY_DIGITAL).Width() - GetSymbol(SYMBOL_ENCRYPTED).Width() - GetSymbol(SYMBOL_RECORDING).Width() - 7 * BigGap;
+  xt9M = x1M - BigGap;
+  xt0M = x0M + BigGap;
+  xt1M = xt0M;
+  xt2M = xt1M + Roundness;
+  xt3M = xt2M + font->Width("0000-");
+  xt8M = xt9M - Roundness;
+  xt7M = xt8M - GetSymbol(SYMBOL_TELETEXT).Width() - GetSymbol(SYMBOL_AUDIO).Width() - GetSymbol(SYMBOL_DOLBY_DIGITAL).Width() - GetSymbol(SYMBOL_ENCRYPTED).Width() - GetSymbol(SYMBOL_RECORDING).Width() - 7 * BigGap;
   if (SoppalusikkaConfig.showvps)
-     xt7 -= GetSymbol(SYMBOL_VPS).Width();
-  xt6 = xt7 - Roundness;
-  xt5 = xt6 - 5 * BigGap;
-  xt4 = xt5 - Roundness;
+     xt7M -= GetSymbol(SYMBOL_VPS).Width();
+  xt6M = xt7M - Roundness;
+  xt5M = xt6M - 5 * BigGap;
+  xt4M = xt5M - Roundness;
   // signal area x-coordinates
-  xs0 = xt8;
-  xs1 = xt8;
+  xs0M = xt8M;
+  xs1M = xt8M;
   // bottom area x-coordinates
-  xb6 = x1 - BigGap;
-  xb0 = x0 + BigGap;
-  xb1 = xb0 + Roundness;
-  xb2 = xb1 + font->Width("00:00") + BigGap;
-  xb3 = xb2 + 3 * Gap;
-  xb4 = xb3 + BigGap;
-  xb5 = xb6 - Roundness;
+  xb6M = x1M - BigGap;
+  xb0M = x0M + BigGap;
+  xb1M = xb0M + Roundness;
+  xb2M = xb1M + font->Width("00:00") + BigGap;
+  xb3M = xb2M + 3 * Gap;
+  xb4M = xb3M + BigGap;
+  xb5M = xb6M - Roundness;
   // top area y-coordinates
-  y0 = 0;
-  yt0 = y0 + BigGap;
-  yt1 = yt0 + Roundness;
-  yt2 = yt0 + lineHeight;
-  yt3 = yt2 + SmallGap;
-  yt4 = yt3 + lineHeight;
+  y0M = 0;
+  yt0 = y0M + BigGap;
+  yt1M = yt0 + Roundness;
+  yt2M = yt0 + lineHeightM;
+  yt3M = yt2M + SmallGap;
+  yt4M = yt3M + lineHeightM;
   // signal area y-coordinates
-  ys1 = yt4 - 4 * Gap;
-  ys0 = ys1 - 4 * Gap;
+  ys1M = yt4M - 4 * Gap;
+  ys0 = ys1M - 4 * Gap;
   // bottom area y-coordinates
-  yb0 = yt4;
-  yb1 = yb0 + lineHeight;
-  yb2 = yb1 + lineHeight;
-  yb3 = yb2 + lineHeight;
-  yb5 = yb3 + lineHeight;
-  yb4 = yb5 - Roundness;
-  y1 = yb5;
+  yb0 = yt4M;
+  yb1M = yb0 + lineHeightM;
+  yb2M = yb1M + lineHeightM;
+  yb3M = yb2M + lineHeightM;
+  yb5M = yb3M + lineHeightM;
+  yb4M = yb5M - Roundness;
+  y1M = yb5M;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + (Setup.ChannelInfoPos ? 0 : cOsd::OsdHeight() - y1));
-  tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + (Setup.ChannelInfoPos ? 0 : cOsd::OsdHeight() - y1M));
+  tArea Areas[] = { { x0M, y0M, x1M - 1, y1M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
      if (SoppalusikkaConfig.showlogo) {
-        tArea Areas[] = { { x0, y0, x0 + ChannelLogoWidth - 1, y0 + ChannelLogoHeight - 1, 4 },
-                          { x0 + ChannelLogoWidth, y0, x1 - 1, y0 + ChannelLogoHeight - 1, 4 },
-                          { x0, y0 + ChannelLogoHeight, x1 - 1, y1 - 1, 4 }
+        tArea Areas[] = { { x0M, y0M, x0M + ChannelLogoWidth - 1, y0M + ChannelLogoHeight - 1, 4 },
+                          { x0M + ChannelLogoWidth, y0M, x1M - 1, y0M + ChannelLogoHeight - 1, 4 },
+                          { x0M, y0M + ChannelLogoHeight, x1M - 1, y1M - 1, 4 }
                         };
-        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         }
      else {
-        tArea Areas[] = { { x0, y0, x1 - 1, y1 - 1, 4 } };
-        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        tArea Areas[] = { { x0M, y0M, x1M - 1, y1M - 1, 4 } };
+        if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         }
      }
   // clear all
-  osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+  osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
   // draw top area
   DrawTopArea(NULL);
   // draw bottom area
@@ -214,84 +215,84 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool WithInfo)
 
 cSkinSoppalusikkaDisplayChannel::~cSkinSoppalusikkaDisplayChannel()
 {
-  delete osd;
+  delete osdM;
 }
 
-bool cSkinSoppalusikkaDisplayChannel::HasChannelTimerRecording(const cChannel *Channel)
+bool cSkinSoppalusikkaDisplayChannel::HasChannelTimerRecording(const cChannel *channelP)
 {
   // try to find current channel from timers
   for (cTimer *t = Timers.First(); t; t = Timers.Next(t)) {
-      if ((t->Channel() == Channel) && t->Recording())
+      if ((t->Channel() == channelP) && t->Recording())
          return true;
       }
   return false;
 }
 
-void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool islogo)
+void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool isLogoP)
 {
   const cFont *font = cFont::GetFont(fontOsd);
   // x-coordinates
-  xt1 = (islogo ? x0 + ChannelLogoWidth + TinyGap : xt0);
-  xt2 = xt1 + Roundness;
-  xt3 = xt2 + font->Width("0000-");
+  xt1M = (isLogoP ? x0M + ChannelLogoWidth + TinyGap : xt0M);
+  xt2M = xt1M + Roundness;
+  xt3M = xt2M + font->Width("0000-");
 }
 
-void cSkinSoppalusikkaDisplayChannel::DrawTopArea(const cChannel *Channel)
+void cSkinSoppalusikkaDisplayChannel::DrawTopArea(const cChannel *channelP)
 {
   // draw logo stuff
-  if (SoppalusikkaConfig.showlogo && Channel &&
-     (SoppalusikkaLogoCache.Load(*Channel->GetChannelID().ToString()) || SoppalusikkaLogoCache.Load(Channel->Name()))) {
+  if (SoppalusikkaConfig.showlogo && channelP &&
+     (SoppalusikkaLogoCache.Load(*channelP->GetChannelID().ToString()) || SoppalusikkaLogoCache.Load(channelP->Name()))) {
      // load channel logo
-     islogo = true;
+     isLogoM = true;
      // set top area for logo
-     ResetTopAreaCoordinates(islogo);
+     ResetTopAreaCoordinates(isLogoM);
      // draw missing bling-blings
-     osd->DrawRectangle(x0, y0, x0 + TinyGap + ChannelLogoWidth - 1, y0 + SmallGap + ChannelLogoHeight - 1, Theme.Color(clrBackground));
-     osd->DrawRectangle(xt0, y0 + SmallGap + ChannelLogoHeight, xt1 - 1, yt4 - 1, Theme.Color(clrChannelNameBg));
+     osdM->DrawRectangle(x0M, y0M, x0M + TinyGap + ChannelLogoWidth - 1, y0M + SmallGap + ChannelLogoHeight - 1, ThemeS.Color(clrBackground));
+     osdM->DrawRectangle(xt0M, y0M + SmallGap + ChannelLogoHeight, xt1M - 1, yt4M - 1, ThemeS.Color(clrChannelNameBg));
      // draw logo
-     osd->DrawBitmap(x0, y0, SoppalusikkaLogoCache.Get(), 0, 0, true);
+     osdM->DrawBitmap(x0M, y0M, SoppalusikkaLogoCache.Get(), 0, 0, true);
      }
   else {
      // clear possible logo leftovers
-     if (islogo) {
-        osd->DrawRectangle(x0, y0, xt1 - 1, yt4 - 1, clrTransparent);
+     if (isLogoM) {
+        osdM->DrawRectangle(x0M, y0M, xt1M - 1, yt4M - 1, clrTransparent);
         }
      // no logo
-     islogo = false;
+     isLogoM = false;
      // set top area for logoless
-     ResetTopAreaCoordinates(islogo);
+     ResetTopAreaCoordinates(isLogoM);
      }
   // draw clock row
-  osd->DrawRectangle(xt1, yt0, xt4 - 1, yt2 - 1, Theme.Color(clrChannelNumberDateBg));
-  osd->DrawRectangle(xt4, yt0, xt9 - 1, yt2 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(xt1M, yt0, xt4M - 1, yt2M - 1, ThemeS.Color(clrChannelNumberDateBg));
+  osdM->DrawRectangle(xt4M, yt0, xt9M - 1, yt2M - 1, ThemeS.Color(clrBackground));
   // draw rounded left corner of clock row
-  if (!islogo)
-     osd->DrawEllipse(xt1, yt0, xt2 - 1, yt1 - 1, clrTransparent, -2);
+  if (!isLogoM)
+     osdM->DrawEllipse(xt1M, yt0, xt2M - 1, yt1M - 1, clrTransparent, -2);
   // draw rounded right edge of clock row
-  osd->DrawEllipse(xt4, yt0, xt5, yt2 - 1, Theme.Color(clrChannelNumberDateBg), 5);
+  osdM->DrawEllipse(xt4M, yt0, xt5M, yt2M - 1, ThemeS.Color(clrChannelNumberDateBg), 5);
   // draw rounded right corner of clock row
-  osd->DrawEllipse(xt8, yt0, xt9 - 1, yt1 - 1, clrTransparent, -1);
+  osdM->DrawEllipse(xt8M, yt0, xt9M - 1, yt1M - 1, clrTransparent, -1);
   // draw separator
-  osd->DrawRectangle(xt1, yt2, xt9 - 1, yt3 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(xt1M, yt2M, xt9M - 1, yt3M - 1, ThemeS.Color(clrBackground));
   // draw channel row
-  osd->DrawRectangle(xt1, yt3, xt6 - 1, yt4 - 1, Theme.Color(clrChannelNameBg));
-  osd->DrawRectangle(xt6, yt3, xt9 - 1, yt4 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(xt1M, yt3M, xt6M - 1, yt4M - 1, ThemeS.Color(clrChannelNameBg));
+  osdM->DrawRectangle(xt6M, yt3M, xt9M - 1, yt4M - 1, ThemeS.Color(clrBackground));
   // draw rounded right edge of channel row
-  osd->DrawEllipse(xt6, yt3, xt7, yt4 - 1, Theme.Color(clrChannelNameBg), 5);
+  osdM->DrawEllipse(xt6M, yt3M, xt7M, yt4M - 1, ThemeS.Color(clrChannelNameBg), 5);
 }
 
 void cSkinSoppalusikkaDisplayChannel::DrawBottomArea(void)
 {
   // draw time area
-  osd->DrawRectangle(xb0, yb0, xb2 - 1, yb5 - 1, Theme.Color(clrChannelEpgTimeBg));
+  osdM->DrawRectangle(xb0M, yb0, xb2M - 1, yb5M - 1, ThemeS.Color(clrChannelEpgTimeBg));
   // draw rounded left corner
-  osd->DrawEllipse(xb0, yb4, xb1 - 1, yb5 - 1, clrTransparent, -3);
+  osdM->DrawEllipse(xb0M, yb4M, xb1M - 1, yb5M - 1, clrTransparent, -3);
   // draw timebar area
-  osd->DrawRectangle(xb2, yb0, xb3 - 1, yb5 - 1, Theme.Color(clrChannelTimeBarBg));
+  osdM->DrawRectangle(xb2M, yb0, xb3M - 1, yb5M - 1, ThemeS.Color(clrChannelTimeBarBg));
   // draw event area
-  osd->DrawRectangle(xb3, yb0, xb6 - 1, yb5 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(xb3M, yb0, xb6M - 1, yb5M - 1, ThemeS.Color(clrBackground));
   // draw rounded right corner
-  osd->DrawEllipse(xb5, yb4, xb6 - 1, yb5 - 1, clrTransparent, -4);
+  osdM->DrawEllipse(xb5M, yb4M, xb6M - 1, yb5M - 1, clrTransparent, -4);
 }
 
 void cSkinSoppalusikkaDisplayChannel::DrawSignalArea(void)
@@ -300,23 +301,23 @@ void cSkinSoppalusikkaDisplayChannel::DrawSignalArea(void)
   int s = cDevice::ActualDevice()->SignalStrength();
   int q = cDevice::ActualDevice()->SignalQuality();
   // draw signal strength
-  x = (xs1 - xs0 - 1) * (s < 0 ? 0 : s) / 100;
-  osd->DrawRectangle(xs0, ys0, xs1 - 1, ys0 + Gap, Theme.Color(clrChannelSymbolInactive));
-  osd->DrawRectangle(xs0, ys0, xs0 + x - 1, ys0 + Gap, Theme.Color(clrChannelSymbolActive));
+  x = (xs1M - xs0M - 1) * (s < 0 ? 0 : s) / 100;
+  osdM->DrawRectangle(xs0M, ys0, xs1M - 1, ys0 + Gap, ThemeS.Color(clrChannelSymbolInactive));
+  osdM->DrawRectangle(xs0M, ys0, xs0M + x - 1, ys0 + Gap, ThemeS.Color(clrChannelSymbolActive));
   // draw signal quality
-  x = (xs1 - xs0 - 1) * (q < 0 ? 0 : q) / 100;
-  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs1 - 1, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolInactive));
-  osd->DrawRectangle(xs0, ys0 + 2 * Gap, xs0 + x - 1, ys0 + 3 * Gap, Theme.Color(clrChannelSymbolActive));
+  x = (xs1M - xs0M - 1) * (q < 0 ? 0 : q) / 100;
+  osdM->DrawRectangle(xs0M, ys0 + 2 * Gap, xs1M - 1, ys0 + 3 * Gap, ThemeS.Color(clrChannelSymbolInactive));
+  osdM->DrawRectangle(xs0M, ys0 + 2 * Gap, xs0M + x - 1, ys0 + 3 * Gap, ThemeS.Color(clrChannelSymbolActive));
   // update timer
-  lastSignalUpdate.Set(SIGNALUPDATETIMEOUT_MS);
+  lastSignalUpdateM.Set(SIGNALUPDATETIMEOUT_MS);
 }
 
-cString cSkinSoppalusikkaDisplayChannel::GetChannelName(const cChannel *Channel)
+cString cSkinSoppalusikkaDisplayChannel::GetChannelName(const cChannel *channelP)
 {
   char buffer[256];
   // check if channel exists
-  if (Channel) {
-     snprintf(buffer, sizeof(buffer), "%s", Channel->Name());
+  if (channelP) {
+     snprintf(buffer, sizeof(buffer), "%s", channelP->Name());
      }
   else {
      snprintf(buffer, sizeof(buffer), "%s", tr("*** Invalid Channel ***"));
@@ -324,16 +325,16 @@ cString cSkinSoppalusikkaDisplayChannel::GetChannelName(const cChannel *Channel)
   return buffer;
 }
 
-cString cSkinSoppalusikkaDisplayChannel::GetChannelNumber(const cChannel *Channel, int Number)
+cString cSkinSoppalusikkaDisplayChannel::GetChannelNumber(const cChannel *channelP, int numberP)
 {
   char buffer[256];
   // check if real channel exists
-  if (Channel && !Channel->GroupSep()) {
-     snprintf(buffer, sizeof(buffer), "%d%s", Channel->Number(), Number ? "-" : "");
+  if (channelP && !channelP->GroupSep()) {
+     snprintf(buffer, sizeof(buffer), "%d%s", channelP->Number(), numberP ? "-" : "");
      }
-  else if (Number) {
+  else if (numberP) {
      // no channel but number
-     snprintf(buffer, sizeof(buffer), "%d-", Number);
+     snprintf(buffer, sizeof(buffer), "%d-", numberP);
      }
   else {
      // no channel and no number
@@ -342,17 +343,17 @@ cString cSkinSoppalusikkaDisplayChannel::GetChannelNumber(const cChannel *Channe
   return buffer;
 }
 
-void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Number)
+void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int numberP)
 {
   // draw top area
-  DrawTopArea(Channel);
+  DrawTopArea(channelP);
   // draw channel number
-  osd->DrawText(xt2, yt0, GetChannelNumber(Channel, Number), Theme.Color(clrChannelNumberDateFg), Theme.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt3 - xt2, yt2 - yt0);
+  osdM->DrawText(xt2M, yt0, GetChannelNumber(channelP, numberP), ThemeS.Color(clrChannelNumberDateFg), ThemeS.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt3M - xt2M, yt2M - yt0);
   // draw channel name
-  osd->DrawText(xt2, yt3, GetChannelName(Channel), Theme.Color(clrChannelNameFg), Theme.Color(clrChannelNameBg), cFont::GetFont(fontSml), xt6 - xt2, yt4 - yt3);
+  osdM->DrawText(xt2M, yt3M, GetChannelName(channelP), ThemeS.Color(clrChannelNameFg), ThemeS.Color(clrChannelNameBg), cFont::GetFont(fontSml), xt6M - xt2M, yt4M - yt3M);
   // draw symbols
-  if (Channel && !Channel->GroupSep()) {
-     int xs = xt8;
+  if (channelP && !channelP->GroupSep()) {
+     int xs = xt8M;
      bool isvps = false;
      // check if vps
      if (SoppalusikkaConfig.showvps) {
@@ -360,7 +361,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
         cSchedulesLock SchedulesLock;
         const cSchedules *Schedules = cSchedules::Schedules(SchedulesLock);
         if (Schedules) {
-           const cSchedule *Schedule = Schedules->GetSchedule(Channel);
+           const cSchedule *Schedule = Schedules->GetSchedule(channelP);
            if (Schedule) {
               // get present event
               const cEvent *Event = Schedule->GetPresentEvent();
@@ -372,58 +373,58 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *Channel, int Nu
            }
         }
      // draw radio symbol if no video PID; otherwise draw teletext symbol
-     if (Channel->Vpid()) {
+     if (channelP->Vpid()) {
         xs -= GetSymbol(SYMBOL_TELETEXT).Width();
-        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_TELETEXT).Height()) / 2, GetSymbol(SYMBOL_TELETEXT), Theme.Color(Channel->Tpid() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_TELETEXT).Height()) / 2, GetSymbol(SYMBOL_TELETEXT), ThemeS.Color(channelP->Tpid() ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
      else {
         xs -= GetSymbol(SYMBOL_RADIO).Width();
-        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_RADIO).Height()) / 2, GetSymbol(SYMBOL_RADIO), Theme.Color(Channel->Apid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_RADIO).Height()) / 2, GetSymbol(SYMBOL_RADIO), ThemeS.Color(channelP->Apid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
      // draw audio symbol according to current audio channel
      switch (cDevice::PrimaryDevice()->GetAudioChannel()) {
        default:
        case 0: /* stereo */
             xs -= (GetSymbol(SYMBOL_AUDIO).Width() + BigGap);
-            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), ThemeS.Color(channelP->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
             break;
        case 1: /* mono left */
             xs -= (GetSymbol(SYMBOL_AUDIO_LEFT).Width() + BigGap);
-            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), ThemeS.Color(channelP->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
             break;
        case 2: /* mono right */
             xs -= (GetSymbol(SYMBOL_AUDIO_RIGHT).Width() + 2 * BigGap);
-            osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), Theme.Color(Channel->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+            osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), ThemeS.Color(channelP->Apid(1) ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
             break;
         }
      // draw dolby digital symbol
      xs -= (GetSymbol(SYMBOL_DOLBY_DIGITAL).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_DOLBY_DIGITAL).Height()) / 2, GetSymbol(SYMBOL_DOLBY_DIGITAL), Theme.Color(Channel->Dpid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_DOLBY_DIGITAL).Height()) / 2, GetSymbol(SYMBOL_DOLBY_DIGITAL), ThemeS.Color(channelP->Dpid(0) ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw encryption symbol
      xs -= (GetSymbol(SYMBOL_ENCRYPTED).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_ENCRYPTED).Height()) / 2, GetSymbol(SYMBOL_ENCRYPTED), Theme.Color(Channel->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_ENCRYPTED).Height()) / 2, GetSymbol(SYMBOL_ENCRYPTED), ThemeS.Color(channelP->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw vps symbol
      if (SoppalusikkaConfig.showvps) {
         xs -= (GetSymbol(SYMBOL_VPS).Width() + BigGap);
-        osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), Theme.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), Theme.Color(clrBackground));
+        osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), ThemeS.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
      // draw recording symbol
      xs -= (GetSymbol(SYMBOL_RECORDING).Width() + BigGap);
-     osd->DrawBitmap(xs, yt0 + (ys1 - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), Theme.Color(cRecordControls::Active() ? (HasChannelTimerRecording(Channel) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), ThemeS.Color(cRecordControls::Active() ? (HasChannelTimerRecording(channelP) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw signal area
-     xs0 = xs;
-     ys0 = (yt0 + ys1 + GetSymbol(SYMBOL_RECORDING).Height()) / 2 + Gap;
+     xs0M = xs;
+     ys0 = (yt0 + ys1M + GetSymbol(SYMBOL_RECORDING).Height()) / 2 + Gap;
      DrawSignalArea();
      }
-  lastDate = NULL;
+  lastDateM = NULL;
 }
 
-void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEvent *Following)
+void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *presentP, const cEvent *followingP)
 {
   // draw bottom area
   DrawBottomArea();
   // check epg datas
-  const cEvent *e = Present;
+  const cEvent *e = presentP;
   if (e) {
      cString s;
      int total = e->Duration();
@@ -433,17 +434,17 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
      else
         s = cString::sprintf("  %d %s", total / 60, tr("min"));
      // draw start time
-     osd->DrawText(xb1, yb0, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb1 - yb0);
+     osdM->DrawText(xb1M, yb0, e->GetTimeString(), ThemeS.Color(clrChannelEpgTimeFg), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2M - xb1M, yb1M - yb0);
      // draw title
-     osd->DrawText(xb4, yb0, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb1 - yb0);
+     osdM->DrawText(xb4M, yb0, e->Title(), ThemeS.Color(clrChannelEpgTitle), ThemeS.Color(clrBackground), cFont::GetFont(fontOsd), xb5M - xb4M, yb1M - yb0);
      // draw timer symbol
      if (e->HasTimer()) {
         cString space("  ");
-        osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb0, space, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb1 - yb0);
-        osd->DrawBitmap(xb5 - cFont::GetFont(fontSml)->Width(s) - GetSymbol(SYMBOL_EVENT_TIMER).Width(), yb0 + (yb1 - yb0 - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground));
+        osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb0, space, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb1M - yb0);
+        osdM->DrawBitmap(xb5M - cFont::GetFont(fontSml)->Width(s) - GetSymbol(SYMBOL_EVENT_TIMER).Width(), yb0 + (yb1M - yb0 - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground));
         }
      // draw duration
-     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb0, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1 - yb0);
+     osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s), yb0, s, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1M - yb0);
      // draw vps time
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
@@ -452,35 +453,35 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
         if (abs(delta) < 600) {
            /* relative vps time formats: "+0:30" "-1:30" */
            cString vps = cString::sprintf("%c%01d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
-           osd->DrawText(xb1, yb1, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+           osdM->DrawText(xb1M, yb1M, vps, ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2M - xb1M - Gap, yb2M - yb1M, taRight);
            }
         else {
            /* absolute vps time format: "18:45" */
-           osd->DrawText(xb1, yb1, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb2 - yb1, taRight);
+           osdM->DrawText(xb1M, yb1M, TimeString(e->Vps()), ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2M - xb1M - Gap, yb2M - yb1M, taRight);
            }
         }
      // draw shorttext
-     osd->DrawText(xb4, yb1, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4 - Gap, yb2 - yb1);
+     osdM->DrawText(xb4M, yb1M, e->ShortText(), ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), xb5M - xb4M - Gap, yb2M - yb1M);
      // draw timebar
-     int yc = yb0 + (int)(roundf((float)(now) / (float)(total) * (float)(yb5 - yb0)));
-     yc = min(yc, yb5);
-     osd->DrawRectangle(xb2 + SmallGap, yb0, xb3 - SmallGap - 1, yc - 1, Theme.Color(clrChannelTimeBarFg));
+     int yc = yb0 + (int)(roundf((float)(now) / (float)(total) * (float)(yb5M - yb0)));
+     yc = min(yc, yb5M);
+     osdM->DrawRectangle(xb2M + SmallGap, yb0, xb3M - SmallGap - 1, yc - 1, ThemeS.Color(clrChannelTimeBarFg));
      }
-  e = Following;
+  e = followingP;
   if (e) {
      cString s = cString::sprintf("  %d %s", e->Duration() / 60, tr("min"));
      // draw start time
-     osd->DrawText(xb1, yb2, e->GetTimeString(), Theme.Color(clrChannelEpgTimeFg), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2 - xb1, yb3 - yb2);
+     osdM->DrawText(xb1M, yb2M, e->GetTimeString(), ThemeS.Color(clrChannelEpgTimeFg), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontOsd), xb2M - xb1M, yb3M - yb2M);
      // draw title
-     osd->DrawText(xb4, yb2, e->Title(), Theme.Color(clrChannelEpgTitle), Theme.Color(clrBackground), cFont::GetFont(fontOsd), xb5 - xb4, yb3 - yb2);
+     osdM->DrawText(xb4M, yb2M, e->Title(), ThemeS.Color(clrChannelEpgTitle), ThemeS.Color(clrBackground), cFont::GetFont(fontOsd), xb5M - xb4M, yb3M - yb2M);
      // draw timer symbol
      if (e->HasTimer()) {
         cString space("  ");
-        osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb2, space, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb3 - yb2);
-        osd->DrawBitmap(xb5 - cFont::GetFont(fontSml)->Width(s) - GetSymbol(SYMBOL_EVENT_TIMER).Width(), yb2 + (yb3 - yb2 - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground));
+        osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s) - cFont::GetFont(fontSml)->Width(space), yb2M, space, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(space), yb3M - yb2M);
+        osdM->DrawBitmap(xb5M - cFont::GetFont(fontSml)->Width(s) - GetSymbol(SYMBOL_EVENT_TIMER).Width(), yb2M + (yb3M - yb2M - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground));
         }
      // draw duration
-     osd->DrawText(xb5 - cFont::GetFont(fontSml)->Width(s), yb2, s, Theme.Color(clrChannelEpgDuration), Theme.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3 - yb2);
+     osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s), yb2M, s, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3M - yb2M);
      // draw vps time - only if skin dependent small fonts
      if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
@@ -489,180 +490,181 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *Present, const cEv
         if (abs(delta) < 600) {
            /* relative vps time formats: "+0:30" "-1:30" */
            cString vps = cString::sprintf("%c%d:%02d", delta < 0 ? '-' : '+', abs(delta) / 60, abs(delta) % 60);
-           osd->DrawText(xb1, yb3, vps, Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+           osdM->DrawText(xb1M, yb3M, vps, ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2M - xb1M - Gap, yb5M - yb3M, taRight);
            }
         else {
            /* absolute vps time format: "18:45" */
-           osd->DrawText(xb1, yb3, TimeString(e->Vps()), Theme.Color(clrChannelEpgShortText), Theme.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2 - xb1 - Gap, yb5 - yb3, taRight);
+           osdM->DrawText(xb1M, yb3M, TimeString(e->Vps()), ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrChannelEpgTimeBg), cFont::GetFont(fontSml), xb2M - xb1M - Gap, yb5M - yb3M, taRight);
            }
         }
      // draw shorttext
-     osd->DrawText(xb4, yb3, e->ShortText(), Theme.Color(clrChannelEpgShortText), Theme.Color(clrBackground), cFont::GetFont(fontSml), xb5 - xb4, yb5 - yb3);
+     osdM->DrawText(xb4M, yb3M, e->ShortText(), ThemeS.Color(clrChannelEpgShortText), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), xb5M - xb4M, yb5M - yb3M);
      }
 }
 
-void cSkinSoppalusikkaDisplayChannel::SetMessage(eMessageType Type, const char *Text)
+void cSkinSoppalusikkaDisplayChannel::SetMessage(eMessageType typeP, const char *textP)
 {
   // check if message
-  if (Text) {
+  if (textP) {
      // save osd region
-     osd->SaveRegion(xb0, yb3, xb6 - 1, yb5 - 1);
+     osdM->SaveRegion(xb0M, yb3M, xb6M - 1, yb5M - 1);
      // draw message area
-     osd->DrawRectangle(xb0, yb3, xb6 - 1, yb5 - 1, Theme.Color(clrMessageStatusBg + 2 * Type));
+     osdM->DrawRectangle(xb0M, yb3M, xb6M - 1, yb5M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP));
      // draw message
-     osd->DrawText(xb1, yb3, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), xb5 - xb1, yb5 - yb3, taCenter);
+     osdM->DrawText(xb1M, yb3M, textP, ThemeS.Color(clrMessageStatusFg + 2 * typeP), ThemeS.Color(clrMessageStatusBg + 2 * typeP), cFont::GetFont(fontOsd), xb5M - xb1M, yb5M - yb3M, taCenter);
      // draw rounded left corner
-     osd->DrawEllipse(xb0, yb4, xb1 - 1, yb5 - 1, clrTransparent, -3);
+     osdM->DrawEllipse(xb0M, yb4M, xb1M - 1, yb5M - 1, clrTransparent, -3);
      // draw rounded right corner
-     osd->DrawEllipse(xb5, yb4, xb6 - 1, yb5 - 1, clrTransparent, -4);
+     osdM->DrawEllipse(xb5M, yb4M, xb6M - 1, yb5M - 1, clrTransparent, -4);
      }
   else {
      // restore saved osd region
-     osd->RestoreRegion();
+     osdM->RestoreRegion();
      }
 }
 
 void cSkinSoppalusikkaDisplayChannel::Flush(void)
 {
   cString date = DayDateTime();
-  if (!*lastDate || strcmp(date, lastDate)) {
+  if (!*lastDateM || strcmp(date, lastDateM)) {
      // draw updated date string
-     osd->DrawText(xt3, yt0, date, Theme.Color(clrChannelNumberDateFg), Theme.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt4 - xt3, yt2 - yt0, taRight);
-     lastDate = date;
+     osdM->DrawText(xt3M, yt0, date, ThemeS.Color(clrChannelNumberDateFg), ThemeS.Color(clrChannelNumberDateBg), cFont::GetFont(fontSml), xt4M - xt3M, yt2M - yt0, taRight);
+     lastDateM = date;
      }
-  if (lastSignalUpdate.TimedOut())
+  if (lastSignalUpdateM.TimedOut())
      DrawSignalArea();
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikkaDisplayMenu -----------------------------------------------
 
 class cSkinSoppalusikkaDisplayMenu : public cSkinDisplayMenu {
 private:
-  cOsd *osd;
-  int x0, x1, x2, x3, x4, x5;
-  int y0, y1, y2, y3, y4, y5, y6, y7, y8;
-  int lineHeight;
-  int lastDiskUsageState;
-  bool lastRec;
-  cString lastDate;
-  cString title;
+  cOsd *osdM;
+  int x0M, x1M, x2M, x3M, x4M, x5M;
+  int y0M, y1M, y2M, y3M, y4M, y5M, y6M, y7M, y8M;
+  int lineHeightM;
+  int lastDiskUsageStateM;
+  bool lastRecM;
+  cString lastDateM;
+  cString titleM;
   void DrawTitle();
-  void DrawScrollbar(int Total, int Offset, int Shown, int Top, int Height, bool CanScrollUp, bool CanScrollDown);
+  void DrawScrollbar(int totalP, int offsetP, int shownP, int topP, int heightP, bool canScrollUpP, bool canScrollDownP);
   void SetTextScrollbar(void);
+
 public:
   cSkinSoppalusikkaDisplayMenu();
   virtual ~cSkinSoppalusikkaDisplayMenu();
-  virtual void Scroll(bool Up, bool Page);
+  virtual void Scroll(bool upP, bool pageP);
   virtual int MaxItems(void);
   virtual void Clear(void);
-  virtual void SetTitle(const char *Title);
-  virtual void SetButtons(const char *Red, const char *Green = NULL, const char *Yellow = NULL, const char *Blue = NULL);
-  virtual void SetMessage(eMessageType Type, const char *Text);
-  virtual void SetItem(const char *Text, int Index, bool Current, bool Selectable);
-  virtual void SetScrollbar(int Total, int Offset);
-  virtual void SetEvent(const cEvent *Event);
-  virtual void SetRecording(const cRecording *Recording);
-  virtual void SetText(const char *Text, bool FixedFont);
+  virtual void SetTitle(const char *titleP);
+  virtual void SetButtons(const char *redP, const char *greenP = NULL, const char *yellowP = NULL, const char *blueP = NULL);
+  virtual void SetMessage(eMessageType typeT, const char *textP);
+  virtual void SetItem(const char *textP, int indexP, bool currentP, bool selectableP);
+  virtual void SetScrollbar(int totalP, int offsetP);
+  virtual void SetEvent(const cEvent *eventP);
+  virtual void SetRecording(const cRecording *recordingP);
+  virtual void SetText(const char *textP, bool fixedFontP);
   virtual int GetTextAreaWidth(void) const;
-  virtual const cFont *GetTextAreaFont(bool FixedFont) const;
+  virtual const cFont *GetTextAreaFont(bool fixedFontP) const;
   virtual void Flush(void);
   };
 
 cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
 {
   const cFont *font = cFont::GetFont(fontOsd);
-  lineHeight = font->Height();
-  lastDiskUsageState = -1;
-  lastRec = false;
-  x0 = 0;
-  x1 = x0 + Gap;
-  x2 = x0 + Roundness;
-  x5 = cOsd::OsdWidth();
-  x4 = x5 - Gap;
-  x3 = x5 - Roundness;
-  y0 = 0;
-  y1 = y0 + Roundness;
-  y2 = y0 + lineHeight;
-  y3 = y2 + SmallGap;
-  y4 = y3 + lineHeight;
-  y8 = cOsd::OsdHeight();
-  y7 = y8 - Roundness;
-  y6 = y8 - lineHeight;
-  y5 = y6 - lineHeight;
+  lineHeightM = font->Height();
+  lastDiskUsageStateM = -1;
+  lastRecM = false;
+  x0M = 0;
+  x1M = x0M + Gap;
+  x2M = x0M + Roundness;
+  x5M = cOsd::OsdWidth();
+  x4M = x5M - Gap;
+  x3M = x5M - Roundness;
+  y0M = 0;
+  y1M = y0M + Roundness;
+  y2M = y0M + lineHeightM;
+  y3M = y2M + SmallGap;
+  y4M = y3M + lineHeightM;
+  y8M = cOsd::OsdHeight();
+  y7M = y8M - Roundness;
+  y6M = y8M - lineHeightM;
+  y5M = y6M - lineHeightM;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop());
-  tArea Areas[] = { { x0, y0, x5 - 1, y8 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop());
+  tArea Areas[] = { { x0M, y0M, x5M - 1, y8M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      // clear all
-     osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+     osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
      }
   else {
-     tArea Areas[] = { { x0, y0, x5 - 1, y8 - 1, 4 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     tArea Areas[] = { { x0M, y0M, x5M - 1, y8M - 1, 4 } };
+     if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk) {
+        osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         // clear all
-        osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+        osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
         }
      else {
-        tArea Areas[] = { { x0, y0, x5 - 1, y2 - 1, 2 },
-                          { x0, y2, x5 - 1, y5 - 1, 2 },
-                          { x0, y5, x5 - 1, y6 - 1, 2 },
-                          { x0, y6, x5 - 1, y8 - 1, 4 }
+        tArea Areas[] = { { x0M, y0M, x5M - 1, y2M - 1, 2 },
+                          { x0M, y2M, x5M - 1, y5M - 1, 2 },
+                          { x0M, y5M, x5M - 1, y6M - 1, 2 },
+                          { x0M, y6M, x5M - 1, y8M - 1, 4 }
                         };
-        if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-           osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+        if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+           osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         // clear all
-        osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+        osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
         // fill up items area palette to prevent palette overflow
-        osd->GetBitmap(1)->Reset();
-        osd->GetBitmap(1)->SetColor(0, Theme.Color(clrBackground));
-        osd->GetBitmap(1)->SetColor(1, Theme.Color(clrMenuItemSelectable));
-        osd->GetBitmap(1)->SetColor(2, Theme.Color(clrMenuItemCurrentBg));
-        osd->GetBitmap(1)->SetColor(3, Theme.Color(clrMenuItemCurrentFg));
+        osdM->GetBitmap(1)->Reset();
+        osdM->GetBitmap(1)->SetColor(0, ThemeS.Color(clrBackground));
+        osdM->GetBitmap(1)->SetColor(1, ThemeS.Color(clrMenuItemSelectable));
+        osdM->GetBitmap(1)->SetColor(2, ThemeS.Color(clrMenuItemCurrentBg));
+        osdM->GetBitmap(1)->SetColor(3, ThemeS.Color(clrMenuItemCurrentFg));
         }
      }
   // draw titlebar
-  osd->DrawRectangle(x0, y0, x5 - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
+  osdM->DrawRectangle(x0M, y0M, x5M - 1, y2M - 1, ThemeS.Color(clrMenuTitleBg));
   // draw rounded left corner of title bar
-  osd->DrawEllipse(x0, y0, x2 - 1, y1 - 1, clrTransparent, -2);
+  osdM->DrawEllipse(x0M, y0M, x2M - 1, y1M - 1, clrTransparent, -2);
   // draw rounded right corner of title bar
-  osd->DrawEllipse(x3, y0, x5 - 1, y1 - 1, clrTransparent, -1);
+  osdM->DrawEllipse(x3M, y0M, x5M - 1, y1M - 1, clrTransparent, -1);
   // draw gap + items + message area
-  osd->DrawRectangle(x0, y2, x5 - 1, y6 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(x0M, y2M, x5M - 1, y6M - 1, ThemeS.Color(clrBackground));
   // draw colorbar
-  osd->DrawRectangle(x0, y6, x5 - 1, y8 - 1, Theme.Color(clrBackground));
-  osd->DrawRectangle(x0, y6, x2 - 1, y8 - 1, Theme.Color(clrButtonRedBg));
-  osd->DrawRectangle(x3, y6, x5 - 1, y8 - 1, Theme.Color(clrButtonBlueBg));
+  osdM->DrawRectangle(x0M, y6M, x5M - 1, y8M - 1, ThemeS.Color(clrBackground));
+  osdM->DrawRectangle(x0M, y6M, x2M - 1, y8M - 1, ThemeS.Color(clrButtonRedBg));
+  osdM->DrawRectangle(x3M, y6M, x5M - 1, y8M - 1, ThemeS.Color(clrButtonBlueBg));
   SetButtons(NULL);
   // draw rounded left corner of colorbar
-  osd->DrawEllipse(x0, y7, x2 - 1, y8 - 1, clrTransparent, -3);
+  osdM->DrawEllipse(x0M, y7M, x2M - 1, y8M - 1, clrTransparent, -3);
   // draw rounded right corner of colorbar
-  osd->DrawEllipse(x3, y7, x5 - 1, y8 - 1, clrTransparent, -4);
+  osdM->DrawEllipse(x3M, y7M, x5M - 1, y8M - 1, clrTransparent, -4);
 }
 
 cSkinSoppalusikkaDisplayMenu::~cSkinSoppalusikkaDisplayMenu()
 {
-  delete osd;
+  delete osdM;
 }
 
-void cSkinSoppalusikkaDisplayMenu::DrawScrollbar(int Total, int Offset, int Shown, int Top, int Height, bool CanScrollUp, bool CanScrollDown)
+void cSkinSoppalusikkaDisplayMenu::DrawScrollbar(int totalP, int offsetP, int shownP, int topP, int heightP, bool canScrollUpP, bool canScrollDownP)
 {
   // check if scrollbar is needed
-  if (Total > 0 && Total > Shown) {
-     int yt = Top;
-     int yb = yt + Height;
+  if (totalP > 0 && totalP > shownP) {
+     int yt = topP;
+     int yb = yt + heightP;
      int st = yt;
      int sb = yb;
-     int th = max(int((sb - st) * double(Shown) / Total + 0.5), Gap);
-     int tt = min(int(st + (sb - st) * double(Offset) / Total + 0.5), sb - th);
+     int th = max(int((sb - st) * double(shownP) / totalP + 0.5), Gap);
+     int tt = min(int(st + (sb - st) * double(offsetP) / totalP + 0.5), sb - th);
      int tb = min(tt + th, sb);
-     int xl = x5 - Gap;
+     int xl = x5M - Gap;
      // draw background of scrollbar
-     osd->DrawRectangle(xl, st, x5 - 1, sb - 1, Theme.Color(clrMenuScrollbarTotal));
+     osdM->DrawRectangle(xl, st, x5M - 1, sb - 1, ThemeS.Color(clrMenuScrollbarTotal));
      // draw visible area of scrollbar
-     osd->DrawRectangle(xl, tt, x5 - 1, tb - 1, Theme.Color(clrMenuScrollbarShown));
+     osdM->DrawRectangle(xl, tt, x5M - 1, tb - 1, ThemeS.Color(clrMenuScrollbarShown));
      }
 }
 
@@ -672,23 +674,23 @@ void cSkinSoppalusikkaDisplayMenu::SetTextScrollbar(void)
      DrawScrollbar(textScroller.Total(), textScroller.Offset(), textScroller.Shown(), textScroller.Top(), textScroller.Height(), textScroller.CanScrollUp(), textScroller.CanScrollDown());
 }
 
-void cSkinSoppalusikkaDisplayMenu::Scroll(bool Up, bool Page)
+void cSkinSoppalusikkaDisplayMenu::Scroll(bool upP, bool pageP)
 {
-  cSkinDisplayMenu::Scroll(Up, Page);
+  cSkinDisplayMenu::Scroll(upP, pageP);
   SetTextScrollbar();
 }
 
 int cSkinSoppalusikkaDisplayMenu::MaxItems(void)
 {
   // max number of items
-  return (y5 - y3) / lineHeight;
+  return (y5M - y3M) / lineHeightM;
 }
 
 void cSkinSoppalusikkaDisplayMenu::Clear(void)
 {
   textScroller.Reset();
   // clear items area
-  osd->DrawRectangle(x0, y2, x5 - 1, y6 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(x0M, y2M, x5M - 1, y6M - 1, ThemeS.Color(clrBackground));
 }
 
 void cSkinSoppalusikkaDisplayMenu::DrawTitle()
@@ -697,72 +699,72 @@ void cSkinSoppalusikkaDisplayMenu::DrawTitle()
   int w = Gap + font->Width("Wmm 07.07 07:07") + (cRecordControls::Active() ?  GetSymbol(SYMBOL_RECORDING).Width() : 0);
   // draw title
   if ((MenuCategory() == mcMain) || (MenuCategory() == mcRecording))
-     osd->DrawText(x2, y0, cString::sprintf("%s  -  %s", *title, *cVideoDiskUsage::String()), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
+     osdM->DrawText(x2M, y0M, cString::sprintf("%s  -  %s", *titleM, *cVideoDiskUsage::String()), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3M - x2M - w, y2M - y0M);
   else
-     osd->DrawText(x2, y0, title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3 - x2 - w, y2 - y0);
+     osdM->DrawText(x2M, y0M, titleM, ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), cFont::GetFont(fontSml), x3M - x2M - w, y2M - y0M);
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *Title)
+void cSkinSoppalusikkaDisplayMenu::SetTitle(const char *titleP)
 {
-  title = Title;
+  titleM = titleP;
   DrawTitle();
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *Red, const char *Green, const char *Yellow, const char *Blue)
+void cSkinSoppalusikkaDisplayMenu::SetButtons(const char *redP, const char *greenP, const char *yellowP, const char *blueP)
 {
-  const char *lutText[] = { Red, Green, Yellow, Blue };
+  const char *lutText[] = { redP, greenP, yellowP, blueP };
   tColor lutFg[] = { clrButtonRedFg, clrButtonGreenFg, clrButtonYellowFg, clrButtonBlueFg };
   tColor lutBg[] = { clrButtonRedBg, clrButtonGreenBg, clrButtonYellowBg, clrButtonBlueBg };
   const cFont *font = cFont::GetFont(fontSml);
-  int t0 = x2;
-  int t4 = x3;
+  int t0 = x2M;
+  int t4 = x3M;
   int t2 = t0 + (t4 - t0) / 2;
   int t1 = t0 + (t2 - t0) / 2;
   int t3 = t2 + (t4 - t2) / 2;
   // draw color buttons
-  osd->DrawText(t0, y6, lutText[Setup.ColorKey0], Theme.Color(lutFg[Setup.ColorKey0]), Theme.Color(lutBg[Setup.ColorKey0]), font, t1 - t0, y8 - y6, taCenter);
-  osd->DrawText(t1, y6, lutText[Setup.ColorKey1], Theme.Color(lutFg[Setup.ColorKey1]), Theme.Color(lutBg[Setup.ColorKey1]), font, t2 - t1, y8 - y6, taCenter);
-  osd->DrawText(t2, y6, lutText[Setup.ColorKey2], Theme.Color(lutFg[Setup.ColorKey2]), Theme.Color(lutBg[Setup.ColorKey2]), font, t3 - t2, y8 - y6, taCenter);
-  osd->DrawText(t3, y6, lutText[Setup.ColorKey3], Theme.Color(lutFg[Setup.ColorKey3]), Theme.Color(lutBg[Setup.ColorKey3]), font, t4 - t3, y8 - y6, taCenter);
+  osdM->DrawText(t0, y6M, lutText[Setup.ColorKey0], ThemeS.Color(lutFg[Setup.ColorKey0]), ThemeS.Color(lutBg[Setup.ColorKey0]), font, t1 - t0, y8M - y6M, taCenter);
+  osdM->DrawText(t1, y6M, lutText[Setup.ColorKey1], ThemeS.Color(lutFg[Setup.ColorKey1]), ThemeS.Color(lutBg[Setup.ColorKey1]), font, t2 - t1, y8M - y6M, taCenter);
+  osdM->DrawText(t2, y6M, lutText[Setup.ColorKey2], ThemeS.Color(lutFg[Setup.ColorKey2]), ThemeS.Color(lutBg[Setup.ColorKey2]), font, t3 - t2, y8M - y6M, taCenter);
+  osdM->DrawText(t3, y6M, lutText[Setup.ColorKey3], ThemeS.Color(lutFg[Setup.ColorKey3]), ThemeS.Color(lutBg[Setup.ColorKey3]), font, t4 - t3, y8M - y6M, taCenter);
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetMessage(eMessageType Type, const char *Text)
+void cSkinSoppalusikkaDisplayMenu::SetMessage(eMessageType typeP, const char *textP)
 {
   // check if message
-  if (Text) {
+  if (textP) {
      // draw message
-     osd->DrawText(x2, y5, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), x4 - x2, y6 - y5, taCenter);
+     osdM->DrawText(x2M, y5M, textP, ThemeS.Color(clrMessageStatusFg + 2 * typeP), ThemeS.Color(clrMessageStatusBg + 2 * typeP), cFont::GetFont(fontOsd), x4M - x2M, y6M - y5M, taCenter);
      }
   else {
      // clear message area
-     osd->DrawRectangle(x2, y5, x4 - 1, y6 - 1, Theme.Color(clrBackground));
+     osdM->DrawRectangle(x2M, y5M, x4M - 1, y6M - 1, ThemeS.Color(clrBackground));
      }
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Current, bool Selectable)
+void cSkinSoppalusikkaDisplayMenu::SetItem(const char *textP, int indexP, bool currentP, bool selectableP)
 {
-  int y = y3 + Index * lineHeight;
+  int y = y3M + indexP * lineHeightM;
   tColor ColorFg, ColorBg;
   // select colors
-  if (Current) {
-     ColorFg = Theme.Color(clrMenuItemCurrentFg);
-     ColorBg = Theme.Color(clrMenuItemCurrentBg);
+  if (currentP) {
+     ColorFg = ThemeS.Color(clrMenuItemCurrentFg);
+     ColorBg = ThemeS.Color(clrMenuItemCurrentBg);
      }
   else {
-     ColorFg = Theme.Color(Selectable ? clrMenuItemSelectable : clrMenuItemCurrentBg);
-     ColorBg = Theme.Color(clrBackground);
+     ColorFg = ThemeS.Color(selectableP ? clrMenuItemSelectable : clrMenuItemCurrentBg);
+     ColorBg = ThemeS.Color(clrBackground);
      }
   const cFont *font = cFont::GetFont(fontOsd);
   // this should prevent menu flickering
-  osd->DrawRectangle(x1, y + lineHeight / 2, x1 + 1, y + lineHeight / 2 + 1, Theme.Color(clrMenuItemSelectable));
+  osdM->DrawRectangle(x1M, y + lineHeightM / 2, x1M + 1, y + lineHeightM / 2 + 1, ThemeS.Color(clrMenuItemSelectable));
   // draw rounded left corner
-  osd->DrawEllipse(x1, y, x2 - 1, y + lineHeight - 1, ColorBg, 7);
+  osdM->DrawEllipse(x1M, y, x2M - 1, y + lineHeightM - 1, ColorBg, 7);
   // draw item
   for (int i = 0; i < MaxTabs; i++) {
-      const char *s = GetTabbedText(Text, i);
+      const char *s = GetTabbedText(textP, i);
       if (s) {
          char buffer[9];
-         int xt = x2 + Tab(i);
+         int xt = x2M + Tab(i);
          bool iseventinfo = false;
          bool isnewrecording = false;
          bool isprogressbar = false;
@@ -788,7 +790,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             buffer[strlen(s) - 1] = '\0';
             }
          // check if progress bar: "[|||||||   ]"
-         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar && 
+         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar &&
              ((MenuCategory() == mcSchedule) || (MenuCategory() == mcScheduleNow) || (MenuCategory() == mcScheduleNext)) &&
              (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
             const char *p = s + 1;
@@ -813,33 +815,33 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             int evx = xt + Gap;
             const char *p = s;
             // draw background
-            osd->DrawRectangle(xt, y, x3, y + lineHeight - 1, ColorBg);
+            osdM->DrawRectangle(xt, y, x3M, y + lineHeightM - 1, ColorBg);
             // draw symbols
             for (; *p; ++p) {
                 switch (*p) {
                   case 't':
                        // partial timer event
-                       osd->DrawBitmap(evx, y + (lineHeight - GetSymbol(SYMBOL_EVENT_PARTTIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_PARTTIMER), ColorFg, ColorBg);
+                       osdM->DrawBitmap(evx, y + (lineHeightM - GetSymbol(SYMBOL_EVENT_PARTTIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_PARTTIMER), ColorFg, ColorBg);
                        evx += GetSymbol(SYMBOL_EVENT_PARTTIMER).Width();
                        break;
                   case 'T':
                        // timer event
-                       osd->DrawBitmap(evx, y + (lineHeight - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), ColorFg, ColorBg);
+                       osdM->DrawBitmap(evx, y + (lineHeightM - GetSymbol(SYMBOL_EVENT_TIMER).Height()) / 2, GetSymbol(SYMBOL_EVENT_TIMER), ColorFg, ColorBg);
                        evx += GetSymbol(SYMBOL_EVENT_TIMER).Width();
                        break;
                   case 'R':
                        // recording event (epgsearch)
-                       osd->DrawBitmap(evx, y + (lineHeight - GetSymbol(SYMBOL_EVENT_RECORDING).Height()) / 2, GetSymbol(SYMBOL_EVENT_RECORDING), ColorFg, ColorBg);
+                       osdM->DrawBitmap(evx, y + (lineHeightM - GetSymbol(SYMBOL_EVENT_RECORDING).Height()) / 2, GetSymbol(SYMBOL_EVENT_RECORDING), ColorFg, ColorBg);
                        evx += GetSymbol(SYMBOL_EVENT_RECORDING).Width();
                        break;
                   case 'V':
                        // vps event
-                       osd->DrawBitmap(evx, y + (lineHeight - GetSymbol(SYMBOL_EVENT_VPS).Height()) / 2, GetSymbol(SYMBOL_EVENT_VPS), ColorFg, ColorBg);
+                       osdM->DrawBitmap(evx, y + (lineHeightM - GetSymbol(SYMBOL_EVENT_VPS).Height()) / 2, GetSymbol(SYMBOL_EVENT_VPS), ColorFg, ColorBg);
                        evx += GetSymbol(SYMBOL_EVENT_VPS).Width();
                        break;
                   case '*':
                        // running event
-                       osd->DrawBitmap(evx, y + (lineHeight - GetSymbol(SYMBOL_EVENT_RUNNING).Height()) / 2, GetSymbol(SYMBOL_EVENT_RUNNING), ColorFg, ColorBg);
+                       osdM->DrawBitmap(evx, y + (lineHeightM - GetSymbol(SYMBOL_EVENT_RUNNING).Height()) / 2, GetSymbol(SYMBOL_EVENT_RUNNING), ColorFg, ColorBg);
                        evx += GetSymbol(SYMBOL_EVENT_RUNNING).Width();
                        break;
                   case ' ':
@@ -851,100 +853,100 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *Text, int Index, bool Cur
             }
          else if (isnewrecording) {
             // draw text
-            osd->DrawText(xt, y, buffer, ColorFg, ColorBg, font, x3 - xt);
+            osdM->DrawText(xt, y, buffer, ColorFg, ColorBg, font, x3M - xt);
             // draw symbol
-            osd->DrawBitmap(xt + font->Width(buffer), y + (lineHeight - GetSymbol(SYMBOL_RECORDING_NEW).Height()) / 2, GetSymbol(SYMBOL_RECORDING_NEW), ColorFg, ColorBg);
+            osdM->DrawBitmap(xt + font->Width(buffer), y + (lineHeightM - GetSymbol(SYMBOL_RECORDING_NEW).Height()) / 2, GetSymbol(SYMBOL_RECORDING_NEW), ColorFg, ColorBg);
             }
          else if (isprogressbar) {
             // define x coordinates of progressbar
-            int px0 = xt;
-            int px1 = px0 + SmallGap;
-            int px2 = px1 + SmallGap;
-            int px5;
+            int px0M = xt;
+            int px1M = px0M + SmallGap;
+            int px2M = px1M + SmallGap;
+            int px5M;
             if (Tab(i+1))
-                px5 = px0 + Tab(i+1) - Tab(i);
+                px5M = px0M + Tab(i+1) - Tab(i);
             else
-                px5 = px0 + x3 - x2 - Tab(i);
-            int px4 = px5 - SmallGap;
-            int px3 = px4 - SmallGap;
-            int px = px2 + (int)((float)now * (float)(px3 - px2) / (float)total);
+                px5M = px0M + x3M - x2M - Tab(i);
+            int px4M = px5M - SmallGap;
+            int px3M = px4M - SmallGap;
+            int px = px2M + (int)((float)now * (float)(px3M - px2M) / (float)total);
             // define y coordinates of progressbar
-            int py0 = y + Gap;
-            int py1 = py0 + SmallGap;
-            int py2 = py1 + Gap;
-            int py5 = y + lineHeight - Gap;
-            int py4 = py5 - SmallGap;
-            int py3 = py4 - Gap;
+            int py0M = y + Gap;
+            int py1M = py0M + SmallGap;
+            int py2M = py1M + Gap;
+            int py5M = y + lineHeightM - Gap;
+            int py4M = py5M - SmallGap;
+            int py3M = py4M - Gap;
             // draw background
-            osd->DrawRectangle(xt, y, x3, y + lineHeight - 1, ColorBg);
+            osdM->DrawRectangle(xt, y, x3M, y + lineHeightM - 1, ColorBg);
             // draw progressbar
-            osd->DrawRectangle(px0, py0, px1, py5, ColorFg);
-            osd->DrawRectangle(px4, py0, px5, py5, ColorFg);
-            osd->DrawRectangle(px1, py0, px4, py1, ColorFg);
-            osd->DrawRectangle(px1, py4, px4, py5, ColorFg);
-            osd->DrawRectangle(px2, py2, px,  py3, ColorFg);
+            osdM->DrawRectangle(px0M, py0M, px1M, py5M, ColorFg);
+            osdM->DrawRectangle(px4M, py0M, px5M, py5M, ColorFg);
+            osdM->DrawRectangle(px1M, py0M, px4M, py1M, ColorFg);
+            osdM->DrawRectangle(px1M, py4M, px4M, py5M, ColorFg);
+            osdM->DrawRectangle(px2M, py2M, px,  py3M, ColorFg);
             }
          else {
             // draw text
-            osd->DrawText(xt, y, s, ColorFg, ColorBg, font, x3 - xt);
+            osdM->DrawText(xt, y, s, ColorFg, ColorBg, font, x3M - xt);
             }
          }
       if (!Tab(i + 1))
          break;
       }
   // draw rounded right corner
-  osd->DrawEllipse(x3, y, x4 - 1, y + lineHeight - 1, ColorBg, 5);
+  osdM->DrawEllipse(x3M, y, x4M - 1, y + lineHeightM - 1, ColorBg, 5);
   //set editable width
-  SetEditableWidth(x3 - x2 - Tab(1));
+  SetEditableWidth(x3M - x2M - Tab(1));
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetScrollbar(int Total, int Offset)
+void cSkinSoppalusikkaDisplayMenu::SetScrollbar(int totalP, int offsetP)
 {
-  DrawScrollbar(Total, Offset, MaxItems(), y2, MaxItems() * lineHeight, Offset > 0, Offset + MaxItems() < Total);
+  DrawScrollbar(totalP, offsetP, MaxItems(), y2M, MaxItems() * lineHeightM, offsetP > 0, offsetP + MaxItems() < totalP);
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
+void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *eventP)
 {
   // check if event
-  if (!Event)
+  if (!eventP)
      return;
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
   cTextScroller ts;
   cString info;
-  int y = y3;
-  int xs = x2;
+  int y = y3M;
+  int xs = x2M;
   // check if event has timer
-  if (Event->HasTimer()) {
+  if (eventP->HasTimer()) {
      // draw timer symbol
-     osd->DrawBitmap(xs, y + (y4 - y) / GetSymbol(SYMBOL_RECORDING).Height(), GetSymbol(SYMBOL_RECORDING), Theme.Color(clrMenuEventSymbolFg), Theme.Color(clrMenuEventSymbolBg));
+     osdM->DrawBitmap(xs, y + (y4M - y) / GetSymbol(SYMBOL_RECORDING).Height(), GetSymbol(SYMBOL_RECORDING), ThemeS.Color(clrMenuEventSymbolFg), ThemeS.Color(clrMenuEventSymbolBg));
      xs += (GetSymbol(SYMBOL_RECORDING).Width() + Roundness);
      }
   // check if event is running
-  if (Event->IsRunning()) {
+  if (eventP->IsRunning()) {
      // draw running symbol
-     osd->DrawBitmap(xs, y + (y4 - y) / GetSymbol(SYMBOL_RUNNING).Height(), GetSymbol(SYMBOL_RUNNING), Theme.Color(clrMenuEventSymbolFg), Theme.Color(clrMenuEventSymbolBg));
+     osdM->DrawBitmap(xs, y + (y4M - y) / GetSymbol(SYMBOL_RUNNING).Height(), GetSymbol(SYMBOL_RUNNING), ThemeS.Color(clrMenuEventSymbolFg), ThemeS.Color(clrMenuEventSymbolBg));
      xs += (GetSymbol(SYMBOL_RUNNING).Width() + Roundness);
      }
-  // check if event has VPS 
-  if (Event->Vps()) {
+  // check if event has VPS
+  if (eventP->Vps()) {
      // draw VPS symbol
-     osd->DrawBitmap(xs, y + (y4 - y) / GetSymbol(SYMBOL_VPS).Height(), GetSymbol(SYMBOL_VPS), Theme.Color(clrMenuEventSymbolFg), Theme.Color(clrMenuEventSymbolBg));
+     osdM->DrawBitmap(xs, y + (y4M - y) / GetSymbol(SYMBOL_VPS).Height(), GetSymbol(SYMBOL_VPS), ThemeS.Color(clrMenuEventSymbolFg), ThemeS.Color(clrMenuEventSymbolBg));
      //xs += (GetSymbol(SYMBOL_VPS).Width() + Roundness);
      }
-  y = y4;
+  y = y4M;
   // draw event date / duration string
-  info = cString::sprintf("%s  %s - %s (%d %s)", *Event->GetDateString(), *Event->GetTimeString(), *Event->GetEndTimeString(), Event->Duration() / 60, tr("min"));
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  info = cString::sprintf("%s  %s - %s (%d %s)", *eventP->GetDateString(), *eventP->GetTimeString(), *eventP->GetEndTimeString(), eventP->Duration() / 60, tr("min"));
+  ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *info, font, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
   y += ts.Height();
   // check if event has VPS
-  if (Event->Vps() && Event->Vps() != Event->StartTime()) {
-     cString buffer = cString::sprintf("%s: %s", tr("VPS"), *Event->GetVpsString());
-     ts.Set(osd, x2, y, x3 - x2, y5 - y, *buffer, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  if (eventP->Vps() && eventP->Vps() != eventP->StartTime()) {
+     cString buffer = cString::sprintf("%s: %s", tr("VPS"), *eventP->GetVpsString());
+     ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *buffer, smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
      y += ts.Height();
      }
   // draw event languages
-  const cComponents *Components = Event->Components();
+  const cComponents *Components = eventP->Components();
   if (Components) {
      cString info, audio, subtitle;
      unsigned int numaudio = 0, numsubtitle = 0;
@@ -978,82 +980,82 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *Event)
      if (numsubtitle > 0)
         info = cString::sprintf("%s%s%s: %s", *info ? *info : "", *info ? "\n" : "", trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      if (*info) {
-        ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+        ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *info, smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
         y += ts.Height();
         }
      }
   y += smlfont->Height();
   // draw event title
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, Event->Title(), font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+  ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, eventP->Title(), font, ThemeS.Color(clrMenuEventTitle), ThemeS.Color(clrBackground));
   y += ts.Height();
   // draw content description
   info = "";
-  for (int i = 0; Event->Contents(i); i++) {
-      const char *s = Event->ContentToString(Event->Contents(i));
+  for (int i = 0; eventP->Contents(i); i++) {
+      const char *s = eventP->ContentToString(eventP->Contents(i));
       if (!isempty(s)) {
          info = cString::sprintf("%s%s%s", *info, isempty(*info) ? "" : ", ", s);
          }
       }
    if (!isempty(*info)) {
-        ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+        ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *info, smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
         y += ts.Height();
       }
   // draw parental rating
-  if (Event->ParentalRating()) {
-     ts.Set(osd, x2, y, x3 - x2, y5 - y, *Event->GetParentalRatingString(), smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  if (eventP->ParentalRating()) {
+     ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *eventP->GetParentalRatingString(), smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
      y += ts.Height();
      }
   // draw recording short text and description
-  if (isempty(Event->Description())) {
+  if (isempty(eventP->Description())) {
      y += smlfont->Height();
      // check if short text
-     if (!isempty(Event->ShortText())) {
+     if (!isempty(eventP->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Event->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        textScroller.Set(osdM, x2M, y, x3M - x2M, y5M - y, eventP->ShortText(), font, ThemeS.Color(clrMenuEventDescription), ThemeS.Color(clrBackground));
         SetTextScrollbar();
         }
      }
   else {
      // check if short text
-     if (!isempty(Event->ShortText())) {
+     if (!isempty(eventP->ShortText())) {
         // draw short text
-        ts.Set(osd, x2, y, x3 - x2, y5 - y, Event->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, eventP->ShortText(), smlfont, ThemeS.Color(clrMenuEventShortText), ThemeS.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Event->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     textScroller.Set(osdM, x2M, y, x3M - x2M, y5M - y, eventP->Description(), font, ThemeS.Color(clrMenuEventDescription), ThemeS.Color(clrBackground));
      SetTextScrollbar();
      }
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
+void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *recordingP)
 {
   // check if recording
-  if (!Recording)
+  if (!recordingP)
      return;
-  const cRecordingInfo *Info = Recording->Info();
+  const cRecordingInfo *Info = recordingP->Info();
   const cFont *font = cFont::GetFont(fontOsd);
   const cFont *smlfont = cFont::GetFont(fontSml);
-  int y = y3;
+  int y = y3M;
   cTextScroller ts;
   char t[32];
   // draw recording date string
-  snprintf(t, sizeof(t), "%s  %s", *DateString(Recording->Start()), *TimeString(Recording->Start()));
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, t, font, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+  snprintf(t, sizeof(t), "%s  %s", *DateString(recordingP->Start()), *TimeString(recordingP->Start()));
+  ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, t, font, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
   y += ts.Height();
   // draw additional information
   cString info("");
   cChannel *channel = Channels.GetByChannelID(Info->ChannelID());
   if (channel)
      info = cString::sprintf("%s\n%s: %s", *info, trVDR("Channel"), *ChannelString(channel, 0));
-  int length = Recording->LengthInSeconds();
-  int dirsize = DirSizeMB(Recording->FileName());
+  int length = recordingP->LengthInSeconds();
+  int dirsize = DirSizeMB(recordingP->FileName());
   cString duration = (length >= 0) ? cString::sprintf("%s: %d:%02d:%02d  ", tr("Duration"), length / 3600, length / 60 % 60, length % 60) : cString("");
   cString size = (dirsize > 9999) ? cString::sprintf("%s: %.2f GB  ", tr("Size"), dirsize / 1024.0) : cString::sprintf("%s: %d MB ", tr("Size"), dirsize);
   cString bitrate = (length > 0) ? cString::sprintf("(%.2f MBit/s)", 8.0 * dirsize / length) : cString("");
   info = cString::sprintf("%s\n%s%s%s", *info, *duration, *size, *bitrate);
-  info = cString::sprintf("%s\n%s: %d  %s: %d  %s: %s", *info, tr("Priority"), Recording->Priority(), tr("Lifetime"), Recording->Lifetime(), tr("Format"), Recording->IsPesRecording() ? "PES" : "TS");
+  info = cString::sprintf("%s\n%s: %d  %s: %d  %s: %s", *info, tr("Priority"), recordingP->Priority(), tr("Lifetime"), recordingP->Lifetime(), tr("Format"), recordingP->IsPesRecording() ? "PES" : "TS");
   if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
      char *aux = strdup(Info->Aux());
      info = cString::sprintf("%s\n%s: %s", *info, tr("Auxiliary information"), parseaux(aux));
@@ -1094,19 +1096,19 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
         info = cString::sprintf("%s\n%s: %s", *info, trVDR("Setup.DVB$Subtitle languages"), *subtitle);
      }
   if (!isempty(*info)) {
-     ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *info, smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
      y += ts.Height();
      }
   y += smlfont->Height();
   // draw recording title
   const char *Title = Info->Title();
   if (isempty(Title))
-     Title = Recording->Name();
-  ts.Set(osd, x2, y, x3 - x2, y5 - y, Title, font, Theme.Color(clrMenuEventTitle), Theme.Color(clrBackground));
+     Title = recordingP->Name();
+  ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, Title, font, ThemeS.Color(clrMenuEventTitle), ThemeS.Color(clrBackground));
   y += ts.Height();
   // draw parental rating
   if (Info->GetEvent()->ParentalRating()) {
-     ts.Set(osd, x2, y, x3 - x2, y5 - y, *Info->GetEvent()->GetParentalRatingString(), smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *Info->GetEvent()->GetParentalRatingString(), smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
      y += ts.Height();
      }
   // draw content description
@@ -1118,7 +1120,7 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
          }
       }
   if (!isempty(*info)) {
-     ts.Set(osd, x2, y, x3 - x2, y5 - y, *info, smlfont, Theme.Color(clrMenuEventTime), Theme.Color(clrBackground));
+     ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, *info, smlfont, ThemeS.Color(clrMenuEventTime), ThemeS.Color(clrBackground));
      y += ts.Height();
      }
   // draw recording short text and description
@@ -1127,7 +1129,7 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text as description, if no description available
-        textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Info->ShortText(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+        textScroller.Set(osdM, x2M, y, x3M - x2M, y5M - y, Info->ShortText(), font, ThemeS.Color(clrMenuEventDescription), ThemeS.Color(clrBackground));
         SetTextScrollbar();
         }
      }
@@ -1135,33 +1137,33 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *Recording)
      // check if short text
      if (!isempty(Info->ShortText())) {
         // draw short text
-        ts.Set(osd, x2, y, x3 - x2, y5 - y, Info->ShortText(), smlfont, Theme.Color(clrMenuEventShortText), Theme.Color(clrBackground));
+        ts.Set(osdM, x2M, y, x3M - x2M, y5M - y, Info->ShortText(), smlfont, ThemeS.Color(clrMenuEventShortText), ThemeS.Color(clrBackground));
         y += ts.Height();
         }
      y += smlfont->Height();
      // draw description
-     textScroller.Set(osd, x2, y, x3 - x2, y5 - y, Info->Description(), font, Theme.Color(clrMenuEventDescription), Theme.Color(clrBackground));
+     textScroller.Set(osdM, x2M, y, x3M - x2M, y5M - y, Info->Description(), font, ThemeS.Color(clrMenuEventDescription), ThemeS.Color(clrBackground));
      SetTextScrollbar();
      }
 }
 
-void cSkinSoppalusikkaDisplayMenu::SetText(const char *Text, bool FixedFont)
+void cSkinSoppalusikkaDisplayMenu::SetText(const char *textP, bool fixedFontP)
 {
   // draw text
-  textScroller.Set(osd, x2, y3, x3 - x2, y5 - y3, Text, GetTextAreaFont(FixedFont), Theme.Color(clrMenuText), Theme.Color(clrBackground));
+  textScroller.Set(osdM, x2M, y3M, x3M - x2M, y5M - y3M, textP, GetTextAreaFont(fixedFontP), ThemeS.Color(clrMenuText), ThemeS.Color(clrBackground));
   SetTextScrollbar();
 }
 
 int cSkinSoppalusikkaDisplayMenu::GetTextAreaWidth(void) const
 {
   // max text area width
-  return x3 - x2;
+  return x3M - x2M;
 }
 
-const cFont *cSkinSoppalusikkaDisplayMenu::GetTextAreaFont(bool FixedFont) const
+const cFont *cSkinSoppalusikkaDisplayMenu::GetTextAreaFont(bool fixedFontP) const
 {
   // text area font
-  return cFont::GetFont(FixedFont ? fontFix : fontOsd);
+  return cFont::GetFont(fixedFontP ? fontFix : fontOsd);
 }
 
 void cSkinSoppalusikkaDisplayMenu::Flush(void)
@@ -1170,154 +1172,155 @@ void cSkinSoppalusikkaDisplayMenu::Flush(void)
   const cFont *font = cFont::GetFont(fontSml);
   int w = font->Width("Wmm 07.07 07:07");
   bool rec = cRecordControls::Active();
-  if (cVideoDiskUsage::HasChanged(lastDiskUsageState))
+  if (cVideoDiskUsage::HasChanged(lastDiskUsageStateM))
      DrawTitle();
-  if (lastRec != rec) {
-     int xl = x3 - w - GetSymbol(SYMBOL_RECORDING).Width();
+  if (lastRecM != rec) {
+     int xl = x3M - w - GetSymbol(SYMBOL_RECORDING).Width();
      // draw safety margin
-     osd->DrawRectangle(xl - Gap, y0, xl - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
+     osdM->DrawRectangle(xl - Gap, y0M, xl - 1, y2M - 1, ThemeS.Color(clrMenuTitleBg));
      // draw recording symbol
-     osd->DrawBitmap(xl, y0 + (y2 - y0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), Theme.Color(clrMenuTitleBg), Theme.Color(rec ? clrMenuTitleFg : clrMenuTitleBg));
-     lastRec = rec;
+     osdM->DrawBitmap(xl, y0M + (y2M - y0M - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), ThemeS.Color(clrMenuTitleBg), ThemeS.Color(rec ? clrMenuTitleFg : clrMenuTitleBg));
+     lastRecM = rec;
      }
-  if (!*lastDate || strcmp(date, lastDate)) {
+  if (!*lastDateM || strcmp(date, lastDateM)) {
      // update date string on titlebar
-     osd->DrawText(x3 - w, y0, date, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, w, y2 - y0, taRight);
-     lastDate = date;
+     osdM->DrawText(x3M - w, y0M, date, ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), font, w, y2M - y0M, taRight);
+     lastDateM = date;
      }
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikkaDisplayReplay ---------------------------------------------
 
 class cSkinSoppalusikkaDisplayReplay : public cSkinDisplayReplay {
 private:
-  cOsd *osd;
-  int x0, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10;
-  int y0, y1, y2, y3, y4, y5;
-  int lineHeight;
-  bool drawdate;
-  bool modeonly;
-  cString lastDate;
+  cOsd *osdM;
+  int x0M, x1M, x2M, x3M, x4M, x5M, x6, x7, x8, x9, x10M;
+  int y0M, y1M, y2M, y3M, y4M, y5M;
+  int lineHeightM;
+  bool drawDateM;
+  bool modeOnlyM;
+  cString lastDateM;
+
 public:
-  cSkinSoppalusikkaDisplayReplay(bool ModeOnly);
+  cSkinSoppalusikkaDisplayReplay(bool modeOnlyP);
   virtual ~cSkinSoppalusikkaDisplayReplay();
-  virtual void SetRecording(const cRecording *Recording);
-  virtual void SetTitle(const char *Title);
-  virtual void SetMode(bool Play, bool Forward, int Speed);
-  virtual void SetProgress(int Current, int Total);
-  virtual void SetCurrent(const char *Current);
-  virtual void SetTotal(const char *Total);
-  virtual void SetJump(const char *Jump);
-  virtual void SetMessage(eMessageType Type, const char *Text);
+  virtual void SetRecording(const cRecording *recordingP);
+  virtual void SetTitle(const char *titleP);
+  virtual void SetMode(bool playP, bool forwardP, int speedP);
+  virtual void SetProgress(int currentP, int totalP);
+  virtual void SetCurrent(const char *currentP);
+  virtual void SetTotal(const char *totalP);
+  virtual void SetJump(const char *jumpP);
+  virtual void SetMessage(eMessageType typeP, const char *textP);
   virtual void Flush(void);
   };
 
-cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool ModeOnly)
+cSkinSoppalusikkaDisplayReplay::cSkinSoppalusikkaDisplayReplay(bool modeOnlyP)
 {
   int symbolWidth = GetSymbol(SYMBOL_FREW).Width() + GetSymbol(SYMBOL_SREW).Width() + GetSymbol(SYMBOL_PLAY).Width() + GetSymbol(SYMBOL_PAUSE).Width() + GetSymbol(SYMBOL_SFWD).Width() + GetSymbol(SYMBOL_FFWD).Width() + 5 * Gap;
   int textWidth = cFont::GetFont(fontOsd)->Width("00:00:00/00:00:00");
-  lineHeight = cFont::GetFont(fontOsd)->Height();
+  lineHeightM = cFont::GetFont(fontOsd)->Height();
   // clamp symbol/text width and line height
   if (textWidth > symbolWidth)
      symbolWidth = textWidth;
-  if (lineHeight < GetSymbol(SYMBOL_PLAY).Height())
-     lineHeight = GetSymbol(SYMBOL_PLAY).Height();
-  drawdate = true;
-  modeonly = ModeOnly;
-  x0 = 0;
-  x1 = x0 + BigGap;
-  x2 = x1 + Roundness;
-  x3 = x2 + symbolWidth;
-  x4 = x3 + 4 * BigGap;
-  x10 = cOsd::OsdWidth();
-  x9 = x10 - BigGap;
+  if (lineHeightM < GetSymbol(SYMBOL_PLAY).Height())
+     lineHeightM = GetSymbol(SYMBOL_PLAY).Height();
+  drawDateM = true;
+  modeOnlyM = modeOnlyP;
+  x0M = 0;
+  x1M = x0M + BigGap;
+  x2M = x1M + Roundness;
+  x3M = x2M + symbolWidth;
+  x4M = x3M + 4 * BigGap;
+  x10M = cOsd::OsdWidth();
+  x9 = x10M - BigGap;
   x8 = x9 - Roundness;
   x6 = x8 - symbolWidth;
   x7 = x6 + (x8 - x6) / 2;
-  x5 = x6 - 4 * BigGap;
-  y0 = 0;
-  y1 = y0 + Roundness;
-  y2 = y0 + lineHeight + Gap;
-  y3 = y2 + lineHeight;
-  y5 = y3 + lineHeight;
-  y4 = y5 - Roundness;
+  x5M = x6 - 4 * BigGap;
+  y0M = 0;
+  y1M = y0M + Roundness;
+  y2M = y0M + lineHeightM + Gap;
+  y3M = y2M + lineHeightM;
+  y5M = y3M + lineHeightM;
+  y4M = y5M - Roundness;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y5);
-  tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y5M);
+  tArea Areas[] = { { x0M, y0M, x10M - 1, y5M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     tArea Areas[] = { { x0, y0, x10 - 1, y5 - 1, 4 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     tArea Areas[] = { { x0M, y0M, x10M - 1, y5M - 1, 4 } };
+     if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      }
   // clear all
-  osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+  osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
   // select mode
-  if (modeonly) {
+  if (modeOnlyM) {
      // draw statusbar
-     osd->DrawRectangle(x6, y3, x8 - 1, y5 - 1, Theme.Color(clrBackground));
+     osdM->DrawRectangle(x6, y3M, x8 - 1, y5M - 1, ThemeS.Color(clrBackground));
      // draw rounded left corner
-     osd->DrawEllipse(x6 - Roundness - 1, y3, x6 - 1, y5 - 1, Theme.Color(clrBackground), 7);
+     osdM->DrawEllipse(x6 - Roundness - 1, y3M, x6 - 1, y5M - 1, ThemeS.Color(clrBackground), 7);
      // draw rounded right corner
-     osd->DrawEllipse(x8, y3, x9 - 1, y5 - 1, Theme.Color(clrBackground), 5);
+     osdM->DrawEllipse(x8, y3M, x9 - 1, y5M - 1, ThemeS.Color(clrBackground), 5);
      }
   else {
      // draw titlebar
-     osd->DrawRectangle(x0, y0, x5 - 1, y2 - 1, Theme.Color(clrReplayTitleBorder));
+     osdM->DrawRectangle(x0M, y0M, x5M - 1, y2M - 1, ThemeS.Color(clrReplayTitleBorder));
      // draw rounded left corner of timebar
-     osd->DrawSlope(x5, y0, x6 - 1, y2 - 1, Theme.Color(clrBackground), 0);
+     osdM->DrawSlope(x5M, y0M, x6 - 1, y2M - 1, ThemeS.Color(clrBackground), 0);
      // draw timebar
-     osd->DrawRectangle(x6, y0, x9 - 1, y2 - 1, Theme.Color(clrBackground));
-     osd->DrawText(x7 - Roundness / 2, y0, "/", Theme.Color(clrReplayCurrent), Theme.Color(clrBackground), cFont::GetFont(fontSml), Roundness, y2 - y0, taCenter);
+     osdM->DrawRectangle(x6, y0M, x9 - 1, y2M - 1, ThemeS.Color(clrBackground));
+     osdM->DrawText(x7 - Roundness / 2, y0M, "/", ThemeS.Color(clrReplayCurrent), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), Roundness, y2M - y0M, taCenter);
      // draw rounded right corner of timebar
-     osd->DrawEllipse(x8, y0, x9 - 1, y1 - 1, clrTransparent, -1);
+     osdM->DrawEllipse(x8, y0M, x9 - 1, y1M - 1, clrTransparent, -1);
      // draw progressbar
-     osd->DrawRectangle(x1, y2, x9 - 1, y3 - 1, Theme.Color(clrBackground));
+     osdM->DrawRectangle(x1M, y2M, x9 - 1, y3M - 1, ThemeS.Color(clrBackground));
      // draw statusbar
-     osd->DrawRectangle(x1, y3, x3 - 1, y5 - 1, Theme.Color(clrBackground));
-     osd->DrawRectangle(x6, y3, x9 - 1, y5 - 1, Theme.Color(clrBackground));
+     osdM->DrawRectangle(x1M, y3M, x3M - 1, y5M - 1, ThemeS.Color(clrBackground));
+     osdM->DrawRectangle(x6, y3M, x9 - 1, y5M - 1, ThemeS.Color(clrBackground));
      // draw rounded center area of statusbar
-     osd->DrawSlope(x3, y3, x4 - 1, y5 - 1, Theme.Color(clrBackground), 1);
-     osd->DrawSlope(x5, y3, x6 - 1, y5 - 1, Theme.Color(clrBackground), 3);
+     osdM->DrawSlope(x3M, y3M, x4M - 1, y5M - 1, ThemeS.Color(clrBackground), 1);
+     osdM->DrawSlope(x5M, y3M, x6 - 1, y5M - 1, ThemeS.Color(clrBackground), 3);
      // draw rounded left corner of statusbar
-     osd->DrawEllipse(x1, y4, x2 - 1, y5 - 1, clrTransparent, -3);
+     osdM->DrawEllipse(x1M, y4M, x2M - 1, y5M - 1, clrTransparent, -3);
      // draw rounded right corner of statusbar
-     osd->DrawEllipse(x8, y4, x9 - 1, y5 - 1, clrTransparent, -4);
+     osdM->DrawEllipse(x8, y4M, x9 - 1, y5M - 1, clrTransparent, -4);
      }
 }
 
 cSkinSoppalusikkaDisplayReplay::~cSkinSoppalusikkaDisplayReplay()
 {
-  delete osd;
+  delete osdM;
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetRecording(const cRecording *Recording)
+void cSkinSoppalusikkaDisplayReplay::SetRecording(const cRecording *recordingP)
 {
-  SetTitle(Recording->Title());
+  SetTitle(recordingP->Title());
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetTitle(const char *Title)
+void cSkinSoppalusikkaDisplayReplay::SetTitle(const char *titleP)
 {
   // draw titlebar
-  osd->DrawText(x0 + SmallGap, y0 + SmallGap, Title, Theme.Color(clrReplayTitleFg), Theme.Color(clrReplayTitleBg), cFont::GetFont(fontSml), x5 - x0 - 2 * SmallGap, y2 - y0 - 2 * SmallGap);
+  osdM->DrawText(x0M + SmallGap, y0M + SmallGap, titleP, ThemeS.Color(clrReplayTitleFg), ThemeS.Color(clrReplayTitleBg), cFont::GetFont(fontSml), x5M - x0M - 2 * SmallGap, y2M - y0M - 2 * SmallGap);
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
+void cSkinSoppalusikkaDisplayReplay::SetMode(bool playP, bool forwardP, int speedP)
 {
   cBitmap *bm = NULL;
   // start drawing from right corner
   int xs = x8;
   // clamp parameters
-  if (Speed < -1)
-     Speed = -1;
-  if (Speed > 3)
-     Speed = 3;
+  if (speedP < -1)
+     speedP = -1;
+  if (speedP > 3)
+     speedP = 3;
   // check if current mode is fast forward
-  if ((Speed > -1) && Play && Forward) {
+  if ((speedP > -1) && playP && forwardP) {
      // select symbol
-     switch (Speed) {
+     switch (speedP) {
        case 0:
             bm = &GetSymbol(SYMBOL_FFWD);
             break;
@@ -1334,17 +1337,17 @@ void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
        }
      // draw active symbol
      xs -= bm->Width();
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - bm->Height()) / 2, *bm, Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - bm->Height()) / 2, *bm, ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
      xs -= GetSymbol(SYMBOL_FFWD).Width();
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_FFWD).Height()) / 2, GetSymbol(SYMBOL_FFWD), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_FFWD).Height()) / 2, GetSymbol(SYMBOL_FFWD), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
   // check if current mode is slow forward
-  if ((Speed > -1) && !Play && Forward) {
+  if ((speedP > -1) && !playP && forwardP) {
      // select symbol
-     switch (Speed) {
+     switch (speedP) {
        case 0:
             bm = &GetSymbol(SYMBOL_SFWD);
             break;
@@ -1361,37 +1364,37 @@ void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
        }
      // draw active symbol
      xs -= bm->Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - bm->Height()) / 2, *bm, Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - bm->Height()) / 2, *bm, ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
      xs -= GetSymbol(SYMBOL_SFWD).Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_SFWD).Height()) / 2, GetSymbol(SYMBOL_SFWD), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_SFWD).Height()) / 2, GetSymbol(SYMBOL_SFWD), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
   // check if current mode is pause
   xs -= GetSymbol(SYMBOL_PAUSE).Width() + Gap;
-  if ((Speed == -1) && !Play) {
+  if ((speedP == -1) && !playP) {
      // draw active symbol
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_PAUSE).Height()) / 2, GetSymbol(SYMBOL_PAUSE), Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_PAUSE).Height()) / 2, GetSymbol(SYMBOL_PAUSE), ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_PAUSE).Height()) / 2, GetSymbol(SYMBOL_PAUSE), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_PAUSE).Height()) / 2, GetSymbol(SYMBOL_PAUSE), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
   // check if current mode is play
   xs -= GetSymbol(SYMBOL_PLAY).Width() + Gap;
-  if ((Speed == -1) && Play) {
+  if ((speedP == -1) && playP) {
      // draw active symbol
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_PLAY).Height()) / 2, GetSymbol(SYMBOL_PLAY), Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_PLAY).Height()) / 2, GetSymbol(SYMBOL_PLAY), ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_PLAY).Height()) / 2, GetSymbol(SYMBOL_PLAY), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_PLAY).Height()) / 2, GetSymbol(SYMBOL_PLAY), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
   // check if current mode is slow reverse
-  if ((Speed > -1) && !Play && !Forward) {
+  if ((speedP > -1) && !playP && !forwardP) {
      // select symbol
-     switch (Speed) {
+     switch (speedP) {
        case 0:
             bm = &GetSymbol(SYMBOL_SREW);
             break;
@@ -1408,17 +1411,17 @@ void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
        }
      // draw active symbol
      xs -= bm->Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - bm->Height()) / 2, *bm, Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - bm->Height()) / 2, *bm, ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
      xs -= GetSymbol(SYMBOL_SREW).Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_SREW).Height()) / 2, GetSymbol(SYMBOL_SREW), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_SREW).Height()) / 2, GetSymbol(SYMBOL_SREW), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
   // check if current mode is fast reverse
-  if ((Speed > -1) && Play && !Forward) {
+  if ((speedP > -1) && playP && !forwardP) {
      // select symbol
-     switch (Speed) {
+     switch (speedP) {
        case 0:
             bm = &GetSymbol(SYMBOL_FREW);
             break;
@@ -1435,381 +1438,384 @@ void cSkinSoppalusikkaDisplayReplay::SetMode(bool Play, bool Forward, int Speed)
        }
      // draw active symbol
      xs -= bm->Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - bm->Height()) / 2, *bm, Theme.Color(clrReplaySymbolActive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - bm->Height()) / 2, *bm, ThemeS.Color(clrReplaySymbolActive), ThemeS.Color(clrBackground));
      }
   else {
      // draw inactive symbol
      xs -= GetSymbol(SYMBOL_FREW).Width() + Gap;
-     osd->DrawBitmap(xs, y3 + (y5 - y3 - GetSymbol(SYMBOL_FREW).Height()) / 2, GetSymbol(SYMBOL_FREW), Theme.Color(clrReplaySymbolInactive), Theme.Color(clrBackground));
+     osdM->DrawBitmap(xs, y3M + (y5M - y3M - GetSymbol(SYMBOL_FREW).Height()) / 2, GetSymbol(SYMBOL_FREW), ThemeS.Color(clrReplaySymbolInactive), ThemeS.Color(clrBackground));
      }
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetProgress(int Current, int Total)
+void cSkinSoppalusikkaDisplayReplay::SetProgress(int currentP, int totalP)
 {
   // create progressbar
-  cProgressBar pb(x9 - x1 - 2 * SmallGap, y3 - y2 - 2 * SmallGap, Current, Total, marks, Theme.Color(clrReplayProgressSeen), Theme.Color(clrReplayProgressRest), Theme.Color(clrReplayProgressSelected), Theme.Color(clrReplayProgressMark), Theme.Color(clrReplayProgressCurrent));
+  cProgressBar pb(x9 - x1M - 2 * SmallGap, y3M - y2M - 2 * SmallGap, currentP, totalP, marks, ThemeS.Color(clrReplayProgressSeen), ThemeS.Color(clrReplayProgressRest), ThemeS.Color(clrReplayProgressSelected), ThemeS.Color(clrReplayProgressMark), ThemeS.Color(clrReplayProgressCurrent));
   // draw progressbar
-  osd->DrawBitmap(x1 + SmallGap, y2 + SmallGap, pb);
+  osdM->DrawBitmap(x1M + SmallGap, y2M + SmallGap, pb);
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetCurrent(const char *Current)
+void cSkinSoppalusikkaDisplayReplay::SetCurrent(const char *currentP)
 {
   // draw current time
-  osd->DrawText(x6, y0, Current, Theme.Color(clrReplayCurrent), Theme.Color(clrBackground), cFont::GetFont(fontSml), x7 - x6 - BigGap, y2 - y0, taRight);
+  osdM->DrawText(x6, y0M, currentP, ThemeS.Color(clrReplayCurrent), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), x7 - x6 - BigGap, y2M - y0M, taRight);
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetTotal(const char *Total)
+void cSkinSoppalusikkaDisplayReplay::SetTotal(const char *totalP)
 {
   // draw total time
-  osd->DrawText(x7 + BigGap, y0, Total, Theme.Color(clrReplayTotal), Theme.Color(clrBackground), cFont::GetFont(fontSml), x8 - x7 - BigGap, y2 - y0, taLeft);
+  osdM->DrawText(x7 + BigGap, y0M, totalP, ThemeS.Color(clrReplayTotal), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), x8 - x7 - BigGap, y2M - y0M, taLeft);
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetJump(const char *Jump)
+void cSkinSoppalusikkaDisplayReplay::SetJump(const char *jumpP)
 {
   // check if prompt
-  if (Jump) {
+  if (jumpP) {
      // disallow date updating
-     drawdate = false;
+     drawDateM = false;
      }
   else {
      // allow date updating
-     drawdate = true;
-     lastDate = NULL;
+     drawDateM = true;
+     lastDateM = NULL;
      }
   // draw jump prompt
-  osd->DrawText(x2, y3, Jump, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontOsd), x3 - x2, y5 - y3, taCenter);
+  osdM->DrawText(x2M, y3M, jumpP, ThemeS.Color(clrReplayModeJump), ThemeS.Color(clrBackground), cFont::GetFont(fontOsd), x3M - x2M, y5M - y3M, taCenter);
 }
 
-void cSkinSoppalusikkaDisplayReplay::SetMessage(eMessageType Type, const char *Text)
+void cSkinSoppalusikkaDisplayReplay::SetMessage(eMessageType typeP, const char *textP)
 {
   // check if new message
-  if (Text) {
+  if (textP) {
      // disallow date updating
-     drawdate = false;
+     drawDateM = false;
      // save current osd
-     osd->SaveRegion(x0, y3, x10 - 1, y5 - 1);
+     osdM->SaveRegion(x0M, y3M, x10M - 1, y5M - 1);
      // draw statusbar
-     osd->DrawRectangle(x0, y3, x1 - 1, y5 - 1, clrTransparent);
-     osd->DrawRectangle(x1, y3, x9 - 1, y5 - 1, Theme.Color(clrMessageStatusBg + 2 * Type));
-     osd->DrawRectangle(x9, y3, x10 - 1, y5 - 1, clrTransparent);
+     osdM->DrawRectangle(x0M, y3M, x1M - 1, y5M - 1, clrTransparent);
+     osdM->DrawRectangle(x1M, y3M, x9 - 1, y5M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP));
+     osdM->DrawRectangle(x9, y3M, x10M - 1, y5M - 1, clrTransparent);
      // draw rounded left corner
-     osd->DrawEllipse(x1, y3, x2 - 1, y5 - 1, Theme.Color(clrMessageStatusBg + 2 * Type), 7);
+     osdM->DrawEllipse(x1M, y3M, x2M - 1, y5M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP), 7);
      // draw message
-     osd->DrawText(x2, y3, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), x8 - x2, y5 - y3, taCenter);
+     osdM->DrawText(x2M, y3M, textP, ThemeS.Color(clrMessageStatusFg + 2 * typeP), ThemeS.Color(clrMessageStatusBg + 2 * typeP), cFont::GetFont(fontOsd), x8 - x2M, y5M - y3M, taCenter);
      // draw rounded right corner
-     osd->DrawEllipse(x8, y3, x9 - 1, y5 - 1, Theme.Color(clrMessageStatusBg + 2 * Type), 5);
+     osdM->DrawEllipse(x8, y3M, x9 - 1, y5M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP), 5);
      }
   else {
      // restore saved osd
-     osd->RestoreRegion();
+     osdM->RestoreRegion();
      // allow date updating
-     drawdate = true;
-     lastDate = NULL;
+     drawDateM = true;
+     lastDateM = NULL;
      }
 }
 
 void cSkinSoppalusikkaDisplayReplay::Flush(void)
 {
-  if (drawdate && !modeonly) {
+  if (drawDateM && !modeOnlyM) {
      cString date = DayDateTime();
-     if (!*lastDate || strcmp(date, lastDate)) {
+     if (!*lastDateM || strcmp(date, lastDateM)) {
         // update date
-        osd->DrawText(x2, y3, date, Theme.Color(clrReplayModeJump), Theme.Color(clrBackground), cFont::GetFont(fontSml), x3 - x2, y5 - y3, taCenter);
-        lastDate = date;
+        osdM->DrawText(x2M, y3M, date, ThemeS.Color(clrReplayModeJump), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), x3M - x2M, y5M - y3M, taCenter);
+        lastDateM = date;
         }
      }
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikkaDisplayVolume ---------------------------------------------
 
 class cSkinSoppalusikkaDisplayVolume : public cSkinDisplayVolume {
 private:
-  cOsd *osd;
-  int x0, x1, x2, x3, x4, x5;
-  int y0, y1, y2, y3;
-  int lineHeight;
+  cOsd *osdM;
+  int x0M, x1M, x2M, x3M, x4M, x5M;
+  int y0M, y1M, y2M, y3M;
+  int lineHeightM;
+
 public:
   cSkinSoppalusikkaDisplayVolume();
   virtual ~cSkinSoppalusikkaDisplayVolume();
-  virtual void SetVolume(int Current, int Total, bool Mute);
+  virtual void SetVolume(int currentP, int totalP, bool muteP);
   virtual void Flush(void);
   };
 
 cSkinSoppalusikkaDisplayVolume::cSkinSoppalusikkaDisplayVolume()
 {
-  lineHeight = cFont::GetFont(fontSml)->Height();
-  x0 = 0;
-  x1 = x0 + BigGap;
-  x2 = x1 + Roundness;
-  x5 = cOsd::OsdWidth();
-  x4 = x5 - BigGap;
-  x3 = x4 - Roundness;
-  y0 = 0;
-  y1 = y0 + lineHeight;
-  y2 = y1 + Gap;
-  y3 = y2 + lineHeight;
+  lineHeightM = cFont::GetFont(fontSml)->Height();
+  x0M = 0;
+  x1M = x0M + BigGap;
+  x2M = x1M + Roundness;
+  x5M = cOsd::OsdWidth();
+  x4M = x5M - BigGap;
+  x3M = x4M - Roundness;
+  y0M = 0;
+  y1M = y0M + lineHeightM;
+  y2M = y1M + Gap;
+  y3M = y2M + lineHeightM;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y3);
-  tArea Areas[] = { { x0, y0, x5 - 1, y3 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y3M);
+  tArea Areas[] = { { x0M, y0M, x5M - 1, y3M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     tArea Areas[] = { { x0, x0, x5 - 1, y3 - 1, 4 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     tArea Areas[] = { { x0M, x0M, x5M - 1, y3M - 1, 4 } };
+     if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      }
   // clear all
-  osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+  osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
 }
 
 cSkinSoppalusikkaDisplayVolume::~cSkinSoppalusikkaDisplayVolume()
 {
-  delete osd;
+  delete osdM;
 }
 
-void cSkinSoppalusikkaDisplayVolume::SetVolume(int Current, int Total, bool Mute)
+void cSkinSoppalusikkaDisplayVolume::SetVolume(int currentP, int totalP, bool muteP)
 {
   tColor ColorBar;
   const char *Prompt;
   const cFont *font = cFont::GetFont(fontSml);
 
   // select behaviour
-  if (Mute) {
-     ColorBar = Theme.Color(clrVolumeBarMute);
+  if (muteP) {
+     ColorBar = ThemeS.Color(clrVolumeBarMute);
      Prompt = tr("Mute");
      }
   else {
-     ColorBar = Theme.Color(clrVolumeBarLower);
+     ColorBar = ThemeS.Color(clrVolumeBarLower);
      Prompt = tr("Volume");
      }
   // width of active titlebar
-  int wfg = x0 + font->Width(Prompt) + 2 * Gap;
+  int wfg = x0M + font->Width(Prompt) + 2 * Gap;
   int wbg = wfg + 2 * Gap;
   // current volume
-  int vol = x2 + (x3 - x2) * Current / Total;
+  int vol = x2M + (x3M - x2M) * currentP / totalP;
   // draw titlebar
-  osd->DrawRectangle(x0, y0, wbg - 1, y2 - 1, Theme.Color(clrVolumePromptBorder));
-  osd->DrawRectangle(wbg, y0, x4 - 1, y2 - 1, clrTransparent);
-  osd->DrawText(x0 + Gap, y0 + Gap, Prompt, Theme.Color(clrVolumePromptFg), Theme.Color(clrVolumePromptBg), font, wfg, lineHeight, taCenter);
+  osdM->DrawRectangle(x0M, y0M, wbg - 1, y2M - 1, ThemeS.Color(clrVolumePromptBorder));
+  osdM->DrawRectangle(wbg, y0M, x4M - 1, y2M - 1, clrTransparent);
+  osdM->DrawText(x0M + Gap, y0M + Gap, Prompt, ThemeS.Color(clrVolumePromptFg), ThemeS.Color(clrVolumePromptBg), font, wfg, lineHeightM, taCenter);
   // draw rounded left corner
-  osd->DrawEllipse(x1, y2, x2 - 1, y3 - 1, Theme.Color(clrBackground), 3);
+  osdM->DrawEllipse(x1M, y2M, x2M - 1, y3M - 1, ThemeS.Color(clrBackground), 3);
   // draw volumebar
-  osd->DrawRectangle(x2, y2, x3 - 1,  y3 - 1, Theme.Color(clrBackground));
-  osd->DrawRectangle(x2, y2 + Gap, vol, y3 - Gap - 1, ColorBar);
-  osd->DrawRectangle(vol + 1, y2 + Gap, x3 - 1, y3 - Gap - 1, Theme.Color(clrVolumeBarUpper));
+  osdM->DrawRectangle(x2M, y2M, x3M - 1,  y3M - 1, ThemeS.Color(clrBackground));
+  osdM->DrawRectangle(x2M, y2M + Gap, vol, y3M - Gap - 1, ColorBar);
+  osdM->DrawRectangle(vol + 1, y2M + Gap, x3M - 1, y3M - Gap - 1, ThemeS.Color(clrVolumeBarUpper));
   // draw rounded right corner
-  osd->DrawEllipse(x3, y2, x4 - 1, y3 - 1, Theme.Color(clrBackground), 5);
+  osdM->DrawEllipse(x3M, y2M, x4M - 1, y3M - 1, ThemeS.Color(clrBackground), 5);
 }
 
 void cSkinSoppalusikkaDisplayVolume::Flush(void)
 {
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikkaDisplayTracks ---------------------------------------------
 
 class cSkinSoppalusikkaDisplayTracks : public cSkinDisplayTracks {
 private:
-  cOsd *osd;
-  int x0, x1, x2, x3, x4, x5, x6;
-  int y0, y1, y2, y3, y4, y5, y6, y7;
-  int lineHeight;
-  int currentIndex;
-  void SetItem(const char *Text, int Index, bool Current);
+  cOsd *osdM;
+  int x0M, x1M, x2M, x3M, x4M, x5M, x6;
+  int y0M, y1M, y2M, y3M, y4M, y5M, y6M, y7M;
+  int lineHeightM;
+  int currentIndexM;
+  void SetItem(const char *textP, int indexP, bool currentP);
+
 public:
-  cSkinSoppalusikkaDisplayTracks(const char *Title, int NumTracks, const char * const *Tracks);
+  cSkinSoppalusikkaDisplayTracks(const char *titleP, int numTracksP, const char * const *tracksP);
   virtual ~cSkinSoppalusikkaDisplayTracks();
-  virtual void SetTrack(int Index, const char * const *Tracks);
-  virtual void SetAudioChannel(int AudioChannel);
+  virtual void SetTrack(int indexP, const char * const *tracksP);
+  virtual void SetAudioChannel(int audioChannelP);
   virtual void Flush(void);
   };
 
-cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *Title, int NumTracks, const char * const *Tracks)
+cSkinSoppalusikkaDisplayTracks::cSkinSoppalusikkaDisplayTracks(const char *titleP, int numTracksP, const char * const *tracksP)
 {
-  lineHeight = cFont::GetFont(fontOsd)->Height();
-  currentIndex = -1;
+  lineHeightM = cFont::GetFont(fontOsd)->Height();
+  currentIndexM = -1;
   const cFont *font = cFont::GetFont(fontSml);
-  int ItemsWidth = font->Width(Title);
-  for (int i = 0; i < NumTracks; i++)
-      ItemsWidth = max(ItemsWidth, font->Width(Tracks[i]));
+  int ItemsWidth = font->Width(titleP);
+  for (int i = 0; i < numTracksP; i++)
+      ItemsWidth = max(ItemsWidth, font->Width(tracksP[i]));
   ItemsWidth = max(ItemsWidth, font->Width(tr("Stereo")));
   ItemsWidth = max(ItemsWidth, font->Width(tr("Left")));
   ItemsWidth = max(ItemsWidth, font->Width(tr("Right")));
   ItemsWidth += 2 * BigGap + 2 * GetSymbol(SYMBOL_AUDIO).Width();
-  x0 = 0;
-  x1 = x0 + Roundness;
-  x2 = x1 + ItemsWidth;
-  x3 = x2 + BigGap;
-  x4 = x3 + GetSymbol(SYMBOL_AUDIO).Width();
-  x5 = x4 + Roundness;
+  x0M = 0;
+  x1M = x0M + Roundness;
+  x2M = x1M + ItemsWidth;
+  x3M = x2M + BigGap;
+  x4M = x3M + GetSymbol(SYMBOL_AUDIO).Width();
+  x5M = x4M + Roundness;
   x6 = cOsd::OsdWidth();
-  y0 = 0;
-  y1 = y0 + Roundness;
-  y3 = y0 + lineHeight;
-  y2 = y3 - Gap;
-  y4 = y3 + NumTracks * lineHeight;
-  y5 = y4 + Gap;
-  y7 = y5 + lineHeight;
-  y6 = y7 - Roundness;
+  y0M = 0;
+  y1M = y0M + Roundness;
+  y3M = y0M + lineHeightM;
+  y2M = y3M - Gap;
+  y4M = y3M + numTracksP * lineHeightM;
+  y5M = y4M + Gap;
+  y7M = y5M + lineHeightM;
+  y6M = y7M - Roundness;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y7);
-  tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y7M);
+  tArea Areas[] = { { x0M, y0M, x6 - 1, y7M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     tArea Areas[] = { { x0, y0, x6 - 1, y7 - 1, 4 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     tArea Areas[] = { { x0M, y0M, x6 - 1, y7M - 1, 4 } };
+     if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      }
   // clear all
-  osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+  osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
   // draw titlebar
-  osd->DrawRectangle(x0, y0, x4 - 1, y2 - 1, Theme.Color(clrMenuTitleBg));
-  osd->DrawText(x1, y0, Title, Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x5 - x1, y2 - y0);
+  osdM->DrawRectangle(x0M, y0M, x4M - 1, y2M - 1, ThemeS.Color(clrMenuTitleBg));
+  osdM->DrawText(x1M, y0M, titleP, ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), font, x5M - x1M, y2M - y0M);
   // draw rounded left corner of titlebar
-  osd->DrawEllipse(x0, y0, x1 - 1, y1 - 1, clrTransparent, -2);
+  osdM->DrawEllipse(x0M, y0M, x1M - 1, y1M - 1, clrTransparent, -2);
   // draw rounded right corner of titlebar
-  osd->DrawEllipse(x4, y0, x5 - 1, y1 - 1, clrTransparent, -1);
+  osdM->DrawEllipse(x4M, y0M, x5M - 1, y1M - 1, clrTransparent, -1);
   // draw tracks area
-  osd->DrawRectangle(x0, y2, x5 - 1, y5 - 1, Theme.Color(clrBackground));
+  osdM->DrawRectangle(x0M, y2M, x5M - 1, y5M - 1, ThemeS.Color(clrBackground));
   // draw bottombar
-  osd->DrawRectangle(x0, y5, x5 - 1, y7 - 1, Theme.Color(clrMenuTitleBg));
+  osdM->DrawRectangle(x0M, y5M, x5M - 1, y7M - 1, ThemeS.Color(clrMenuTitleBg));
   // draw rounded left corner of titlebar
-  osd->DrawEllipse(x0, y6, x1 - 1, y7 - 1, clrTransparent, -3);
+  osdM->DrawEllipse(x0M, y6M, x1M - 1, y7M - 1, clrTransparent, -3);
   // draw rounded right corner of titlebar
-  osd->DrawEllipse(x4, y6, x5 - 1, y7 - 1, clrTransparent, -4);
+  osdM->DrawEllipse(x4M, y6M, x5M - 1, y7M - 1, clrTransparent, -4);
   // fill up audio tracks
   SetAudioChannel(cDevice::PrimaryDevice()->GetAudioChannel());
-  for (int i = 0; i < NumTracks; i++)
-      SetItem(Tracks[i], i, false);
+  for (int i = 0; i < numTracksP; i++)
+      SetItem(tracksP[i], i, false);
 }
 
 cSkinSoppalusikkaDisplayTracks::~cSkinSoppalusikkaDisplayTracks()
 {
-  delete osd;
+  delete osdM;
 }
 
-void cSkinSoppalusikkaDisplayTracks::SetItem(const char *Text, int Index, bool Current)
+void cSkinSoppalusikkaDisplayTracks::SetItem(const char *textP, int indexP, bool currentP)
 {
   const cFont *font = cFont::GetFont(fontOsd);
-  int y = y3 + Index * lineHeight;
+  int y = y3M + indexP * lineHeightM;
   tColor ColorFg, ColorBg;
-  if (Current) {
-     ColorFg = Theme.Color(clrMenuItemCurrentFg);
-     ColorBg = Theme.Color(clrMenuItemCurrentBg);
-     currentIndex = Index;
+  if (currentP) {
+     ColorFg = ThemeS.Color(clrMenuItemCurrentFg);
+     ColorBg = ThemeS.Color(clrMenuItemCurrentBg);
+     currentIndexM = indexP;
      }
   else {
-     ColorFg = Theme.Color(clrMenuItemSelectable);
-     ColorBg = Theme.Color(clrBackground);
+     ColorFg = ThemeS.Color(clrMenuItemSelectable);
+     ColorBg = ThemeS.Color(clrBackground);
      }
   // draw track id
-  osd->DrawText(x1, y, Text, ColorFg, ColorBg, font, x4 - x1, lineHeight);
+  osdM->DrawText(x1M, y, textP, ColorFg, ColorBg, font, x4M - x1M, lineHeightM);
   // draw rounded left corner
-  osd->DrawEllipse(x0 + SmallGap, y, x1 - 1, y + lineHeight - 1, ColorBg, 7);
+  osdM->DrawEllipse(x0M + SmallGap, y, x1M - 1, y + lineHeightM - 1, ColorBg, 7);
   // draw rounded right corner
-  osd->DrawEllipse(x4, y, x5 - SmallGap - 1, y + lineHeight - 1, ColorBg, 5);
+  osdM->DrawEllipse(x4M, y, x5M - SmallGap - 1, y + lineHeightM - 1, ColorBg, 5);
 }
 
-void cSkinSoppalusikkaDisplayTracks::SetAudioChannel(int AudioChannel)
+void cSkinSoppalusikkaDisplayTracks::SetAudioChannel(int audioChannelP)
 {
   const cFont *font = cFont::GetFont(fontSml);
-  switch (AudioChannel) {
+  switch (audioChannelP) {
     case 0:
          /* stereo */
-         osd->DrawBitmap(x3, y0 + (y2 - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg));
-         osd->DrawText(x1, y5, tr("Stereo"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
+         osdM->DrawBitmap(x3M, y0M + (y2M - GetSymbol(SYMBOL_AUDIO).Height()) / 2, GetSymbol(SYMBOL_AUDIO), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg));
+         osdM->DrawText(x1M, y5M, tr("Stereo"), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), font, x4M - x1M, y7M - y5M, taCenter);
          break;
     case 1:
          /* mono left */
-         osd->DrawBitmap(x3, y0 + (y2 - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg));
-         osd->DrawText(x1, y5, tr("Left"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
+         osdM->DrawBitmap(x3M, y0M + (y2M - GetSymbol(SYMBOL_AUDIO_LEFT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_LEFT), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg));
+         osdM->DrawText(x1M, y5M, tr("Left"), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), font, x4M - x1M, y7M - y5M, taCenter);
          break;
     case 2:
          /* mono right */
-         osd->DrawBitmap(x3, y0 + (y2 - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg));
-         osd->DrawText(x1, y5, tr("Right"), Theme.Color(clrMenuTitleFg), Theme.Color(clrMenuTitleBg), font, x4 - x1, y7 - y5, taCenter);
+         osdM->DrawBitmap(x3M, y0M + (y2M - GetSymbol(SYMBOL_AUDIO_RIGHT).Height()) / 2, GetSymbol(SYMBOL_AUDIO_RIGHT), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg));
+         osdM->DrawText(x1M, y5M, tr("Right"), ThemeS.Color(clrMenuTitleFg), ThemeS.Color(clrMenuTitleBg), font, x4M - x1M, y7M - y5M, taCenter);
          break;
     default:
          break;
     }
 }
 
-void cSkinSoppalusikkaDisplayTracks::SetTrack(int Index, const char * const *Tracks)
+void cSkinSoppalusikkaDisplayTracks::SetTrack(int indexP, const char * const *tracksP)
 {
-  if (currentIndex >= 0)
-     SetItem(Tracks[currentIndex], currentIndex, false);
-  SetItem(Tracks[Index], Index, true);
+  if (currentIndexM >= 0)
+     SetItem(tracksP[currentIndexM], currentIndexM, false);
+  SetItem(tracksP[indexP], indexP, true);
 }
 
 void cSkinSoppalusikkaDisplayTracks::Flush(void)
 {
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikkaDisplayMessage --------------------------------------------
 
 class cSkinSoppalusikkaDisplayMessage : public cSkinDisplayMessage {
 private:
-  cOsd *osd;
-  int x0, x1, x2, x3;
-  int y0, y1;
-  int lineHeight;
+  cOsd *osdM;
+  int x0M, x1M, x2M, x3M;
+  int y0M, y1M;
+  int lineHeightM;
+
 public:
   cSkinSoppalusikkaDisplayMessage();
   virtual ~cSkinSoppalusikkaDisplayMessage();
-  virtual void SetMessage(eMessageType Type, const char *Text);
+  virtual void SetMessage(eMessageType typeP, const char *textP);
   virtual void Flush(void);
   };
 
 cSkinSoppalusikkaDisplayMessage::cSkinSoppalusikkaDisplayMessage()
 {
-  lineHeight = cFont::GetFont(fontOsd)->Height();
-  x0 = 0;
-  x1 = x0 + Roundness;
-  x3 = cOsd::OsdWidth();
-  x2 = x3 - Roundness;
-  y0 = 0;
-  y1 = y0 + lineHeight;
+  lineHeightM = cFont::GetFont(fontOsd)->Height();
+  x0M = 0;
+  x1M = x0M + Roundness;
+  x3M = cOsd::OsdWidth();
+  x2M = x3M - Roundness;
+  y0M = 0;
+  y1M = y0M + lineHeightM;
   // create osd
-  osd = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y1);
-  tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 8 } };
-  if (Setup.AntiAlias && osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-     osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+  osdM = cOsdProvider::NewOsd(cOsd::OsdLeft(), cOsd::OsdTop() + cOsd::OsdHeight() - y1M);
+  tArea Areas[] = { { x0M, y0M, x3M - 1, y1M - 1, 8 } };
+  if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+     osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     tArea Areas[] = { { x0, y0, x3 - 1, y1 - 1, 2 } };
-     if (osd->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
-        osd->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
+     tArea Areas[] = { { x0M, y0M, x3M - 1, y1M - 1, 2 } };
+     if (osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
+        osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
      }
   // clear all
-  osd->DrawRectangle(0, 0, osd->Width(), osd->Height(), clrTransparent);
+  osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
 }
 
 cSkinSoppalusikkaDisplayMessage::~cSkinSoppalusikkaDisplayMessage()
 {
-  delete osd;
+  delete osdM;
 }
 
-void cSkinSoppalusikkaDisplayMessage::SetMessage(eMessageType Type, const char *Text)
+void cSkinSoppalusikkaDisplayMessage::SetMessage(eMessageType typeP, const char *textP)
 {
   // draw rounded left corner
-  osd->DrawEllipse(x0, y0, x1 - 1, y1 - 1, Theme.Color(clrMessageStatusBg + 2 * Type), 7);
+  osdM->DrawEllipse(x0M, y0M, x1M - 1, y1M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP), 7);
   // draw centered message text
-  osd->DrawText(x1, y0, Text, Theme.Color(clrMessageStatusFg + 2 * Type), Theme.Color(clrMessageStatusBg + 2 * Type), cFont::GetFont(fontOsd), x2 - x1, y1 - y0, taCenter);
+  osdM->DrawText(x1M, y0M, textP, ThemeS.Color(clrMessageStatusFg + 2 * typeP), ThemeS.Color(clrMessageStatusBg + 2 * typeP), cFont::GetFont(fontOsd), x2M - x1M, y1M - y0M, taCenter);
   // draw rounded right corner
-  osd->DrawEllipse(x2, y0, x3 - 1, y1 - 1, Theme.Color(clrMessageStatusBg + 2 * Type), 5);
+  osdM->DrawEllipse(x2M, y0M, x3M - 1, y1M - 1, ThemeS.Color(clrMessageStatusBg + 2 * typeP), 5);
 }
 
 void cSkinSoppalusikkaDisplayMessage::Flush(void)
 {
-  osd->Flush();
+  osdM->Flush();
 }
 
 // --- cSkinSoppalusikka ----------------------------------------------------------
 
 cSkinSoppalusikka::cSkinSoppalusikka()
-:cSkin("soppalusikka", &::Theme)
+:cSkin("soppalusikka", &::ThemeS)
 {
 }
 
@@ -1818,11 +1824,11 @@ const char *cSkinSoppalusikka::Description(void)
   return tr("Soppalusikka");
 }
 
-cSkinDisplayChannel *cSkinSoppalusikka::DisplayChannel(bool WithInfo)
+cSkinDisplayChannel *cSkinSoppalusikka::DisplayChannel(bool withInfoP)
 {
   SoppalusikkaLogoCache.Refresh();
   SoppalusikkaSymbolCache.Refresh();
-  return new cSkinSoppalusikkaDisplayChannel(WithInfo);
+  return new cSkinSoppalusikkaDisplayChannel(withInfoP);
 }
 
 cSkinDisplayMenu *cSkinSoppalusikka::DisplayMenu(void)
@@ -1831,10 +1837,10 @@ cSkinDisplayMenu *cSkinSoppalusikka::DisplayMenu(void)
   return new cSkinSoppalusikkaDisplayMenu;
 }
 
-cSkinDisplayReplay *cSkinSoppalusikka::DisplayReplay(bool ModeOnly)
+cSkinDisplayReplay *cSkinSoppalusikka::DisplayReplay(bool modeOnlyP)
 {
   SoppalusikkaSymbolCache.Refresh();
-  return new cSkinSoppalusikkaDisplayReplay(ModeOnly);
+  return new cSkinSoppalusikkaDisplayReplay(modeOnlyP);
 }
 
 cSkinDisplayVolume *cSkinSoppalusikka::DisplayVolume(void)
@@ -1842,10 +1848,10 @@ cSkinDisplayVolume *cSkinSoppalusikka::DisplayVolume(void)
   return new cSkinSoppalusikkaDisplayVolume;
 }
 
-cSkinDisplayTracks *cSkinSoppalusikka::DisplayTracks(const char *Title, int NumTracks, const char * const *Tracks)
+cSkinDisplayTracks *cSkinSoppalusikka::DisplayTracks(const char *titleP, int numTracksP, const char * const *tracksP)
 {
   SoppalusikkaSymbolCache.Refresh();
-  return new cSkinSoppalusikkaDisplayTracks(Title, NumTracks, Tracks);
+  return new cSkinSoppalusikkaDisplayTracks(titleP, numTracksP, tracksP);
 }
 
 cSkinDisplayMessage *cSkinSoppalusikka::DisplayMessage(void)

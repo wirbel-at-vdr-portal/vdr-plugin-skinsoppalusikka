@@ -10,52 +10,52 @@
 #include "common.h"
 #include "tools.h"
 
-char *strcatrealloc(char *dest, const char *src)
+char *strcatrealloc(char *destP, const char *srcP)
 {
-  if (src) {
-     size_t l = strlen(dest) + strlen(src) + 1;
-     dest = (char *)realloc(dest, l);
-     if (dest)
-        strcat(dest, src);
+  if (srcP) {
+     size_t l = strlen(destP) + strlen(srcP) + 1;
+     destP = (char *)realloc(destP, l);
+     if (destP)
+        strcat(destP, srcP);
      else
-        esyslog("ERROR: out of memory!");
+        error("Out of memory!");
   }
-  return dest;
+  return destP;
 }
 
-char *strncatrealloc(char *dest, const char *src, size_t len)
+char *strncatrealloc(char *destP, const char *srcP, size_t lenP)
 {
-  if (src) {
-     size_t l = strlen(dest) + min(strlen(src), len) + 1;
-     dest = (char *)realloc(dest, l);
-     if (dest)
-        strncat(dest, src, min(strlen(src), len));
+  if (srcP) {
+     size_t l = strlen(destP) + min(strlen(srcP), lenP) + 1;
+     destP = (char *)realloc(destP, l);
+     if (destP)
+        strncat(destP, srcP, min(strlen(srcP), lenP));
      else
-        esyslog("ERROR: out of memory!");
+        error("Out of memory!");
   }
-  return dest;
+  return destP;
 }
 
-static char *striptags(char *str)
+static char *striptags(char *strP)
 {
   char *r, *c;
   int t = 0, d = 0;
   bool s = false;
-  r = str;
-  c = str;
-  while (*str != '\0') {
-    if (*str == '<') {
+  r = strP;
+  c = strP;
+  while (*strP != '\0') {
+    if (*strP == '<') {
        t++;
        s = true;
        }
-    else if (*str == '>') {
+    else if (*strP == '>') {
        t--;
        }
     else if (t < 1) {
-       *(c++) = *str;
+       *(c++) = *strP;
        }
     else if (s) {
-       if (*str == '/') {
+       if (*strP == '/') {
           d--;
           }
        else {
@@ -69,7 +69,7 @@ static char *striptags(char *str)
           }
        s = false;
        }
-    str++;
+    strP++;
     }
   *c = '\0';
   return r;
@@ -97,16 +97,16 @@ static char *striptags(char *str)
 #define AUX_TAGS_PIN_ITEM1_END		"</protected>"
 #define AUX_TAGS_PIN_END		"</pin-plugin>"
 
-char *parseaux(char *aux)
+char *parseaux(char *auxP)
 {
   char *start, *end;
   // check if egpsearch
-  start = strcasestr(aux, AUX_TAGS_EPGSEARCH_START);
-  end = strcasestr(aux, AUX_TAGS_EPGSEARCH_END);
+  start = strcasestr(auxP, AUX_TAGS_EPGSEARCH_START);
+  end = strcasestr(auxP, AUX_TAGS_EPGSEARCH_END);
   if (start && end) {
      char *tmp;
      // duplicate string
-     char *s = strdup(aux);
+     char *s = strdup(auxP);
      char *r = s;
      size_t len = strlen(AUX_HEADER_EPGSEARCH);
      bool founditem = false;
@@ -128,7 +128,7 @@ char *parseaux(char *aux)
                founditem = false;
                }
             }
-        }  
+        }
      // parse second item
      len = strlen(AUX_TAGS_EPGSEARCH_ITEM2_START);
      if ((tmp = strcasestr(start, AUX_TAGS_EPGSEARCH_ITEM2_START)) != NULL) {
@@ -148,7 +148,7 @@ char *parseaux(char *aux)
             else {
                founditem = false;
                }
-            } 
+            }
         }
      else {
         // parse third item
@@ -181,19 +181,19 @@ char *parseaux(char *aux)
         }
      // copy duplicate string to aux
      *r = 0;
-     strn0cpy(aux, s, strlen(aux));
+     strn0cpy(auxP, s, strlen(auxP));
      // free duplicated string
      free(s);
      // .. and return
-     return aux;
+     return auxP;
      }
   // check if vdradmin
-  start = strcasestr(aux, AUX_TAGS_VDRADMIN_START);
-  end = strcasestr(aux, AUX_TAGS_VDRADMIN_END);
+  start = strcasestr(auxP, AUX_TAGS_VDRADMIN_START);
+  end = strcasestr(auxP, AUX_TAGS_VDRADMIN_END);
   if (start && end) {
      char *tmp;
      // duplicate string
-     char *s = strdup(aux);
+     char *s = strdup(auxP);
      char *r = s;
      size_t len = strlen(AUX_HEADER_VDRADMIN);
      // add header
@@ -213,19 +213,19 @@ char *parseaux(char *aux)
         }
      // copy duplicate string to aux
      *r = 0;
-     strn0cpy(aux, s, strlen(aux));
+     strn0cpy(auxP, s, strlen(auxP));
      // free duplicated string
      free(s);
      // .. and return
-     return aux;
+     return auxP;
      }
   // check if pin
-  start = strcasestr(aux, AUX_TAGS_PIN_START);
-  end = strcasestr(aux, AUX_TAGS_PIN_END);
+  start = strcasestr(auxP, AUX_TAGS_PIN_START);
+  end = strcasestr(auxP, AUX_TAGS_PIN_END);
   if (start && end) {
      char *tmp;
      // duplicate string
-     char *s = strdup(aux);
+     char *s = strdup(auxP);
      char *r = s;
      size_t len = strlen(AUX_HEADER_PIN);
      // add header
@@ -245,22 +245,22 @@ char *parseaux(char *aux)
         }
      // copy duplicate string to aux
      *r = 0;
-     strn0cpy(aux, s, strlen(aux));
-     // free duplicated string 
+     strn0cpy(auxP, s, strlen(auxP));
+     // free duplicated string
      free(s);
      // .. and return
-     return aux;
+     return auxP;
      }
   // just strip tags
-  return striptags(aux);
+  return striptags(auxP);
 }
 
-bool ischaracters(const char *str, const char *mask)
+bool ischaracters(const char *strP, const char *maskP)
 {
   bool match = true;
-  const char *p = str;
+  const char *p = strP;
   for (; *p; ++p) {
-      const char *m = mask;
+      const char *m = maskP;
       bool tmp = false;
       for (; *m; ++m) {
           if (*p == *m)
@@ -271,14 +271,13 @@ bool ischaracters(const char *str, const char *mask)
   return match;
 }
 
-bool ischaracter(const char ch, const char *mask)
+bool ischaracter(const char chP, const char *maskP)
 {
   bool match = false;
-  const char *m = mask;
+  const char *m = maskP;
   for (; *m; ++m) {
-      if (ch == *m)
+      if (chP == *m)
          match = true;
       }
   return match;
 }
-

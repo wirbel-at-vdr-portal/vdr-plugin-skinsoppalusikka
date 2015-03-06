@@ -17,9 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Soppalusikka skin"
-msgstr "Stile interfaccia Soppalusikka"
-
 msgid "Button$Flush cache"
 msgstr "Svuota cache"
 
@@ -88,6 +85,9 @@ msgstr "Pulizia cache loghi canali..."
 
 msgid "Help"
 msgstr "Aiuto"
+
+msgid "Soppalusikka skin"
+msgstr "Stile interfaccia Soppalusikka"
 
 msgid "*** Invalid Channel ***"
 msgstr "*** Canale NON valido ***"
