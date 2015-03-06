@@ -13,7 +13,13 @@
 #include "setup.h"
 
 cSkinSoppalusikkaSetup::cSkinSoppalusikkaSetup()
-: dataM(SoppalusikkaConfig)
+: showAuxInfoM(SoppalusikkaConfig.GetShowAuxInfo()),
+  showLogoM(SoppalusikkaConfig.GetShowLogo()),
+  showVpsM(SoppalusikkaConfig.GetShowVps()),
+  showDurationM(SoppalusikkaConfig.GetShowDuration()),
+  showSymbolsM(SoppalusikkaConfig.GetShowSymbols()),
+  showProgressBarM(SoppalusikkaConfig.GetShowProgressBar()),
+  cacheSizeM(100)
 {
   // create setup menu
   debug("cSkinSoppalusikkaSetup()");
@@ -30,26 +36,26 @@ void cSkinSoppalusikkaSetup::Setup(void)
   Clear();
   helpM.Clear();
 
-  Add(new cMenuEditBoolItem(tr("Show auxiliary information"), &dataM.showauxinfo));
+  Add(new cMenuEditBoolItem(tr("Show auxiliary information"), &showAuxInfoM));
   helpM.Append(tr("Define whether any auxiliary information is shown in info menus."));
 
-  Add(new cMenuEditBoolItem(tr("Show progressbar"), &dataM.showprogressbar));
+  Add(new cMenuEditBoolItem(tr("Show progressbar"), &showProgressBarM));
   helpM.Append(tr("Define whether a progressbar is shown in schedule menu."));
 
-  Add(new cMenuEditBoolItem(tr("Show symbols"), &dataM.showsymbols));
+  Add(new cMenuEditBoolItem(tr("Show symbols"), &showSymbolsM));
   helpM.Append(tr("Define whether symbols are shown in recordings and schedule menus."));
 
-  Add(new cMenuEditBoolItem(tr("Show VPS in channel info"), &dataM.showvps));
+  Add(new cMenuEditBoolItem(tr("Show VPS in channel info"), &showVpsM));
   helpM.Append(tr("Define whether VPS information is shown in channel info menu."));
 
-  Add(new cMenuEditBoolItem(tr("Show event duration in channel info"), &dataM.showduration, tr("remaining"), tr("total")));
+  Add(new cMenuEditBoolItem(tr("Show event duration in channel info"), &showDurationM, tr("remaining"), tr("total")));
   helpM.Append(tr("Define whether remaining or total event duration is shown in channel info menu."));
 
-  Add(new cMenuEditBoolItem(tr("Show channel logos"), &dataM.showlogo));
+  Add(new cMenuEditBoolItem(tr("Show channel logos"), &showLogoM));
   helpM.Append(tr("Define whether channels logos are shown in channel info menu.\n\nOnly XPM format is accepted: 64x48 pixel and max. 13 colors."));
 
-  if (dataM.showlogo) {
-     Add(new cMenuEditIntItem( tr("Channel logo cache size"), &dataM.cachesize, 0, 1000));
+  if (showLogoM) {
+     Add(new cMenuEditIntItem( tr("Channel logo cache size"), &cacheSizeM, 0, 1000));
      helpM.Append(tr("Define the cache size for channel logos.\n\nThe bigger cache results faster zapping."));
     }
 
@@ -59,28 +65,35 @@ void cSkinSoppalusikkaSetup::Setup(void)
 
 void cSkinSoppalusikkaSetup::Store(void)
 {
-  // store setup data
   debug("cSkinSoppalusikkaSetup::Store()");
-  SoppalusikkaConfig = dataM;
-  SetupStore("ShowAuxInfo",     SoppalusikkaConfig.showauxinfo);
-  SetupStore("ShowProgressBar", SoppalusikkaConfig.showprogressbar);
-  SetupStore("ShowSymbols",     SoppalusikkaConfig.showsymbols);
-  SetupStore("ShowLogo",        SoppalusikkaConfig.showlogo);
-  SetupStore("ShowVPS",         SoppalusikkaConfig.showvps);
-  SetupStore("ShowDuration",    SoppalusikkaConfig.showduration);
-  SetupStore("CacheSize",       SoppalusikkaConfig.cachesize);
+  // Store values into setup.conf
+  SetupStore("ShowAuxInfo", showAuxInfoM);
+  SetupStore("ShowProgressBar", showProgressBarM);
+  SetupStore("ShowSymbols", showSymbolsM);
+  SetupStore("ShowLogo", showLogoM);
+  SetupStore("ShowVPS", showVpsM);
+  SetupStore("ShowDuration", showDurationM);
+  SetupStore("CacheSize", cacheSizeM);
+  // Update global config
+  SoppalusikkaConfig.SetShowAuxInfo(showAuxInfoM);
+  SoppalusikkaConfig.SetShowProgressBar(showProgressBarM);
+  SoppalusikkaConfig.SetShowSymbols(showSymbolsM);
+  SoppalusikkaConfig.SetShowLogo(showLogoM);
+  SoppalusikkaConfig.SetShowVps(showVpsM);
+  SoppalusikkaConfig.SetShowDuration(showDurationM);
+  SoppalusikkaConfig.SetCacheSize(cacheSizeM);
   // resize logo cache
-  SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
+  SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.GetCacheSize());
 }
 
 eOSState cSkinSoppalusikkaSetup::ProcessKey(eKeys keyP)
 {
   // process key presses
-  int oldshowlogo = dataM.showlogo;
+  int oldShowLogo = showLogoM;
 
   eOSState state = cMenuSetupPage::ProcessKey(keyP);
 
-  if (keyP != kNone && (dataM.showlogo != oldshowlogo))
+  if (keyP != kNone && (showLogoM != oldShowLogo))
      Setup();
 
   if (state == osUnknown) {

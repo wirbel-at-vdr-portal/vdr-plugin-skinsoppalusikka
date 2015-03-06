@@ -109,7 +109,7 @@ bool cPluginSkinSoppalusikka::Start(void)
      isLogoDirSetM = true;
      }
   // resize logo cache
-  SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.cachesize);
+  SoppalusikkaLogoCache.Resize(SoppalusikkaConfig.GetCacheSize());
   // create skin
   new cSkinSoppalusikka;
   return true;
@@ -143,14 +143,22 @@ bool cPluginSkinSoppalusikka::SetupParse(const char *nameP, const char *valueP)
 {
   // parse your own setup parameters and store their values.
   debug("cPluginSkinSoppalusikka::SetupParse()");
-  if      (!strcasecmp(nameP, "ShowAuxInfo"))     SoppalusikkaConfig.showauxinfo     = atoi(valueP);
-  else if (!strcasecmp(nameP, "ShowProgressBar")) SoppalusikkaConfig.showprogressbar = atoi(valueP);
-  else if (!strcasecmp(nameP, "ShowSymbols"))     SoppalusikkaConfig.showsymbols     = atoi(valueP);
-  else if (!strcasecmp(nameP, "ShowLogo"))        SoppalusikkaConfig.showlogo        = atoi(valueP);
-  else if (!strcasecmp(nameP, "ShowVPS"))         SoppalusikkaConfig.showvps         = atoi(valueP);
-  else if (!strcasecmp(nameP, "ShowDuration"))    SoppalusikkaConfig.showduration    = atoi(valueP);
-  else if (!strcasecmp(nameP, "CacheSize"))       SoppalusikkaConfig.cachesize       = atoi(valueP);
-  else return false;
+  if (!strcasecmp(nameP, "ShowAuxInfo"))
+     SoppalusikkaConfig.SetShowAuxInfo(atoi(valueP));
+  else if (!strcasecmp(nameP, "ShowProgressBar"))
+     SoppalusikkaConfig.SetShowProgressBar(atoi(valueP));
+  else if (!strcasecmp(nameP, "ShowSymbols"))
+     SoppalusikkaConfig.SetShowSymbols(atoi(valueP));
+  else if (!strcasecmp(nameP, "ShowLogo"))
+     SoppalusikkaConfig.SetShowLogo(atoi(valueP));
+  else if (!strcasecmp(nameP, "ShowVPS"))
+     SoppalusikkaConfig.SetShowVps(atoi(valueP));
+  else if (!strcasecmp(nameP, "ShowDuration"))
+     SoppalusikkaConfig.SetShowDuration(atoi(valueP));
+  else if (!strcasecmp(nameP, "CacheSize"))
+     SoppalusikkaConfig.SetCacheSize(atoi(valueP));
+  else
+     return false;
 
   return true;
 }

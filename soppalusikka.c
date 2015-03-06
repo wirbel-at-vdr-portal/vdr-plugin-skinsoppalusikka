@@ -151,7 +151,7 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool withInfoP)
   xt3M = xt2M + font->Width("0000-");
   xt8M = xt9M - Roundness;
   xt7M = xt8M - GetSymbol(SYMBOL_TELETEXT).Width() - GetSymbol(SYMBOL_AUDIO).Width() - GetSymbol(SYMBOL_DOLBY_DIGITAL).Width() - GetSymbol(SYMBOL_ENCRYPTED).Width() - GetSymbol(SYMBOL_RECORDING).Width() - 7 * BigGap;
-  if (SoppalusikkaConfig.showvps)
+  if (SoppalusikkaConfig.GetShowVps())
      xt7M -= GetSymbol(SYMBOL_VPS).Width();
   xt6M = xt7M - Roundness;
   xt5M = xt6M - 5 * BigGap;
@@ -191,7 +191,7 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool withInfoP)
   if (Setup.AntiAlias && osdM->CanHandleAreas(Areas, sizeof(Areas) / sizeof(tArea)) == oeOk)
      osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
   else {
-     if (SoppalusikkaConfig.showlogo) {
+     if (SoppalusikkaConfig.GetShowLogo()) {
         tArea Areas[] = { { x0M, y0M, x0M + ChannelLogoWidth - 1, y0M + ChannelLogoHeight - 1, 4 },
                           { x0M + ChannelLogoWidth, y0M, x1M - 1, y0M + ChannelLogoHeight - 1, 4 },
                           { x0M, y0M + ChannelLogoHeight, x1M - 1, y1M - 1, 4 }
@@ -240,7 +240,7 @@ void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool isLogoP)
 void cSkinSoppalusikkaDisplayChannel::DrawTopArea(const cChannel *channelP)
 {
   // draw logo stuff
-  if (SoppalusikkaConfig.showlogo && channelP &&
+  if (SoppalusikkaConfig.GetShowLogo() && channelP &&
      (SoppalusikkaLogoCache.Load(*channelP->GetChannelID().ToString()) || SoppalusikkaLogoCache.Load(channelP->Name()))) {
      // load channel logo
      isLogoM = true;
@@ -356,7 +356,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int n
      int xs = xt8M;
      bool isvps = false;
      // check if vps
-     if (SoppalusikkaConfig.showvps) {
+     if (SoppalusikkaConfig.GetShowVps()) {
         // get schedule
         cSchedulesLock SchedulesLock;
         const cSchedules *Schedules = cSchedules::Schedules(SchedulesLock);
@@ -404,7 +404,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int n
      xs -= (GetSymbol(SYMBOL_ENCRYPTED).Width() + BigGap);
      osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_ENCRYPTED).Height()) / 2, GetSymbol(SYMBOL_ENCRYPTED), ThemeS.Color(channelP->Ca() ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw vps symbol
-     if (SoppalusikkaConfig.showvps) {
+     if (SoppalusikkaConfig.GetShowVps()) {
         xs -= (GetSymbol(SYMBOL_VPS).Width() + BigGap);
         osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), ThemeS.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
@@ -430,7 +430,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *presentP, const cE
      int total = e->Duration();
      int now = int(time(NULL) - e->StartTime());
      if ((now < total) && ((now / 60) > 0))
-        s = cString::sprintf("  %d / %d %s", now / 60, (SoppalusikkaConfig.showduration ? total : (total - now)) / 60, tr("min"));
+        s = cString::sprintf("  %d / %d %s", now / 60, (SoppalusikkaConfig.GetShowDuration() ? total : (total - now)) / 60, tr("min"));
      else
         s = cString::sprintf("  %d %s", total / 60, tr("min"));
      // draw start time
@@ -446,7 +446,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *presentP, const cE
      // draw duration
      osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s), yb0, s, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb1M - yb0);
      // draw vps time
-     if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
+     if (SoppalusikkaConfig.GetShowVps() && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
         int delta = int(e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
@@ -483,7 +483,7 @@ void cSkinSoppalusikkaDisplayChannel::SetEvents(const cEvent *presentP, const cE
      // draw duration
      osdM->DrawText(xb5M - cFont::GetFont(fontSml)->Width(s), yb2M, s, ThemeS.Color(clrChannelEpgDuration), ThemeS.Color(clrBackground), cFont::GetFont(fontSml), cFont::GetFont(fontSml)->Width(s), yb3M - yb2M);
      // draw vps time - only if skin dependent small fonts
-     if (SoppalusikkaConfig.showvps && e->Vps() && (e->Vps() != e->StartTime())) {
+     if (SoppalusikkaConfig.GetShowVps() && e->Vps() && (e->Vps() != e->StartTime())) {
         /* difference between start time and vps time in minutes */
         int delta = int(e->StartTime() - e->Vps()) / 60;
         /* check if difference is less than 10 hours */
@@ -770,14 +770,14 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *textP, int indexP, bool c
          bool isprogressbar = false;
          int now = 0, total = 0;
          // check if event info symbol: "tTV*" "R"
-         if (SoppalusikkaConfig.showsymbols &&
+         if (SoppalusikkaConfig.GetShowSymbols() &&
              ((MenuCategory() == mcSchedule) || (MenuCategory() == mcScheduleNow) || (MenuCategory() == mcScheduleNext)) &&
              strlen(s) == 3 && ischaracter(s[0], " tTR") && ischaracter(s[1], " V") && ischaracter(s[2], " *")) {
             // update status
             iseventinfo = true;
             }
          // check if new recording: "0:45*", "10:10*", "01.01.06*"
-         if (!iseventinfo && SoppalusikkaConfig.showsymbols &&
+         if (!iseventinfo && SoppalusikkaConfig.GetShowSymbols() &&
              (MenuCategory() == mcRecording) &&
              ((strlen(s) == 5 && s[4] == '*' && s[1] == ':' && isdigit(*s) && isdigit(*(s + 2)) && isdigit(*(s + 3))) ||
               (strlen(s) == 6 && s[5] == '*' && s[2] == ':' && isdigit(*s) && isdigit(*(s + 1)) && isdigit(*(s + 3)) && isdigit(*(s + 4))) ||
@@ -790,7 +790,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *textP, int indexP, bool c
             buffer[strlen(s) - 1] = '\0';
             }
          // check if progress bar: "[|||||||   ]"
-         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.showprogressbar &&
+         if (!iseventinfo && !isnewrecording && SoppalusikkaConfig.GetShowProgressBar() &&
              ((MenuCategory() == mcSchedule) || (MenuCategory() == mcScheduleNow) || (MenuCategory() == mcScheduleNext)) &&
              (strlen(s) > 5 && s[0] == '[' && s[strlen(s) - 1] == ']')) {
             const char *p = s + 1;
@@ -1056,7 +1056,7 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *recordingP)
   cString bitrate = (length > 0) ? cString::sprintf("(%.2f MBit/s)", 8.0 * dirsize / length) : cString("");
   info = cString::sprintf("%s\n%s%s%s", *info, *duration, *size, *bitrate);
   info = cString::sprintf("%s\n%s: %d  %s: %d  %s: %s", *info, tr("Priority"), recordingP->Priority(), tr("Lifetime"), recordingP->Lifetime(), tr("Format"), recordingP->IsPesRecording() ? "PES" : "TS");
-  if (SoppalusikkaConfig.showauxinfo && Info->Aux()) {
+  if (SoppalusikkaConfig.GetShowAuxInfo() && Info->Aux()) {
      char *aux = strdup(Info->Aux());
      info = cString::sprintf("%s\n%s: %s", *info, tr("Auxiliary information"), parseaux(aux));
      free(aux);

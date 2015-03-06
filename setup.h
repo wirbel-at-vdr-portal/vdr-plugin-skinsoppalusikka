@@ -12,7 +12,13 @@
 
 class cSkinSoppalusikkaSetup : public cMenuSetupPage {
 private:
-  cSoppalusikkaConfig dataM;
+  int showAuxInfoM;
+  int showLogoM;
+  int showVpsM;
+  int showDurationM;
+  int showSymbolsM;
+  int showProgressBarM;
+  int cacheSizeM;
   cVector<const char*> helpM;
   void Setup(void);
 

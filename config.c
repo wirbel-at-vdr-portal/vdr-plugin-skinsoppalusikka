@@ -13,18 +13,20 @@
 cSoppalusikkaConfig SoppalusikkaConfig;
 
 cSoppalusikkaConfig::cSoppalusikkaConfig()
-: logodir(""), showauxinfo(1), showlogo(0), showvps(1),
-  showduration(1), showsymbols(0), showprogressbar(1),
-  cachesize(100)
+: logoDirM(""),
+  traceModeM(eTraceModeNormal),
+  showAuxInfoM(1),
+  showLogoM(0),
+  showVpsM(1),
+  showDurationM(1),
+  showSymbolsM(0),
+  showProgressBarM(1),
+  cacheSizeM(100)
 {
 }
 
-cSoppalusikkaConfig::~cSoppalusikkaConfig()
+void cSoppalusikkaConfig::SetLogoDir(const char *logoDirP)
 {
-}
-
-void cSoppalusikkaConfig::SetLogoDir(const char *logodirP)
-{
-  debug("%s(%s)", __PRETTY_FUNCTION__, logodirP);
-  logodir = cString(logodirP);
+  debug("%s(%s)", __PRETTY_FUNCTION__, logoDirP);
+  logoDirM = cString(logoDirP);
 }
