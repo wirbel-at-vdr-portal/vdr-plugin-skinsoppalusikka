@@ -8,6 +8,7 @@
 
 #include <stdlib.h>
 #include "common.h"
+#include "log.h"
 #include "config.h"
 
 cSoppalusikkaConfig SoppalusikkaConfig;
@@ -27,6 +28,6 @@ cSoppalusikkaConfig::cSoppalusikkaConfig()
 
 void cSoppalusikkaConfig::SetLogoDir(const char *logoDirP)
 {
-  debug("%s(%s)", __PRETTY_FUNCTION__, logoDirP);
+  debug1("%s (%s)", __PRETTY_FUNCTION__, logoDirP);
   logoDirM = cString(logoDirP);
 }

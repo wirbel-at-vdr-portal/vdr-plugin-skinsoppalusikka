@@ -9,6 +9,7 @@
 #include <vdr/plugin.h>
 #include "common.h"
 #include "config.h"
+#include "log.h"
 #include "logo.h"
 #include "setup.h"
 #include "soppalusikka.h"
@@ -56,7 +57,7 @@ cPluginSkinSoppalusikka::cPluginSkinSoppalusikka(void)
   // initialize any member variables here.
   // DON'T DO ANYTHING ELSE THAT MAY HAVE SIDE EFFECTS, REQUIRE GLOBAL
   // VDR OBJECTS TO EXIST OR PRODUCE ANY OUTPUT!
-  debug("cPluginSkinSoppalusikka()");
+  debug1("%s", __PRETTY_FUNCTION__);
 }
 
 cPluginSkinSoppalusikka::~cPluginSkinSoppalusikka()
@@ -67,23 +68,28 @@ cPluginSkinSoppalusikka::~cPluginSkinSoppalusikka()
 const char *cPluginSkinSoppalusikka::CommandLineHelp(void)
 {
   // return a string that describes all known command line options.
-  return "  -l <LOGODIR>, --logodir=<LOGODIR>  Define a directory for channel logos.\n";
+  return "  -l <logodir>, --logodir=<logodir>  define a directory for channel logos\n"
+         "  -t <mode>,    --trace=<mode>       set the tracing mode\n";
 }
 
 bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
 {
   // implement command line argument processing here if applicable.
   static const struct option long_options[] = {
-       { "logodir", required_argument, NULL, 'l' },
-       { NULL,      no_argument,       NULL, 0   }
-     };
+    { "logodir", required_argument, NULL, 'l' },
+    { "trace",   required_argument, NULL, 't' },
+    { NULL,      no_argument,       NULL, 0   }
+    };
 
   int c;
-  while ((c = getopt_long(argc, argv, "l:", long_options, NULL)) != -1) {
+  while ((c = getopt_long(argc, argv, "l:t:", long_options, NULL)) != -1) {
         switch (c) {
           case 'l':
                SoppalusikkaConfig.SetLogoDir(optarg);
                isLogoDirSetM = true;
+               break;
+          case 't':
+               SoppalusikkaConfig.SetTraceMode(strtol(optarg, NULL, 0));
                break;
           default:
                return false;
@@ -95,14 +101,14 @@ bool cPluginSkinSoppalusikka::ProcessArgs(int argc, char *argv[])
 bool cPluginSkinSoppalusikka::Initialize(void)
 {
   // initialize any background activities the plugin shall perform.
-  debug("cPluginSkinSoppalusikka::Initialize()");
+  debug1("%s", __PRETTY_FUNCTION__);
   return true;
 }
 
 bool cPluginSkinSoppalusikka::Start(void)
 {
   // start any background activities the plugin shall perform.
-  debug("cPluginSkinSoppalusikka::Start()");
+  debug1("%s", __PRETTY_FUNCTION__);
   // set logo directory
   if (!isLogoDirSetM) {
      SoppalusikkaConfig.SetLogoDir(cPlugin::ResourceDirectory(PLUGIN_NAME_I18N));
@@ -118,7 +124,7 @@ bool cPluginSkinSoppalusikka::Start(void)
 void cPluginSkinSoppalusikka::Stop(void)
 {
   // stop any background activities the plugin shall perform.
-  debug("cPluginSkinSoppalusikka::Stop()");
+  debug1("%s", __PRETTY_FUNCTION__);
 }
 
 void cPluginSkinSoppalusikka::Housekeeping(void)
@@ -135,14 +141,14 @@ cOsdObject *cPluginSkinSoppalusikka::MainMenuAction(void)
 cMenuSetupPage *cPluginSkinSoppalusikka::SetupMenu(void)
 {
   // return a setup menu in case the plugin supports one.
-  debug("cPluginSkinSoppalusikka::SetupMenu()");
+  debug1("%s", __PRETTY_FUNCTION__);
   return new cSkinSoppalusikkaSetup();
 }
 
 bool cPluginSkinSoppalusikka::SetupParse(const char *nameP, const char *valueP)
 {
   // parse your own setup parameters and store their values.
-  debug("cPluginSkinSoppalusikka::SetupParse()");
+  debug1("%s", __PRETTY_FUNCTION__);
   if (!strcasecmp(nameP, "ShowAuxInfo"))
      SoppalusikkaConfig.SetShowAuxInfo(atoi(valueP));
   else if (!strcasecmp(nameP, "ShowProgressBar"))
@@ -174,6 +180,8 @@ const char **cPluginSkinSoppalusikka::SVDRPHelpPages(void)
   static const char *HelpPages[] = {
     "FLSH\n"
     "    Flush logo cache.",
+    "TRAC [ <mode> ]\n"
+    "    Gets and/or sets used tracing mode.\n",
     NULL
     };
   return HelpPages;
@@ -185,6 +193,12 @@ cString cPluginSkinSoppalusikka::SVDRPCommand(const char *commandP, const char *
      SoppalusikkaLogoCache.Flush();
      return cString("Logo cache flushed");
      }
+  else if (strcasecmp(commandP, "TRAC") == 0) {
+     if (optionP && *optionP)
+        SoppalusikkaConfig.SetTraceMode(strtol(optionP, NULL, 0));
+     return cString::sprintf("Tracing mode: 0x%04X\n", SoppalusikkaConfig.GetTraceMode());
+     }
+
   return NULL;
 }
 

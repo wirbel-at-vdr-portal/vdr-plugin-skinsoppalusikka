@@ -4,11 +4,13 @@
  * $Id: $
  */
 
-#include "common.h"
-#include "tools.h"
-#include "config.h"
-#include "symbol.h"
 #include <vdr/device.h>
+
+#include "common.h"
+#include "config.h"
+#include "log.h"
+#include "tools.h"
+#include "symbol.h"
 
 #include "symbols/audio.xpm"
 #include "symbols/audioleft.xpm"
@@ -101,7 +103,7 @@ void cSoppalusikkaSymbolCache::Refresh()
   int width, height;
   double aspect, xfactor, yfactor;
   cDevice::PrimaryDevice()->GetOsdSize(width, height, aspect);
-  debug("%s(): %dx%d", __PRETTY_FUNCTION__, width, height);
+  debug1("%s width=%d height=%d", __PRETTY_FUNCTION__, width, height);
   xfactor = (double)width / DEFAULT_WIDTH;
   yfactor = (double)height / DEFAULT_HEIGHT;
   if (!DoubleEqual(xfactor, xFactorM) || !DoubleEqual(yfactor, yFactorM)) {
@@ -113,7 +115,7 @@ void cSoppalusikkaSymbolCache::Refresh()
 
 bool cSoppalusikkaSymbolCache::Populate(void)
 {
-  debug("%s(): %.02fx%.02f ", __PRETTY_FUNCTION__, xFactorM, yFactorM);
+  debug1("%s xfactor=%.02f yfactor=%.02f ", __PRETTY_FUNCTION__, xFactorM, yFactorM);
   if (!DoubleEqual(0.0, xFactorM) || !DoubleEqual(0.0, yFactorM)) {
      Flush();
 
@@ -162,7 +164,7 @@ bool cSoppalusikkaSymbolCache::Populate(void)
 
 bool cSoppalusikkaSymbolCache::Flush(void)
 {
-  debug("%s()", __PRETTY_FUNCTION__);
+  debug1("%s", __PRETTY_FUNCTION__);
 
   for (int i = 0; i < cacheM.Size(); ++i) {
       cBitmap *bmp = cacheM[i];
@@ -180,7 +182,7 @@ cBitmap& cSoppalusikkaSymbolCache::Get(eSymbols symbolP)
   if (symbolP < cacheM.Size())
      bitmapM = cacheM[symbolP];
   else
-     error("%s(): Invalid symbol %d", __PRETTY_FUNCTION__, symbolP);
+     error("%s Invalid symbol %d", __PRETTY_FUNCTION__, symbolP);
 
   return *bitmapM;
 }

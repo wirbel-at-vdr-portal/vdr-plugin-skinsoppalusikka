@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "common.h"
+#include "log.h"
 #include "tools.h"
 
 char *strcatrealloc(char *destP, const char *srcP)
@@ -18,7 +19,7 @@ char *strcatrealloc(char *destP, const char *srcP)
      if (destP)
         strcat(destP, srcP);
      else
-        error("Out of memory!");
+        error("%s Out of memory!", __PRETTY_FUNCTION__);
   }
   return destP;
 }
@@ -31,7 +32,7 @@ char *strncatrealloc(char *destP, const char *srcP, size_t lenP)
      if (destP)
         strncat(destP, srcP, min(strlen(srcP), lenP));
      else
-        error("Out of memory!");
+        error("%s Out of memory!", __PRETTY_FUNCTION__);
   }
   return destP;
 }

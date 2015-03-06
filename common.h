@@ -10,12 +10,4 @@
 
 #include <vdr/tools.h>
 
-#ifdef DEBUG
-#define debug(x...) dsyslog("Soppalusikka: " x);
-#define error(x...) esyslog("Soppalusikka: " x);
-#else
-#define debug(x...) ;
-#define error(x...) esyslog("Soppalusikka: " x);
-#endif
-
 #endif // __SKINSOPPALUSIKKA_COMMON_H

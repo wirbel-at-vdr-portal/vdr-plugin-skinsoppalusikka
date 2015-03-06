@@ -9,6 +9,7 @@
 
 #include "common.h"
 #include "config.h"
+#include "log.h"
 #include "logo.h"
 #include "setup.h"
 
@@ -21,8 +22,7 @@ cSkinSoppalusikkaSetup::cSkinSoppalusikkaSetup()
   showProgressBarM(SoppalusikkaConfig.GetShowProgressBar()),
   cacheSizeM(100)
 {
-  // create setup menu
-  debug("cSkinSoppalusikkaSetup()");
+  debug1("%s", __PRETTY_FUNCTION__);
   SetMenuCategory(mcSetupPlugins);
   Setup();
   SetHelp(tr("Button$Flush cache"), NULL, NULL, NULL);
@@ -65,7 +65,7 @@ void cSkinSoppalusikkaSetup::Setup(void)
 
 void cSkinSoppalusikkaSetup::Store(void)
 {
-  debug("cSkinSoppalusikkaSetup::Store()");
+  debug1("%s", __PRETTY_FUNCTION__);
   // Store values into setup.conf
   SetupStore("ShowAuxInfo", showAuxInfoM);
   SetupStore("ShowProgressBar", showProgressBarM);
