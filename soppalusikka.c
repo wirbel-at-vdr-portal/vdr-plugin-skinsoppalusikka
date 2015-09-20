@@ -221,7 +221,8 @@ cSkinSoppalusikkaDisplayChannel::~cSkinSoppalusikkaDisplayChannel()
 bool cSkinSoppalusikkaDisplayChannel::HasChannelTimerRecording(const cChannel *channelP)
 {
   // try to find current channel from timers
-  for (cTimer *t = Timers.First(); t; t = Timers.Next(t)) {
+  LOCK_TIMERS_READ;
+  for (const cTimer *t = Timers->First(); t; t = Timers->Next(t)) {
       if ((t->Channel() == channelP) && t->Recording())
          return true;
       }
@@ -358,17 +359,14 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int n
      // check if vps
      if (SoppalusikkaConfig.GetShowVps()) {
         // get schedule
-        cSchedulesLock SchedulesLock;
-        const cSchedules *Schedules = cSchedules::Schedules(SchedulesLock);
-        if (Schedules) {
-           const cSchedule *Schedule = Schedules->GetSchedule(channelP);
-           if (Schedule) {
-              // get present event
-              const cEvent *Event = Schedule->GetPresentEvent();
-              // check if present event has vps
-              if (Event && Event->Vps()) {
-                 isvps = true;
-                 }
+        LOCK_SCHEDULES_READ;
+        const cSchedule *Schedule = Schedules->GetSchedule(channelP);
+        if (Schedule) {
+           // get present event
+           const cEvent *Event = Schedule->GetPresentEvent();
+           // check if present event has vps
+           if (Event && Event->Vps()) {
+              isvps = true;
               }
            }
         }
@@ -409,6 +407,7 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int n
         osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), ThemeS.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
      // draw recording symbol
+     // @TODO remote timer indicator
      xs -= (GetSymbol(SYMBOL_RECORDING).Width() + BigGap);
      osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), ThemeS.Color(cRecordControls::Active() ? (HasChannelTimerRecording(channelP) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw signal area
@@ -1046,7 +1045,8 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *recordingP)
   y += ts.Height();
   // draw additional information
   cString info("");
-  cChannel *channel = Channels.GetByChannelID(Info->ChannelID());
+  LOCK_CHANNELS_READ;
+  const cChannel *channel = Channels->GetByChannelID(Info->ChannelID());
   if (channel)
      info = cString::sprintf("%s\n%s: %s", *info, trVDR("Channel"), *ChannelString(channel, 0));
   int length = recordingP->LengthInSeconds();
