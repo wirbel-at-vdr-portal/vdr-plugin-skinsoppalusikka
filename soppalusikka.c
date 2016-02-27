@@ -616,14 +616,13 @@ cSkinSoppalusikkaDisplayMenu::cSkinSoppalusikkaDisplayMenu(void)
            osdM->SetAreas(Areas, sizeof(Areas) / sizeof(tArea));
         // clear all
         osdM->DrawRectangle(0, 0, osdM->Width(), osdM->Height(), clrTransparent);
-        // fill up items area palette to prevent palette overflow
-        osdM->GetBitmap(1)->Reset();
-        osdM->GetBitmap(1)->SetColor(0, ThemeS.Color(clrBackground));
-        osdM->GetBitmap(1)->SetColor(1, ThemeS.Color(clrMenuItemSelectable));
-        osdM->GetBitmap(1)->SetColor(2, ThemeS.Color(clrMenuItemCurrentBg));
-        osdM->GetBitmap(1)->SetColor(3, ThemeS.Color(clrMenuItemCurrentFg));
         }
      }
+  // fill up items area palette to prevent palette overflow
+  osdM->DrawRectangle(x0M, y0M, x0M + 1, y0M + 1, ThemeS.Color(clrBackground));
+  osdM->DrawRectangle(x0M, y0M, x0M + 1, y0M + 1, ThemeS.Color(clrMenuItemSelectable));
+  osdM->DrawRectangle(x0M, y0M, x0M + 1, y0M + 1, ThemeS.Color(clrMenuItemCurrentBg));
+  osdM->DrawRectangle(x0M, y0M, x0M + 1, y0M + 1, ThemeS.Color(clrMenuItemCurrentFg));
   // draw titlebar
   osdM->DrawRectangle(x0M, y0M, x5M - 1, y2M - 1, ThemeS.Color(clrMenuTitleBg));
   // draw rounded left corner of title bar
