@@ -1,89 +1,97 @@
 # VDR plugin language source file.
-# Copyright (C) 2007-2015 Rolf Ahrenberg
-# This file is distributed under the same license as the skinsoppalusikka package.
-# Jaroslaw Swierczynski
+# Copyright (C) 2007-2017 Rolf Ahrenberg
+# This file is distributed under the same license as the vdr-skinsoppalusikka package.
+# Jaroslaw Swierczynski, 2007
+# Tomasz Maciej Nowak, 2017
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: vdr-skinsoppalusikka 2.3.0\n"
 "Report-Msgid-Bugs-To: <see README>\n"
 "POT-Creation-Date: 2015-04-04 04:04+0300\n"
-"PO-Revision-Date: 2015-04-04 04:04+0300\n"
-"Last-Translator: Jaroslaw Swierczynski\n"
+"PO-Revision-Date: 2017-02-28 15:06+0100\n"
+"Last-Translator: Tomasz Maciej Nowak <tomek_n@o2.pl>\n"
 "Language-Team: Polish <vdr@linuxtv.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
 
 msgid "Button$Flush cache"
-msgstr "Opr�nij cache"
+msgstr "Opróżnij cache"
 
 msgid "Show auxiliary information"
 msgstr "Pokazuj informacje pomocnicze"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr ""
+msgstr "Określa czy informacje pomocnicze są wyświetlane w informacjach."
 
 msgid "Show progressbar"
-msgstr "Pokazuj pasek post�pu"
+msgstr "Pokazuj pasek postępu"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr ""
+msgstr "Określa czy pokazywać pasek postępu w menu Program."
 
 msgid "Show symbols"
 msgstr "Pokazuj symbole"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr ""
+msgstr "Określa czy pokazywać symbole w menu Program i Nagrania."
 
 msgid "Show VPS in channel info"
-msgstr ""
+msgstr "Pokazuj informację VPS"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr ""
+msgstr "Określa czy informacja VPS jest pokazywana w informacjach o kanale."
 
 msgid "Show event duration in channel info"
-msgstr ""
+msgstr "Pokazuj czas trwania zdarzenia"
 
 msgid "remaining"
-msgstr ""
+msgstr "pozostało"
 
 msgid "total"
-msgstr ""
+msgstr "łącznie"
 
 msgid "Define whether remaining or total event duration is shown in channel info menu."
-msgstr ""
+msgstr "Określa czy pokazywać czas trwania zdarzenia w informacjach o kanale."
 
 msgid "Show channel logos"
-msgstr "Pokazuj logo kana�u"
+msgstr "Pokazuj logo kanału"
 
 msgid ""
 "Define whether channels logos are shown in channel info menu.\n"
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
+"Określa czy pokazywać logo kanału w informacji o kanale.\n"
+"\n"
+"Akceptowany format: XPM, 64x48 pikseli i maksymalnie 13 kolorów."
 
 msgid "Channel logo cache size"
-msgstr "Rozmiar cache dla logo kana�u"
+msgstr "Rozmiar cache dla logo kanału"
 
 msgid ""
 "Define the cache size for channel logos.\n"
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
+"Określa rozmiar pamięci podręcznej dla log kanałów.\n"
+"\n"
+"Większy rozmiar pozwala na szybsze przełączanie kanałów."
 
 msgid "Flushing channel logo cache..."
-msgstr "Opr�niam cache logo kana�u..."
+msgstr "Opróżniam cache logo kanału..."
 
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 msgid "Soppalusikka skin"
 msgstr "Skin Soppalusikka"
 
 msgid "*** Invalid Channel ***"
-msgstr "*** Niepoprawny kana� ***"
+msgstr "*** Niepoprawny kanał ***"
 
 msgid "min"
 msgstr "min"
@@ -95,19 +103,19 @@ msgid "EBU"
 msgstr "EBU"
 
 msgid "Duration"
-msgstr ""
+msgstr "Czas trwania"
 
 msgid "Size"
-msgstr ""
+msgstr "Rozmiar"
 
 msgid "Priority"
 msgstr "Priorytet"
 
 msgid "Lifetime"
-msgstr "Czas �ycia"
+msgstr "Czas życia"
 
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 msgid "Auxiliary information"
 msgstr "Informacje pomocnicze"
@@ -116,7 +124,7 @@ msgid "Mute"
 msgstr "Wycisz"
 
 msgid "Volume"
-msgstr "G�o�no��"
+msgstr "Głośność"
 
 msgid "Stereo"
 msgstr "Stereo"
