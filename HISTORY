@@ -324,7 +324,7 @@ VDR Skin 'Soppalusikka' Revision History
 VDR Skin 'Soppalusikka' Revision History
 ========================================
 
-2015-XX-XX: Version 2.3.0
+2017-06-24: Version 2.3.0
 
 - Updated for vdr-2.3.1.
-  Requires DEPRECATED_GETBITMAP define.
+- Added Polish translation (Thanks to Tomasz Nowak).

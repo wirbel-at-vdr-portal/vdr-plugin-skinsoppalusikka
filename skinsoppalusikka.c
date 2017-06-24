@@ -14,8 +14,8 @@
 #include "setup.h"
 #include "soppalusikka.h"
 
-#if defined(APIVERSNUM) && APIVERSNUM < 20301
-#error "VDR-2.3.1 API version or greater is required!"
+#if defined(APIVERSNUM) && APIVERSNUM < 20307
+#error "VDR-2.3.7 API version or greater is required!"
 #endif
 
 #ifndef GITVERSION
