@@ -1,8 +1,8 @@
 # VDR plugin language source file.
 # Copyright (C) 2007-2015 Rolf Ahrenberg
 # This file is distributed under the same license as the skinsoppalusikka package.
-# Thomas G�nther
-# J�rg Bornkessel
+# Thomas Günther
+# Jörg Bornkessel
 #
 msgid ""
 msgstr ""
@@ -10,51 +10,51 @@ msgstr ""
 "Report-Msgid-Bugs-To: <see README>\n"
 "POT-Creation-Date: 2017-06-24 06:24+0300\n"
 "PO-Revision-Date: 2017-06-24 06:24+0300\n"
-"Last-Translator: J�rg Bornkessel\n"
+"Last-Translator: Jörg Bornkessel\n"
 "Language-Team: German <vdr@linuxtv.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Button$Flush cache"
 msgstr "Cache leeren"
 
 msgid "Show auxiliary information"
-msgstr "Zusatzinfo anzeigen"
+msgstr "Zusätzliche Information anzeigen"
 
 msgid "Define whether any auxiliary information is shown in info menus."
-msgstr ""
+msgstr "Legt fest, ob eine zusätzliche Information im Info-Menü angezeigt wird."
 
 msgid "Show progressbar"
 msgstr "Fortschrittbalken anzeigen"
 
 msgid "Define whether a progressbar is shown in schedule menu."
-msgstr ""
+msgstr "Legt fest, ob ein Fortschrittbalken im Programmmenü angezeigt wird."
 
 msgid "Show symbols"
 msgstr "Symbole anzeigen"
 
 msgid "Define whether symbols are shown in recordings and schedule menus."
-msgstr ""
+msgstr "Legt fest, ob Symbole im Aufnahme- und Programmmenü angezeigt werden."
 
 msgid "Show VPS in channel info"
 msgstr "VPS anzeigen"
 
 msgid "Define whether VPS information is shown in channel info menu."
-msgstr ""
+msgstr "Legt fest, ob der VPS-Status im Kanalinfo angezeigt wird."
 
 msgid "Show event duration in channel info"
-msgstr ""
+msgstr "Angezeigte Dauer des Programms im Kanalinfo"
 
 msgid "remaining"
-msgstr ""
+msgstr "Verbleibend"
 
 msgid "total"
-msgstr ""
+msgstr "Gesamt"
 
 msgid "Define whether remaining or total event duration is shown in channel info menu."
-msgstr ""
+msgstr "Legt fest, ob die verbleibend oder gesamte Programmdauer innerhalb des Kanalinfo angezeigt wird."
 
 msgid "Show channel logos"
 msgstr "Kanal-Logos anzeigen"
@@ -64,15 +64,21 @@ msgid ""
 "\n"
 "Only XPM format is accepted: 64x48 pixel and max. 13 colors."
 msgstr ""
+"Legt fest, ob das Logo im Kanalinfo angezeigt werden soll.\n"
+"\n"
+"Es wird nur das XPM-Format unterstützt (64x48 Pixel und max. 13 Farben)."
 
 msgid "Channel logo cache size"
-msgstr "Gr��e des Logo-Caches"
+msgstr "Größe des Kanal-Logo-Cache"
 
 msgid ""
 "Define the cache size for channel logos.\n"
 "\n"
 "The bigger cache results faster zapping."
 msgstr ""
+"Definiere die Größe des Cache für Kanal-Logos.\n"
+"\n"
+"Ein größere Cache führt zu einem schnelleren Umschalten."
 
 msgid "Flushing channel logo cache..."
 msgstr "Logo-Cache wird geleert..."
@@ -81,10 +87,10 @@ msgid "Help"
 msgstr "Hilfe"
 
 msgid "Soppalusikka skin"
-msgstr "Soppalusikka Oberfl�che"
+msgstr "Soppalusikka Oberfläche"
 
 msgid "*** Invalid Channel ***"
-msgstr "*** Ung�ltiger Kanal ***"
+msgstr "*** Ungültiger Kanal ***"
 
 msgid "min"
 msgstr "min"
@@ -96,28 +102,28 @@ msgid "EBU"
 msgstr "EBU"
 
 msgid "Duration"
-msgstr ""
+msgstr "Dauer"
 
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 msgid "Priority"
-msgstr "Priorit�t"
+msgstr "Priorität"
 
 msgid "Lifetime"
 msgstr "Lebensdauer"
 
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 msgid "Auxiliary information"
-msgstr "Zusatzinfo"
+msgstr "Zusätzliche Information"
 
 msgid "Mute"
 msgstr "Stumm"
 
 msgid "Volume"
-msgstr "Lautst�rke"
+msgstr "Lautstärke"
 
 msgid "Stereo"
 msgstr "Stereo"
