@@ -117,7 +117,6 @@ private:
   int ys0, ys1M;
   cString lastDateM;
   cTimeMs lastSignalUpdateM;
-  bool HasChannelTimerRecording(const cChannel *channelP);
   void ResetTopAreaCoordinates(bool isLogoP = false);
   void DrawTopArea(const cChannel *channel = NULL);
   void DrawBottomArea(void);
@@ -126,7 +125,7 @@ private:
   cString GetChannelNumber(const cChannel *channelP, int numberP);
 
 public:
-  cSkinSoppalusikkaDisplayChannel(bool withInfoP);
+  explicit cSkinSoppalusikkaDisplayChannel(bool withInfoP);
   virtual ~cSkinSoppalusikkaDisplayChannel();
   virtual void SetChannel(const cChannel *channelP, int numberP);
   virtual void SetEvents(const cEvent *presentP, const cEvent *followingP);
@@ -216,17 +215,6 @@ cSkinSoppalusikkaDisplayChannel::cSkinSoppalusikkaDisplayChannel(bool withInfoP)
 cSkinSoppalusikkaDisplayChannel::~cSkinSoppalusikkaDisplayChannel()
 {
   delete osdM;
-}
-
-bool cSkinSoppalusikkaDisplayChannel::HasChannelTimerRecording(const cChannel *channelP)
-{
-  // try to find current channel from timers
-  LOCK_TIMERS_READ;
-  for (const cTimer *t = Timers->First(); t; t = Timers->Next(t)) {
-      if ((t->Channel() == channelP) && t->Recording())
-         return true;
-      }
-  return false;
 }
 
 void cSkinSoppalusikkaDisplayChannel::ResetTopAreaCoordinates(bool isLogoP)
@@ -407,9 +395,8 @@ void cSkinSoppalusikkaDisplayChannel::SetChannel(const cChannel *channelP, int n
         osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_VPS).Height()) / 2, GetSymbol(SYMBOL_VPS), ThemeS.Color(isvps ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
         }
      // draw recording symbol
-     // @TODO remote timer indicator
      xs -= (GetSymbol(SYMBOL_RECORDING).Width() + BigGap);
-     osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), ThemeS.Color(cRecordControls::Active() ? (HasChannelTimerRecording(channelP) ? clrChannelSymbolRecord : clrChannelSymbolActive) : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
+     osdM->DrawBitmap(xs, yt0 + (ys1M - yt0 - GetSymbol(SYMBOL_RECORDING).Height()) / 2, GetSymbol(SYMBOL_RECORDING), ThemeS.Color(cRecordControls::Active() ? clrChannelSymbolActive : clrChannelSymbolInactive), ThemeS.Color(clrBackground));
      // draw signal area
      xs0M = xs;
      ys0 = (yt0 + ys1M + GetSymbol(SYMBOL_RECORDING).Height()) / 2 + Gap;
@@ -1202,7 +1189,7 @@ private:
   cString lastDateM;
 
 public:
-  cSkinSoppalusikkaDisplayReplay(bool modeOnlyP);
+  explicit cSkinSoppalusikkaDisplayReplay(bool modeOnlyP);
   virtual ~cSkinSoppalusikkaDisplayReplay();
   virtual void SetRecording(const cRecording *recordingP);
   virtual void SetTitle(const char *titleP);

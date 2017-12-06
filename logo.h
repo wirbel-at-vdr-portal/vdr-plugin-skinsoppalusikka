@@ -28,7 +28,7 @@ private:
   std::map<std::string, cBitmap*> cacheMapM;
   bool LoadXpm(const char *fileNameP);
 public:
-  cSoppalusikkaLogoCache(unsigned int cacheSizeP);
+  explicit cSoppalusikkaLogoCache(unsigned int cacheSizeP);
   ~cSoppalusikkaLogoCache();
   void Refresh();
   bool Resize(unsigned int cacheSizeP);
