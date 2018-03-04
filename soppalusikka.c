@@ -1031,10 +1031,6 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *recordingP)
   y += ts.Height();
   // draw additional information
   cString info("");
-  LOCK_CHANNELS_READ;
-  const cChannel *channel = Channels->GetByChannelID(Info->ChannelID());
-  if (channel)
-     info = cString::sprintf("%s\n%s: %s", *info, trVDR("Channel"), *ChannelString(channel, 0));
   int length = recordingP->LengthInSeconds();
   int dirsize = DirSizeMB(recordingP->FileName());
   cString duration = (length >= 0) ? cString::sprintf("%s: %d:%02d:%02d  ", tr("Duration"), length / 3600, length / 60 % 60, length % 60) : cString("");
