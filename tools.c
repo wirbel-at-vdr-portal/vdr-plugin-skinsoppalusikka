@@ -26,6 +26,8 @@ char *strcatrealloc(char *destP, const char *srcP)
 
 char *strncatrealloc(char *destP, const char *srcP, size_t lenP)
 {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstringop-overflow"
   if (srcP) {
      size_t l = strlen(destP) + min(strlen(srcP), lenP) + 1;
      destP = (char *)realloc(destP, l);
@@ -34,6 +36,7 @@ char *strncatrealloc(char *destP, const char *srcP, size_t lenP)
      else
         error("%s Out of memory!", __PRETTY_FUNCTION__);
   }
+#pragma GCC diagnostic pop
   return destP;
 }
 
@@ -111,8 +114,9 @@ char *parseaux(char *auxP)
      char *r = s;
      size_t len = strlen(AUX_HEADER_EPGSEARCH);
      bool founditem = false;
+     const int AUX_HEADER_EPGSEARCH_LEN = strlen(AUX_HEADER_EPGSEARCH);
      // add header
-     strncpy(r, AUX_HEADER_EPGSEARCH, len);
+     strncpy(r, AUX_HEADER_EPGSEARCH, AUX_HEADER_EPGSEARCH_LEN);
      r += len;
      // parse first item
      len = strlen(AUX_TAGS_EPGSEARCH_ITEM1_START);
@@ -197,8 +201,9 @@ char *parseaux(char *auxP)
      char *s = strdup(auxP);
      char *r = s;
      size_t len = strlen(AUX_HEADER_VDRADMIN);
+     const int AUX_HEADER_VDRADMIN_LEN = strlen(AUX_HEADER_VDRADMIN);
      // add header
-     strncpy(r, AUX_HEADER_VDRADMIN, len);
+     strncpy(r, AUX_HEADER_VDRADMIN, AUX_HEADER_VDRADMIN_LEN);
      r += len;
      // parse first item
      len = strlen(AUX_TAGS_VDRADMIN_ITEM1_START);
@@ -229,8 +234,9 @@ char *parseaux(char *auxP)
      char *s = strdup(auxP);
      char *r = s;
      size_t len = strlen(AUX_HEADER_PIN);
+     const int AUX_HEADER_PIN_LEN = strlen(AUX_HEADER_PIN);
      // add header
-     strncpy(r, AUX_HEADER_PIN, len);
+     strncpy(r, AUX_HEADER_PIN, AUX_HEADER_PIN_LEN);
      r += len;
      // parse first item
      len = strlen(AUX_TAGS_PIN_ITEM1_START);

@@ -748,7 +748,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *textP, int indexP, bool c
   for (int i = 0; i < MaxTabs; i++) {
       const char *s = GetTabbedText(textP, i);
       if (s) {
-         char buffer[9];
+         char buffer[10];
          int xt = x2M + Tab(i);
          bool iseventinfo = false;
          bool isnewrecording = false;
@@ -770,7 +770,7 @@ void cSkinSoppalusikkaDisplayMenu::SetItem(const char *textP, int indexP, bool c
             // update status
             isnewrecording = true;
             // make a copy
-            strncpy(buffer, s, strlen(s));
+            strncpy(buffer, s, sizeof(buffer) - 1);
             // remove the '*' character
             buffer[strlen(s) - 1] = '\0';
             }
