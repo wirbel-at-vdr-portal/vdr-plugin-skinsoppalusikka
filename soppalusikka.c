@@ -937,27 +937,25 @@ void cSkinSoppalusikkaDisplayMenu::SetEvent(const cEvent *eventP)
      unsigned int numaudio = 0, numsubtitle = 0;
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
-         if (p->language) {
-            if (p->stream == 2) {
-               audio = cString::sprintf("%s%s%s%s%s%s",
-                                       (numaudio > 0) ? *audio : "",
-                                       (numaudio > 0) ? ", " : "",
-                                       p->description ? p->description : p->language,
-                                       p->description ? " (" : "",
-                                       p->description ? p->language : "",
-                                       p->description ? ")" : "");
-               numaudio++;
-               }
-            else if (p->stream == 3) {
-               subtitle = cString::sprintf("%s%s%s (%s%s%s)",
-                                        (numsubtitle > 0) ? *subtitle : "",
-                                        (numsubtitle > 0) ? ", " : "",
-                                        p->description ? p->description : p->language,
-                                        p->description ? p->language : "",
-                                        p->description ? "; " : "",
-                                        (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
-               numsubtitle++;
-               }
+         if (p->stream == 2) {
+            audio = cString::sprintf("%s%s%s%s%s%s",
+                                    (numaudio > 0) ? *audio : "",
+                                    (numaudio > 0) ? ", " : "",
+                                    p->description ? p->description : p->language,
+                                    p->description ? " (" : "",
+                                    p->description ? p->language : "",
+                                    p->description ? ")" : "");
+            numaudio++;
+            }
+         else if (p->stream == 3) {
+            subtitle = cString::sprintf("%s%s%s (%s%s%s)",
+                                     (numsubtitle > 0) ? *subtitle : "",
+                                     (numsubtitle > 0) ? ", " : "",
+                                     p->description ? p->description : p->language,
+                                     p->description ? p->language : "",
+                                     p->description ? "; " : "",
+                                     (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
+            numsubtitle++;
             }
          }
      if (numaudio > 0)
@@ -1049,27 +1047,25 @@ void cSkinSoppalusikkaDisplayMenu::SetRecording(const cRecording *recordingP)
      unsigned int numaudio = 0, numsubtitle = 0;
      for (int i = 0; i < Components->NumComponents(); i++) {
          const tComponent *p = Components->Component(i);
-         if (p->language) {
-            if (p->stream == 2) {
-               audio = cString::sprintf("%s%s%s%s%s%s",
-                                       (numaudio > 0) ? *audio : "",
-                                       (numaudio > 0) ? ", " : "",
-                                       p->description ? p->description : p->language,
-                                       p->description ? " (" : "",
-                                       p->description ? p->language : "",
-                                       p->description ? ")" : "");
-               numaudio++;
-               }
-            else if (p->stream == 3) {
-               subtitle = cString::sprintf("%s%s%s (%s%s%s)",
-                                        (numsubtitle > 0) ? *subtitle : "",
-                                        (numsubtitle > 0) ? ", " : "",
-                                        p->description ? p->description : p->language,
-                                        p->description ? p->language : "",
-                                        p->description ? "; " : "",
-                                        (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
-               numsubtitle++;
-               }
+         if (p->stream == 2) {
+            audio = cString::sprintf("%s%s%s%s%s%s",
+                                    (numaudio > 0) ? *audio : "",
+                                    (numaudio > 0) ? ", " : "",
+                                    p->description ? p->description : p->language,
+                                    p->description ? " (" : "",
+                                    p->description ? p->language : "",
+                                    p->description ? ")" : "");
+            numaudio++;
+            }
+         else if (p->stream == 3) {
+            subtitle = cString::sprintf("%s%s%s (%s%s%s)",
+                                     (numsubtitle > 0) ? *subtitle : "",
+                                     (numsubtitle > 0) ? ", " : "",
+                                     p->description ? p->description : p->language,
+                                     p->description ? p->language : "",
+                                     p->description ? "; " : "",
+                                     (p->type < 0x10) ? tr("EBU") : trVDR("DVB"));
+            numsubtitle++;
             }
          }
      if (numaudio > 0)
