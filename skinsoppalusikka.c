@@ -22,8 +22,8 @@
 #define GITVERSION ""
 #endif
 
-static const char VERSION[]     = "2.4.0" GITVERSION;
-static const char DESCRIPTION[] = trNOOP("Soppalusikka skin");
+static const char *VERSION      = "2.4.0" GITVERSION;
+static const char *DESCRIPTION  = trNOOP("Soppalusikka skin");
 
 class cPluginSkinSoppalusikka : public cPlugin {
 private:

@@ -10,13 +10,14 @@ PLUGIN = skinsoppalusikka
 
 ### The version number of this plugin (taken from the main source file):
 
-VERSION = $(shell grep 'static const char VERSION\[\] *=' $(PLUGIN).c | awk '{ print $$6 }' | sed -e 's/[";]//g')
+VERSION = $(shell grep 'static const char \*VERSION *=' $(PLUGIN).c | awk '{ print $$6 }' | sed -e 's/[";]//g')
 GITTAG  = $(shell git describe --always 2>/dev/null)
 
 ### The directory environment:
 
 # Use package data if installed...otherwise assume we're under the VDR source directory:
-PKGCFG = $(if $(VDRDIR),$(shell pkg-config --variable=$(1) $(VDRDIR)/vdr.pc),$(shell PKG_CONFIG_PATH="$$PKG_CONFIG_PATH:../../.." pkg-config --variable=$(1) vdr))
+PKG_CONFIG ?= pkg-config
+PKGCFG = $(if $(VDRDIR),$(shell $(PKG_CONFIG) --variable=$(1) $(VDRDIR)/vdr.pc),$(shell PKG_CONFIG_PATH="$$PKG_CONFIG_PATH:../../.." $(PKG_CONFIG) --variable=$(1) vdr))
 LIBDIR = $(call PKGCFG,libdir)
 LOCDIR = $(call PKGCFG,locdir)
 PLGCFG = $(call PKGCFG,plgcfg)
@@ -24,11 +25,13 @@ CFGDIR = $(call PKGCFG,configdir)
 #
 TMPDIR ?= /tmp
 
+# uncomment next line for quiet compiler messages
+Q = @
+
 ### The compiler options:
 
 export CFLAGS   = $(call PKGCFG,cflags)
 export CXXFLAGS = $(call PKGCFG,cxxflags)
-STRIP           ?= /bin/true
 
 ### The version number of VDR's plugin API:
 
@@ -57,9 +60,6 @@ ifneq ($(strip $(GITTAG)),)
 DEFINES += -DGITVERSION='"-GIT-$(GITTAG)"'
 endif
 
-.PHONY: all all-redirect
-all-redirect: all
-
 ### The object files (add further files here):
 
 OBJS = $(PLUGIN).o soppalusikka.o config.o logo.o setup.o symbol.o tools.o
@@ -79,7 +79,7 @@ all: $(SOFILE) i18n
 MAKEDEP = $(CXX) -MM -MG
 DEPFILE = .dependencies
 $(DEPFILE): Makefile
-	$(Q)$(MAKEDEP) $(CXXFLAGS) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
+	@$(MAKEDEP) $(CXXFLAGS) $(DEFINES) $(INCLUDES) $(OBJS:%.o=%.c) > $@
 
 -include $(DEPFILE)
 
@@ -92,15 +92,12 @@ I18Nmsgs  = $(addprefix $(DESTDIR)$(LOCDIR)/, $(addsuffix /LC_MESSAGES/vdr-$(PLU
 I18Npot   = $(PODIR)/$(PLUGIN).pot
 
 %.mo: %.po
-	@echo MO $@
 	$(Q)msgfmt -c -o $@ $<
 
 $(I18Npot): $(wildcard *.c)
-	@echo GT $@
 	$(Q)xgettext -C -cTRANSLATORS --no-wrap --no-location -k -ktr -ktrNOOP --package-name=vdr-$(PLUGIN) --package-version=$(VERSION) --msgid-bugs-address='<see README>' -o $@ `ls $^`
 
 %.po: $(I18Npot)
-	@echo PO $@
 	$(Q)msgmerge -U --no-wrap --no-location --backup=none -q -N $@ $<
 	@touch $@
 
@@ -118,7 +115,6 @@ install-i18n: $(I18Nmsgs)
 $(SOFILE): $(OBJS)
 	@echo LD $@
 	$(Q)$(CXX) $(CXXFLAGS) $(LDFLAGS) -shared $(OBJS) -o $@
-	$(Q)$(STRIP) $@
 
 install-lib: $(SOFILE)
 	@echo IN $(DESTDIR)$(LIBDIR)/$^.$(APIVERSION)
